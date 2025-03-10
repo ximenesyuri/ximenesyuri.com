@@ -1,0 +1,15 @@
+[project]
+name = "some_name"
+version = "0.0.0"
+description = "some description"
+readme = "README.md"
+requires-python = ">=3.6"
+license = {text = "some_license"}
+authors = [
+    {name = "your_name", email = "your@email.com"},
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+    
