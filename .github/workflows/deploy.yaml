@@ -25,7 +25,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Build documentation
-      run: sphinx-build -b html -c src ./content ./dist
+      run: sphinx-build -b html -c ./src ./content ./dist
 
     - name: Copy CNAME       
       run: cp CNAME ./dist/CNAME
@@ -34,5 +34,5 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist/html
+        publish_dir: ./dist
         publish_branch: gh-pages
