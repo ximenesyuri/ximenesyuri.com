@@ -10,8 +10,8 @@ Researcher
 
 contact: yx.dev[@]gmx.ie
 ```
-[github](https://github.com/ximenesyuri")
-[linkedin](https://linkedin.com/in/ximenesyuri")
+[github](https://github.com/ximenesyuri)
+[linkedin](https://linkedin.com/in/ximenesyuri)
 
 ```
 +----------------------------------------------------------+
