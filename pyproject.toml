@@ -1,15 +1,19 @@
 [project]
-name = "some_name"
+name = "<project-name>"
 version = "0.0.0"
-description = "some description"
+description = "<project-description>"
 readme = "README.md"
-requires-python = ">=3.6"
-license = {text = "some_license"}
+requires-python = ">=3.9"
+license = {text = "<project-license>"}
 authors = [
-    {name = "your_name", email = "your@email.com"},
+    {name = "<your_name>", email = "<your@email.com>"},
 ]
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
-    
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["<project-name>*"]
+

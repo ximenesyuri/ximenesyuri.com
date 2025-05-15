@@ -1,8 +1,2 @@
 sphinx
-sphinx-autobuild
-sphinxawesome_theme
 myst-parser
-git+https://github.com/pythonalta/sphinx-changelog
-pytz
-python-dotenv
-requests

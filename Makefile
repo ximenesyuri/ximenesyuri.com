@@ -1,42 +1,29 @@
-# Minimal makefile for Sphinx documentation
-#
-
-# You can set these variables from the command line, and also
-# from the environment for the first two.
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
-SOURCEDIR     = src
+SOURCEDIR     = content
 BUILDDIR      = dist
+CONFDIR       = src
 
-# Put it first so that "make" without argument is like "make help".
-help:
-	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-
-.PHONY: help Makefile
-
-# Catch-all target: route all unknown targets to Sphinx using the new
-# "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
-	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) -v $(O)
-
-install:
-	@if [ ! -d ".venv" ]; then python3 -m venv .venv; fi
-	@. .venv/bin/activate && \
-	pip install -r requirements.txt && \
-	if [ ! -f ".env" ]; then cp .env.local .env; fi && \
-	deactivate
-
+	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" -c "$(CONFDIR)" $(SPHINXOPTS) -v $(O)
+            
 build:
 	@. .venv/bin/activate && \
 	make clean && \
 	make html && \
-	deactivate
-
-run:
-	@. .venv/bin/activate && \
-	make clean && \
-	sphinx-autobuild "$(SOURCEDIR)" "$(BUILDDIR)" & \
-	sleep 3 && \
-	xdg-open http://localhost:8000 && \
-	wait && \
+	rm -r dist/html/_sources && \
+	rm -r dist/doctrees && \
+	rm -r dist/html/search* && \
+	rm -r dist/html/objects.inv && \
+	rm -r dist/html/genindex.html && \
+	rm -r dist/html/_static/alabaster.css && \
+	rm -r dist/html/_static/basic.css && \
+	rm -r dist/html/_static/custom.css && \
+	rm -r dist/html/_static/doc* && \
+	rm -r dist/html/_static/*.png && \
+	rm -r dist/html/_static/*.svg && \
+	rm -r dist/html/_static/*.js && \
+	rm -r dist/html/_static/pygments.css && \
+	mv dist/html/* dist && \
+	rm -r dist/html && \
 	deactivate
