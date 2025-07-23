@@ -11,7 +11,7 @@
 
 3. 2023-present
     - Software Developer at [Magalu Cloud](https://magalu.cloud/)
-        - Development and maintenance of an instance of [Backstage.io](https://backstage.io)
-        - Construction of integrations between different services (mostly in Python)
+        - Development and maintenance of an instance of [Backstage.io](https://backstage.io), which served to thousands of applications from several teams 
+        - Construction of integrations between different services (mostly in Python and Bash)
         - Development of complex SQL queries to generate dashboards
-    - A lot of side projects (see, for instance, [development](./development))
+    - A lot of side projects (see, for instance, [libs](./libs/index.md))
