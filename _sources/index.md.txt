@@ -18,10 +18,10 @@ contact: <u>yx.dev[at]gmx.ie</u>
 |    <brown>mathematics</brown>     <purple>functional programming</purple>                |
 |                                          <brown>homotopy theory</brown> |
 |   <blue2>type theory</blue2>        +-------------+                     |
-|                      | <green2>abstraction</green2> |       <red>foundations</red>   |
+|                      | <red>abstraction</red> |       foundations   |
 |       <purple>programming</purple>    +-------------+                     |
 |                                              <blue>teaching</blue>    |
-| <red>formalism</red>     <brown>philosophy</brown>          <green>logic</green>       <blue>learning</blue>   |
+| formalism     <brown>philosophy</brown>          <green>logic</green>       <blue>learning</blue>   |
 |                           <green>vim</green>                            |
 |     <blue2>shell scripting</blue2>               <purple>computer science</purple>       |
 +----------------------------------------------------------+
