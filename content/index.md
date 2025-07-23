@@ -1,30 +1,28 @@
+#
 
+<u>Yuri Ximenes Martins</u> (`~yx`)
 
-```
-Yuri Ximenes Martins (yx)
--------------------------
+Mathematics Ph.D <br>
+Software Developer <br>
+Researcher <br>
 
-Mathematics Ph.D
-Software Developer
-Researcher
-
-contact: yx.dev[@]gmx.ie
-```
+contact: <u>yx.dev[at]gmx.ie</u>
+  
 [github](https://github.com/ximenesyuri)
 [linkedin](https://linkedin.com/in/ximenesyuri)
 
-```
+<pre>
 +----------------------------------------------------------+
-|  linux           category theory           axiomatics    |
+|  <green>linux</green>           <blue2>category theory</blue2>           <purple>axiomatics</purple>    |
 |                                                          |
-|    mathematics     functional programming                |
-|                                          homotopy theory |
-|   type theory        +-------------+                     |
-|                      | abstraction |       foundations   |
-|       programming    +-------------+                     |
-|                                              teaching    |
-| formalism     philosophy          logic       learning   |
-|                           vim                            |
-|     shell scripting               computer science       |
+|    <brown>mathematics</brown>     <purple>functional programming</purple>                |
+|                                          <brown>homotopy theory</brown> |
+|   <blue2>type theory</blue2>        +-------------+                     |
+|                      | <green2>abstraction</green2> |       <red>foundations</red>   |
+|       <purple>programming</purple>    +-------------+                     |
+|                                              <blue>teaching</blue>    |
+| <red>formalism</red>     <brown>philosophy</brown>          <green>logic</green>       <blue>learning</blue>   |
+|                           <green>vim</green>                            |
+|     <blue2>shell scripting</blue2>               <purple>computer science</purple>       |
 +----------------------------------------------------------+
-```
+</pre>

@@ -11,19 +11,24 @@ build:
 	@. .venv/bin/activate && \
 	make clean && \
 	make html && \
-	rm -r dist/html/_sources && \
-	rm -r dist/doctrees && \
-	rm -r dist/html/search* && \
-	rm -r dist/html/objects.inv && \
-	rm -r dist/html/genindex.html && \
-	rm -r dist/html/_static/alabaster.css && \
-	rm -r dist/html/_static/basic.css && \
-	rm -r dist/html/_static/custom.css && \
-	rm -r dist/html/_static/doc* && \
-	rm -r dist/html/_static/*.png && \
-	rm -r dist/html/_static/*.svg && \
-	rm -r dist/html/_static/*.js && \
-	rm -r dist/html/_static/pygments.css && \
-	mv dist/html/* dist && \
-	rm -r dist/html && \
+	rm -r $(BUILDDIR)/html/_sources && \
+	rm -r $(BUILDDIR)/doctrees && \
+	rm -r $(BUILDDIR)/html/search* && \
+	rm -r $(BUILDDIR)/html/objects.inv && \
+	rm -r $(BUILDDIR)/html/genindex.html && \
+	rm -r $(BUILDDIR)/html/_static/alabaster.css && \
+	rm -r $(BUILDDIR)/html/_static/basic.css && \
+	rm -r $(BUILDDIR)/html/_static/custom.css && \
+	rm -r $(BUILDDIR)/html/_static/doc* && \
+	rm -r $(BUILDDIR)/html/_static/*.png && \
+	rm -r $(BUILDDIR)/html/_static/*.svg && \
+	rm -r $(BUILDDIR)/html/_static/*.js && \
+	mv $(BUILDDIR)/html/* $(BUILDDIR) && \
+	rm -r $(BUILDDIR)/html && \
 	deactivate
+
+serve:
+	http-server $(BUILDDIR)/
+
+up:
+	make build && make serve
