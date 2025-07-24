@@ -3,7 +3,6 @@ body {
     font-size: 16px;
     color: #d0d0d0;
     background-color: black;
-    max-width: 800px;
     line-height: 1.5;
 }
 
@@ -15,7 +14,7 @@ header {
 
 main {
     padding: 20px;
-    width: 100%;
+    max-width: 800px;
 }
 
 a {
