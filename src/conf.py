@@ -18,12 +18,12 @@ suppress_warnings = [
 ]
 
 html_title = 'yx'
-html_static_path = ['static']
+html_static_path = ['static', '../assets']
 html_permalinks_icon = ""
 myst_number_code_blocks = ["python"]
 highlight_language = None
 
-html_favicon = '_static/favicon.svg'
+html_favicon = '/_static/favicon.svg'
 html_show_sphinx = False
 html_link_suffix = ''
 html_use_dirhtml = True

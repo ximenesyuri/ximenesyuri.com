@@ -20,8 +20,8 @@ build-prod:
 	rm -r $(BUILDDIR)/html/_static/custom.css && \
 	rm -r $(BUILDDIR)/html/_static/doc* && \
 	mv $(BUILDDIR)/html/* $(BUILDDIR) && \
-	mv $(BUILDDIR)/_static/favicon.svg $(BUILDDIR)/favicon.ico && \
-	rm -r $(BUILDDIR)/html
+	rm -r $(BUILDDIR)/html && \
+	python src/helper/tables.py $(BUILDDIR)
             
 build:
 	@. .venv/bin/activate && \
