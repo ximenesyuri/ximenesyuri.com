@@ -21,7 +21,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        apt-get install make
+        sudo apt-get install make
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -e .
