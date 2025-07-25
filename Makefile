@@ -23,11 +23,11 @@ build-prod:
 	rm -r $(BUILDDIR)/html/_static/*.svg && \
 	rm -r $(BUILDDIR)/html/_static/*.js && \
 	mv $(BUILDDIR)/html/* $(BUILDDIR) && \
-	rm -r $(BUILDDIR)/html &&
+	rm -r $(BUILDDIR)/html
             
 build:
 	@. .venv/bin/activate && \
-	make build-prod \
+	make build-prod && \
 	deactivate
 
 serve:
