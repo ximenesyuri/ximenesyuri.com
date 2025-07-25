@@ -1,3 +1,11 @@
+---
+title: types
+---
+
+# About
+
+In this documentation
+
 # Basics
 
 In `typed` we have three kinds of entities:

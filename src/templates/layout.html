@@ -35,15 +35,15 @@
         <div style="display: flex;">
             <main class="main">{{ body }}</main>
             {% if  'libs/' in pagename %}
-                {% from "macros.html" import render_menu_item %}
-                <div class="sidebar">
-                    <h3>libs menu</h3>
-                    <ul>
-                        {% for item in libs_menu %}
-                            {{ render_menu_item(item) }}
-                        {% endfor %}
-                    </ul>
-                </div>
+            {% from "macros.html" import render_menu_item %}
+            <div class="sidebar">
+                <h3>libs menu</h3>
+                <ul>
+                    {% for item in libs_menu %}
+                        {{ render_menu_item(item) }}
+                    {% endfor %}
+                </ul>
+            </div>
             {% endif %}
         </div>
     </body>  

@@ -33,48 +33,45 @@ def _get_markdown_title(filepath):
         print(f"Warning: Could not read title from {filepath}: {e}")
     return None
 
-def _build_menu_from_fs(current_fs_path, content_root_path, content_prefix_for_urls=''):
+def _build_menu_from_fs(current_fs_path, content_root_path, rel_url_prefix=''):
     menu_node = []
-
     items = sorted(os.listdir(current_fs_path))
     dirs = [item for item in items if os.path.isdir(os.path.join(current_fs_path, item))]
     files = [item for item in items if os.path.isfile(os.path.join(current_fs_path, item)) and item.endswith('.md')]
 
     for dname in dirs:
         dir_full_path = os.path.join(current_fs_path, dname)
-        dir_url_segment = os.path.join(content_prefix_for_urls, dname).replace(os.sep, '/')
-
-        dir_display_title = dname.replace('_', ' ') # Default title from directory name
         dir_index_path = os.path.join(dir_full_path, 'index.md')
+        rel_path_from_root = os.path.relpath(dir_full_path, content_root_path)
+        rel_path_slug = rel_path_from_root.replace(os.sep, '/')
+        dir_title = dname.replace('_', ' ')
         dir_link = None
         if os.path.exists(dir_index_path):
-            dir_index_title = _get_markdown_title(dir_index_path)
-            if dir_index_title:
-                dir_display_title = dir_index_title
-            dir_link = os.path.join(dir_url_segment, 'index').replace(os.sep, '/') # Link to index.md within dir
-        else:
-            pass
-
+            index_title = _get_markdown_title(dir_index_path)
+            if index_title:
+                dir_title = index_title
+            dir_link = rel_path_slug
         dir_node = {
-            'title': dir_display_title,
+            'title': dir_title,
             'is_dir': True,
             'link': dir_link,
-            'children': _build_menu_from_fs(dir_full_path, content_root_path, dir_url_segment)
+            'children': _build_menu_from_fs(
+                dir_full_path, content_root_path
+            )
         }
         menu_node.append(dir_node)
 
     for fname in files:
         if fname == 'index.md':
             continue
-
         file_full_path = os.path.join(current_fs_path, fname)
         basename = os.path.splitext(fname)[0]
-        title_from_md = _get_markdown_title(file_full_path)
-        file_url_segment = os.path.join(content_prefix_for_urls, basename).replace(os.sep, '/')
-
+        rel_path_from_root = os.path.relpath(file_full_path, content_root_path)
+        rel_path_slug = rel_path_from_root.replace(os.sep, '/')
+        rel_path_slug = re.sub(r'\.md$', '', rel_path_slug)
         menu_node.append({
-            'link': file_url_segment,
-            'title': title_from_md if title_from_md else basename.replace('_', ' '),
+            'link': rel_path_slug,
+            'title': _get_markdown_title(file_full_path) or basename.replace('_', ' '),
             'is_dir': False
         })
 
@@ -82,14 +79,6 @@ def _build_menu_from_fs(current_fs_path, content_root_path, content_prefix_for_u
 
 def _get_menu_items(content_dir, inner_path):
     content_path = os.path.join(content_dir, inner_path)
-
     if not os.path.exists(content_path):
         return []
-
-    final_menu = []
-
-    index_path = os.path.join(content_path, 'index.md')
-    index_title = _get_markdown_title(index_path)
-
-    final_menu.extend(_build_menu_from_fs(content_path, content_dir, inner_path))
-    return final_menu
+    return _build_menu_from_fs(content_path, content_dir)
