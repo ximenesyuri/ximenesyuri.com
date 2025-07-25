@@ -1,7 +1,7 @@
 {% macro render_menu_item(item) %}
     <li class="toctree-l1{% if pagename == item.link or (pagename == item.link + '/index' and item.is_dir) %} current{% endif %}">
         {% if item.link %}
-            <a href="{{ pathto(item.link) }}">{{ item.title }}</a>
+            <a href="{{ item.link }}">{{ item.title }}</a>
         {% else %}
             <span>{{ item.title }}</span>
         {% endif %}
@@ -14,11 +14,4 @@
         {% endif %}
     </li>
 {% endmacro %}
-<div class="sidebar">
-    <h3>libs</h3>
-    <ul>
-        {% for item in libs_side_menu %}
-            {{ render_menu_item(item) }}
-        {% endfor %}
-    </ul>
-</div>
+

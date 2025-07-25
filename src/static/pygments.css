@@ -37,7 +37,7 @@ span.linenos.special { color: #fff; background-color: #000000; padding-left: 5px
 .highlight .kr { color: #87afd7 } /* Keyword.Reserved */
 .highlight .kt { color: #8BE9FD } /* Keyword.Type */
 .highlight .ld { color: #F8F8F2 } /* Literal.Date */
-.highlight .m { color: #FFB86C } /* Literal.Number */
+.highlight .m { color: #87afaf } /* Literal.Number */
 .highlight .s { color: #87afaf } /* Literal.String */
 .highlight .na { color: #50FA7B } /* Name.Attribute */
 .highlight .nb { color: #af87d7 } /* Name.Builtin */
@@ -56,11 +56,11 @@ span.linenos.special { color: #fff; background-color: #000000; padding-left: 5px
 .highlight .ow { color: #87afd7 } /* Operator.Word */
 .highlight .pm { color: #F8F8F2 } /* Punctuation.Marker */
 .highlight .w { color: #F8F8F2 } /* Text.Whitespace */
-.highlight .mb { color: #FFB86C } /* Literal.Number.Bin */
-.highlight .mf { color: #FFB86C } /* Literal.Number.Float */
-.highlight .mh { color: #FFB86C } /* Literal.Number.Hex */
-.highlight .mi { color: #FFB86C } /* Literal.Number.Integer */
-.highlight .mo { color: #FFB86C } /* Literal.Number.Oct */
+.highlight .mb { color: #87afaf } /* Literal.Number.Bin */
+.highlight .mf { color: #87afaf } /* Literal.Number.Float */
+.highlight .mh { color: #87afaf } /* Literal.Number.Hex */
+.highlight .mi { color: #87afaf } /* Literal.Number.Integer */
+.highlight .mo { color: #87afaf } /* Literal.Number.Oct */
 .highlight .sa { color: #87afaf } /* Literal.String.Affix */
 .highlight .sb { color: #87afaf } /* Literal.String.Backtick */
 .highlight .sc { color: #87afaf } /* Literal.String.Char */
@@ -80,4 +80,4 @@ span.linenos.special { color: #fff; background-color: #000000; padding-left: 5px
 .highlight .vg { color: #8BE9FD; font-style: italic } /* Name.Variable.Global */
 .highlight .vi { color: #8BE9FD; font-style: italic } /* Name.Variable.Instance */
 .highlight .vm { color: #8BE9FD; font-style: italic } /* Name.Variable.Magic */
-.highlight .il { color: #FFB86C } /* Literal.Number.Integer.Long */
+.highlight .il { color: #87afaf } /* Literal.Number.Integer.Long */
