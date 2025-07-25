@@ -20,6 +20,7 @@ build-prod:
 	rm -r $(BUILDDIR)/html/_static/custom.css && \
 	rm -r $(BUILDDIR)/html/_static/doc* && \
 	mv $(BUILDDIR)/html/* $(BUILDDIR) && \
+	mv $(BUILDDIR)/_static/favicon.svg $(BUILDDIR)/favicon.ico && \
 	rm -r $(BUILDDIR)/html
             
 build:

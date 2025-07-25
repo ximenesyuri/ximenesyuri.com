@@ -1,6 +1,6 @@
 import os
-
 from src.helper.menu import _get_menu_items
+from src.helper.date import _year, _now
 
 extensions = [
     'myst_parser'
@@ -23,7 +23,7 @@ html_permalinks_icon = ""
 myst_number_code_blocks = ["python"]
 highlight_language = None
 
-html_favicon = 'static/favicon.svg'
+html_favicon = '_static/favicon.svg'
 html_show_sphinx = False
 html_link_suffix = ''
 html_use_dirhtml = True
@@ -36,6 +36,8 @@ CONTENT_DIR = os.path.join(project_root, 'content')
 
 html_context={
     'title': 'Yuri Ximenes',
+    'year': _year(),
+    'now': _now(),
     'menu': {
         'home': '/',
         'about': '/about',
