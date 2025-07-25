@@ -19,9 +19,6 @@ build-prod:
 	rm -r $(BUILDDIR)/html/_static/basic.css && \
 	rm -r $(BUILDDIR)/html/_static/custom.css && \
 	rm -r $(BUILDDIR)/html/_static/doc* && \
-	rm -r $(BUILDDIR)/html/_static/*.png && \
-	rm -r $(BUILDDIR)/html/_static/*.svg && \
-	rm -r $(BUILDDIR)/html/_static/*.js && \
 	mv $(BUILDDIR)/html/* $(BUILDDIR) && \
 	rm -r $(BUILDDIR)/html
             
