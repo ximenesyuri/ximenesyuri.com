@@ -27,7 +27,7 @@ jobs:
         pip install -e .
 
     - name: Build documentation
-      run: make build
+      run: make build-prod
 
     - name: Copy CNAME       
       run: cp CNAME ./dist/CNAME
