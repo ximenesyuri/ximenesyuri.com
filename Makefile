@@ -6,9 +6,8 @@ CONFDIR       = src
 
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" -c "$(CONFDIR)" $(SPHINXOPTS) -v $(O)
-            
-build:
-	@. .venv/bin/activate && \
+
+build-prod:
 	make clean && \
 	make html && \
 	rm -r $(BUILDDIR)/html/_sources && \
@@ -24,7 +23,11 @@ build:
 	rm -r $(BUILDDIR)/html/_static/*.svg && \
 	rm -r $(BUILDDIR)/html/_static/*.js && \
 	mv $(BUILDDIR)/html/* $(BUILDDIR) && \
-	rm -r $(BUILDDIR)/html && \
+	rm -r $(BUILDDIR)/html &&
+            
+build:
+	@. .venv/bin/activate && \
+	make build-prod \
 	deactivate
 
 serve:
