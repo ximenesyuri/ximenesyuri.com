@@ -1,12 +1,12 @@
 [project]
-name = "<project-name>"
+name = "src"
 version = "0.0.0"
-description = "<project-description>"
+description = "The ximenesyuri.com website"
 readme = "README.md"
 requires-python = ">=3.9"
-license = {text = "<project-license>"}
+license = {text = "BSD"}
 authors = [
-    {name = "<your_name>", email = "<your@email.com>"},
+    {name = "Yuri Ximenes", email = "yx.dev@gmx.ie"},
 ]
 
 [build-system]
@@ -15,5 +15,5 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["<project-name>*"]
+include = ["src*"]
 
