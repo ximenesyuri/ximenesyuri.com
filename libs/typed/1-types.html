@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>yx - libs/typed/1-types</title>
+<link href="/_static/index.css" rel="stylesheet"/>
+<link href="/_static/pygments.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" rel="stylesheet"/>
+<script crossorigin="anonymous" defer="" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script crossorigin="anonymous" defer="" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                renderMathInElement(document.body, {
+                  delimiters: [
+                      {left: ':::tex', right: ':::', display: true},
+                      {left: ':tex', right: ':', display: false},
+                  ],
+                  throwOnError : false
+                });
+            });
+        </script>
+</head>
+<body>
+<header class="header">
+<div class="menu-div">
+<a class="menu-item" href="/">home</a>
+<a class="menu-item" href="/about">about</a>
+<a class="menu-item" href="/education">education</a>
+<a class="menu-item" href="/research">research</a>
+<a class="menu-item" href="/publications">publications</a>
+<a class="menu-item" href="/work">work</a>
+<a class="menu-item" href="/setup">setup</a>
+<a class="menu-item" href="/libs">libs</a>
+<a class="menu-item" href="/notes">notes</a>
+</div>
+</header>
+<div style="display: flex;">
+<main class="main"><section id="about">
+<h1>About<a class="headerlink" href="#about" title="Link to this heading"></a></h1>
+<p>This documentation described how to use the <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">system</span></code> provided by <a class="reference external" href="https://ximenesyuri.com/typed">typed</a>.</p>
+<!-- toc -->
+<ul class="simple">
+<li><p><a class="reference internal" href="#basics"><span class="xref myst">Basics</span></a></p></li>
+<li><p><a class="reference internal" href="#types"><span class="xref myst">Types</span></a></p></li>
+<li><p><a class="reference internal" href="#defining-types"><span class="xref myst">Defining Types</span></a></p></li>
+<li><p><a class="reference internal" href="#metatypes"><span class="xref myst">Metatypes</span></a></p></li>
+<li><p><a class="reference internal" href="#factories"><span class="xref myst">Factories</span></a></p></li>
+<li><p><a class="reference internal" href="#definin-factories"><span class="xref myst">Defining Factories</span></a></p></li>
+<li><p><a class="reference internal" href="#typed-functions"><span class="xref myst">Typed Functions</span></a></p></li>
+</ul>
+<!-- tocstop -->
+</section>
+<section id="basics">
+<h1>Basics<a class="headerlink" href="#basics" title="Link to this heading"></a></h1>
+<p>In <code class="docutils literal notranslate"><span class="pre">typed</span></code> type system we have three kinds of entities:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">types</span></code>: are the basic entities</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">factories</span></code>: are functions used to build <code class="docutils literal notranslate"><span class="pre">types</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">typed</span> <span class="pre">functions</span></code>: are functions with type hints checked at runtime.</p></li>
+</ol>
+<p>In the following we briefly describe how they are defined, used and how they interact one each other.</p>
+</section>
+<section id="types">
+<h1>Types<a class="headerlink" href="#types" title="Link to this heading"></a></h1>
+<p>A <code class="docutils literal notranslate"><span class="pre">type</span></code> is just a class named in <code class="docutils literal notranslate"><span class="pre">CamelCase</span></code>. Types can be organized into <em>primitive types</em> and <em>derived types</em>. The first ones are those that comes already defined in <code class="docutils literal notranslate"><span class="pre">typed</span></code>. The other ones are those constructed by the user by making use of <code class="docutils literal notranslate"><span class="pre">factories</span></code>, as we will see in the sequence.</p>
+<p>There are a lot of <em>primitive types</em> in <code class="docutils literal notranslate"><span class="pre">typed</span></code>. Some of them are Python builtins.</p>
+<div class="highlight-none notranslate" id="table-1"><div class="highlight"><table class="custom-pre-table"><caption><a href="#table-1">table 1</a></caption><thead><tr><th>type</th><th>python builtin</th></tr></thead><tbody><tr><td>Int</td><td>int</td></tr><tr><td>Float</td><td>float</td></tr><tr><td>Str</td><td>str</td></tr><tr><td>Bool</td><td>bool</td></tr><tr><td>Nill</td><td>type(None)</td></tr></tbody></table></div>
+</div>
+<p>Other examples of <em>primitive types</em> in <code class="docutils literal notranslate"><span class="pre">typed</span></code> which are not Python <code class="docutils literal notranslate"><span class="pre">builtin</span></code>s, include:</p>
+<div class="highlight-none notranslate" id="table-2"><div class="highlight"><table class="custom-pre-table"><caption><a href="#table-2">table 2</a></caption><thead><tr><th>type</th><th>description</th></tr></thead><tbody><tr><td>Any</td><td>the type of anything</td></tr><tr><td>Json</td><td>the type of a json entity</td></tr><tr><td>Path</td><td>the type of paths</td></tr><tr><td>...</td><td></td></tr></tbody></table></div>
+</div>
+<blockquote>
+<div><p>For the full list of primitive (resp. derived) types, see <a class="reference internal" href="#./lists"><span class="xref myst">here</span></a></p>
+</div></blockquote>
+</section>
+<section id="defining-types">
+<h1>Defining Types<a class="headerlink" href="#defining-types" title="Link to this heading"></a></h1>
+<p>Although any <code class="docutils literal notranslate"><span class="pre">CamelCase</span></code> class is an acceptable type, in <code class="docutils literal notranslate"><span class="pre">typed</span></code> the types are typically subject to the following conditions:</p>
+<ol class="arabic simple">
+<li><p>they are constructed as the concretization of a <code class="docutils literal notranslate"><span class="pre">metaclass</span></code></p></li>
+<li><p>they are a subclass of some already defined <code class="docutils literal notranslate"><span class="pre">typed</span></code> type</p></li>
+<li><p>they have a explicit <code class="docutils literal notranslate"><span class="pre">__instancecheck__</span></code> method</p></li>
+<li><p>they may contains a explicit <code class="docutils literal notranslate"><span class="pre">__subclasscheck__</span></code> method</p></li>
+</ol>
+<p>So, a typical definition of <code class="docutils literal notranslate"><span class="pre">type</span></code> is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># the metaclass</span>
+<span class="linenos"> 2</span><span class="k">class</span><span class="w"> </span><span class="nc">_SomeType</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">existing_type</span><span class="p">)):</span>
+<span class="linenos"> 3</span>    <span class="o">...</span>
+<span class="linenos"> 4</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__instancecheck__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+<span class="linenos"> 5</span>        <span class="o">...</span>
+<span class="linenos"> 6</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__subclasscheck__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">subclass</span><span class="p">):</span>
+<span class="linenos"> 7</span>        <span class="o">...</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="c1"># the new type</span>
+<span class="linenos">10</span><span class="n">SomeType</span> <span class="o">=</span> <span class="n">_SomeType</span><span class="p">(</span><span class="s1">'SomeType'</span><span class="p">,</span> <span class="p">(</span><span class="n">existing_type</span><span class="p">,)</span> <span class="p">{})</span>
+</pre></div>
+</div>
+</section>
+<section id="metatypes">
+<h1>Metatypes<a class="headerlink" href="#metatypes" title="Link to this heading"></a></h1>
+<p>A very special kind of types are the so-called <em>metatypes</em>. They are “types of types”, being named in <code class="docutils literal notranslate"><span class="pre">UPPERCASE</span></code> notation instead of in <code class="docutils literal notranslate"><span class="pre">CamelCase</span></code> notation.</p>
+<ul class="simple">
+<li><p>The main example of <em>metatype</em> is <code class="docutils literal notranslate"><span class="pre">TYPE</span></code> which is the <code class="docutils literal notranslate"><span class="pre">type</span></code> of all types.</p></li>
+</ul>
+<p>In more precise terms, a <code class="docutils literal notranslate"><span class="pre">metatype</span></code> is any object <code class="docutils literal notranslate"><span class="pre">t</span></code> such that <code class="docutils literal notranslate"><span class="pre">issubclass(t,</span> <span class="pre">TYPE)</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>. Equivalently, it is some <code class="docutils literal notranslate"><span class="pre">t</span></code> such that if <code class="docutils literal notranslate"><span class="pre">isinstance(x,</span> <span class="pre">t)</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> for some <code class="docutils literal notranslate"><span class="pre">x</span></code>, then <code class="docutils literal notranslate"><span class="pre">isinstance(x,</span> <span class="pre">TYPE)</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> as well.</p>
+<blockquote>
+<div><p>The <em>metatypes</em> form themselves a metatype <code class="docutils literal notranslate"><span class="pre">META</span></code>.</p>
+</div></blockquote>
+</section>
+<section id="factories">
+<h1>Factories<a class="headerlink" href="#factories" title="Link to this heading"></a></h1>
+<p>In <code class="docutils literal notranslate"><span class="pre">typed</span></code>, a <em>factory</em> is a <code class="docutils literal notranslate"><span class="pre">CamelCase</span></code> named function that returns a type. It can receive types (i.e, instances of <code class="docutils literal notranslate"><span class="pre">TYPE</span></code>) as arguments or anything else. In the case where it receive only types as arguments, a <em>factory</em> is viewed as a “type operation”.</p>
+<blockquote>
+<div><p>Another way of thinking about a <em>factory</em> is a <a class="reference external" href="https://en.wikipedia.org/wiki/Dependent_type">dependent type</a>, as will be discussed later.</p>
+</div></blockquote>
+<p>There a lot of predefined <em>factories</em> in <code class="docutils literal notranslate"><span class="pre">typed</span></code>. Some examples of factories that can be viewed as “type operations” are the following:</p>
+<div class="highlight-none notranslate" id="table-3"><div class="highlight"><table class="custom-pre-table"><caption><a href="#table-3">table 3</a></caption><thead><tr><th>factory</th><th>description</th></tr></thead><tbody><tr><td>Union</td><td>returns the union type of types</td></tr><tr><td>List</td><td>returns the type of list elements of given types</td></tr><tr><td>Tuple</td><td>returns the type of tuple elements of given types</td></tr><tr><td>Set</td><td>returns the type of set elements of given types</td></tr><tr><td>Dict</td><td>returns the type of dict elements of given types</td></tr><tr><td>...</td><td></td></tr></tbody></table></div>
+</div>
+<p>Other examples, which are not “type operations”, are:</p>
+<div class="highlight-none notranslate" id="table-4"><div class="highlight"><table class="custom-pre-table"><caption><a href="#table-4">table 4</a></caption><thead><tr><th>factory</th><th>description</th></tr></thead><tbody><tr><td>Regex</td><td>returns type of strings that matches a regex</td></tr><tr><td>Len</td><td>returns the subtype of objects of a given lenght</td></tr><tr><td>Not</td><td>returns any object which is an instance of given types</td></tr><tr><td>Enum</td><td>returns the type formed by fixed values of a given type</td></tr><tr><td>Single</td><td>returns the type with a single given object</td></tr><tr><td>...</td><td></td></tr></tbody></table></div>
+</div>
+<p>Similarly, a <em>metafactory</em> is a <code class="docutils literal notranslate"><span class="pre">factory</span></code> which returns a <em>metatype</em>. As happens with metatypes, metafactories are denoted with <code class="docutils literal notranslate"><span class="pre">UPPERCASE</span></code> notation. Some examples are the following:</p>
+<div class="highlight-none notranslate" id="table-5"><div class="highlight"><table class="custom-pre-table"><caption><a href="#table-5">table 5</a></caption><thead><tr><th>metafactory</th><th>description</th></tr></thead><tbody><tr><td>SUB</td><td>returns the metatype of all subtypes of given types</td></tr><tr><td>NOT</td><td>returns the metatype of all types which are not the given types</td></tr><tr><td>...</td><td></td></tr></tbody></table></div>
+</div>
+<blockquote>
+<div><p>For the list and definition of all predefined factories, see <a class="reference internal" href="#./lists"><span class="xref myst">here</span></a>.</p>
+</div></blockquote>
+</section>
+<section id="defining-factories">
+<h1>Defining Factories<a class="headerlink" href="#defining-factories" title="Link to this heading"></a></h1>
+<p>Besides the predefined factories, you can create your own. In this case, you should use the decorator <code class="docutils literal notranslate"><span class="pre">@factory</span></code> to ensure type safety in the proper factory definition. The basic structure of a factory is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">factory</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">TYPE</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="nd">@factory</span>
+<span class="linenos"> 4</span><span class="k">def</span><span class="w"> </span><span class="nf">SomeFactory</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">(</span><span class="o">...</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">TYPE</span><span class="p">:</span>
+<span class="linenos"> 5</span>    <span class="o">...</span>
+<span class="linenos"> 6</span>    <span class="c1"># 1. do something</span>
+<span class="linenos"> 7</span>    <span class="o">...</span>
+<span class="linenos"> 8</span>    <span class="c1"># 2. constructs a metaclass involving the '*args'</span>
+<span class="linenos"> 9</span>    <span class="k">class</span><span class="w"> </span><span class="nc">_SomeType</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="o">...</span><span class="p">)):</span>
+<span class="linenos">10</span>        <span class="o">...</span>
+<span class="linenos">11</span>        <span class="k">def</span><span class="w"> </span><span class="fm">__instancecheck__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+<span class="linenos">12</span>            <span class="o">...</span>
+<span class="linenos">13</span>        <span class="k">def</span><span class="w"> </span><span class="fm">__subclasscheck__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">subclass</span><span class="p">):</span>
+<span class="linenos">14</span>            <span class="o">...</span>
+<span class="linenos">15</span>    <span class="c1"># 3. returns a concrete class</span>
+<span class="linenos">16</span>    <span class="o">...</span>
+<span class="linenos">17</span>    <span class="k">return</span> <span class="n">_SomeType</span><span class="p">(</span><span class="s1">'SomeType'</span><span class="p">,</span> <span class="p">(</span><span class="o">...</span><span class="p">,),</span> <span class="p">{</span><span class="o">...</span><span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="annotations-models-and-dependent-types">
+<h1>Annotations, Models and Dependent Types<a class="headerlink" href="#annotations-models-and-dependent-types" title="Link to this heading"></a></h1>
+<p>As you can note from <a class="reference internal" href="#table-1">table above</a>, there is a factory to each annotation in the library <code class="docutils literal notranslate"><span class="pre">typing</span></code>. In this sense, you can also think of a <code class="docutils literal notranslate"><span class="pre">factory</span></code> as a way to implement the type annotations from <code class="docutils literal notranslate"><span class="pre">typing</span></code>. In this way:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">typed</span></code> <em>can be viewed as a library in which type hints really works</em>.</p>
+</div></blockquote>
+<p>Note that the <em>factories</em> of <code class="docutils literal notranslate"><span class="pre">typed</span></code> that corresponds to type annotations in <code class="docutils literal notranslate"><span class="pre">typing</span> </code> are always “type operations”. On other and, we commented that in <code class="docutils literal notranslate"><span class="pre">typed</span></code> there are other kinds of factories. Therefore, actually</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">typed</span></code> <em>does much more than just implement type annotations</em>.</p>
+</div></blockquote>
+<p>A special flavor of factories are the so-called <em>models</em>. They receive a bunch of arguments and produces types that have such arguments as attributes. They work similar  to <a class="reference external" href="https://docs.python.org/3/library/dataclasses.html">dataclasses</a> or to classes that extends <code class="docutils literal notranslate"><span class="pre">BaseModel</span></code> in <a class="reference external" href="https://docs.pydantic.dev/latest/">pydantic</a>, being specially used for data validation (this will be discussed in the sequence - see <a class="reference internal" href="#./models"><span class="xref myst">here</span></a>). So:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">typed</span></code> <em>provides a effective mechanism for data validation</em>.</p>
+</div></blockquote>
+<p>A generic factory is a function <code class="docutils literal notranslate"><span class="pre">factory:</span> <span class="pre">X</span> <span class="pre">-&gt;</span> <span class="pre">TYPE</span></code> that assigns a type to a collection of arguments, hence can be viewed as an “indexed family of types”, hence as an implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Dependent_type">dependent types</a> in Python:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">typed</span></code> <em>implements dependent types in Python</em>.</p>
+</div></blockquote>
+</section>
+<section id="typed-functions">
+<h1>Typed Functions<a class="headerlink" href="#typed-functions" title="Link to this heading"></a></h1>
+<p>Just use custom types created from <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">factories</span></code> as type hints for <code class="docutils literal notranslate"><span class="pre">typed</span> <span class="pre">functions</span></code>, which are created with the <code class="docutils literal notranslate"><span class="pre">typed</span></code> decorator.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># import 'typed' decorator </span>
+<span class="linenos">2</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">typed</span>
+<span class="linenos">3</span><span class="c1"># import some 'type factories'</span>
+<span class="linenos">4</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Int</span><span class="p">,</span> <span class="n">Str</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="c1"># then define a 'typed function'</span>
+<span class="linenos">7</span><span class="nd">@typed</span>
+<span class="linenos">8</span><span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Str</span><span class="p">):</span>
+<span class="linenos">9</span>    <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>If at runtime the type of <code class="docutils literal notranslate"><span class="pre">x</span></code> does not matches <code class="docutils literal notranslate"><span class="pre">Int</span></code> (respectively the type of <code class="docutils literal notranslate"><span class="pre">y</span></code> does not matches <code class="docutils literal notranslate"><span class="pre">Str</span></code> or the return type of <code class="docutils literal notranslate"><span class="pre">my_function</span></code> does not matches <code class="docutils literal notranslate"><span class="pre">List(Int,</span> <span class="pre">Str)</span></code>), then a descriptive <code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">Error</span></code> message is provided, presenting the received types and the expected types.</p>
+</section>
+<section id="typed-variables">
+<h1>Typed Variables<a class="headerlink" href="#typed-variables" title="Link to this heading"></a></h1>
+</section>
+</main>
+<div class="sidebar">
+<span style="color: #d0d0d0;">libs menu</span>
+<ul>
+<li class="">
+<a href="/libs/app">app</a>
+<ul>
+<li class="">
+<a href="/libs/app/app">app system</a>
+</li>
+<li class="">
+<a href="/libs/app/component">component system</a>
+</li>
+</ul>
+</li>
+<li class="">
+<a href="/libs/cli">cli</a>
+</li>
+<li class="">
+<a href="/libs/typed">typed</a>
+<ul>
+<li class="">
+<a href="/libs/typed/1-types">types</a>
+</li>
+<li class="">
+<a href="/libs/typed/2-models">models</a>
+</li>
+<li class="">
+<a href="/libs/typed/3-examples">examples</a>
+</li>
+<li class="">
+<a href="/libs/typed/4-lists">lists of entities</a>
+</li>
+</ul>
+</li>
+<li class="">
+<a href="/libs/utils">utils</a>
+</li>
+</ul>
+</div>
+</div>
+<footer class="footer">
+<p class="footer-text">
+                Yuri Ximenes, 2025. Last update: <purple>2025/07/26 at 19:01</purple><br/>
+                Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>
+</p>
+</footer>
+</body>
+</html>
