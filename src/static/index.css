@@ -4,6 +4,7 @@ body {
     color: #d0d0d0;
     background-color: black;
     line-height: 1.5;
+    counter-reset: section;
 }
 
 header {
@@ -15,11 +16,68 @@ footer {
     padding: 20px;
     border-top: 1px solid #d0d0d0 
 }
+
+em {
+    color: #87afaf;
+}
+
+em::before {
+    content: "_";
+}
+
+em::after {
+    content: "_";
+}
  
 main {
     padding: 20px;
     max-width: 1000px;
-}  
+    counter-reset: section;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 50px;
+    color: #af875f;
+    font-weight: 400;
+}
+
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+    font-size: 20px;
+    color: #d0d0d0;
+    font-weight: 400;
+}
+
+h1 {
+    counter-increment: section;
+    counter-reset: subsection;
+}
+
+h1::before {
+    content: counter(section) ". ";
+}
+
+h2 {
+    counter-increment: subsection;
+    counter-reset: subsubsection;
+}
+
+h2::before {
+    content: counter(section) "." counter(subsection) ". ";
+}
+
+h3 {
+    counter-increment: subsubsection;
+}
+
+h3::before {
+    content: counter(section) "." counter(subsection) "." counter(subsection) ". ";
+}
+
 
 a {
     color: #8dc1f5; 
@@ -27,9 +85,18 @@ a {
 }
 
 code {
-    background-color: #2f2f2f;
+    /*background-color: #2f2f2f; */
+    color: #b6b3eb;
     padding-left: 3px;
     padding-right: 3px;
+}
+
+code::before {
+    content: "`";
+}
+
+code::after {
+    content: "`";
 }
 
 pre {
@@ -65,17 +132,13 @@ li > p {
     margin-bottom: 0px;
 }
 
-h1 {
-    margin-top: 30px;
-}
-
 blue {
     color: #87afd7;
 }
 
 blue2 {
     color: #87afaf;
-}
+}   
 
 green {
     color: #87af87;  
@@ -111,87 +174,62 @@ yellow {
     padding-left: 30px;
 }
 
-:root {
-    --raw-table-font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-    --raw-table-text-color: #333; /* Standard text color for table content */
-    --raw-table-caption-color: #007bff; /* Color for the caption */
-    --raw-table-separator-color: #666; /* Color for the dashed lines */
-    --raw-table-separator-thickness: 1px; /* Thickness of the dashed line */
-    --raw-table-vertical-padding: 0.2em; /* Padding inside cells for height */
-    --raw-table-inter-column-spacing: 2em; /* How much "space" between columns */
-}
-
-/* Base style for our custom-pre-table */
 table.custom-pre-table {
-    font-family: var(--raw-table-font-family);
-    color: var(--raw-table-text-color);
-    border-collapse: collapse; /* Ensure borders are collapsed */
-    width: 100%; /* Take full available width */
-    margin: 1em 0; /* Add some margin above/below the table */
+    color: white;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 2em 1em;
 }
 
-/* Remove default table cell padding and border */
-table.custom-pre-table th,
+table.custom-pre-table th {
+    border: none;
+    margin-left: 10px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    white-space: pre;
+    text-align: left;
+    vertical-align: top;
+}
+
 table.custom-pre-table td {
-    border: none; /* No cell borders */
-    padding: var(--raw-table-vertical-padding) 0; /* Vertical padding, no horizontal padding initially */
-    white-space: pre; /* Essential: preserves whitespace, prevents wrapping */
-    text-align: left; /* Default alignment */
-    vertical-align: top; /* Align content to the top within cells */
+    border: none;
+    margin-left: 10px;
+    padding-top: 5px;
+    padding-left: 10px;
+    white-space: pre;
+    text-align: left;
+    vertical-align: top;
 }
 
-/* Header (title1 title2) */
 table.custom-pre-table thead tr {
-    /* No specific border-top here, as the first separator comes *after* the header */
 }
 
-/* The first separator line: after the header */
 table.custom-pre-table thead {
-    border-bottom: var(--raw-table-separator-thickness) dashed var(--raw-table-separator-color);
-    padding-bottom: 0.5em; /* Space between header and first dashed line */
+    border-bottom: 1px dashed white;
+    padding-bottom: 1em;
 }
 
-/* Body content */
 table.custom-pre-table tbody tr {
-    /* No specific borders here */
 }
 
-/* The second separator line: before the caption, after the body */
 table.custom-pre-table tbody {
-    border-bottom: var(--raw-table-separator-thickness) dashed var(--raw-table-separator-color);
-    padding-bottom: 0.5em; /* Space between last row and separator */
-    margin-bottom: 0.5em; /* Space between separator and caption */
+    border-bottom: 1px dashed white;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
 }
 
-/* For the effect of "space" between columns in a monospaced way
-   we need specific padding on the right of each cell *except the last one*
-   in each row.
-*/
 table.custom-pre-table th:not(:last-child),
 table.custom-pre-table td:not(:last-child) {
-    padding-right: 2ch; /* Adds space equivalent to 2 characters on the right */
+    padding-right: 2ch;
 }
 
 table.custom-pre-table caption {
     caption-side: bottom;
-    text-align: center;
-    font-style: italic;
-    color: var(--raw-table-caption-color); /* Still uses the variable for overall color */
+    text-align: left;
     margin-top: 1em;
     font-size: 0.9em;
-    font-family: var(--raw-table-font-family);
 }
 
-/* Style for the link inside the caption */
 table.custom-pre-table caption a {
-    color: inherit; /* Inherit the color from the caption (var(--raw-table-caption-color)) */
-    text-decoration: none; /* Remove underline */
-    cursor: pointer; /* Keep pointer cursor for clickability */
+    text-align: center;
 }
-
-/* Optional: hover effect if you still want it to indicate it's clickable */
-table.custom-pre-table caption a:hover {
-    text-decoration: underline; /* Underline on hover to indicate link */
-    color: blue; /* Or slightly different color on hover */
-}
-

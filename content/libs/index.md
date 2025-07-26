@@ -1,5 +1,3 @@
-# Libs
-
 Here you will find documentation and expositions on some libraries I'm involved.
 
 1. [typed](./typed/index): a Python framework that provides type safety and universal constructions

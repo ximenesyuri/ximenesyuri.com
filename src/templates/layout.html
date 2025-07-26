@@ -37,7 +37,7 @@
             {% if  'libs/' in pagename %}
             {% from "macros.html" import render_menu_item %}
             <div class="sidebar">
-                <h3>libs menu</h3>
+                <span style="color: #d0d0d0;">libs menu</span>
                 <ul>
                     {% for item in libs_menu %}
                         {{ render_menu_item(item) }}

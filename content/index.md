@@ -1,5 +1,3 @@
-#
-
 <u>Yuri Ximenes Martins</u> (`~yx`)
 
 Mathematics Ph.D <br>

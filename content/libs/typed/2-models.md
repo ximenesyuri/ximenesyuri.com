@@ -1,3 +1,7 @@
+---
+title: models
+---
+
 ### Models
 
 You can create `type models` which are subclasses of the base `Json` class and can be used to quickly validate data, much as you can do with `BaseModel` in [pydantic](https://github.com/pydantic/pydantic), but following the `typed` philosophy:

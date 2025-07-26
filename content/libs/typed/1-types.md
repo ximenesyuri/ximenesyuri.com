@@ -19,6 +19,7 @@ This documentation described how to use the `type system` provided by [typed](ht
 <!-- tocstop -->
 
 # Basics
+
 In `typed` type system we have three kinds of entities:
 1. `types`: are the basic entities
 2. `factories`: are functions used to build `types`
