@@ -1,9 +1,20 @@
-import os
+from docutils import nodes
+from sphinx.transforms import SphinxTransform
+from sphinx.util import logging
 import re
-from bs4 import BeautifulSoup
-from glob import glob
 
-def _parse_line(line, column_boundaries):
+logger = logging.getLogger(__name__)
+
+table_pattern = re.compile(
+    r'^(?P<header_line>.*?)\n'
+    r'--+\n'
+    r'(?P<content>.*?)\n'
+    r'--+\n'
+    r'(?P<caption>.*?)\s*$',
+    re.DOTALL | re.MULTILINE
+)
+
+def parse_line(line, column_boundaries):
     entries = []
     current_pos = 0
     for boundary_pos in column_boundaries:
@@ -13,7 +24,7 @@ def _parse_line(line, column_boundaries):
     entries.append(line[current_pos:].strip())
     return entries
 
-def _get_boundaries(header_line):
+def get_boundaries(header_line):
     header_line = header_line.replace('\t', '    ')
     boundaries = []
     for match in re.finditer(r' {2,}', header_line):
@@ -24,97 +35,58 @@ def _get_boundaries(header_line):
                     boundaries.append(gap_end)
     return sorted(list(set(boundaries)))
 
+class TxtTableToNodeTransform(SphinxTransform):
+    default_priority = 700
 
-def _generate_tables(build_dir):
-    html_files = glob(os.path.join(build_dir, '**', '*.html'), recursive=True)
-    table_pattern = re.compile(
-        r'^(?P<header_line>.*?)\n'
-        r'--+\n'
-        r'(?P<content>.*?)\n'
-        r'--+\n'
-        r'(?P<caption>.*?)\s*$',
-        re.DOTALL | re.MULTILINE
-    )
-    for file_path in html_files:
-        try:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                soup = BeautifulSoup(f.read(), 'html.parser')
+    def apply(self):
+        for literal in self.document.traverse(nodes.literal_block):
+            text = literal.astext()
+            match = table_pattern.match(text.strip())
+            if match:
+                logger.info(f"[txt-table] Converting literal block to table in {self.env.docname}")
+                header_line = match.group('header_line').rstrip()
+                content_lines = match.group('content').strip().split('\n')
+                caption_text = match.group('caption').strip()
+                column_boundaries = get_boundaries(header_line)
+                header_entries = parse_line(header_line, column_boundaries)
 
-            modified = False
-            for pre_tag in soup.find_all('pre', recursive=True):
-                pre_content = pre_tag.get_text()
-                match = table_pattern.match(pre_content.strip())
+                table = nodes.table(classes=['custom-pre-table'])
+                tgroup = nodes.tgroup(cols=len(header_entries))
+                table += tgroup
 
-                if match:
-                    header_line = match.group('header_line').rstrip()
-                    content_lines = match.group('content').strip().split('\n')
-                    caption_text = match.group('caption').strip()
-                    new_table = soup.new_tag("table")
-                    new_table['class'] = ['custom-pre-table']
-                    table_id = None
-                    current_element = pre_tag
-                    while current_element and current_element is not soup:
-                        if current_element.has_attr('id'):
-                            table_id = current_element['id']
-                            break
-                        current_element = current_element.parent
+                for _ in header_entries:
+                    tgroup += nodes.colspec(colwidth=1)
 
-                    if not table_id and pre_tag.parent and pre_tag.parent.has_attr('id'):
-                        table_id = pre_tag.parent['id']
-                    if not table_id:
-                        for ancestor in pre_tag.find_parents():
-                            if ancestor.name in ['section', 'div'] and ancestor.has_attr('id'):
-                                table_id = ancestor['id']
-                                break
-                    if caption_text:
-                        caption_tag = soup.new_tag("caption")
-                        if table_id:
-                            link_tag = soup.new_tag("a", href=f"#{table_id}")
-                            link_tag.string = caption_text
-                            caption_tag.append(link_tag)
-                        else:
-                            caption_tag.string = caption_text
-                            print(f"Warning: No ID found for table with caption '{caption_text}' in {file_path}. Caption will not be a link.")
-                        new_table.append(caption_tag)
+                if caption_text:
+                    table += nodes.caption('', caption_text)
 
-                    column_boundaries = _get_boundaries(header_line)
-                    thead = soup.new_tag("thead")
-                    tr_head = soup.new_tag("tr")
-                    header_entries = _parse_line(header_line, column_boundaries)
-                    for h_entry in header_entries:
-                        th = soup.new_tag("th")
-                        th.string = h_entry
-                        tr_head.append(th)
-                    thead.append(tr_head)
-                    new_table.append(thead)
+                thead = nodes.thead()
+                tgroup += thead
+                row = nodes.row()
+                for h in header_entries:
+                    entry = nodes.entry()
+                    entry += nodes.paragraph(text=h)
+                    row += entry
+                thead += row
 
-                    tbody = soup.new_tag("tbody")
-                    expected_cols = len(header_entries)
-                    for line in content_lines:
-                        tr_body = soup.new_tag("tr")
-                        body_entries = _parse_line(line.rstrip(), column_boundaries)
-                        for i in range(expected_cols):
-                            td = soup.new_tag("td")
-                            td.string = body_entries[i] if i < len(body_entries) else ""
-                            tr_body.append(td)
-                        tbody.append(tr_body)
-                    new_table.append(tbody)
-                    pre_tag.replace_with(new_table)
-                    modified = True
+                tbody = nodes.tbody()
+                tgroup += tbody
+                for line in content_lines:
+                    row = nodes.row()
+                    body_entries = parse_line(line.rstrip(), column_boundaries)
+                    for i in range(len(header_entries)):
+                        entry = nodes.entry()
+                        text = body_entries[i] if i < len(body_entries) else ""
+                        entry += nodes.paragraph(text=text)
+                        row += entry
+                    tbody += row
 
-            if modified:
-                with open(file_path, 'w', encoding='utf-8') as f:
-                    f.write(str(soup))
-                print(f"Modified {file_path}")
+                literal.replace_self(table)
 
-        except Exception as e:
-            print(f"Error processing {file_path}: {e}")
-
-if __name__ == '__main__':
-    import argparse
-
-    parser = argparse.ArgumentParser(description='Process HTML files generated by Sphinx to reformat specific pre-formatted tables into proper HTML tables (fixed-width column detection).')
-    parser.add_argument('build_dir', help='The path to Sphinx build directory (e.g., _build/html).')
-    args = parser.parse_args()
-
-    _generate_tables(args.build_dir)
+def setup(app):
+    app.add_transform(TxtTableToNodeTransform)
+    logger.info("[txt-table] Extension enabled: converting txt literal tables to real tables at doctree stage")
+    return {
+        'parallel_read_safe': True,
+        'parallel_write_safe': True,
+    }

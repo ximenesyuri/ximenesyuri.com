@@ -1,9 +1,14 @@
 import os
+import sys
 from src.helper.menu import _get_menu_items
 from src.helper.date import _year, _now
+sys.path.insert(0, os.path.abspath('./helper'))
 
 extensions = [
-    'myst_parser'
+    'myst_parser',
+    'toc',
+    'tables',
+    'header'
 ]
 
 source_suffix = ['.md']

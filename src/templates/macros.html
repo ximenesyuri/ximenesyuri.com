@@ -6,11 +6,11 @@
             <span>{{ item.title }}</span>
         {% endif %}
         {% if item.children %}
-            <ul>
+            <ol>
                 {% for child in item.children %}
                     {{ render_menu_item(child) }}
                 {% endfor %}
-            </ul>
+            </ol>
         {% endif %}
     </li>
 {% endmacro %}

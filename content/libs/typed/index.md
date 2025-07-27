@@ -16,27 +16,19 @@
 
 `typed` is a Python framework providing type safety and allowing universal constructions.
 
-<!-- toc --> 
-
-- [About](#about)
-- [Overview](#overview)
-- [Install](#install)
-- [Docs](#docs)
-
-<!-- end -->
+```{toc}
+```
 
 # Overview
 
-The lib provides a lot of `type factories`, which can be used to build custom types, which are **subtypes** of already existing types. This means that initalization is not needed during the runtime type checking. The lib also provides a class of `typed functions`, for which type hints are checked at runtime. 
+The framework provides a lot of _primitive types_ with a plethora of _type factories_, which can be used to build custom _derived types_. As examples of the type factories we have _type operations_, which concretely implements the annotations from the `typing` library, and flavors of _models_, which can be used to validate data. 
+
+One time defined, the types can be used as type hints for _typed functions_, for which type hints are checked at runtime. 
 
 So, with `typed` you have a framework ensuring type safety by:
-1. defining custom types from `type factories`
-2. using those custom types as type hints for `typed functions`
+1. defining custom types from _type factories_;
+2. using those custom types as type hints for _typed functions_;
 3. checking the type hints at runtime.
-
-> `typed` includes a lot ready to use classes from different contexts.
-    
-You can also use `typed` to create and validate data models similar to [pydantic](https://github.com/pydantic/pydantic). 
 
 # Install
 
@@ -52,5 +44,5 @@ py i ximenesyuri/typed
 
 # Docs
 
-1. [types](./types)
-2. [models](./models)
+```{toc-dir}
+```

@@ -32,19 +32,19 @@
                 {% endfor %}
             </div>    
         </header>
-        <div style="display: flex;">
-            <main class="main">{{ body }}</main>
+        <div class="content">
             {% if  'libs/' in pagename %}
             {% from "macros.html" import render_menu_item %}
-            <div class="sidebar">
-                <span style="color: #d0d0d0;">libs menu</span>
-                <ul>
+            <details class="sidebar">
+                <summary class="sidebar-title">libs menu</summary>
+                <ul class="sidebar-ul">
                     {% for item in libs_menu %}
                         {{ render_menu_item(item) }}
                     {% endfor %}
                 </ul>
-            </div>
+            </details>
             {% endif %}
+            <main class="main">{{ body }}</main>
         </div>
         <footer class="footer">
             <p class="footer-text">

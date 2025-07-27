@@ -1,29 +1,24 @@
 ---
 title: types
+desc: "the type system"
 ---
+
+```{title}
+```
 
 # About
 
 This documentation described how to use the `type system` provided by [typed](https://ximenesyuri.com/typed).
 
-<!-- toc -->
-
-- [Basics](#basics)
-- [Types](#types)
-- [Defining Types](#defining-types)
-- [Metatypes](#metatypes)
-- [Factories](#factories)
-- [Defining Factories](#definin-factories)
-- [Typed Functions](#typed-functions)
-
-<!-- tocstop -->
+```{toc}
+```
 
 # Basics
 
 In `typed` type system we have three kinds of entities:
-1. `types`: are the basic entities
-2. `factories`: are functions used to build `types`
-3. `typed functions`: are functions with type hints checked at runtime.
+1. _types_: are the basic entities
+2. _factories_: are functions used to build `types`
+3. _typed functions_: are functions with type hints checked at runtime.
 
 In the following we briefly describe how they are defined, used and how they interact one each other.
 
@@ -60,7 +55,7 @@ Path         the type of paths
 table 2
 ```
 
-> For the full list of primitive (resp. derived) types, see [here](./lists)
+> For the full list of primitive and types, see [here](./lists).
 
 # Defining Types
 
@@ -148,10 +143,10 @@ table 5
 ```
 
 > For the list and definition of all predefined factories, see [here](./lists).
-
+ 
 # Defining Factories
 
-Besides the predefined factories, you can create your own. In this case, you should use the decorator `@factory` to ensure type safety in the proper factory definition. The basic structure of a factory is as follows:
+Besides the predefined factories, you can create your own. In this case, it is recommended to use the decorator `@factory` in order to ensure type safety in factory definition. The basic structure of a factory is as follows:
 
 ```python
 from typed import factory, Tuple, TYPE
@@ -185,7 +180,7 @@ Note that the _factories_ of `typed` that corresponds to type annotations in `ty
 
 A special flavor of factories are the so-called _models_. They receive a bunch of arguments and produces types that have such arguments as attributes. They work similar  to [dataclasses](https://docs.python.org/3/library/dataclasses.html) or to classes that extends `BaseModel` in [pydantic](https://docs.pydantic.dev/latest/), being specially used for data validation (this will be discussed in the sequence - see [here](./models)). So:
 
-> `typed` *provides a effective mechanism for data validation*.
+> `typed` *provides an effective mechanism for data validation*.
 
 A generic factory is a function `factory: X -> TYPE` that assigns a type to a collection of arguments, hence can be viewed as an "indexed family of types", hence as an implementation of [dependent types](https://en.wikipedia.org/wiki/Dependent_type) in Python:
 
@@ -194,20 +189,23 @@ A generic factory is a function `factory: X -> TYPE` that assigns a type to a co
 
 # Typed Functions
 
-Just use custom types created from `type factories` as type hints for `typed functions`, which are created with the `typed` decorator.
+In `typed`, there is a distinguished class of functions: the _typed functions_. They have the following characteristics:
+1. they are defined using the `@typed` decorator;
+2. each of its arguments is decorated with an annotation given by a `typed` _type_;
+3. it also has a return annotation given by a `typed` _type_.
+
+So, in essence, the structure of a _typed function_ is as follows:
 
 ```python
-# import 'typed' decorator 
-from typed import typed
-# import some 'type factories'
-from typed import List, Int, Str
+from typed import typed, SomeType, OtherType, ...
 
-# then define a 'typed function'
 @typed
-def my_function(x: Int, y: Str) -> List(Int, Str):
-    return [x, y]
+def my_function(some_var: SomeType, ...) -> OtherType:
+    ...
 ```
 
-If at runtime the type of `x` does not matches `Int` (respectively the type of `y` does not matches `Str` or the return type of `my_function` does not matches `List(Int, Str)`), then a descriptive `Type Error` message is provided, presenting the received types and the expected types.
+When you define a function as a _typed function_, its type annotations are checked at runtime, ensuring type safety. This means that, if at runtime `some_var` is not an instance of `SomeType`, or if the return value of `my_function` is not an instance of `OtherType`, then a `TypeError` will be raised.
+
+> The type errors from `typed` are as intuitive as possible. For more about them, see [errors](./3-errors).
 
 # Typed Variables
