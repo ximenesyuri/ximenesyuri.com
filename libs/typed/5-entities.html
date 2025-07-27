@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>yx - libs/typed/3-examples</title>
+        <title>yx - libs/typed/5-entities</title>
         <link rel="stylesheet" href="/_static/index.css">
         <link rel="stylesheet" href="/_static/pygments.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,13 +48,12 @@
                 
             </div>    
         </header>
-        <div style="display: flex;">
-            <main class="main"></main>
+        <div class="content">
             
             
-            <div class="sidebar">
-                <span style="color: #d0d0d0;">libs menu</span>
-                <ul>
+            <details class="sidebar">
+                <summary class="sidebar-title">libs menu</summary>
+                <ul class="sidebar-ul">
                     
                         
     <li class="">
@@ -62,7 +61,7 @@
             <a href="/libs/app">app</a>
         
         
-            <ul>
+            <ol>
                 
                     
     <li class="">
@@ -82,7 +81,7 @@
     </li>
 
                 
-            </ul>
+            </ol>
         
     </li>
 
@@ -102,7 +101,7 @@
             <a href="/libs/typed">typed</a>
         
         
-            <ul>
+            <ol>
                 
                     
     <li class="">
@@ -125,7 +124,7 @@
                     
     <li class="">
         
-            <a href="/libs/typed/3-examples">examples</a>
+            <a href="/libs/typed/3-errors">3-errors</a>
         
         
     </li>
@@ -134,13 +133,22 @@
                     
     <li class="">
         
-            <a href="/libs/typed/4-lists">lists of entities</a>
+            <a href="/libs/typed/4-examples">examples</a>
         
         
     </li>
 
                 
-            </ul>
+                    
+    <li class="">
+        
+            <a href="/libs/typed/5-entities">lists of entities</a>
+        
+        
+    </li>
+
+                
+            </ol>
         
     </li>
 
@@ -155,12 +163,59 @@
 
                     
                 </ul>
-            </div>
+            </details>
             
+            <main class="main"><section id="primitive-types">
+<h1>Primitive Types<a class="headerlink" href="#primitive-types" title="Link to this heading"></a></h1>
+<p>The following  is the list of the primitive <code class="docutils literal notranslate"><span class="pre">typed</span></code> types, from which, using <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">factories</span></code>, one can build other derived types.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>primitive Python types
+------------------------
+type        definition 
+--------------------------------------------- 
+Int         int
+Str         str
+Bool        bool
+Float       float
+Nill        type(None)
+</pre></div>
+</div>
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>additional typed types</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type         definition</p></td>
+</tr>
+</tbody>
+<p><span class="caption-text">Any          isinstance(x, Any) is True everywhere</span></p>
+</table>
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>function types</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type           definition</p></td>
+</tr>
+</tbody>
+<p><span class="caption-text">PlainFuncType  …</span></p>
+</table>
+</section>
+<section id="factories">
+<h1>Factories<a class="headerlink" href="#factories" title="Link to this heading"></a></h1>
+</section>
+<section id="derived-types">
+<h1>Derived Types<a class="headerlink" href="#derived-types" title="Link to this heading"></a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>typed.examples
+</pre></div>
+</div>
+</section>
+</main>
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/07/26 at 19:01</purple><br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/07/27 at 19:21</purple><br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>
             </p>
         </footer>

@@ -16,23 +16,15 @@ footer {
     padding: 20px;
     border-top: 1px solid #d0d0d0 
 }
-
-em {
-    color: #87afaf;
-}
-
-em::before {
-    content: "_";
-}
-
-em::after {
-    content: "_";
-}
  
 main {
     padding: 20px;
     max-width: 1000px;
     counter-reset: section;
+}
+
+@media (min-width: 800px) {
+    .content { display: flex;}
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -78,6 +70,17 @@ h3::before {
     content: counter(section) "." counter(subsection) "." counter(subsection) ". ";
 }
 
+em {
+    color: #87afaf;
+}
+
+em::before {
+    content: "_";
+}
+
+em::after {
+    content: "_";
+}
 
 a {
     color: #8dc1f5; 
@@ -170,66 +173,106 @@ yellow {
 
 .sidebar {
     margin: 30px;
-    border-left: 1px dashed #d0d0d0;
-    padding-left: 30px;
+    border-right: 1px dashed #d0d0d0;
+    padding-right: 30px;
+    max-width: 250px;
 }
 
-table.custom-pre-table {
+@media (max-width: 799px) {
+    .sidebar{
+        border-right: none;
+        border-bottom: 1px dashed #d0d0d0; 
+    }
+}
+
+.sidebar-title {
+    border-bottom: 1px dashed #d0d0d0;
+    padding-bottom: 10px;
+    width: 125px;
+}
+
+.sidebar-ul {
+    margin-left: -20px;
+}
+
+table {
     color: white;
     border-collapse: collapse;
     width: 100%;
     margin: 2em 1em;
 }
 
-table.custom-pre-table th {
+table th {
     border: none;
     margin-left: 10px;
     padding-bottom: 5px;
     padding-left: 10px;
-    white-space: pre;
     text-align: left;
     vertical-align: top;
 }
 
-table.custom-pre-table td {
+table td {
     border: none;
     margin-left: 10px;
     padding-top: 5px;
     padding-left: 10px;
-    white-space: pre;
     text-align: left;
     vertical-align: top;
 }
 
-table.custom-pre-table thead tr {
+table td p {
+    margin: 0;
+    padding: 0;
 }
 
-table.custom-pre-table thead {
+
+table thead {
     border-bottom: 1px dashed white;
     padding-bottom: 1em;
 }
 
-table.custom-pre-table tbody tr {
-}
-
-table.custom-pre-table tbody {
+table tbody {
     border-bottom: 1px dashed white;
     padding-bottom: 0.5em;
     margin-bottom: 0.5em;
 }
 
-table.custom-pre-table th:not(:last-child),
-table.custom-pre-table td:not(:last-child) {
+table th:not(:last-child),
+table td:not(:last-child) {
     padding-right: 2ch;
 }
 
-table.custom-pre-table caption {
+table caption {
     caption-side: bottom;
     text-align: left;
     margin-top: 1em;
     font-size: 0.9em;
 }
 
-table.custom-pre-table caption a {
+table caption a {
     text-align: center;
 }
+
+.title {
+    display: inline;
+}
+
+h0 {
+    font-size: 30px;
+    font-weight: 400;
+    color: #b6b3eb;
+}
+
+h0::after {
+    content: ":";
+}
+
+s0 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #d0d0d0;
+}
+
+
+
+

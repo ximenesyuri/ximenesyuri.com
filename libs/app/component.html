@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>yx - libs/app/component</title>
-<link href="/_static/index.css" rel="stylesheet"/>
-<link href="/_static/pygments.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet"/>
-<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" rel="stylesheet"/>
-<script crossorigin="anonymous" defer="" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
-<script crossorigin="anonymous" defer="" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
-<script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>yx - libs/app/component</title>
+        <link rel="stylesheet" href="/_static/index.css">
+        <link rel="stylesheet" href="/_static/pygments.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+        <script>
             document.addEventListener("DOMContentLoaded", function() {
                 renderMathInElement(document.body, {
                   delimiters: [
@@ -24,23 +23,149 @@
                 });
             });
         </script>
-</head>
-<body>
-<header class="header">
-<div class="menu-div">
-<a class="menu-item" href="/">home</a>
-<a class="menu-item" href="/about">about</a>
-<a class="menu-item" href="/education">education</a>
-<a class="menu-item" href="/research">research</a>
-<a class="menu-item" href="/publications">publications</a>
-<a class="menu-item" href="/work">work</a>
-<a class="menu-item" href="/setup">setup</a>
-<a class="menu-item" href="/libs">libs</a>
-<a class="menu-item" href="/notes">notes</a>
-</div>
-</header>
-<div style="display: flex;">
-<main class="main"><section id="about">
+    </head>     
+    <body>
+        <header class="header">
+            <div class="menu-div">
+                
+                    <a href="/" class="menu-item">home</a>
+                
+                    <a href="/about" class="menu-item">about</a>
+                
+                    <a href="/education" class="menu-item">education</a>
+                
+                    <a href="/research" class="menu-item">research</a>
+                
+                    <a href="/publications" class="menu-item">publications</a>
+                
+                    <a href="/work" class="menu-item">work</a>
+                
+                    <a href="/setup" class="menu-item">setup</a>
+                
+                    <a href="/libs" class="menu-item">libs</a>
+                
+                    <a href="/notes" class="menu-item">notes</a>
+                
+            </div>    
+        </header>
+        <div class="content">
+            
+            
+            <details class="sidebar">
+                <summary class="sidebar-title">libs menu</summary>
+                <ul class="sidebar-ul">
+                    
+                        
+    <li class="">
+        
+            <a href="/libs/app">app</a>
+        
+        
+            <ol>
+                
+                    
+    <li class="">
+        
+            <a href="/libs/app/app">app system</a>
+        
+        
+    </li>
+
+                
+                    
+    <li class="">
+        
+            <a href="/libs/app/component">component system</a>
+        
+        
+    </li>
+
+                
+            </ol>
+        
+    </li>
+
+                    
+                        
+    <li class="">
+        
+            <a href="/libs/cli">cli</a>
+        
+        
+    </li>
+
+                    
+                        
+    <li class="">
+        
+            <a href="/libs/typed">typed</a>
+        
+        
+            <ol>
+                
+                    
+    <li class="">
+        
+            <a href="/libs/typed/1-types">types</a>
+        
+        
+    </li>
+
+                
+                    
+    <li class="">
+        
+            <a href="/libs/typed/2-models">models</a>
+        
+        
+    </li>
+
+                
+                    
+    <li class="">
+        
+            <a href="/libs/typed/3-errors">3-errors</a>
+        
+        
+    </li>
+
+                
+                    
+    <li class="">
+        
+            <a href="/libs/typed/4-examples">examples</a>
+        
+        
+    </li>
+
+                
+                    
+    <li class="">
+        
+            <a href="/libs/typed/5-entities">lists of entities</a>
+        
+        
+    </li>
+
+                
+            </ol>
+        
+    </li>
+
+                    
+                        
+    <li class="">
+        
+            <a href="/libs/utils">utils</a>
+        
+        
+    </li>
+
+                    
+                </ul>
+            </details>
+            
+            <main class="main"><section id="about">
 <h1>About<a class="headerlink" href="#about" title="Link to this heading"></a></h1>
 <p>In the following we will briefly describe how the <code class="docutils literal notranslate"><span class="pre">app</span></code> component system works.</p>
 <!-- toc -->
@@ -63,7 +188,7 @@
 </section>
 <section id="components">
 <h1>Components<a class="headerlink" href="#components" title="Link to this heading"></a></h1>
-<p>In <code class="docutils literal notranslate"><span class="pre">app</span></code> component system, the basic unities are the <em>components</em>. A <em>component</em> is a typed function (is the sense of <a class="reference external" href="https://github.com/ximenesyuri/typed">typed</a>) taking values in the <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> type, and being decorated with the <code class="docutils literal notranslate"><span class="pre">@component</span></code> decorator.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">app</span></code> component system, the basic unities are the <em>components</em>. A <em>component</em> is a typed function (is the sense of <a class="reference external" href="https://github.com/ximenesyuri/typed">typed</a>) taking values in the <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> type, and being decorated with the <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> decorator.</p>
 <p>Thus, a typical component is defined as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span>
 <span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Jinja</span>
@@ -71,7 +196,7 @@
 <span class="linenos"> 4</span><span class="nd">@component</span>
 <span class="linenos"> 5</span><span class="k">def</span><span class="w"> </span><span class="nf">my_comp</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
 <span class="linenos"> 6</span>    <span class="o">...</span>
-<span class="linenos"> 7</span>    <span class="k">return</span> <span class="s2">"""jinja</span>
+<span class="linenos"> 7</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
 <span class="linenos"> 8</span><span class="s2">{</span><span class="si">% f</span><span class="s2">or i in x %}</span>
 <span class="linenos"> 9</span><span class="s2">&lt;some html&gt;</span>
 <span class="linenos">10</span><span class="s2">    {</span><span class="si">% i</span><span class="s2">f y is True %}</span>
@@ -81,7 +206,7 @@
 <span class="linenos">14</span><span class="s2">    {</span><span class="si">% e</span><span class="s2">ndif %}</span>
 <span class="linenos">15</span><span class="s2">&lt;/some html&gt;</span>
 <span class="linenos">16</span><span class="s2">{</span><span class="si">% e</span><span class="s2">ndfor %}</span>
-<span class="linenos">17</span><span class="s2">"""</span>
+<span class="linenos">17</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 <p>The type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> is the subtype of <code class="docutils literal notranslate"><span class="pre">Str</span></code> consisting of all strings which begins with the <code class="docutils literal notranslate"><span class="pre">jinja</span></code> keyword and that can be compiled in <a class="reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a>.</p>
@@ -110,32 +235,32 @@
 <section id="tags">
 <h1>Tags<a class="headerlink" href="#tags" title="Link to this heading"></a></h1>
 <p>Typically, components are delimited by a HTML tag. In <code class="docutils literal notranslate"><span class="pre">app</span></code> there is a type factory <code class="docutils literal notranslate"><span class="pre">Tag:</span> <span class="pre">Tuple(Str)</span> <span class="pre">-&gt;</span> <span class="pre">SUB(Jinja)</span></code> that receives a tuple of HTML tag names and returns the subtype of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> of all <code class="docutils literal notranslate"><span class="pre">jinja</span> <span class="pre">strings</span></code> enclosed by one of the given tags.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># example of instance of 'Tag('some-tag')'</span>
-<span class="linenos">2</span><span class="sd">"""jinja</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># example of instance of &#39;Tag(&#39;some-tag&#39;)&#39;</span>
+<span class="linenos">2</span><span class="sd">&quot;&quot;&quot;jinja</span>
 <span class="linenos">3</span><span class="sd">&lt;some-tag&gt;</span>
 <span class="linenos">4</span><span class="sd">...</span>
 <span class="linenos">5</span><span class="sd">&lt;/some-tag&gt;</span>
-<span class="linenos">6</span><span class="sd">"""</span>
+<span class="linenos">6</span><span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 <p>With such type factory one can construct type safe tag-based components:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Tag</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="nd">@component</span>
-<span class="linenos"> 4</span><span class="k">def</span><span class="w"> </span><span class="nf">my_tag_comp</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tag</span><span class="p">(</span><span class="s1">'some-tag'</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="k">def</span><span class="w"> </span><span class="nf">my_tag_comp</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tag</span><span class="p">(</span><span class="s1">&#39;some-tag&#39;</span><span class="p">):</span>
 <span class="linenos"> 5</span>    <span class="o">...</span>
-<span class="linenos"> 6</span>    <span class="k">return</span> <span class="s2">"""jinja</span>
+<span class="linenos"> 6</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
 <span class="linenos"> 7</span><span class="s2">&lt;some-tag&gt;</span>
 <span class="linenos"> 8</span><span class="s2">...</span>
 <span class="linenos"> 9</span><span class="s2">&lt;/some-tag&gt;</span>
-<span class="linenos">10</span><span class="s2">"""</span>
+<span class="linenos">10</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 <p>There is a supplementary type factory <code class="docutils literal notranslate"><span class="pre">TAG:</span> <span class="pre">Tuple(Str)</span> <span class="pre">-&gt;</span> <span class="pre">SUB(COMPONENT)</span></code> that associates to each tuple <code class="docutils literal notranslate"><span class="pre">(tag1,</span> <span class="pre">tag2,</span> <span class="pre">...)</span></code> of HTML tags the corresponding subtype of <code class="docutils literal notranslate"><span class="pre">TAG(tag1,</span> <span class="pre">tag2,</span> <span class="pre">...)</span></code> of <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> of all components that return <code class="docutils literal notranslate"><span class="pre">Tag(tag1,</span> <span class="pre">tag2,</span> <span class="pre">...)</span></code> strings.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">TAG</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="c1"># the following returns True</span>
-<span class="linenos">4</span><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">my_tag_comp</span><span class="p">,</span> <span class="n">TAG</span><span class="p">(</span><span class="s1">'some-tag'</span><span class="p">)))</span>
+<span class="linenos">4</span><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">my_tag_comp</span><span class="p">,</span> <span class="n">TAG</span><span class="p">(</span><span class="s1">&#39;some-tag&#39;</span><span class="p">)))</span>
 </pre></div>
 </div>
 </section>
@@ -147,28 +272,28 @@
 <span class="linenos"> 3</span><span class="nd">@component</span>
 <span class="linenos"> 4</span><span class="k">def</span><span class="w"> </span><span class="nf">comp_1</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
 <span class="linenos"> 5</span>    <span class="o">...</span>
-<span class="linenos"> 6</span>    <span class="k">return</span> <span class="s2">"""jinja</span>
+<span class="linenos"> 6</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
 <span class="linenos"> 7</span><span class="s2">    ...</span>
-<span class="linenos"> 8</span><span class="s2">"""</span>
+<span class="linenos"> 8</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="linenos"> 9</span>
 <span class="linenos">10</span><span class="nd">@component</span>
-<span class="linenos">11</span><span class="k">def</span><span class="w"> </span><span class="nf">comp_2</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tag</span><span class="p">(</span><span class="s1">'some-tag'</span><span class="p">):</span>
+<span class="linenos">11</span><span class="k">def</span><span class="w"> </span><span class="nf">comp_2</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tag</span><span class="p">(</span><span class="s1">&#39;some-tag&#39;</span><span class="p">):</span>
 <span class="linenos">12</span>    <span class="o">...</span>
-<span class="linenos">13</span>    <span class="k">return</span> <span class="s2">"""jinja</span>
+<span class="linenos">13</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
 <span class="linenos">14</span><span class="s2">&lt;some-tag&gt;</span>
 <span class="linenos">15</span><span class="s2">    ...</span>
 <span class="linenos">16</span><span class="s2">&lt;/some-tag&gt;</span>
-<span class="linenos">17</span><span class="s2">"""</span>
+<span class="linenos">17</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="linenos">18</span>
 <span class="linenos">19</span><span class="nd">@component</span>
 <span class="linenos">20</span><span class="k">def</span><span class="w"> </span><span class="nf">main_comp</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">__depends_on__</span><span class="o">=</span><span class="p">[</span><span class="n">comp_1</span><span class="p">,</span> <span class="n">comp_2</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
 <span class="linenos">21</span>    <span class="o">...</span>
-<span class="linenos">22</span>    <span class="k">return</span> <span class="s2">"""jinja</span>
+<span class="linenos">22</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
 <span class="linenos">23</span><span class="s2">    ...</span>
 <span class="linenos">24</span><span class="s2">{{ comp_1(...) }}</span>
 <span class="linenos">25</span><span class="s2">    ...</span>
 <span class="linenos">26</span><span class="s2">{{ comp_2(...) }}</span>
-<span class="linenos">27</span><span class="s2">"""</span>
+<span class="linenos">27</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 <p>Recall that components are “typed functions”, which means that all their arguments must have type hints, which are checked at runtime. There is an exception: the <code class="docutils literal notranslate"><span class="pre">__depends_on__</span></code> variable. Indeed, if a type hint is not provided, then <code class="docutils literal notranslate"><span class="pre">List(COMPONENT)</span></code> is automatically attached to it. On the other hand, if a type hint is provided, it must be a subtype of <code class="docutils literal notranslate"><span class="pre">List(COMPONENT)</span></code>.</p>
@@ -179,25 +304,25 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Tag</span><span class="p">,</span> <span class="n">Inner</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="nd">@component</span>
-<span class="linenos"> 4</span><span class="k">def</span><span class="w"> </span><span class="nf">my_inner_comp</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">inner</span><span class="p">:</span> <span class="n">Inner</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tag</span><span class="p">(</span><span class="s1">'some-tag'</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="k">def</span><span class="w"> </span><span class="nf">my_inner_comp</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">inner</span><span class="p">:</span> <span class="n">Inner</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tag</span><span class="p">(</span><span class="s1">&#39;some-tag&#39;</span><span class="p">):</span>
 <span class="linenos"> 5</span>    <span class="o">...</span>
-<span class="linenos"> 6</span>    <span class="k">return</span> <span class="s2">"""jinja</span>
+<span class="linenos"> 6</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
 <span class="linenos"> 7</span><span class="s2">&lt;some-tag&gt;</span>
 <span class="linenos"> 8</span><span class="s2">    {{ inner }}</span>
 <span class="linenos"> 9</span><span class="s2">&lt;/some-tag&gt;</span>
-<span class="linenos">10</span><span class="s2">"""</span>
+<span class="linenos">10</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">inner</span></code> variables of a given component can be collected from the property <code class="docutils literal notranslate"><span class="pre">inner_vars</span></code> in <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">print</span><span class="p">(</span><span class="n">my_inner_comp</span><span class="o">.</span><span class="n">inner_vars</span><span class="p">)</span> <span class="c1"># will return '1'</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">print</span><span class="p">(</span><span class="n">my_inner_comp</span><span class="o">.</span><span class="n">inner_vars</span><span class="p">)</span> <span class="c1"># will return &#39;1&#39;</span>
 </pre></div>
 </div>
 <p>The number of <code class="docutils literal notranslate"><span class="pre">inner</span></code> vars is used to decompose the type <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> into distinct subtypes of components with a fixed amount of <code class="docutils literal notranslate"><span class="pre">inner</span></code> variables. More precisely, there is the type factory <code class="docutils literal notranslate"><span class="pre">Component:</span> <span class="pre">Int</span> <span class="pre">-&gt;</span> <span class="pre">SUB(COMPONENT)</span></code> that to each integer <code class="docutils literal notranslate"><span class="pre">n&gt;=0</span></code> returns the subtype <code class="docutils literal notranslate"><span class="pre">Component(n)</span></code> of <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> of all components such that <code class="docutils literal notranslate"><span class="pre">component.inner_vars</span> <span class="pre">==</span> <span class="pre">n</span></code>.</p>
 <p>So, for example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">Component</span>
 <span class="linenos">2</span>
-<span class="linenos">3</span><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">my_inner_comp</span><span class="p">,</span> <span class="n">Component</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># will return 'True'</span>
-<span class="linenos">4</span><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">my_inner_comp</span><span class="p">,</span> <span class="n">Component</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># will return 'False' </span>
+<span class="linenos">3</span><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">my_inner_comp</span><span class="p">,</span> <span class="n">Component</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># will return &#39;True&#39;</span>
+<span class="linenos">4</span><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">my_inner_comp</span><span class="p">,</span> <span class="n">Component</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># will return &#39;False&#39; </span>
 </pre></div>
 </div>
 <p>By definition, if <code class="docutils literal notranslate"><span class="pre">n&lt;0</span></code>, then <code class="docutils literal notranslate"><span class="pre">Component(n)</span></code> is <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>, meaning that the component may have any number of <code class="docutils literal notranslate"><span class="pre">inner</span></code> variables, including zero.</p>
@@ -235,49 +360,49 @@
 <span class="linenos"> 4</span><span class="nd">@component</span>
 <span class="linenos"> 5</span><span class="k">def</span><span class="w"> </span><span class="nf">some_comp</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span>
 <span class="linenos"> 6</span>    <span class="o">...</span>
-<span class="linenos"> 7</span>    <span class="k">return</span> <span class="s2">"""jinja</span>
-<span class="linenos"> 8</span><span class="s2">{{ contents of 'comp_1' jinja var }}</span>
-<span class="linenos"> 9</span><span class="s2">"""</span>
+<span class="linenos"> 7</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
+<span class="linenos"> 8</span><span class="s2">{{ contents of &#39;comp_1&#39; jinja var }}</span>
+<span class="linenos"> 9</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="linenos">10</span>
 <span class="linenos">11</span><span class="nd">@component</span>
-<span class="linenos">12</span><span class="k">def</span><span class="w"> </span><span class="nf">inner_comp</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="n">inner</span><span class="p">:</span> <span class="n">Inner</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tag</span><span class="p">(</span><span class="s1">'some-tag'</span><span class="p">)</span>
+<span class="linenos">12</span><span class="k">def</span><span class="w"> </span><span class="nf">inner_comp</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="n">inner</span><span class="p">:</span> <span class="n">Inner</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tag</span><span class="p">(</span><span class="s1">&#39;some-tag&#39;</span><span class="p">)</span>
 <span class="linenos">13</span>    <span class="o">...</span>
-<span class="linenos">14</span>    <span class="k">return</span> <span class="s2">"""jinja</span>
+<span class="linenos">14</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
 <span class="linenos">15</span><span class="s2">&lt;some-tag&gt;</span>
 <span class="linenos">16</span><span class="s2">    {{ inner }}</span>
 <span class="linenos">17</span><span class="s2">&lt;/some-tag&gt;</span>
-<span class="linenos">18</span><span class="s2">"""</span>
+<span class="linenos">18</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 <p>The resulting joined component <code class="docutils literal notranslate"><span class="pre">join(some_comp,</span> <span class="pre">inner_comp)</span></code> is equivalent to the following component:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@component</span>
 <span class="linenos">2</span><span class="k">def</span><span class="w"> </span><span class="nf">joined_comp</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="n">inner</span><span class="p">:</span> <span class="n">Inner</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
-<span class="linenos">3</span>    <span class="k">return</span> <span class="s2">"""jinja</span>
-<span class="linenos">4</span><span class="s2">{{ contents of 'comp_1' jinja var }}</span>
+<span class="linenos">3</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
+<span class="linenos">4</span><span class="s2">{{ contents of &#39;comp_1&#39; jinja var }}</span>
 <span class="linenos">5</span><span class="s2">&lt;some-tag&gt;</span>
 <span class="linenos">6</span><span class="s2">    {{ inner }}</span>
 <span class="linenos">7</span><span class="s2">&lt;/some-tag&gt;</span>
-<span class="linenos">8</span><span class="s2">"""</span>
+<span class="linenos">8</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 <p>On the other hand, <code class="docutils literal notranslate"><span class="pre">concat(inner_comp,</span> <span class="pre">some_comp)</span></code> is equivalent to:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@component</span>
-<span class="linenos">2</span><span class="k">def</span><span class="w"> </span><span class="nf">concat_comp</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tag</span><span class="p">(</span><span class="s1">'some-tag'</span><span class="p">):</span>
-<span class="linenos">3</span>    <span class="k">return</span> <span class="s2">"""jinja</span>
+<span class="linenos">2</span><span class="k">def</span><span class="w"> </span><span class="nf">concat_comp</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tag</span><span class="p">(</span><span class="s1">&#39;some-tag&#39;</span><span class="p">):</span>
+<span class="linenos">3</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
 <span class="linenos">4</span><span class="s2">&lt;some-tag&gt;</span>
-<span class="linenos">5</span><span class="s2">    {{ contents of 'comp_1' jinja var }}</span>
+<span class="linenos">5</span><span class="s2">    {{ contents of &#39;comp_1&#39; jinja var }}</span>
 <span class="linenos">6</span><span class="s2">&lt;/some-tag&gt;</span>
-<span class="linenos">7</span><span class="s2">"""</span>
+<span class="linenos">7</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Finally, <code class="docutils literal notranslate"><span class="pre">eval(inner_comp,</span> <span class="pre">inner="blablabla")</span></code> is the same as defining the component below.</p>
+<p>Finally, <code class="docutils literal notranslate"><span class="pre">eval(inner_comp,</span> <span class="pre">inner=&quot;blablabla&quot;)</span></code> is the same as defining the component below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@component</span>
-<span class="linenos">2</span><span class="k">def</span><span class="w"> </span><span class="nf">eval_comp</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tag</span><span class="p">(</span><span class="s1">'some-tag'</span><span class="p">):</span>
-<span class="linenos">3</span>    <span class="k">return</span> <span class="s2">"""jinja</span>
+<span class="linenos">2</span><span class="k">def</span><span class="w"> </span><span class="nf">eval_comp</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tag</span><span class="p">(</span><span class="s1">&#39;some-tag&#39;</span><span class="p">):</span>
+<span class="linenos">3</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
 <span class="linenos">4</span><span class="s2">&lt;some-tag&gt;</span>
 <span class="linenos">5</span><span class="s2">    blablabla</span>
 <span class="linenos">6</span><span class="s2">&lt;/some-tag&gt;</span>
-<span class="linenos">7</span><span class="s2">"""</span>
+<span class="linenos">7</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 <blockquote>
@@ -308,11 +433,11 @@
 <span class="linenos"> 3</span>
 <span class="linenos"> 4</span><span class="nd">@component</span>
 <span class="linenos"> 5</span><span class="k">def</span><span class="w"> </span><span class="nf">my_comp</span><span class="p">(</span><span class="n">my_comp</span><span class="p">:</span> <span class="n">MyComp</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
-<span class="linenos"> 6</span>    <span class="k">return</span> <span class="s2">"""jinja</span>
+<span class="linenos"> 6</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
 <span class="linenos"> 7</span><span class="s2">    ...</span>
 <span class="linenos"> 8</span><span class="s2">    {{ my_comp.some_var }}</span>
 <span class="linenos"> 9</span><span class="s2">    ...</span>
-<span class="linenos">10</span><span class="s2">"""</span>
+<span class="linenos">10</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 </section>
@@ -334,8 +459,25 @@ Asset       asset           &lt;link&gt;
 </pre></div>
 </div>
 <p>The builtin models have as attributes the main attributes of the corresponding HTML tag. So, for example:</p>
-<div class="highlight-none notranslate"><div class="highlight"><table class="custom-pre-table"><caption><a href="#builtins">Title         title_id</a></caption><thead><tr><th>model</th><th>attributes</th></tr></thead><tbody><tr><td>Div</td><td>div_id</td></tr><tr><td></td><td>div_class</td></tr><tr><td></td><td>...</td></tr></tbody></table></div>
-</div>
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>model</p></th>
+<th class="head"><p>attributes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Div</p></td>
+<td><p>div_id</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>div_class</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>…</p></td>
+</tr>
+</tbody>
+<p><span class="caption-text">Title         title_id</span></p>
+</table>
 <p>From the builtin components and the <code class="docutils literal notranslate"><span class="pre">join</span></code> and <code class="docutils literal notranslate"><span class="pre">concat</span></code> operations you can build derived components very quickly. For instance, suppose you want to build a <code class="docutils literal notranslate"><span class="pre">div</span></code> with title followed by a paragraph. You can just take:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">app.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">div</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">text</span>
 <span class="linenos">2</span>
@@ -359,9 +501,9 @@ Asset       asset           &lt;link&gt;
 <span class="linenos"> 4</span><span class="nd">@component</span>
 <span class="linenos"> 5</span><span class="k">def</span><span class="w"> </span><span class="nf">my_comp</span><span class="p">(</span><span class="n">some_var</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
 <span class="linenos"> 6</span>    <span class="o">...</span>
-<span class="linenos"> 7</span>    <span class="k">return</span> <span class="s2">"""jinja</span>
+<span class="linenos"> 7</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
 <span class="linenos"> 8</span><span class="s2">    ....</span>
-<span class="linenos"> 9</span><span class="s2">"""</span>
+<span class="linenos"> 9</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="linenos">10</span>
 <span class="linenos">11</span><span class="n">html</span> <span class="o">=</span> <span class="n">render</span><span class="p">(</span><span class="n">my_comp</span><span class="p">,</span> <span class="n">some_var</span><span class="o">=</span><span class="n">some_value</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </pre></div>
@@ -394,7 +536,7 @@ Asset       asset           &lt;link&gt;
 <span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">app.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Script</span>
 <span class="linenos"> 3</span>
 <span class="linenos"> 4</span><span class="n">my_script</span> <span class="o">=</span> <span class="n">Script</span><span class="p">(</span>
-<span class="linenos"> 5</span>    <span class="n">script_src</span><span class="o">=</span><span class="s2">"https://my_script_url.com"</span><span class="p">,</span>
+<span class="linenos"> 5</span>    <span class="n">script_src</span><span class="o">=</span><span class="s2">&quot;https://my_script_url.com&quot;</span><span class="p">,</span>
 <span class="linenos"> 6</span>    <span class="n">script_defer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="linenos"> 7</span>    <span class="o">...</span>
 <span class="linenos"> 8</span><span class="p">)</span>
@@ -444,51 +586,12 @@ Asset       asset           &lt;link&gt;
 </div></blockquote>
 </section>
 </main>
-<div class="sidebar">
-<span style="color: #d0d0d0;">libs menu</span>
-<ul>
-<li class="">
-<a href="/libs/app">app</a>
-<ul>
-<li class="">
-<a href="/libs/app/app">app system</a>
-</li>
-<li class="">
-<a href="/libs/app/component">component system</a>
-</li>
-</ul>
-</li>
-<li class="">
-<a href="/libs/cli">cli</a>
-</li>
-<li class="">
-<a href="/libs/typed">typed</a>
-<ul>
-<li class="">
-<a href="/libs/typed/1-types">types</a>
-</li>
-<li class="">
-<a href="/libs/typed/2-models">models</a>
-</li>
-<li class="">
-<a href="/libs/typed/3-examples">examples</a>
-</li>
-<li class="">
-<a href="/libs/typed/4-lists">lists of entities</a>
-</li>
-</ul>
-</li>
-<li class="">
-<a href="/libs/utils">utils</a>
-</li>
-</ul>
-</div>
-</div>
-<footer class="footer">
-<p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/07/26 at 19:01</purple><br/>
+        </div>
+        <footer class="footer">
+            <p class="footer-text">
+                Yuri Ximenes, 2025. Last update: <purple>2025/07/27 at 19:21</purple><br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>
-</p>
-</footer>
-</body>
+            </p>
+        </footer>
+    </body>  
 </html>
