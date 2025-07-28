@@ -258,7 +258,7 @@ table caption a {
 }
 
 h0 {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 400;
     color: #b6b3eb;
 }
@@ -268,7 +268,7 @@ h0::after {
 }
 
 s0 {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 400;
     color: #d0d0d0;
 }

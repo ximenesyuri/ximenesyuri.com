@@ -124,7 +124,7 @@
                     
     <li class="">
         
-            <a href="/libs/typed/3-errors">3-errors</a>
+            <a href="/libs/typed/3-errors">errors</a>
         
         
     </li>
@@ -171,10 +171,10 @@
 </div>
 <section id="about">
 <h1>About<a class="headerlink" href="#about" title="Link to this heading"></a></h1>
-<p>This documentation described how to use the <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">system</span></code> provided by <a class="reference external" href="https://ximenesyuri.com/typed">typed</a>.</p>
+<p>This documentation describes the <em>type system</em> provided by <a class="reference external" href="https://ximenesyuri.com/typed">typed</a> and how to use it.</p>
 <ol class="arabic simple">
 <li><p><a class="reference internal" href="#about">About</a></p></li>
-<li><p><a class="reference internal" href="#basics">Basics</a></p></li>
+<li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#types">Types</a></p></li>
 <li><p><a class="reference internal" href="#defining-types">Defining Types</a></p></li>
 <li><p><a class="reference internal" href="#metatypes">Metatypes</a></p></li>
@@ -183,17 +183,17 @@
 <li><p><a class="reference internal" href="#annotations-models-and-dependent-types">Annotations, Models and Dependent Types</a></p></li>
 <li><p><a class="reference internal" href="#typed-functions">Typed Functions</a></p></li>
 <li><p><a class="reference internal" href="#typed-variables">Typed Variables</a></p></li>
+<li><p><a class="reference internal" href="#other-docs">Other Docs</a></p></li>
 </ol>
 </section>
-<section id="basics">
-<h1>Basics<a class="headerlink" href="#basics" title="Link to this heading"></a></h1>
+<section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
 <p>In <code class="docutils literal notranslate"><span class="pre">typed</span></code> type system we have three kinds of entities:</p>
 <ol class="arabic simple">
 <li><p><em>types</em>: are the basic entities</p></li>
 <li><p><em>factories</em>: are functions used to build <code class="docutils literal notranslate"><span class="pre">types</span></code></p></li>
 <li><p><em>typed functions</em>: are functions with type hints checked at runtime.</p></li>
 </ol>
-<p>In the following we briefly describe how they are defined, used and how they interact one each other.</p>
 </section>
 <section id="types">
 <h1>Types<a class="headerlink" href="#types" title="Link to this heading"></a></h1>
@@ -438,12 +438,30 @@
 </section>
 <section id="typed-variables">
 <h1>Typed Variables<a class="headerlink" href="#typed-variables" title="Link to this heading"></a></h1>
+<p>As a function, the <code class="docutils literal notranslate"><span class="pre">&#64;typed</span></code> decorator can be applied not only to functions, but also to <em>types</em>, allowing us to define <em>typed variables</em>, as below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">typed</span><span class="p">,</span> <span class="n">SomeType</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">some_var</span> <span class="o">=</span> <span class="n">typed</span><span class="p">(</span><span class="n">SomeType</span><span class="p">)</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="n">some_var</span> <span class="o">=</span> <span class="n">typed</span><span class="p">(</span><span class="n">SomeType</span><span class="p">,</span> <span class="n">some_value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In both cases above, at runtime it will be checked if <code class="docutils literal notranslate"><span class="pre">some_var</span></code> has the defined type <code class="docutils literal notranslate"><span class="pre">SomeType</span></code>, returning a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> otherwise.</p>
+</section>
+<section id="other-docs">
+<h1>Other Docs<a class="headerlink" href="#other-docs" title="Link to this heading"></a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="2-models.html">models</a></p></li>
+<li><p><a class="reference internal" href="3-errors.html">errors</a></p></li>
+<li><p><a class="reference internal" href="4-examples.html">examples</a></p></li>
+<li><p><a class="reference internal" href="5-entities.html">lists of entities</a></p></li>
+</ol>
 </section>
 </main>
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/07/27 at 19:21</purple><br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/07/28 at 14:30</purple><br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>
             </p>
         </footer>
