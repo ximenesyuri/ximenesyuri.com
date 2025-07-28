@@ -8,19 +8,18 @@ desc: "the type system"
 
 # About
 
-This documentation described how to use the `type system` provided by [typed](https://ximenesyuri.com/typed).
+This documentation describes the _type system_ provided by [typed](https://ximenesyuri.com/typed) and how to use it.
 
 ```{toc}
 ```
 
-# Basics
+# Overview
 
 In `typed` type system we have three kinds of entities:
+
 1. _types_: are the basic entities
 2. _factories_: are functions used to build `types`
 3. _typed functions_: are functions with type hints checked at runtime.
-
-In the following we briefly describe how they are defined, used and how they interact one each other.
 
 # Types
  
@@ -209,3 +208,20 @@ When you define a function as a _typed function_, its type annotations are check
 > The type errors from `typed` are as intuitive as possible. For more about them, see [errors](./3-errors).
 
 # Typed Variables
+
+As a function, the `@typed` decorator can be applied not only to functions, but also to _types_, allowing us to define _typed variables_, as below.
+
+```python
+from typed import typed, SomeType
+
+some_var = typed(SomeType)
+
+some_var = typed(SomeType, some_value)
+```
+
+In both cases above, at runtime it will be checked if `some_var` has the defined type `SomeType`, returning a `TypeError` otherwise.
+
+# Other Docs
+
+```{toc-dir}
+```

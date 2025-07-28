@@ -1,8 +1,88 @@
 ---
 title: models
+desc: the models system
 ---
 
-### Models
+```{title}
+```
+
+# About
+
+This documentation covers the _models system_ of [typed](https://github.com/ximenesyuri/types), which is used specifically to data validation.
+
+```{toc}
+```
+
+# Overview
+
+The _models system_ is defined in the `typed.models` module, such that:
+1. it provides _model factories_, which are type factories constructing _models_;
+2. the difference between the _model factories_ is how data is validated in instances of their _models_;
+3. each _model factory_ has a corresponding _model type_, consisting  of all its _models_;
+4. the process of creating _models_ is compatible with other sources of data validation structures, as Python [dataclasses](https://docs.python.org/3/library/dataclasses.html) and [pydantic](https://github.com/pydantic/pydantic) `BaseModel`. 
+
+
+# Model Factories
+
+Recall that in `typed` we have _type factories_, which are functions that return a _type_, hence that take values into the _metatype_ `TYPE` of all types. Recall, yet, that we have a primitive type `Json`.
+
+In a very general perspective, a _model factory_ is a type factory such that:
+1. it has only keyword arguments, i.e, its domain in `Dict(TYPE)`;
+2. the value of each `kwarg` is a type;
+3. the key of each `kwarg` defines an attribute in the returning type; 
+4. its returning type is a subtype of `Json`.
+
+In other words, a _type factory_ is a function `ModelFactory: Dict(TYPE) -> TYPE` such that `model = ModelFactory(**kwargs)` is a sutype of `Json`, i.e, such that `issubclass(model, Json)` is `True`, and such that `model.key` is defined for each `key` in `kwargs`.  
+
+We have the following _model factories_:
+
+(table-1)=
+```
+model factory    description
+-----------------------------------------------
+Model            the factory of _basic_ modes
+Exact            the factory of _strict_ models
+Ordered          the factory of _ordered_ models
+Rigid            the factory of _rigid_ models
+-----------------------------------------------
+table 1
+```
+
+# Model Validation
+
+A _model_ is precisely a _type_ which is constructed from a _model factory_. In other words, it is an instance `model = ModelFactory(**kwargs)` for some `ModelFactory` listed above, and some `kwargs` in `Dict(TYPE)`.
+
+The difference between the _model factories_ is precisely how their _models_ are validated.
+  
+More precisely, since the _model factories_ produces subtypes of `Json`, it follows that if `isinstance(, model)` is `True`, then `x` is a `Json` data. Each `key` in `kwargs` corresponds to an attribute of `model`, which, in turn, corresponds to an entry in each instance `x` of `model`. The different flavors of _model factories_ deals, precisely, with the reciprocal question:
+
+> Take a _model factory_ `ModelFactory`. Then, given an object `x` such that `isinstance(x, Json)` is `True`, which conditions `x` need to satisfy such that `isinstance(x, model)` is `True` for `model = ModelFactory(**kwargs)` for some `kwargs` in `Dict(TYPE)`?
+
+
+# Model Types
+
+Each _model factory_ defines a _type_ whose instances are its _models_:
+
+(table-2)=
+```
+model factory     models type
+--------------------------------------
+Model             MODEL
+Exact             EXACT
+Ordered           ORDERED
+Rigid             RIGID
+--------------------------------------
+table 2
+```
+
+So, `isinstance(x, MODEL)` is `True` iff `isinstance(x, TYPE)` is `True`, and `x = Model(**kwargs)` for some dictionary `kwargs` of type `Dict(TYPE)`. Analogously for the other _model factories_ and _model types_. 
+
+# Defining Models
+
+Let `ModelFactory` be a generic _model factory_, i.e, some of that in [table 1](#table-1).
+
+
+# Model
 
 You can create `type models` which are subclasses of the base `Json` class and can be used to quickly validate data, much as you can do with `BaseModel` in [pydantic](https://github.com/pydantic/pydantic), but following the `typed` philosophy:
 
@@ -168,3 +248,8 @@ model2_instance = Instance(
     entity=json1
 )
 ```
+
+# Other Docs
+
+```{toc-dir}
+``` 

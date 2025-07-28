@@ -30,6 +30,10 @@ So, with `typed` you have a framework ensuring type safety by:
 2. using those custom types as type hints for _typed functions_;
 3. checking the type hints at runtime.
 
+# Code
+
+The library code is freely available in [github](https://github.com/ximenesyuri/typed).
+
 # Install
 
 With `pip`:
