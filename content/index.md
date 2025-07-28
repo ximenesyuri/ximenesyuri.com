@@ -4,10 +4,12 @@ Mathematics Ph.D <br>
 Software Developer <br>
 Researcher <br>
 
-contact: <u>yx.dev[at]gmx.ie</u>
+contact: `yx.dev@gmx.ie`
   
 [github](https://github.com/ximenesyuri)
 [linkedin](https://linkedin.com/in/ximenesyuri)
+[arxiv](https://arxiv.org/a/martins_y_1.html)
+[nlab](https://ncatlab.org/nlab/show/Yuri+Ximenes+Martins)
 
 <pre>
 +----------------------------------------------------------+
