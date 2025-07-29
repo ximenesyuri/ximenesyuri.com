@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>yx - libs/cli/index</title>
+        <title>yx - notes/sets</title>
         <link rel="stylesheet" href="/_static/index.css">
         <link rel="stylesheet" href="/_static/pygments.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,122 +50,35 @@
         </header>
         <div class="content">
             
-            
-            <details class="sidebar">
-                <summary class="sidebar-title">libs menu</summary>
-                <ul class="sidebar-ul">
-                    
-                        
-    <li class="">
-        
-            <a href="/libs/app">app</a>
-        
-        
-            <ol>
-                
-                    
-    <li class="">
-        
-            <a href="/libs/app/app">app system</a>
-        
-        
-    </li>
-
-                
-                    
-    <li class="">
-        
-            <a href="/libs/app/component">component system</a>
-        
-        
-    </li>
-
-                
-            </ol>
-        
-    </li>
-
-                    
-                        
-    <li class="">
-        
-            <a href="/libs/cli">cli</a>
-        
-        
-    </li>
-
-                    
-                        
-    <li class="">
-        
-            <a href="/libs/typed">typed</a>
-        
-        
-            <ol>
-                
-                    
-    <li class="">
-        
-            <a href="/libs/typed/1-types">types</a>
-        
-        
-    </li>
-
-                
-                    
-    <li class="">
-        
-            <a href="/libs/typed/2-models">models</a>
-        
-        
-    </li>
-
-                
-                    
-    <li class="">
-        
-            <a href="/libs/typed/3-errors">errors</a>
-        
-        
-    </li>
-
-                
-                    
-    <li class="">
-        
-            <a href="/libs/typed/4-examples">examples</a>
-        
-        
-    </li>
-
-                
-                    
-    <li class="">
-        
-            <a href="/libs/typed/5-entities">lists of entities</a>
-        
-        
-    </li>
-
-                
-            </ol>
-        
-    </li>
-
-                    
-                        
-    <li class="">
-        
-            <a href="/libs/utils">utils</a>
-        
-        
-    </li>
-
-                    
-                </ul>
-            </details>
-            
-            <main class="main"></main>
+            <main class="main"><section id="conjuntos">
+<h1>Conjuntos<a class="headerlink" href="#conjuntos" title="Link to this heading"></a></h1>
+<p>Para nós, <em>conjuntos</em> serão símbolos :tex x, y, …: entre os quais há uma relação binária pré-definida: a de <em>pertinência</em>. Tal relação é denotada por :tex\in:. Se :tex x: e :tex y: são conjuntos tais que :tex x \in y:, fala-se que :tex x: é um <em>elemento</em> de :tex y:.</p>
+<p>Partindo-se da relação básica de pertinência, pode-se derivar outras relações entre conjuntos, como a de <em>igualdade</em> e a de <em>continência</em>.</p>
+<blockquote id="def-1">
+<div><p><a class="reference internal" href="#definition-1"><span class="xref myst">Definition 1</span></a>. Dois conjuntos :tex x: e :tex y: são ditos serem <em>iguais</em> se ambos possuem os mesmos elementos. Neste caso, escreve-se :tex x=y:.</p>
+</div></blockquote>
+<p>Dessa forma, :tex x=y: se, para qualquer outro conjunto :tex z:, tem-se que:</p>
+<ol class="arabic simple">
+<li><p>:tex z\in x: implica :tex z\in y:</p></li>
+<li><p>:tex z\in y: implica :tex z\in x:.</p></li>
+</ol>
+<blockquote id="def-2">
+<div><p><a class="reference internal" href="#definition-2"><span class="xref myst">Definition 2</span></a>. Um conjunto :tex x: é dito <em>estar contido</em> em um conjunto :tex y: se todo elemento de :tex x: é também um elemento de :tex y:. Escreve-se, então, :tex x\sub y:.</p>
+</div></blockquote>
+<p>Se :tex x\sub y:, fala-se, também, que :tex x: é um <em>subconjunto</em> de :tex y:.</p>
+</section>
+<section id="compreensao">
+<h1>Compreensão<a class="headerlink" href="#compreensao" title="Link to this heading"></a></h1>
+<p>Ao se estudar conjuntos, normalmente se introduz uma <em>hipótese</em> a qual relaciona <em>fórmulas</em> com a relação básica de <em>pertinência</em>. Tal hipótese é conhecida como <em>hipótese da compreensão</em>, pois nos ensina como construir conjuntos a partir de uma fórmula.</p>
+<blockquote id="hyp-1">
+<div><p><a class="reference internal" href="#hyp-1">Hypothesis 1</a> Para toda fórmula :tex \varphi: existe um conjunto cujos elementos são os conjuntos que se relacionam através :tex \varphi:.</p>
+</div></blockquote>
+<p>Em outras palavras, existe um conjunto :tex x: tal que:</p>
+<ol class="arabic simple">
+<li><p>se :tex y\in x:, então :tex \varphi(y): (isto é, se :tex y: é um elemento de :tex x:, então )</p></li>
+</ol>
+</section>
+</main>
         </div>
         <footer class="footer">
             <p class="footer-text">
