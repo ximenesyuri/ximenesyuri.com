@@ -1,20 +1,70 @@
+:root {
+    --white: #d0d0d0;
+    --black: #000000;
+    --blue: #87afd7;
+    --blue2: #87afaf;
+    --green: #87af87;
+    --green2: #c5fb7d;
+    --purple: #af87d7;
+    --purple2: #b6b3eb;
+    --brown: #af875f;
+    --red: #e14141;
+    --yellow: #d3a800; 
+}
+
+blue {
+    color: var(--blue); 
+}
+
+blue2 {
+    color: var(--blue2);
+}
+
+green {
+    color: var(--green);
+}
+
+green2 {
+    color: var(--green2);
+}
+
+purple {
+    color: var(--purple);
+}
+
+purple2 {
+    color: var(--purple2);
+}
+
+brown {
+    color: var(--brown);
+}
+
+red {
+    color: var(--red);
+}
+
+yellow {
+    color: var(--yellow);
+}
+
+
 body {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 16px;
-    color: #d0d0d0;
-    background-color: black;
+    color: var(--white);
+    background-color: var(--black);
     line-height: 1.5;
-    counter-reset: section;
 }
 
 header {
-    border-bottom: 1px solid #d0d0d0;
+    border-bottom: 1px solid var(--white);
     padding: 20px;
 }
 
 footer {
     padding: 20px;
-    border-top: 1px solid #d0d0d0 
+    border-top: 1px solid var(--white);
 }
  
 main {
@@ -29,7 +79,7 @@ main {
 
 h1, h2, h3, h4, h5, h6 {
     margin-top: 50px;
-    color: #af875f;
+    color: var(--brown);
     font-weight: 400;
 }
 
@@ -40,7 +90,7 @@ h4::before,
 h5::before,
 h6::before {
     font-size: 20px;
-    color: #d0d0d0;
+    color: var(--white);
     font-weight: 400;
 }
 
@@ -71,7 +121,7 @@ h3::before {
 }
 
 em {
-    color: #87afaf;
+    color: var(--blue2);
 }
 
 em::before {
@@ -82,14 +132,28 @@ em::after {
     content: "_";
 }
 
+strong::before {
+    content: "__";
+}
+
+strong::after {
+    content: "__";
+}
+
+
 a {
-    color: #8dc1f5; 
+    color: var(--blue); 
+    text-decoration: underline;
+}
+
+a[href^="http://"],
+a[href^="https://"] {
+    color: var(--red);
     text-decoration: underline;
 }
 
 code {
-    /*background-color: #2f2f2f; */
-    color: #b6b3eb;
+    color: var(--purple2);
     padding-left: 3px;
     padding-right: 3px;
 }
@@ -106,11 +170,6 @@ pre {
     margin-top: 30px;
     margin-bottom: 30px;
     margin-left: 10px;
-}
-
-blockquote {
-    border-left: 2px solid white;
-    padding-left: 20px;
 }
 
 ul {
@@ -135,58 +194,15 @@ li > p {
     margin-bottom: 0px;
 }
 
-blue {
-    color: #87afd7;
-}
-
-blue2 {
-    color: #87afaf;
-}   
-
-green {
-    color: #87af87;  
-}
-
-green2 {
-    color: #c5fb7d;
-}
-
-purple {
-    color: #af87d7;
-}
-
-purple2 {
-    color: #b6b3eb;
-}
-
-brown {
-    color: #af875f;
-}
-
-red {
-    color: #e14141;
-}
-
-yellow {
- color: #d3a800;
-}
-
 .sidebar {
     margin: 30px;
-    border-right: 1px dashed #d0d0d0;
+    border-right: 1px dashed var(--white);
     padding-right: 30px;
     max-width: 250px;
 }
 
-@media (max-width: 799px) {
-    .sidebar{
-        border-right: none;
-        border-bottom: 1px dashed #d0d0d0; 
-    }
-}
-
 .sidebar-title {
-    border-bottom: 1px dashed #d0d0d0;
+    border-bottom: 1px dashed var(--white);
     padding-bottom: 10px;
     width: 125px;
 }
@@ -195,8 +211,20 @@ yellow {
     margin-left: -20px;
 }
 
+@media (max-width: 799px) {
+    .sidebar{
+        border-right: none;
+        border-bottom: 1px dashed var(--white); 
+    }
+    .sidebar-title {
+        border-bottom: none;
+        padding-bottom: 10px;
+        width: 125px;
+    }
+}
+
 table {
-    color: white;
+    color: var(--white);
     border-collapse: collapse;
     width: 100%;
     margin: 2em 1em;
@@ -227,12 +255,12 @@ table td p {
 
 
 table thead {
-    border-bottom: 1px dashed white;
+    border-bottom: 1px dashed var(--white);
     padding-bottom: 1em;
 }
 
 table tbody {
-    border-bottom: 1px dashed white;
+    border-bottom: 1px dashed var(--white);
     padding-bottom: 0.5em;
     margin-bottom: 0.5em;
 }
@@ -260,7 +288,7 @@ table caption a {
 h0 {
     font-size: 25px;
     font-weight: 400;
-    color: #b6b3eb;
+    color: var(--purple2);
 }
 
 h0::after {
@@ -270,9 +298,11 @@ h0::after {
 s0 {
     font-size: 25px;
     font-weight: 400;
-    color: #d0d0d0;
+    color: var(--white);
 }
 
-
-
+blockquote {
+    border-left: 2px solid var(--white);
+    padding-left: 20px;
+}
 
