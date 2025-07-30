@@ -1,5 +1,5 @@
 {% macro render_menu_item(item) %}
-    <li class="{% if pagename == item.link or (pagename == item.link + '/index' and item.is_dir) %}current{% endif %}">
+    <li class="{% if pagename == item.link or (item.link is not none and pagename == item.link + '/index' and item.is_dir) %}current{% endif %}">
         {% if item.link %}
             <a href="/{{ item.link }}">{{ item.title }}</a>
         {% else %}

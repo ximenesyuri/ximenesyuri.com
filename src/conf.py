@@ -8,7 +8,9 @@ extensions = [
     'myst_parser',
     'toc',
     'tables',
-    'header'
+    'header',
+    'autolink',
+    'draft'
 ]
 
 source_suffix = ['.md']
@@ -54,5 +56,13 @@ html_context={
         'libs': '/libs',
         'notes': '/notes'
     },
-    'libs_menu': _get_menu_items(CONTENT_DIR, 'libs')
+    'libs_menu': _get_menu_items(CONTENT_DIR, 'libs'),
+    'notes_menu': _get_menu_items(CONTENT_DIR, 'notes')
+}
+
+autolink = {
+    "discord": {
+        "terms": ["Discord"],
+        "url": "https://discord.gg/waANUyCUGE"
+    },
 }

@@ -33,6 +33,19 @@ def _get_markdown_title(filepath):
         print(f"Warning: Could not read title from {filepath}: {e}")
     return None
 
+def _is_draft(filepath):
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            content = f.read(2048)
+        yaml_match = re.match(r'---\s*\n(.*?)\n---\s*\n', content, re.DOTALL)
+        if yaml_match:
+            frontmatter = yaml.safe_load(yaml_match.group(1))
+            if isinstance(frontmatter, dict) and frontmatter.get('draft', False):
+                return True
+    except Exception:
+        pass
+    return False
+
 def _build_menu_from_fs(current_fs_path, content_root_path, rel_url_prefix=''):
     menu_node = []
     items = sorted(os.listdir(current_fs_path))
@@ -46,25 +59,25 @@ def _build_menu_from_fs(current_fs_path, content_root_path, rel_url_prefix=''):
         rel_path_slug = rel_path_from_root.replace(os.sep, '/')
         dir_title = dname.replace('_', ' ')
         dir_link = None
-        if os.path.exists(dir_index_path):
+        if os.path.exists(dir_index_path) and not _is_draft(dir_index_path):
             index_title = _get_markdown_title(dir_index_path)
             if index_title:
                 dir_title = index_title
             dir_link = rel_path_slug
-        dir_node = {
+        children = _build_menu_from_fs(dir_full_path, content_root_path)
+        menu_node.append({
             'title': dir_title,
             'is_dir': True,
             'link': dir_link,
-            'children': _build_menu_from_fs(
-                dir_full_path, content_root_path
-            )
-        }
-        menu_node.append(dir_node)
+            'children': children
+        })
 
     for fname in files:
         if fname == 'index.md':
             continue
         file_full_path = os.path.join(current_fs_path, fname)
+        if _is_draft(file_full_path):
+            continue
         basename = os.path.splitext(fname)[0]
         rel_path_from_root = os.path.relpath(file_full_path, content_root_path)
         rel_path_slug = rel_path_from_root.replace(os.sep, '/')
@@ -82,3 +95,4 @@ def _get_menu_items(content_dir, inner_path):
     if not os.path.exists(content_path):
         return []
     return _build_menu_from_fs(content_path, content_dir)
+

@@ -146,12 +146,6 @@ a {
     text-decoration: underline;
 }
 
-a[href^="http://"],
-a[href^="https://"] {
-    color: var(--red);
-    text-decoration: underline;
-}
-
 code {
     color: var(--purple2);
     padding-left: 3px;
@@ -306,3 +300,7 @@ blockquote {
     padding-left: 20px;
 }
 
+.autolink {
+    color: var(--purple);
+    text-decoration: underline;
+}

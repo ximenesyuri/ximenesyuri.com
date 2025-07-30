@@ -1,6 +1,7 @@
 ---
 title: sistemas
-desc: informais  
+desc: sistemas informais
+draft: true
 ---
 
 ```{title}
@@ -13,9 +14,29 @@ Nestas notas, introduziremos o conceito de _sistema informal_, o qual será a ba
 ```{toc}
 ```
 
+# Conceitos Primitivos 
+
+A Matemática trata da definição, construção e estudo de _conceitos_. Novos conceitos são definidos e novas construções são realizadas partindo-se de conceitos preexistentes. Isso significa que para fazer Matemática são necessários certos conceitos iniciais, os quais se assume existentes _a priori_, e que não são construídos por nenhum outro conceito prévio. Tais conceitos são chamados de _primitivos_.  Tratam-se do ponto de partida para desenvolver nova Matemática.
+
+Diferentes escolas estudam os fundamentos da Matemática de diferentes maneiras, assumindo como primitivos diferentes conceitos. Para nossa discussão futura, é suficiente que assumamos como primitivos conceitos bastante simples, como:
+
+1. algo ser _verdadeiro_ ou ser _falso_;
+2. o ato de _contar_;
+3. algo ser um _símbolo_;
+4. algo ser uma _relação entre símbolos_.
+
+# Afirmações
+
+(sup-1)=
+> [Suposição](#sup-1). Nossa primeira suposição são os conceitos de _símbolo_ e de  ser _verdadeiro_ e ser _falso_.
+
+Uma _afirmação_ (também chamada de _proposição_) é qualquer coisa que se apresenta como _verdadeira_ ou _falsa_. Isso significa que, para uma afirmação, não há meio termo: ou é uma _verdade_ ou não é.
+
+
 # Símbolos e Relações
 
-No que segue, assumiremos como primitivos os conceitos de _símbolos_ e de _relações_ (também chamadas de _predicados_ ou de _fórmulas_) entre eles. Isso significa que tais conceitos não serão formalmente definidos: eles serão nosso ponto de partida.
+(sup-2)=
+> [Suposição](#sup-2). A partir deste ponto, é necessário que também assumamos como primitivo o conceito _relações_ (também chamadas de _predicados_ ou de _fórmulas_) entre símbolos.
 
 Dados símbolos :tex x, y, z, ...:, pensamos em uma _relação_ entre eles como sendo uma _afirmação_ a respeito deles, a qual pode ser verdadeira ou falsa. Se :tex \varphi: é um relação, escrevemos :tex \varphi(x, y, z, ...): para representar o fato de que os símbolos :tex x, y, z, ...: se relacionam através dela. Isto é, que a afirmação :tex \varphi: é _verdadeira_ ou _falsa_ para os símbolos :tex x, y, z, ...:.
 
@@ -29,7 +50,7 @@ Acima guardamos uma notação especial para o caso em que símbolos se relaciona
 
 # Relações :tex n:-árias
 
-Por hora, vamos assumir como primitivo também o processo de _contar símbolos_. Isso significa que afirmações como "dados _dois_ símbolos", ou como "dada uma relação entre _três_ símbolos" fazem sentido.
+Por hora, vamos assumir como primitivo, por fim, o processo de _contar símbolos_. Isso significa que afirmações como "dados _dois_ símbolos", ou como "dada uma relação entre _três_ símbolos" fazem sentido.
 
 Com a possibilidade de contagem, podemos definir classes particulares de relações:
 
@@ -58,16 +79,20 @@ Observe que podem existir muitos símbolos e relações para além daquelas inte
 (obs-1)=
 > [Observação 1](#obs-1). As "hipóteses" de um sistema poderiam muito bem ser chamadas de _axiomas_. No entanto, guardaremos o nome _axioma_ para quando estivermos tratando de sistemas verdadeiramente formais.
 
-Exemplos de hipóteses que poderiam ser impostas na definição de um sistema são as seguintes:
+Vejamos alguns exemplos de hipóteses que poderiam ser impostas na definição de um sistema.
+
+# Vacuidade
 
 (example-1)=
 > [Example 1](#example-1)(Vacuidade de :tex \alpha:). Existe um símbolo que não se relaciona com nenhum outro símbolo através de uma certa relação :tex \alpha:. 
 
-Em outras palavras, existe um símbolo especial :tex \emptyset_\alpha: dentre os símbolos do sistema tal que :tex \neg \alpha(\emptyset_\alpha, x, y, z ...): para quaisquer que sejam os outros símbolos :tex x, y, z, ...:. Podemos chamar tal símbolo de _símbolo vazio de :tex \alpha:_. 
+Em outras palavras, existe um símbolo especial :tex \varnothing_\alpha: dentre os símbolos do sistema tal que :tex \neg \alpha(\varnothing_\alpha, x, y, z ...): para quaisquer que sejam os outros símbolos :tex x, y, z, ...:. Trata-se do _símbolo vazio de :tex \alpha:_. 
 
 Uma condição mais rígida de vacuidade seria a seguinte:
 
 (example-1)=
 > [Example 1](#example-2)(Vacuidade). Existe um símbolo que não se relaciona com nenhum outro símbolo através de _qualquer_ relação :tex \alpha, \beta, ...: do sistema.
 
-Se um sistema satisfaz a condição acima, dizemos que possui um _símbolo vazio_ e o denotamos por :tex \emptyset:.
+Se um sistema satisfaz a condição acima, dizemos que possui um _símbolo vazio_ e o denotamos por :tex \varnothing:.
+
+#  

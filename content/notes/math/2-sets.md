@@ -1,3 +1,9 @@
+---
+title: conjuntos
+desc: conjuntos
+draft: true
+---
+
 # Conjuntos
 
 Para nós, _conjuntos_ serão símbolos :tex x, y, ...: entre os quais há uma relação binária pré-definida: a de _pertinência_. Tal relação é denotada por :tex\in:. Se :tex x: e :tex y: são conjuntos tais que :tex x \in y:, fala-se que :tex x: é um _elemento_ de :tex y:.
