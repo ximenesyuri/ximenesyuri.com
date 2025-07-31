@@ -51,8 +51,8 @@
         <div class="content">
             
             
-            <details class="sidebar" open>
-                <summary class="sidebar-title">libs menu</summary>
+            <div class="sidebar">
+                <span class="sidebar-title">libs menu</span>
                 <ul class="sidebar-ul">
                     
                         
@@ -66,7 +66,7 @@
                     
     <li class="">
         
-            <a href="/libs/app/app">app system</a>
+            <a href="/libs/app/1-components">components</a>
         
         
     </li>
@@ -75,7 +75,25 @@
                     
     <li class="">
         
-            <a href="/libs/app/component">component system</a>
+            <a href="/libs/app/2-models">models</a>
+        
+        
+    </li>
+
+                
+                    
+    <li class="">
+        
+            <a href="/libs/app/3-rendering">rendering</a>
+        
+        
+    </li>
+
+                
+                    
+    <li class="">
+        
+            <a href="/libs/app/4-statics">statics</a>
         
         
     </li>
@@ -163,7 +181,7 @@
 
                     
                 </ul>
-            </details>
+            </div>
             
             
 
@@ -209,7 +227,8 @@
 </ol>
 <p>In other words, a <em>type factory</em> is a function <code class="docutils literal notranslate"><span class="pre">ModelFactory:</span> <span class="pre">Dict(TYPE)</span> <span class="pre">-&gt;</span> <span class="pre">TYPE</span></code> such that <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">ModelFactory(**kwargs)</span></code> is a sutype of <code class="docutils literal notranslate"><span class="pre">Json</span></code>, i.e, such that <code class="docutils literal notranslate"><span class="pre">issubclass(model,</span> <span class="pre">Json)</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, and such that <code class="docutils literal notranslate"><span class="pre">model.key</span></code> is defined for each <code class="docutils literal notranslate"><span class="pre">key</span></code> in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
 <p>We have the following <em>model factories</em>:</p>
-<table class="custom-pre-table docutils align-default" id="table-1">
+<div class="captioned-table" id="table-1">
+<table class="custom-pre-table docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>model factory</p></th>
 <th class="head"><p>description</p></th>
@@ -229,8 +248,9 @@
 <td><p>the factory of _rigid_ models</p></td>
 </tr>
 </tbody>
-<p><span class="caption-text">table 1</span></p>
 </table>
+<p><a class="table-caption reference external" href="#table-1">table 1</a></p>
+</div>
 </section>
 <section id="model-validation">
 <h1>Model Validation<a class="headerlink" href="#model-validation" title="Link to this heading"></a></h1>
@@ -244,7 +264,8 @@
 <section id="model-types">
 <h1>Model Types<a class="headerlink" href="#model-types" title="Link to this heading"></a></h1>
 <p>Each <em>model factory</em> defines a <em>type</em> whose instances are its <em>models</em>:</p>
-<table class="custom-pre-table docutils align-default" id="table-2">
+<div class="captioned-table" id="table-2">
+<table class="custom-pre-table docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>model factory</p></th>
 <th class="head"><p>models type</p></th>
@@ -264,8 +285,9 @@
 <td><p>RIGID</p></td>
 </tr>
 </tbody>
-<p><span class="caption-text">table 2</span></p>
 </table>
+<p><a class="table-caption reference external" href="#table-2">table 2</a></p>
+</div>
 <p>So, <code class="docutils literal notranslate"><span class="pre">isinstance(x,</span> <span class="pre">MODEL)</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> iff <code class="docutils literal notranslate"><span class="pre">isinstance(x,</span> <span class="pre">TYPE)</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, and <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">Model(**kwargs)</span></code> for some dictionary <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> of type <code class="docutils literal notranslate"><span class="pre">Dict(TYPE)</span></code>. Analogously for the other <em>model factories</em> and <em>model types</em>.</p>
 </section>
 <section id="defining-models">
@@ -441,7 +463,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/07/30 at 17:04</purple><br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/07/31 at 23:08</purple><br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>
             </p>
         </footer>

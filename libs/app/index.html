@@ -51,8 +51,8 @@
         <div class="content">
             
             
-            <details class="sidebar" open>
-                <summary class="sidebar-title">libs menu</summary>
+            <div class="sidebar">
+                <span class="sidebar-title">libs menu</span>
                 <ul class="sidebar-ul">
                     
                         
@@ -66,7 +66,7 @@
                     
     <li class="">
         
-            <a href="/libs/app/app">app system</a>
+            <a href="/libs/app/1-components">components</a>
         
         
     </li>
@@ -75,7 +75,25 @@
                     
     <li class="">
         
-            <a href="/libs/app/component">component system</a>
+            <a href="/libs/app/2-models">models</a>
+        
+        
+    </li>
+
+                
+                    
+    <li class="">
+        
+            <a href="/libs/app/3-rendering">rendering</a>
+        
+        
+    </li>
+
+                
+                    
+    <li class="">
+        
+            <a href="/libs/app/4-statics">statics</a>
         
         
     </li>
@@ -163,7 +181,7 @@
 
                     
                 </ul>
-            </details>
+            </div>
             
             
 
@@ -181,22 +199,22 @@
 <section id="about">
 <h1>About<a class="headerlink" href="#about" title="Link to this heading"></a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">app</span></code> is a Python framework to build web applications presenting type safety, from APIs to static pages.</p>
-<!-- toc -->
-<ul class="simple">
-<li><p><a class="reference internal" href="#overview"><span class="xref myst">Overview</span></a></p></li>
-<li><p><a class="reference internal" href="#install"><span class="xref myst">Install</span></a></p></li>
-<li><p><a class="reference internal" href="#documentations"><span class="xref myst">Documentations</span></a></p></li>
-</ul>
-<!-- tocstop -->
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#about">About</a></p></li>
+<li><p><a class="reference internal" href="#overview">Overview</a></p></li>
+<li><p><a class="reference internal" href="#install">Install</a></p></li>
+<li><p><a class="reference internal" href="#code">Code</a></p></li>
+<li><p><a class="reference internal" href="#docs">Docs</a></p></li>
+</ol>
 </section>
 <section id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
 <p>The lib consists of two parts:</p>
 <ol class="arabic simple">
 <li><p>a <code class="docutils literal notranslate"><span class="pre">component</span> <span class="pre">system</span></code>, which allows to define components and operate between them following a functional approach, being compatible with <a class="reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a>, <a class="reference internal" href="#"><span class="xref myst">alpine.js</span></a>, <a class="reference internal" href="#"><span class="xref myst">htmx.js</span></a>, <a class="reference internal" href="#"><span class="xref myst">flexsearch</span></a>, and much more;</p></li>
-<li><p>an <code class="docutils literal notranslate"><span class="pre">app</span> <span class="pre">system</span></code>, which is an extension of <a class="reference external" href="https://github.com/fastapi/fastapi">fastapi</a> to include, for example, the construction of static applications, all of that provided in a highly intuitive interface.</p></li>
+<li><p>an <code class="docutils literal notranslate"><span class="pre">app</span> <span class="pre">system</span></code>, which is an extension of <a class="reference external" href="https://www.starlette.io/">starlette</a> to include, for example, the construction of static applications, all of that provided in a highly intuitive interface.</p></li>
 </ol>
-<p>Both parts are constructed focused in providing type safety, which is ensured through an extensive use of <a class="reference external" href="https://github.com/ximenesyuri/typed">ximenesyuri/typed</a> and <a class="reference external" href="https://github.com/ximenesyuri/utils">ximenesyuri/utils</a>.</p>
+<p>Both parts are constructed focused in providing type safety, which is ensured through an extensive use of <a class="autolink reference external" href="/libs/typed">typed</a>.</p>
 </section>
 <section id="install">
 <h1>Install<a class="headerlink" href="#install" title="Link to this heading"></a></h1>
@@ -209,18 +227,24 @@
 </pre></div>
 </div>
 </section>
-<section id="documentations">
-<h1>Documentations<a class="headerlink" href="#documentations" title="Link to this heading"></a></h1>
+<section id="code">
+<h1>Code<a class="headerlink" href="#code" title="Link to this heading"></a></h1>
+<p>The code is available at the Github repository <a class="reference external" href="https://github.com/ximenesyuri/app">ximenesyuri/app</a>.</p>
+</section>
+<section id="docs">
+<h1>Docs<a class="headerlink" href="#docs" title="Link to this heading"></a></h1>
 <ol class="arabic simple">
-<li><p><a class="reference internal" href="component"><span class="doc std std-doc">component system</span></a></p></li>
-<li><p><a class="reference internal" href="app"><span class="doc std std-doc">app system</span></a></p></li>
+<li><p><a class="reference internal" href="1-components.html">components</a></p></li>
+<li><p><a class="reference internal" href="2-models.html">models</a></p></li>
+<li><p><a class="reference internal" href="3-rendering.html">rendering</a></p></li>
+<li><p><a class="reference internal" href="4-statics.html">statics</a></p></li>
 </ol>
 </section>
 </main>
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/07/30 at 17:04</purple><br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/07/31 at 23:08</purple><br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>
             </p>
         </footer>

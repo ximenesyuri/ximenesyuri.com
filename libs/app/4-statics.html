@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>yx - libs/app/app</title>
+        <title>yx - libs/app/4-statics</title>
         <link rel="stylesheet" href="/_static/index.css">
         <link rel="stylesheet" href="/_static/pygments.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,8 +51,8 @@
         <div class="content">
             
             
-            <details class="sidebar" open>
-                <summary class="sidebar-title">libs menu</summary>
+            <div class="sidebar">
+                <span class="sidebar-title">libs menu</span>
                 <ul class="sidebar-ul">
                     
                         
@@ -66,7 +66,7 @@
                     
     <li class="">
         
-            <a href="/libs/app/app">app system</a>
+            <a href="/libs/app/1-components">components</a>
         
         
     </li>
@@ -75,7 +75,25 @@
                     
     <li class="">
         
-            <a href="/libs/app/component">component system</a>
+            <a href="/libs/app/2-models">models</a>
+        
+        
+    </li>
+
+                
+                    
+    <li class="">
+        
+            <a href="/libs/app/3-rendering">rendering</a>
+        
+        
+    </li>
+
+                
+                    
+    <li class="">
+        
+            <a href="/libs/app/4-statics">statics</a>
         
         
     </li>
@@ -163,15 +181,46 @@
 
                     
                 </ul>
-            </details>
+            </div>
             
             
 
-            <main class="main"></main>
+            <main class="main"><section id="statics">
+<h1>Statics<a class="headerlink" href="#statics" title="Link to this heading"></a></h1>
+</section>
+<section id="pages">
+<h1>Pages<a class="headerlink" href="#pages" title="Link to this heading"></a></h1>
+<p>In <code class="docutils literal notranslate"><span class="pre">app</span></code> component system, a very special kind of <code class="docutils literal notranslate"><span class="pre">component</span></code> is a <code class="docutils literal notranslate"><span class="pre">page</span></code>. It is such that its rendered HTML satisfies the following:</p>
+<ol class="arabic simple">
+<li><p>its most external HTML tag is <code class="docutils literal notranslate"><span class="pre">&lt;html&gt;</span></code>;</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">&lt;html&gt;</span></code> block contains blocks <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> is not inside <code class="docutils literal notranslate"><span class="pre">&lt;block&gt;</span></code> and vice-versa.</p></li>
+</ol>
+<p>Thus, in sum, a <code class="docutils literal notranslate"><span class="pre">page</span></code> is a <code class="docutils literal notranslate"><span class="pre">component</span></code> that, <strong>after being rendered</strong>, produces an HTML in the following format:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>...
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    ...
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span> ... <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span> ... <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+    ...
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+...
+</pre></div>
+</div>
+<p>There is the type <code class="docutils literal notranslate"><span class="pre">Page</span></code> of all <code class="docutils literal notranslate"><span class="pre">page</span></code>s. It is actually an extension of <code class="docutils literal notranslate"><span class="pre">Component</span></code> to include two entries:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">assets_dir</span></code>: a directory or a list of directories from which assets are collected</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">auto_style</span></code>: if <code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code> block will be automatically generated or not</p></li>
+</ol>
+<blockquote>
+<div><p>In the same way as <code class="docutils literal notranslate"><span class="pre">Page</span></code> is an extension of <code class="docutils literal notranslate"><span class="pre">Component</span></code>, we have <code class="docutils literal notranslate"><span class="pre">StaticPage</span></code>, which is an extension of <code class="docutils literal notranslate"><span class="pre">Static</span></code>.</p>
+</div></blockquote>
+</section>
+</main>
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/07/30 at 17:04</purple><br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/07/31 at 23:08</purple><br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>
             </p>
         </footer>

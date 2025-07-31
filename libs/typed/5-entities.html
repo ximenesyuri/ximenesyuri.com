@@ -51,8 +51,8 @@
         <div class="content">
             
             
-            <details class="sidebar" open>
-                <summary class="sidebar-title">libs menu</summary>
+            <div class="sidebar">
+                <span class="sidebar-title">libs menu</span>
                 <ul class="sidebar-ul">
                     
                         
@@ -66,7 +66,7 @@
                     
     <li class="">
         
-            <a href="/libs/app/app">app system</a>
+            <a href="/libs/app/1-components">components</a>
         
         
     </li>
@@ -75,7 +75,25 @@
                     
     <li class="">
         
-            <a href="/libs/app/component">component system</a>
+            <a href="/libs/app/2-models">models</a>
+        
+        
+    </li>
+
+                
+                    
+    <li class="">
+        
+            <a href="/libs/app/3-rendering">rendering</a>
+        
+        
+    </li>
+
+                
+                    
+    <li class="">
+        
+            <a href="/libs/app/4-statics">statics</a>
         
         
     </li>
@@ -163,24 +181,27 @@
 
                     
                 </ul>
-            </details>
+            </div>
             
             
 
             <main class="main"><section id="primitive-types">
 <h1>Primitive Types<a class="headerlink" href="#primitive-types" title="Link to this heading"></a></h1>
 <p>The following  is the list of the primitive <code class="docutils literal notranslate"><span class="pre">typed</span></code> types, from which, using <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">factories</span></code>, one can build other derived types.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>primitive Python types
-------------------------
-type        definition 
---------------------------------------------- 
-Int         int
-Str         str
-Bool        bool
-Float       float
-Nill        type(None)
-</pre></div>
+<div class="captioned-table">
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>primitive Python types</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type        definition</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="table-caption reference external" href="#">Int         int</a></p>
 </div>
+<div class="captioned-table">
 <table class="custom-pre-table docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>additional typed types</p></th>
@@ -190,8 +211,10 @@ Nill        type(None)
 <tr class="row-even"><td><p>type         definition</p></td>
 </tr>
 </tbody>
-<p><span class="caption-text">Any          isinstance(x, Any) is True everywhere</span></p>
 </table>
+<p><a class="table-caption reference external" href="#">Any          isinstance(x, Any) is True everywhere</a></p>
+</div>
+<div class="captioned-table">
 <table class="custom-pre-table docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>function types</p></th>
@@ -201,8 +224,9 @@ Nill        type(None)
 <tr class="row-even"><td><p>type           definition</p></td>
 </tr>
 </tbody>
-<p><span class="caption-text">PlainFuncType  …</span></p>
 </table>
+<p><a class="table-caption reference external" href="#">PlainFuncType  …</a></p>
+</div>
 </section>
 <section id="factories">
 <h1>Factories<a class="headerlink" href="#factories" title="Link to this heading"></a></h1>
@@ -217,7 +241,7 @@ Nill        type(None)
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/07/30 at 17:04</purple><br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/07/31 at 23:08</purple><br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>
             </p>
         </footer>
