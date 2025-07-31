@@ -1,0 +1,31 @@
+typed:
+  terms: [typed]
+  url: /libs/typed
+
+typed/models:
+  terms: [typed/models]
+  url: /libs/typed/2-models
+
+app:
+  terms: [app]
+  url: /libs/app
+
+utils:
+  terms: [utils]
+  url: /libs/utils
+
+cli:
+  terms: [cli]
+  url: /libs/cli
+
+jinja:
+  terms: [jinja2]
+  url: https://jinja.palletsprojects.com/en/stable/
+
+tag-attributes:
+  terms: ["HTML tag attributes"]
+  url: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes
+
+global-attributes:
+  terms: ["HTML global attributes"]
+  url: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes

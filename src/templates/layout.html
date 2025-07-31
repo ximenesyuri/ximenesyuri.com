@@ -35,25 +35,25 @@
         <div class="content">
             {% if  'libs/' in pagename %}
             {% from "macros.html" import render_menu_item %}
-            <details class="sidebar" open>
-                <summary class="sidebar-title">libs menu</summary>
+            <div class="sidebar">
+                <span class="sidebar-title">libs menu</span>
                 <ul class="sidebar-ul">
                     {% for item in libs_menu %}
                         {{ render_menu_item(item) }}
                     {% endfor %}
                 </ul>
-            </details>
+            </div>
             {% endif %}
             {% if  'notes/' in pagename %}
             {% from "macros.html" import render_menu_item %}
-            <details class="sidebar" open>
-                <summary class="sidebar-title">notes menu</summary>
+            <div class="sidebar">
+                <span class="sidebar-title">notes menu</span>
                 <ul class="sidebar-ul">
                     {% for item in notes_menu %}
                         {{ render_menu_item(item) }}
                     {% endfor %}
                 </ul>
-            </details>
+            </div>
             {% endif %}
 
             <main class="main">{{ body }}</main>

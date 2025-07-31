@@ -5,88 +5,123 @@ import re
 
 logger = logging.getLogger(__name__)
 
-table_pattern = re.compile(
-    r'^(?P<header_line>.*?)\n'
-    r'--+\n'
-    r'(?P<content>.*?)\n'
-    r'--+\n'
-    r'(?P<caption>.*?)\s*$',
-    re.DOTALL | re.MULTILINE
-)
+def split_table_blocks(text):
+    lines = [l.rstrip('\r') for l in text.strip().splitlines()]
+    if len(lines) < 4:
+        return None
+    sep_indices = [i for i, l in enumerate(lines) if re.match(r'^[-=_]{4,}\s*$', l)]
+    if len(sep_indices) < 2:
+        return None
+    header_line = lines[0]
+    sep1 = sep_indices[0]
+    sep2 = sep_indices[-1]
+    content_lines = lines[sep1 + 1:sep2]
+    caption_line = ""
+    for l in lines[sep2+1:]:
+        if l.strip():
+            caption_line = l.strip()
+            break
+    return (header_line, content_lines, caption_line)
 
-def parse_line(line, column_boundaries):
-    entries = []
-    current_pos = 0
-    for boundary_pos in column_boundaries:
-        entry = line[current_pos:boundary_pos].strip()
-        entries.append(entry)
-        current_pos = boundary_pos
-    entries.append(line[current_pos:].strip())
-    return entries
-
-def get_boundaries(header_line):
-    header_line = header_line.replace('\t', '    ')
+def detect_column_boundaries(header_line):
+    matches = list(re.finditer(r'(?:^| {2,})(\S)', header_line))
+    starts = [m.start(1) for m in matches]
     boundaries = []
-    for match in re.finditer(r' {2,}', header_line):
-        gap_start, gap_end = match.span()
-        if gap_start > 0 and not header_line[gap_start-1].isspace():
-            if gap_end < len(header_line):
-                if not header_line[gap_end].isspace():
-                    boundaries.append(gap_end)
-    return sorted(list(set(boundaries)))
+    for i in range(len(starts) - 1):
+        boundaries.append(starts[i+1])
+    return boundaries, starts
+
+def parse_txt_table_line(line, boundaries, starts):
+    fields = []
+    for i, b in enumerate(boundaries):
+        fields.append(line[starts[i]:b].rstrip())
+    fields.append(line[starts[-1]:].rstrip())
+    return fields
+
+class CaptionedTableDiv(nodes.Element):
+    pass
+
+def visit_captioned_table_div_html(self, node):
+    self.body.append(self.starttag(node, 'div', CLASS='captioned-table'))
+
+def depart_captioned_table_div_html(self, node):
+    self.body.append('</div>\n')
+
+def find_label_for_literalblock(literal):
+    if literal.get('names'):
+        return literal['names'][0]
+    if 'ids' in literal and literal['ids']:
+        return literal['ids'][0]
+    return None
 
 class TxtTableToNodeTransform(SphinxTransform):
     default_priority = 700
 
     def apply(self):
-        for literal in self.document.traverse(nodes.literal_block):
+        for literal in list(self.document.traverse(nodes.literal_block)):
             text = literal.astext()
-            match = table_pattern.match(text.strip())
-            if match:
-                logger.info(f"[txt-table] Converting literal block to table in {self.env.docname}")
-                header_line = match.group('header_line').rstrip()
-                content_lines = match.group('content').strip().split('\n')
-                caption_text = match.group('caption').strip()
-                column_boundaries = get_boundaries(header_line)
-                header_entries = parse_line(header_line, column_boundaries)
+            result = split_table_blocks(text)
+            if not result:
+                continue
+            header_line, content_lines, caption_line = result
 
-                table = nodes.table(classes=['custom-pre-table'])
-                tgroup = nodes.tgroup(cols=len(header_entries))
-                table += tgroup
+            label = literal['ids'][0] if 'ids' in literal and len(literal['ids']) > 0 else None
 
-                for _ in header_entries:
-                    tgroup += nodes.colspec(colwidth=1)
+            content_lines = [l for l in content_lines if l.strip()]
+            boundaries, starts = detect_column_boundaries(header_line)
+            header_entries = parse_txt_table_line(header_line, boundaries, starts)
+            num_columns = len(header_entries)
 
-                if caption_text:
-                    table += nodes.caption('', caption_text)
+            table = nodes.table(classes=['custom-pre-table'])
+            tgroup = nodes.tgroup(cols=num_columns)
+            table += tgroup
 
-                thead = nodes.thead()
-                tgroup += thead
+            for _ in header_entries:
+                tgroup += nodes.colspec(colwidth=1)
+
+            thead = nodes.thead()
+            tgroup += thead
+            row = nodes.row()
+            for h in header_entries:
+                entry = nodes.entry()
+                entry += nodes.paragraph(text=h.strip())
+                row += entry
+            thead += row
+
+            tbody = nodes.tbody()
+            tgroup += tbody
+
+            for line in content_lines:
+                fields = parse_txt_table_line(line, boundaries, starts)
+                fields = (fields + [""] * num_columns)[:num_columns]
                 row = nodes.row()
-                for h in header_entries:
+                for f in fields:
                     entry = nodes.entry()
-                    entry += nodes.paragraph(text=h)
+                    entry += nodes.paragraph(text=f.strip())
                     row += entry
-                thead += row
+                tbody += row
 
-                tbody = nodes.tbody()
-                tgroup += tbody
-                for line in content_lines:
-                    row = nodes.row()
-                    body_entries = parse_line(line.rstrip(), column_boundaries)
-                    for i in range(len(header_entries)):
-                        entry = nodes.entry()
-                        text = body_entries[i] if i < len(body_entries) else ""
-                        entry += nodes.paragraph(text=text)
-                        row += entry
-                    tbody += row
+            wrapper = CaptionedTableDiv()
+            wrapper += table
 
-                literal.replace_self(table)
+            if caption_line:
+                ref_uri = f"#{label}" if label else "#"
+                caption_para = nodes.paragraph()
+                caption_ref = nodes.reference('', caption_line, refuri=ref_uri, classes=['table-caption'])
+                caption_para += caption_ref
+                wrapper += caption_para
+
+            literal.replace_self(wrapper)
 
 def setup(app):
+    app.add_node(
+        CaptionedTableDiv,
+        html=(visit_captioned_table_div_html, depart_captioned_table_div_html)
+    )
     app.add_transform(TxtTableToNodeTransform)
     logger.info("[txt-table] Extension enabled: converting txt literal tables to real tables at doctree stage")
     return {
         'parallel_read_safe': True,
         'parallel_write_safe': True,
     }
+

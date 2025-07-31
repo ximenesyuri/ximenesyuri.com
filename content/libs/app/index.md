@@ -18,21 +18,16 @@ title: app
 
 `app` is a Python framework to build web applications presenting type safety, from APIs to static pages.
 
-<!-- toc -->
-
-- [Overview](#overview)
-- [Install](#install)
-- [Documentations](#documentations)
-
-<!-- tocstop -->
+```{toc}
+```
 
 # Overview
 
 The lib consists of two parts:
 1. a `component system`, which allows to define components and operate between them following a functional approach, being compatible with [jinja2](https://jinja.palletsprojects.com/en/stable/), [alpine.js](), [htmx.js](), [flexsearch](), and much more;
-2. an `app system`, which is an extension of [fastapi](https://github.com/fastapi/fastapi) to include, for example, the construction of static applications, all of that provided in a highly intuitive interface.
+2. an `app system`, which is an extension of [starlette](https://www.starlette.io/) to include, for example, the construction of static applications, all of that provided in a highly intuitive interface.
 
- Both parts are constructed focused in providing type safety, which is ensured through an extensive use of [ximenesyuri/typed](https://github.com/ximenesyuri/typed) and [ximenesyuri/utils](https://github.com/ximenesyuri/utils).
+Both parts are constructed focused in providing type safety, which is ensured through an extensive use of {typed}.
 
 # Install
 
@@ -46,9 +41,13 @@ With [py](https://github.com/ximenesyuri/py):
 py i ximenesyuri/app
 ```
 
-# Documentations
+# Code
 
-1. [component system](./component)
-2. [app system](./app)
+The code is available at the Github repository [ximenesyuri/app](https://github.com/ximenesyuri/app).
+
+# Docs
+
+```{toc-dir}
+```
 
 

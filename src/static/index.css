@@ -203,6 +203,7 @@ li > p {
 
 .sidebar-ul {
     margin-left: -20px;
+    margin-top: 40px;
 }
 
 @media (max-width: 799px) {
@@ -220,59 +221,53 @@ li > p {
 table {
     color: var(--white);
     border-collapse: collapse;
-    width: 100%;
-    margin: 2em 1em;
+    width: auto;
 }
 
-table th {
-    border: none;
-    margin-left: 10px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    text-align: left;
-    vertical-align: top;
-}
-
+table th,
 table td {
     border: none;
-    margin-left: 10px;
-    padding-top: 5px;
-    padding-left: 10px;
-    text-align: left;
+    padding: 0;        /* Remove all padding by default */
+    text-align: left;   /* Left-align columns */
     vertical-align: top;
 }
 
-table td p {
-    margin: 0;
+table tr td p, table tr th p {
     padding: 0;
-}
-
-
-table thead {
-    border-bottom: 1px dashed var(--white);
-    padding-bottom: 1em;
-}
-
-table tbody {
-    border-bottom: 1px dashed var(--white);
-    padding-bottom: 0.5em;
-    margin-bottom: 0.5em;
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 table th:not(:last-child),
 table td:not(:last-child) {
-    padding-right: 2ch;
+    padding-right: 3ch;
 }
 
-table caption {
-    caption-side: bottom;
-    text-align: left;
-    margin-top: 1em;
-    font-size: 0.9em;
+table tr:first-child th,
+table tr:first-child td {
+    padding-top: 10px;
 }
 
-table caption a {
-    text-align: center;
+table tr:last-child th,
+table tr:last-child td {
+    padding-bottom: 10px;
+}
+
+.captioned-table {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+}
+
+table thead {
+    border-bottom: 2px dashed var(--purple2);
+}
+
+table tbody {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 2px dashed var(--purple2);
 }
 
 .title {
@@ -301,6 +296,6 @@ blockquote {
 }
 
 .autolink {
-    color: var(--purple);
+    color: var(--green);
     text-decoration: underline;
 }

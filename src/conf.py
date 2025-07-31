@@ -1,5 +1,6 @@
 import os
 import sys
+import yaml
 from src.helper.menu import _get_menu_items
 from src.helper.date import _year, _now
 sys.path.insert(0, os.path.abspath('./helper'))
@@ -37,9 +38,9 @@ html_use_dirhtml = True
 
 myst_enable_includes = True
 
-conf_dir = os.path.dirname(__file__)
-project_root = os.path.abspath(os.path.join(conf_dir, '..'))
-CONTENT_DIR = os.path.join(project_root, 'content')
+CONF_DIR = os.path.dirname(__file__)
+ROOT_DIR = os.path.abspath(os.path.join(CONF_DIR, '..'))
+CONTENT_DIR = os.path.join(ROOT_DIR, 'content')
 
 html_context={
     'title': 'Yuri Ximenes',
@@ -60,9 +61,11 @@ html_context={
     'notes_menu': _get_menu_items(CONTENT_DIR, 'notes')
 }
 
-autolink = {
-    "discord": {
-        "terms": ["Discord"],
-        "url": "https://discord.gg/waANUyCUGE"
-    },
-}
+autolink = { }
+
+with open(os.path.join(CONF_DIR, 'yml', 'libs.yml'), 'r') as file:
+    autolink.update(yaml.safe_load(file))
+
+with open(os.path.join(CONF_DIR, 'yml', 'notes.yml'), 'r') as file:
+    autolink.update(yaml.safe_load(file))
+
