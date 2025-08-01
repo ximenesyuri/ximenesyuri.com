@@ -34,22 +34,22 @@
         </header>
         <div class="content">
             {% if  'libs/' in pagename %}
-            {% from "macros.html" import render_menu_item %}
+            {% from "menu.html" import render_menu_item %}
             <div class="sidebar">
                 <span class="sidebar-title">libs menu</span>
                 <ul class="sidebar-ul">
-                    {% for item in libs_menu %}
+                    {% for item in libs_menu.values() %}
                         {{ render_menu_item(item) }}
                     {% endfor %}
                 </ul>
             </div>
             {% endif %}
             {% if  'notes/' in pagename %}
-            {% from "macros.html" import render_menu_item %}
+            {% from "menu.html" import render_menu_item %}
             <div class="sidebar">
                 <span class="sidebar-title">notes menu</span>
                 <ul class="sidebar-ul">
-                    {% for item in notes_menu %}
+                    {% for item in notes_menu.values() %}
                         {{ render_menu_item(item) }}
                     {% endfor %}
                 </ul>
@@ -60,9 +60,18 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, {{ year }}. Last update: <purple>{{ now }}</purple><br>
-                Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>
+                Yuri Ximenes, {{ year }}. Last update: <purple>{{ now }}</purple>.<br>
+                Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.matchMedia("(max-width: 768px)").matches) {
+                document.querySelectorAll('.sidebar-collapsible > details[open]').forEach(function(details){
+                    details.removeAttribute('open');
+                });
+            }
+        });
+    </script>
     </body>  
 </html>

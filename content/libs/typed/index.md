@@ -1,3 +1,8 @@
+---
+title: typed
+weight: 10
+---
+
 ```ruby
    /00                                         /00
   | 00                                        | 00

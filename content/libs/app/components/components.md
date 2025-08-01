@@ -1,6 +1,7 @@
 ---
 title: components
 desc: components
+weight: 10
 ---
 
 ```{title}
@@ -89,7 +90,7 @@ def my_comp(x: SomeType, y: OtherType, ...) -> Jinja:
 
 (rem-1)=
 > [Remark 1](#rem-1). There is the type `COMPONENT` whose instances are precisely the `app` components. It is constructed as a subtype of `TypedFunc(Any, cod=Jinja)`, i.e., of all typed functions whose codomain is `Jinja`.  
-  
+
 # Tags
       
 Typically, components are delimited by a HTML tag. In `app` there is a _type factory_ (in the sense of {typed})  `Tag: Tuple(Str) -> SUB(Jinja)` that receives a tuple of HTML tag names and returns the subtype `Tag(*tags)` of `Jinja` of all _jinja strings_ enclosed by one of the given tags.
@@ -166,6 +167,19 @@ def main_comp(..., __depends_on__=[comp_1, comp_2]) -> Jinja:
 ```
 
 > Recall that components are _typed functions_, which means that all their arguments must have type annotations, which are checked at runtime. The `__depends_on__`, however, is an exception: if a type annotation is _not_ provided, then `List(COMPONENT)` is automatically attached to it. On the other hand, if a type annotation is provided, it must be a subtype of `List(COMPONENT)`.
+
+# Free Variables
+
+When a _jinja var_ is in the _jinja string_ returned by a component, it typically corresponds to one of the following cases:
+
+1. it is component argument;
+2. it is a local variable defined in the body of the component;
+3. it is another component listed in the `__depends_on__` argument.
+
+A _jinja var_ which does not satisfies some of the conditions above is called a _free jinja var_.
+
+(rem-2)=
+> [Remark 2](#rem-2). It is _not_ a best practice to have _free jinja vars_ in a component. Indeed, as will de discussed in [Rendering](./3-rendering), a free jinja var need to be explicitly included in the context during the rendering of a context. The problem is that, unlike component arguments, they are not true Python components, which makes difficult to remember their existence.  
    
 # Inners
     
@@ -184,6 +198,8 @@ def my_inner_comp(..., inner: Inner, ...) -> Tag('some-tag'):
 </some-tag>
 """
 ```
+
+The type `Inner` is a presentation of the `Jinja` type.  
 
 > The components may also admit _content vars_ (of type `Content`), characterizing them as _static components_, which can be used to introduced `Markdown` and `RST` content inside the component. This will be discussed in [Statics](./4-statics). 
 
@@ -206,11 +222,21 @@ print(isinstance(my_inner_comp, Component(0)) # will return 'False'
 
 # Attributes
 
-The type `COMPONENT` of all components has some properties, which define some attributed to the components:
+The type `COMPONENT` of all components has some properties, which define some attributes to the components:
 
-1. `.jinja`: return the code of the component _jinja string_;
-2. `.inner_vars`: return the tuple of _inner vars_;
-3. `.is_tag`: returns if the component is a _tag component_
+(table-1)=
+```
+attribute           description 
+-----------------------------
+.jinja              code of the component _jinja string_
+.jinja_vars         tuple of _jinja vars_
+.jinja_free_vars    tuple of _jinja free vars_
+.inner_args         tuple of _inner args_
+.content_args       tuple of _content_args_
+.tags               the tuple of tags that defines the component 
+-----------------------------
+table 1: component attributes
+```
 
 # Operations
 

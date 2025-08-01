@@ -1,6 +1,7 @@
 ---
 title: statics
 desc: statics
+weight: 40
 ---
 
 # Statics

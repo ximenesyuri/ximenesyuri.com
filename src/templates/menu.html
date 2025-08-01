@@ -1,0 +1,92 @@
+{% macro render_menu_item(item, level=0, is_last=false, parent_branch='') %}
+    {% set branch = parent_branch %}
+    {% if level > 1 %}
+        {% if is_last %}
+            {% set branch = branch ~ "&nbsp;&nbsp;└─" %}
+        {% else %}
+            {% set branch = branch ~ "&nbsp;&nbsp;├─" %}
+        {% endif %}
+    {% elif level > 0 %}
+        {% if is_last %}
+            {% set branch = branch ~ "└─" %}
+        {% else %}
+            {% set branch = branch ~ "├─" %}
+        {% endif %}
+    {% endif %}
+
+    {% if level == 0 and item.children %}
+        <li class="sidebar-collapsible">
+            <details open>
+                <summary>
+                  <span>{{ branch }}</span>
+                  {% if item.link %}
+                      <a href="/{{ item.link }}">{{ item.title }}</a>
+                  {% else %}
+                      <span>{{ item.title }}</span>
+                  {% endif %}
+                </summary>
+                <ul class="sidebar-ul-inner-1">
+                    {% for child in item.children.values() %}
+                        {{ render_menu_item(
+                            child,
+                            level+1,
+                            loop.last,
+                            parent_branch ~ (level > 0 and (is_last and "    " or "│   ") or "")
+                        ) }}
+                    {% endfor %}
+                </ul>
+            </details>
+        </li>
+    {% elif level == 0 and not item.children %}
+        <li class="sidebar-li-0">
+            <span>{{ branch }}</span>
+              {% if item.link %}
+                  <a href="/{{ item.link }}">{{ item.title }}</a>
+              {% else %}
+                  <span>{{ item.title }}</span>
+              {% endif %} 
+        </li>
+    {% elif level == 1 %}
+        <li class="sidebar-li">
+            <span class="sidebar-prefix-1">{{ branch }}</span>
+            {% if item.link %}
+                <a href="/{{ item.link }}">{{ item.title }}</a>
+            {% else %}
+                <span>{{ item.title }}</span>
+            {% endif %}
+            {% if item.children %}
+                <ul class="sidebar-ul-inner">
+                    {% for child in item.children.values() %}
+                        {{ render_menu_item(
+                            child,
+                            level+1,
+                            loop.last,
+                            parent_branch ~ (level > 0 and (is_last and "    " or "&nbsp;│   ") or "")
+                        ) }}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </li>
+    {% else %}
+        <li class="sidebar-li">
+            <span class="sidebar-prefix">{{ branch }}</span>
+            {% if item.link %}
+                <a href="/{{ item.link }}">{{ item.title }}</a>
+            {% else %}
+                <span>{{ item.title }}</span>
+            {% endif %}
+            {% if item.children %}
+                <ul class="sidebar-ul-inner">
+                    {% for child in item.children.values() %}
+                        {{ render_menu_item(
+                            child,
+                            level+1,
+                            loop.last,
+                            parent_branch ~ (level > 0 and (is_last and "    " or "│ ") or "")
+                        ) }}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </li>
+    {% endif %}
+{% endmacro %}

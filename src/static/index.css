@@ -192,30 +192,73 @@ li > p {
     margin: 30px;
     border-right: 1px dashed var(--white);
     padding-right: 30px;
-    max-width: 250px;
+    max-width: 300px;
 }
 
 .sidebar-title {
     border-bottom: 1px dashed var(--white);
     padding-bottom: 10px;
-    width: 125px;
+    width: 100%;
 }
 
 .sidebar-ul {
-    margin-left: -20px;
-    margin-top: 40px;
+    list-style: none;
+    margin-top: 30px;
+    margin-left: -40px;
 }
+
+.sidebar-ul-inner, .sidebar-li {
+    list-style: none;
+}
+
+.sidebar-ul-inner {
+    margin-left: -10px;
+}
+
+.sidebar-ul-inner-1 {
+    margin-left: -20px;
+}
+
+.sidebar-li-0 {
+    list-style: "- ";
+    margin-left: 20px;
+}
+
+.sidebar-prefix {
+    margin-left: -40px;
+}
+
+.sidebar-collapsible > details { margin-bottom: 0.2rem; }
+.sidebar-collapsible > details > summary { cursor: pointer; }
 
 @media (max-width: 799px) {
     .sidebar{
         border-right: none;
-        border-bottom: 1px dashed var(--white); 
+        max-width: 100%;
     }
     .sidebar-title {
         border-bottom: none;
         padding-bottom: 10px;
-        width: 125px;
+        max-width: 100%;
+        border-bottom: 1px dashed var(--white);
     }
+}
+
+details > summary {
+    list-style: none;
+}
+details > summary::-webkit-details-marker {
+    display: none;
+}
+
+.sidebar-collapsible > details > summary::before {
+    content: ">";
+    font-size: 13px;
+}
+
+.sidebar-collapsible > details[open] > summary::before {
+    content: "∨";
+    font-size: 13px;
 }
 
 table {

@@ -1,6 +1,7 @@
 ---
 title: types
 desc: "the type system"
+weight: 10
 ---
 
 ```{title}

@@ -1,6 +1,7 @@
 ---
 title: models
 desc: the models system
+weight: 20
 ---
 
 ```{title}

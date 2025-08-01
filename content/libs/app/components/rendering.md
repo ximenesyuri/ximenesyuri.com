@@ -1,6 +1,7 @@
 ---
 title: rendering
 desc: rendering
+weight: 30
 ---
 
 ```{title}
@@ -16,16 +17,6 @@ In this documentation we will discuss the _rendering process_ in the `app` compo
 # Review
 
 Recall that the `app` component system is composed by _components_ which are entities of type `COMPONENT`. They are functions decorated with `@component` that receive arguments and return _jinja strings_, i.e, instances of `Jinja`. A component may have special variables, as `__depends_on__`.
-
-# Free Variables
-
-The _jinja strings_ follows the {jinja2} syntax and can contains certain _jinja vars_. When a _jinja var_ is in the _jinja string_ which returned by a function, it typically corresponds to one of the following cases:
-
-1. it is component argument;
-2. it is a local variable defined in the body of the component;
-3. it is another component listed in the `__depends_on__` argument.
-
-A _jinja var_  variables of the component are called _free jinja vars_.
 
 # Rendering
 

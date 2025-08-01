@@ -1,5 +1,6 @@
 ---
 title: lists of entities
+weight: 50
 ---
 
 # Primitive Types
