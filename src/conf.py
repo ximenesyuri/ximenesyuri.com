@@ -9,7 +9,6 @@ extensions = [
     'myst_parser',
     'toc',
     'tables',
-    'header',
     'autolink',
     'draft'
 ]

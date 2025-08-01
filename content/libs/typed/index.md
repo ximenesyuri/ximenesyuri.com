@@ -37,7 +37,7 @@ So, with `typed` you have a framework ensuring type safety by:
 
 # Code
 
-The library code is freely available in [github](https://github.com/ximenesyuri/typed).
+The library code is freely available at the Github repository [ximenesyuri/typed](https://github.com/ximenesyuri/typed).
 
 # Install
 
@@ -49,9 +49,4 @@ pip install git+https://github.com/ximenesyuri/typed
 With [py](https://github.com/ximenesyuri/py)
 ```bash
 py i ximenesyuri/typed  
-```
-
-# Docs
-
-```{toc-dir}
 ```

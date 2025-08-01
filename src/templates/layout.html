@@ -55,8 +55,15 @@
                 </ul>
             </div>
             {% endif %}
-
-            <main class="main">{{ body }}</main>
+            <div class="main">
+                {% if  'libs/' in pagename and not pagename == "libs/index" %}
+                    {% include './breadcrumb.html' %}
+                {% endif %}
+                {% if  'notes/' in pagename and not pagename == "notes/index" %}
+                    {% include './breadcrumb.html' %}
+                {% endif %}
+                <main>{{ body }}</main>
+            </div>
         </div>
         <footer class="footer">
             <p class="footer-text">

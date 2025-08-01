@@ -1,0 +1,21 @@
+{% set segments = pagename.split('/') %}
+{% set crumb_total_count = segments|length + (1 if pagename != master_doc else 0) %}
+{% if crumb_total_count > 1 %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+    {% set ns = namespace(path=[]) %}
+    {% for segment_name in segments %}
+        {% if not loop.last %}
+            {% set ns.path = ns.path + [segment_name] %}
+            <li class="breadcrumb-item">
+                {% if not loop.first %}<span class="breadcrumb-separator">/</span>{% endif %}<a href="/{{ ns.path | join('/') }}">{{ segment_name.replace('-', ' ').replace('_', ' ') }}</a>
+            </li>
+        {% else %}
+            <li class="breadcrumb-item active" aria-current="page">
+                <span class="breadcrumb-separator">/</span><a href="/{{ pagename }}">{{ segment_name.replace('-', ' ').replace('_', ' ') }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+    </ol>
+</nav>
+{% endif %}

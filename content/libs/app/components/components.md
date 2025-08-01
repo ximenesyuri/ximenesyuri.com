@@ -4,9 +4,6 @@ desc: components
 weight: 10
 ---
 
-```{title}
-```
-
 # About
 
 In the following we will briefly describe how the _components_ in `app` component system work.

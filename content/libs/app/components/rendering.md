@@ -4,9 +4,6 @@ desc: rendering
 weight: 30
 ---
 
-```{title}
-```
-
 # About
 
 In this documentation we will discuss the _rendering process_ in the `app` component system.

@@ -188,6 +188,13 @@ li > p {
     margin-bottom: 0px;
 }
 
+blockquote {
+    margin-top: 40px;
+    border-left: 2px solid var(--white);
+    padding-left: 20px;
+    margin-bottom: 40px;
+}
+
 .sidebar {
     margin: 30px;
     border-right: 1px dashed var(--white);
@@ -333,12 +340,26 @@ s0 {
     color: var(--white);
 }
 
-blockquote {
-    border-left: 2px solid var(--white);
-    padding-left: 20px;
-}
-
 .autolink {
     color: var(--green);
     text-decoration: underline;
 }
+
+.breadcrumb {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px dashed var(--white);
+}
+
+.breadcrumb-separator {
+    color: var(--white);
+}
+
+@media (max-width: 799px) {
+    .breadcrumb{
+        border-top: 1px dashed var(--white);
+    }
+

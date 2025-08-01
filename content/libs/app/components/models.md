@@ -4,9 +4,6 @@ desc: models
 weight: 20
 ---
 
-```{title}
-```
-
 # About
 
 In this documentation we described the use of _models_ in the `app` component system.

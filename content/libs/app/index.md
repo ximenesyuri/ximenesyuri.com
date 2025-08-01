@@ -45,10 +45,3 @@ py i ximenesyuri/app
 # Code
 
 The code is available at the Github repository [ximenesyuri/app](https://github.com/ximenesyuri/app).
-
-# Docs
-
-```{toc-dir}
-```
-
-

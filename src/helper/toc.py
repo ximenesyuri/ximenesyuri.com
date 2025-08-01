@@ -8,6 +8,50 @@ from sphinx.util import logging
 
 logger = logging.getLogger(__name__)
 
+def extract_frontmatter_weight(project_srcdir, docname, possible_suffixes):
+    for suffix in possible_suffixes:
+        candidate = Path(project_srcdir) / (docname + suffix)
+        if candidate.is_file():
+            with candidate.open("rt", encoding="utf-8") as f:
+                text = f.read()
+            if text.startswith('---'):
+                block_end = text.find('---', 3)
+                if block_end != -1:
+                    block = text[3:block_end].strip()
+                    match = re.search(r'^weight:\s*([\'"]?)([\d]+)\1$', block, re.MULTILINE)
+                    if match:
+                        try:
+                            return int(match.group(2))
+                        except Exception:
+                            return None
+    return None
+
+def extract_frontmatter_draft(project_srcdir, docname, possible_suffixes):
+    for suffix in possible_suffixes:
+        candidate = Path(project_srcdir) / (docname + suffix)
+        if candidate.is_file():
+            with candidate.open("rt", encoding="utf-8") as f:
+                text = f.read()
+            if text.startswith('---'):
+                block_end = text.find('---', 3)
+                if block_end != -1:
+                    block = text[3:block_end].strip()
+                    try:
+                        data = yaml.safe_load(block)
+                        if isinstance(data, dict):
+                            draft_val = data.get("draft")
+                            if isinstance(draft_val, bool):
+                                return draft_val
+                            if isinstance(draft_val, str):
+                                if draft_val.strip().lower() in ("true", "yes", "on", "1"):
+                                    return True
+                        return False
+                    except Exception:
+                        if re.search(r'^draft:\s*(true|True|yes|on|1)\s*$', block, re.MULTILINE):
+                            return True
+                        return False
+    return False
+
 def try_read_frontmatter_title(project_srcdir, docname, possible_suffixes):
     import logging
     logger = logging.getLogger(__name__)
@@ -57,7 +101,6 @@ class TocTransform(SphinxTransform):
             self.process_page_toc(node)
 
     def process_page_toc(self, placeholder_node):
-        logger = logging.getLogger(__name__)
         toc_list_items = []
         section_nodes = list(self.document.traverse(nodes.section))
 
@@ -138,9 +181,11 @@ class TocDirTransform(SphinxTransform):
             other_doc_path_source = Path(self.env.doc2path(other_docname))
             if not other_doc_path_source.is_absolute():
                 other_doc_path_source = Path(self.app.srcdir) / other_doc_path_source
-            if (other_doc_path_source.parent == current_dir_source and
-                other_docname != docname and
-                Path(other_docname).stem != 'index'):
+            if (
+                other_doc_path_source.parent == current_dir_source
+                and other_docname != docname
+                and Path(other_docname).stem != "index"
+            ):
                 sibling_docnames.append(other_docname)
 
         if hasattr(self.env.config, "source_suffix"):
@@ -155,59 +200,105 @@ class TocDirTransform(SphinxTransform):
         else:
             suffixes = [".md", ".rst"]
 
+        toc_entries = []
         for other_docname in sibling_docnames:
-            calculated_link_text = None
             metadata = self.env.metadata.get(other_docname, {})
-            frontmatter_title = metadata.get('title')
-            log_note = ""
+            is_draft = False
+            if "draft" in metadata:
+                dval = metadata["draft"]
+                if dval is True or (isinstance(dval, str) and dval.strip().lower() in ("true", "yes", "on", "1")):
+                    is_draft = True
+            else:
+                is_draft = extract_frontmatter_draft(self.app.srcdir, other_docname, suffixes)
 
+            if is_draft:
+                logger.info(f"[toc-dir] Skipping draft file: {other_docname}")
+                continue
+
+            weight = None
+            frontmatter_title = None
+            if "weight" in metadata:
+                try:
+                    weight = int(str(metadata["weight"]))
+                except Exception:
+                    weight = None
+
+            if weight is None:
+                weight = extract_frontmatter_weight(self.app.srcdir, other_docname, suffixes)
+
+            frontmatter_title = metadata.get("title")
             if not frontmatter_title:
-                logger.info(f"[toc-dir debug] Attempting direct read for '{other_docname}' in {self.app.srcdir} with suffixes {suffixes}")
-                found_title = try_read_frontmatter_title(self.app.srcdir, other_docname, suffixes)
-                if found_title:
-                    frontmatter_title = found_title
-                    log_note += " (frontmatter file read)"
-
+                frontmatter_title = try_read_frontmatter_title(self.app.srcdir, other_docname, suffixes)
+            link_text = None
             if frontmatter_title:
-                calculated_link_text = str(frontmatter_title).strip()
+                link_text = str(frontmatter_title).strip()
             else:
                 title_node = self.env.titles.get(other_docname)
                 if title_node:
                     text = title_node.astext().strip()
                     if text and text != "<no title>":
-                        calculated_link_text = text.replace("<no title>", "").strip()
-                        log_note += " (Sphinx title)"
-            if not calculated_link_text:
-                calculated_link_text = ' '.join([word.capitalize() for word in Path(other_docname).stem.replace('-', ' ').replace('_', ' ').split()])
-                log_note += " (filename fallback)"
+                        link_text = text.replace("<no title>", "").strip()
+            if not link_text:
+                link_text = " ".join(
+                    [
+                        word.capitalize()
+                        for word in Path(other_docname)
+                        .stem.replace("-", " ")
+                        .replace("_", " ")
+                        .split()
+                    ]
+                )
 
-            link_text = calculated_link_text
             other_doc_output_path = Path(self.app.builder.get_outfilename(other_docname))
             try:
                 src_dir = current_doc_output_path.parent
                 target_path = other_doc_output_path
                 relative_uri = target_path.relative_to(src_dir).as_posix()
             except ValueError:
-                logger.warning(f"Could not determine relative path between {current_doc_output_path} and {other_doc_output_path}. Falling back.", type="toc_generator")
+                logger.warning(
+                    f"Could not determine relative path between {current_doc_output_path} and {other_doc_output_path}. Falling back.",
+                    type="toc_generator",
+                )
                 relative_uri = other_doc_output_path.name
+
+            toc_entries.append({
+                "docname": other_docname,
+                "weight": weight,
+                "link_text": link_text,
+                "relative_uri": relative_uri
+            })
+
+        ordered_entries = sorted(
+            toc_entries,
+            key=lambda e: (e["weight"] is None, e["weight"] if e["weight"] is not None else 0, e["link_text"].lower()),
+        )
+
+        for entry in ordered_entries:
             list_item = nodes.list_item()
             paragraph = nodes.paragraph()
-            reference = nodes.reference('', '', internal=True, refuri=relative_uri, name=link_text)
-            reference += nodes.Text(link_text)
+            reference = nodes.reference(
+                "", "", internal=True, refuri=entry["relative_uri"], name=entry["link_text"]
+            )
+            reference += nodes.Text(entry["link_text"])
             paragraph += reference
             list_item += paragraph
             toc_list_items.append(list_item)
-            logger.info(f"[toc-dir] Added directory file: '{other_docname}' (Text: {link_text}, URI: {relative_uri}){log_note}")
+            logger.info(
+                f"[toc-dir] Added directory file: '{entry['docname']}' "
+                f"(Text: {entry['link_text']}, URI: {entry['relative_uri']}, Weight: {entry['weight']})"
+            )
 
         if toc_list_items:
             toc_container = nodes.enumerated_list()
-            toc_container['enumtype'] = 'arabic'
-            toc_container['prefix'] = ''
-            toc_container['suffix'] = '.'
+            toc_container["enumtype"] = "arabic"
+            toc_container["prefix"] = ""
+            toc_container["suffix"] = "."
             for item in toc_list_items:
                 toc_container += item
             placeholder_node.replace_self(toc_container)
-            logger.info(f"Injected directory TOC with {len(toc_list_items)} items into {self.env.docname}.")
+            logger.info(
+                f"Injected directory TOC with {len(toc_list_items)} items into {self.env.docname}."
+            )
         else:
             logger.info(f"No other files found in the directory for '{docname}' to add to TOC.")
             placeholder_node.replace_self(nodes.paragraph())
