@@ -80,9 +80,18 @@ Researcher <br></p>
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/07/31 at 23:08</purple><br>
-                Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/01 at 17:48</purple>.<br>
+                Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.matchMedia("(max-width: 768px)").matches) {
+                document.querySelectorAll('.sidebar-collapsible > details[open]').forEach(function(details){
+                    details.removeAttribute('open');
+                });
+            }
+        });
+    </script>
     </body>  
 </html>
