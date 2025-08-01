@@ -198,7 +198,7 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">├─</span>
             
-                <a href="/libs/app/components">components</a>
+                <a href="/libs/app/components">component system</a>
             
             
                 <ul class="sidebar-ul-inner">
@@ -335,7 +335,7 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">└─</span>
             
-                <a href="/libs/app/app">app</a>
+                <a href="/libs/app/app">app system</a>
             
             
         </li>
@@ -380,12 +380,181 @@
             </div>
             
             
+            <div class="main">
+                
+                    
 
-            <main class="main"></main>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+    
+    
+        
+            
+            <li class="breadcrumb-item">
+                <a href="/libs">libs</a>
+            </li>
+        
+    
+        
+            
+            <li class="breadcrumb-item">
+                <span class="breadcrumb-separator">/</span><a href="/libs/app">app</a>
+            </li>
+        
+    
+        
+            
+            <li class="breadcrumb-item">
+                <span class="breadcrumb-separator">/</span><a href="/libs/app/components">components</a>
+            </li>
+        
+    
+        
+            <li class="breadcrumb-item active" aria-current="page">
+                <span class="breadcrumb-separator">/</span><a href="/libs/app/components/index">index</a>
+            </li>
+        
+    
+    </ol>
+</nav>
+
+                
+                
+                <main><section id="about">
+<h1>About<a class="headerlink" href="#about" title="Link to this heading"></a></h1>
+<p>Here you will find documentations on the <em>component system</em> of the <a class="autolink reference external" href="/libs/app">app</a> library.</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#about">About</a></p></li>
+<li><p><a class="reference internal" href="#overview-components">Overview: Components</a></p></li>
+<li><p><a class="reference internal" href="#overview-rendering">Overview: Rendering</a></p></li>
+<li><p><a class="reference internal" href="#overview-statics">Overview: Statics</a></p></li>
+<li><p><a class="reference internal" href="#docs">Docs</a></p></li>
+</ol>
+</section>
+<section id="overview-components">
+<h1>Overview: Components<a class="headerlink" href="#overview-components" title="Link to this heading"></a></h1>
+<p>The component system of <a class="autolink reference external" href="/libs/app">app</a> deals with <em>components</em>. These are typed functions (in the sense of <a class="autolink reference external" href="/libs/typed">typed</a>) which returns <em>jinja strings</em>, i.e, Python strings of type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>, which contains <a class="autolink reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> syntax. Components should also be defined using the <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> decorator.</p>
+<p>The typical way to define a component is to first define a model (in the sense of <a class="autolink reference external" href="/libs/typed">typed</a>) containing the <em>structure</em> of the component, and then take this model as argument:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">null</span><span class="p">,</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">model</span>
+<span class="linenos"> 3</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="nd">@model</span>
+<span class="linenos"> 6</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">:</span>
+<span class="linenos"> 7</span>    <span class="n">some_var</span><span class="p">:</span> <span class="n">Optional</span><span class="p">(</span><span class="n">SomeType</span><span class="p">,</span> <span class="n">null</span><span class="p">(</span><span class="n">SomeType</span><span class="p">))</span>
+<span class="linenos"> 8</span>    <span class="n">other_var</span><span class="p">:</span> <span class="n">Optional</span><span class="p">(</span><span class="n">OtherType</span><span class="p">,</span> <span class="n">null</span><span class="p">(</span><span class="n">OtherType</span><span class="p">))</span>
+<span class="linenos"> 9</span>    <span class="o">...</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="nd">@component</span>
+<span class="linenos">12</span><span class="k">def</span><span class="w"> </span><span class="nf">my_comp</span><span class="p">(</span><span class="n">my_comp</span><span class="p">:</span> <span class="n">MyModel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
+<span class="linenos">13</span>    <span class="o">...</span>
+<span class="linenos">14</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
+<span class="linenos">15</span><span class="s2">    ...</span>
+<span class="linenos">16</span><span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Components define a type <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> and there are three main operations between them, each of them corresponding to an arithmetic symbol:</p>
+<div class="captioned-table" id="table-1">
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>operation</p></th>
+<th class="head"><p>symbol</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>join</p></td>
+<td><p>+</p></td>
+<td><p>join the jinja strings of the components</p></td>
+</tr>
+<tr class="row-odd"><td><p>concat</p></td>
+<td><p>*</p></td>
+<td><p>put a jinja string inside the other</p></td>
+</tr>
+<tr class="row-even"><td><p>eval</p></td>
+<td><p>/</p></td>
+<td><p>fixes some arguments</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="table-caption reference external" href="#table-1">table 1: component operations</a></p>
+</div>
+<p>This means that we can construct complex components through <em>component equations</em>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">my_comp</span> <span class="o">=</span> <span class="p">(</span>
+<span class="linenos">2</span>    <span class="p">(</span><span class="n">comp_1</span> <span class="o">*</span> <span class="n">comp_2</span><span class="p">)</span> <span class="o">+</span>
+<span class="linenos">3</span>    <span class="p">(</span><span class="n">comp_3</span> <span class="o">/</span> <span class="p">{</span><span class="s1">&#39;some_var&#39;</span><span class="p">:</span> <span class="n">some_value</span><span class="p">})</span>
+<span class="linenos">4</span><span class="p">)</span> <span class="o">/</span> <span class="p">{</span><span class="s2">&quot;other_var&quot;</span><span class="p">:</span> <span class="n">other_value</span><span class="p">}</span>
+</pre></div>
+</div>
+<blockquote id="rem-1">
+<div><p><a class="reference internal" href="#rem-1">Remark 1</a>. The modules <code class="docutils literal notranslate"><span class="pre">app.models</span></code> and <code class="docutils literal notranslate"><span class="pre">app.components</span></code> provides, respectively, a plethora of already defined models and corresponding components, one for each builtin HTML tag.</p>
+</div></blockquote>
+</section>
+<section id="overview-rendering">
+<h1>Overview: Rendering<a class="headerlink" href="#overview-rendering" title="Link to this heading"></a></h1>
+<p>After being constructed, components can be <em>rendered</em>, producing raw HTML. This is done using a typed function <code class="docutils literal notranslate"><span class="pre">render</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">html</span> <span class="o">=</span> <span class="n">render</span><span class="p">(</span><span class="n">my_comp</span><span class="p">,</span> <span class="o">**</span><span class="n">context</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To render a component one needs to pass a <em>context</em>, which is a dictionary. It attaches values to each argument of the component, as well as to other “free variables”.</p>
+<p>The rendering process can be customized to produce optimized raw HTML by passing certain special variables to <code class="docutils literal notranslate"><span class="pre">render</span></code>:</p>
+<div class="captioned-table" id="id1">
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>argument</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>__minified__</p></td>
+<td><p>Bool</p></td>
+<td><p>return minified HTML</p></td>
+</tr>
+<tr class="row-odd"><td><p>__styled__</p></td>
+<td><p>Bool</p></td>
+<td><p>auto-generate &lt;style&gt; for inline classes</p></td>
+</tr>
+<tr class="row-even"><td><p>__scripts__</p></td>
+<td><p>List(Script)</p></td>
+<td><p>include given script data in the HTML</p></td>
+</tr>
+<tr class="row-odd"><td><p>__assets__</p></td>
+<td><p>List(Asset)</p></td>
+<td><p>include given asset data in the HTML</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="table-caption reference external" href="#id1">table 1: render variables</a></p>
+</div>
+<blockquote id="rem-2">
+<div><p><a class="reference internal" href="#rem-2">Remark 2</a>. During the construction of a component you can preview it using the <code class="docutils literal notranslate"><span class="pre">preview</span></code> function, which renders the component and creates a server that looks automatically for updates in the component file.</p>
+</div></blockquote>
+</section>
+<section id="overview-statics">
+<h1>Overview: Statics<a class="headerlink" href="#overview-statics" title="Link to this heading"></a></h1>
+<p>… TBA …</p>
+</section>
+<section id="docs">
+<h1>Docs<a class="headerlink" href="#docs" title="Link to this heading"></a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="components.html">components</a></p></li>
+<li><p><a class="reference internal" href="models.html">models</a></p></li>
+<li><p><a class="reference internal" href="rendering.html">rendering</a></p></li>
+<li><p><a class="reference internal" href="statics.html">statics</a></p></li>
+<li><p><a class="reference internal" href="compatibility.html">compatibility</a></p></li>
+<li><p><a class="reference internal" href="entities.html">list of entities</a></p></li>
+</ol>
+</section>
+</main>
+            </div>
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/01 at 17:48</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/01 at 21:10</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
