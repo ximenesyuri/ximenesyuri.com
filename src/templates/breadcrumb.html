@@ -8,11 +8,11 @@
         {% if not loop.last %}
             {% set ns.path = ns.path + [segment_name] %}
             <li class="breadcrumb-item">
-                {% if not loop.first %}<span class="breadcrumb-separator">/</span>{% endif %}<a href="/{{ ns.path | join('/') }}">{{ segment_name.replace('-', ' ').replace('_', ' ') }}</a>
+                {% if not loop.first %}<span class="breadcrumb-separator">/</span>{% endif %}<a href="/{{ ns.path | join('/') }}">{{ segment_name }}</a>
             </li>
         {% else %}
             <li class="breadcrumb-item active" aria-current="page">
-                <span class="breadcrumb-separator">/</span><a href="/{{ pagename }}">{{ segment_name.replace('-', ' ').replace('_', ' ') }}</a>
+                <span class="breadcrumb-separator">/</span><a href="/{{ pagename }}">{{ segment_name }}</a>
             </li>
         {% endif %}
     {% endfor %}

@@ -324,22 +324,6 @@ table tbody {
     display: inline;
 }
 
-h0 {
-    font-size: 25px;
-    font-weight: 400;
-    color: var(--purple2);
-}
-
-h0::after {
-    content: ":";
-}
-
-s0 {
-    font-size: 25px;
-    font-weight: 400;
-    color: var(--white);
-}
-
 .autolink {
     color: var(--green);
     text-decoration: underline;
@@ -362,4 +346,8 @@ s0 {
     .breadcrumb{
         border-top: 1px dashed var(--white);
     }
+}
 
+version {
+    text-decoration: underline;
+}

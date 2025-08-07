@@ -10,7 +10,8 @@ extensions = [
     'toc',
     'tables',
     'autolink',
-    'draft'
+    'draft',
+    'version'
 ]
 
 source_suffix = ['.md']
