@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>yx - notes/math/0-basis</title>
+        <link rel="stylesheet" href="/_static/index.css">
+        <link rel="stylesheet" href="/_static/pygments.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                renderMathInElement(document.body, {
+                  delimiters: [
+                      {left: ':::tex', right: ':::', display: true},
+                      {left: ':tex', right: ':', display: false},
+                  ],
+                  throwOnError : false
+                });
+            });
+        </script>
+    </head>     
+    <body>
+        <header class="header">
+            <div class="menu-div">
+                
+                    <a href="/" class="menu-item">home</a>
+                
+                    <a href="/about" class="menu-item">about</a>
+                
+                    <a href="/education" class="menu-item">education</a>
+                
+                    <a href="/research" class="menu-item">research</a>
+                
+                    <a href="/publications" class="menu-item">publications</a>
+                
+                    <a href="/work" class="menu-item">work</a>
+                
+                    <a href="/setup" class="menu-item">setup</a>
+                
+                    <a href="/libs" class="menu-item">libs</a>
+                
+                    <a href="/notes" class="menu-item">notes</a>
+                
+            </div>    
+        </header>
+        <div class="content">
+            
+            
+            
+            <div class="sidebar">
+                <span class="sidebar-title">notes menu</span>
+                <ul class="sidebar-ul">
+                    
+                        
+    
+    
+
+    
+        <li class="sidebar-li-0">
+            <span></span>
+              
+                  <a href="/notes/dev">dev</a>
+               
+        </li>
+    
+
+                    
+                        
+    
+    
+
+    
+        <li class="sidebar-collapsible">
+            <details open>
+                <summary>
+                  <span></span>
+                  
+                      <a href="/notes/math">math</a>
+                  
+                </summary>
+                <ul class="sidebar-ul-inner-1">
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix-1">├─</span>
+            
+                <a href="/notes/math/README">README</a>
+            
+            
+        </li>
+    
+
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix-1">└─</span>
+            
+                <a href="/notes/math/0-basis">base</a>
+            
+            
+        </li>
+    
+
+                    
+                </ul>
+            </details>
+        </li>
+    
+
+                    
+                        
+    
+    
+
+    
+        <li class="sidebar-li-0">
+            <span></span>
+              
+                  <a href="/notes/random">random</a>
+               
+        </li>
+    
+
+                    
+                </ul>
+            </div>
+            
+            <div class="main">
+                
+                
+                    
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+    
+    
+        
+            
+            <li class="breadcrumb-item">
+                <a href="/notes">notes</a>
+            </li>
+        
+    
+        
+            
+            <li class="breadcrumb-item">
+                <span class="breadcrumb-separator">/</span><a href="/notes/math">math</a>
+            </li>
+        
+    
+        
+            <li class="breadcrumb-item active" aria-current="page">
+                <span class="breadcrumb-separator">/</span><a href="/notes/math/0-basis">0 basis</a>
+            </li>
+        
+    
+    </ol>
+</nav>
+
+                
+                <main><p><u>version: 1</u></p>
+<section id="sobre">
+<h1>Sobre<a class="headerlink" href="#sobre" title="Link to this heading"></a></h1>
+<p>Nestas notas, introduziremos os conceitos de <em>proposição</em>, <em>predicados</em> e <em>conectivos</em> , os quais serão a base de toda nossa discussão futura.</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#sobre">Sobre</a></p></li>
+<li><p><a class="reference internal" href="#conceitos-primitivos">Conceitos Primitivos</a></p></li>
+<li><p><a class="reference internal" href="#afirmacoes">Afirmações</a></p></li>
+<li><p><a class="reference internal" href="#simbolos-e-relacoes">Símbolos e Relações</a></p></li>
+<li><p><a class="reference internal" href="#relacoes-tex-n-arias">Relações :tex n:-árias</a></p></li>
+<li><p><a class="reference internal" href="#conectivos">Conectivos</a></p></li>
+<li><p><a class="reference internal" href="#exemplos">Exemplos</a></p></li>
+<li><p><a class="reference internal" href="#conectivos-derivados">Conectivos Derivados</a></p></li>
+<li><p><a class="reference internal" href="#equivalencia">Equivalência</a></p></li>
+</ol>
+</section>
+<section id="conceitos-primitivos">
+<h1>Conceitos Primitivos<a class="headerlink" href="#conceitos-primitivos" title="Link to this heading"></a></h1>
+<p>A Matemática trata da definição, construção e estudo de <em>conceitos</em>. Novos conceitos são definidos e novas construções são realizadas partindo-se de conceitos preexistentes. Isso significa que para fazer Matemática são necessários certos conceitos iniciais, os quais se assume existentes <em>a priori</em>, e que não são construídos por nenhum outro conceito prévio. Tais conceitos são chamados de <em>primitivos</em>.  Tratam-se do ponto de partida para desenvolver nova Matemática.</p>
+<p>Diferentes escolas estudam os fundamentos da Matemática de diferentes maneiras, assumindo como primitivos diferentes conceitos. Para nossa discussão futura, é suficiente que assumamos como primitivos conceitos bastante intuitivos (mais filosoficamente bastante complexos), como:</p>
+<ol class="arabic simple">
+<li><p>algo ser <em>verdadeiro</em> ou ser <em>falso</em>;</p></li>
+<li><p>o ato de <em>contar</em>;</p></li>
+<li><p>algo ser um <em>símbolo</em>;</p></li>
+<li><p>algo ter uma <em>dependência</em> de certos símbolos.</p></li>
+</ol>
+</section>
+<section id="afirmacoes">
+<h1>Afirmações<a class="headerlink" href="#afirmacoes" title="Link to this heading"></a></h1>
+<p>Para nós, <em>afirmações</em> (também chamadas de <em>proposições</em>) são símbolos especiais :tex p, q, …: os quais se apresentam como <em>verdadeiros</em> ou <em>falsos</em>. Isso significa que, para uma afirmação, não há meio termo: ou é uma <em>verdade</em> ou não a é.</p>
+</section>
+<section id="simbolos-e-relacoes">
+<h1>Símbolos e Relações<a class="headerlink" href="#simbolos-e-relacoes" title="Link to this heading"></a></h1>
+<p>Dados símbolos :tex x, y, z, …:, pensamos em uma <em>relação</em> entre eles como sendo uma <em>afirmação</em> que depende de :tex x, y, z:.</p>
+<blockquote id="notation-1">
+<div><p><a class="reference internal" href="#notation-1">Notation</a>. Se :tex \varphi: é um relação, escrevemos :tex \varphi(x, y, z, …): para representar o fato de que os símbolos :tex x, y, z, …: se relacionam através dela. Isto é, que a afirmação :tex \varphi: é <em>verdadeira</em> para os símbolos :tex x, y, z, …:.</p>
+</div></blockquote>
+<blockquote id="obs-1">
+<div><p><a class="reference internal" href="#obs-1">Observação 1</a>. Diferentes símbolos podem (ou não) se relacionar através de uma mesma relação. Em outras palavras, uma afirmação :tex \varphi(x, y, z, …): pode ser verdadeira para certos símbolos, mas falsa para outros. Assim: <em>relações entre símbolos são independentes de símbolos específicos</em>.</p>
+</div></blockquote>
+</section>
+<section id="relacoes-tex-n-arias">
+<h1>Relações :tex n:-árias<a class="headerlink" href="#relacoes-tex-n-arias" title="Link to this heading"></a></h1>
+<p>Lembre-se que estamos assumindo como primitivo o ato de <em>contar símbolos</em>. Isso significa que sentenças como “dados <em>dois</em> símbolos”, ou como “dada uma relação entre <em>três</em> símbolos” fazem sentido.</p>
+<p>Com a possibilidade de contagem, podemos definir classes particulares de relações:</p>
+<blockquote id="def-1">
+<div><p><a class="reference internal" href="#def-1">Definition 1</a>. Uma relação :tex \varphi: entre símbolos é dita ser <em>de grau :tex n:</em> (ou <em>:tex n:-ária</em>) se ela é uma relação entre precisamente :tex n: símbolos.</p>
+</div></blockquote>
+<p>Assim, em uma relação de grau :tex n:, a expressão :tex \varphi(x_1, x_2, …, x_n): só faz sentido para dados :tex n: símbolos :tex x_1, x_2, …, x_n:.</p>
+<p>Um caso bastante particular é o das relações de grau 2, também chamadas de <em>relações binárias</em> (ao invés de <em>2-árias</em>).</p>
+<blockquote id="notation-2">
+<div><p><a class="reference internal" href="#notation-2">Notation</a>. Se :tex \varphi: é uma relação binária, costuma-se escrever :tex x\varphi y: ao invés de :tex \varphi(x, y):. Esse tipo de notação é chamada de <a class="reference external" href="https://en.m.wikipedia.org/wiki/Infix_notation">notação infixa</a>.</p>
+</div></blockquote>
+<p>Tem-se, ainda, as <em>relações unárias</em> (também chamadas de <em>modalidades</em>), que são aquelas de grau 1.</p>
+<blockquote id="notation-3">
+<div><p><a class="reference internal" href="#notation-3">Notation</a>. Se :tex \varphi: é uma relação unária, costuma-se escrever :tex \varphi x: ou :tex x \varphi: (a depender da relação) no lugar de :tex \varphi(x):.</p>
+</div></blockquote>
+<blockquote id="exercise-1">
+<div><p><a class="reference internal" href="#exercise-1">Exercise 1</a>. Você consegue imaginar o que seria uma relação 0-ária?</p>
+</div></blockquote>
+</section>
+<section id="conectivos">
+<h1>Conectivos<a class="headerlink" href="#conectivos" title="Link to this heading"></a></h1>
+<p>Uma classe particular de relações são os <em>conectivos</em>: tratam-se, pois, de relações que não ocorrem entre símbolos arbitrários, mas sim entre afirmações.</p>
+<p>Assim, em outras palavras:</p>
+<blockquote id="def-2">
+<div><p><a class="reference internal" href="#def-2">Definition 2</a>. Um <em>conectivo</em> é uma afirmação que depende de outras afirmações.</p>
+</div></blockquote>
+<p>Todo conectivo é uma relação, de modo que faz sentido falar de <em>conectivos de grau :tex n:</em>, os quais são afirmações que dependem precisamente de outras :tex n: afirmações.</p>
+<p>Em especial, podemos falar de <em>conectivos unários</em> (ou de <em>de grau 1</em>) e de <em>conectivos binários</em> (ou <em>de grau 2</em>).</p>
+</section>
+<section id="exemplos">
+<h1>Exemplos<a class="headerlink" href="#exemplos" title="Link to this heading"></a></h1>
+<p>Apresentamos, agora, os principais exemplos de conectivos.</p>
+<p>O primeiro exemplo nos permite considerar o <em>oposto</em> (ou <em>negação</em>) de uma proposição.</p>
+<blockquote id="example-1">
+<div><p><a class="reference internal" href="#example-1">Example 1</a> (negação). Tem-se um conectivo unário :tex \neg: chamado de <em>negação</em>. A relação :tex \neg p: se caracteriza pelo fato de que se :tex p: é uma afirmação verdadeira (resp. falsa), então :tex \neg p: é uma afirmação falsa (resp. verdadeira).</p>
+</div></blockquote>
+<blockquote id="obs-2">
+<div><p><a class="reference internal" href="#obs-2">Observação 2</a>. Se uma afirmação :tex p: é verdadeira, então sua negação :tex \neg p: é falsa. Isso significa que para <em>definir</em> uma proposição, basta dizer as condições sob as quais ela é verdadeira. Afinal, as condições para que seja falsa serão as mesmas condições para que seja verdadeira, mas aplicadas à sua negação.</p>
+</div></blockquote>
+<p>Outros exemplos de conectivos são a <em>conjunção</em> e a <em>disjunção</em> (denotadas, respectivamente, por :tex \wedge: e :tex \vee:).</p>
+<blockquote id="example-2">
+<div><p><a class="reference internal" href="#example-3">Example 2</a> (conjunção). Dadas duas proposições :tex p, q:, a <em>conjunção</em> entre elas é a afirmação :tex p \wedge q: caracterizada pelo fato de ser verdadeira precisamente quando :tex p: e :tex q: são verdadeiras ou quando ambas são falsas.</p>
+</div></blockquote>
+<blockquote id="example-3">
+<div><p><a class="reference internal" href="#example-4">Example 3</a> (disjunção). Em contrapartida, a <em>disjunção</em> entre :tex p, q: é a afirmação :tex p \vee q: que é verdadeira se ao menos uma afirmação entre :tex p: e :tex q: é verdadeira.</p>
+</div></blockquote>
+<p>Outro exemplo de conectivo binário é a <em>implicação</em> (:tex \to:).</p>
+<blockquote id="example-4">
+<div><p><a class="reference internal" href="#example-2">Example 4</a> (implicação). Diz-se que uma proposição :tex p: <em>implica</em> outra proposição :tex q: (escrevendo-se :tex p \to q:) se o fato de :tex p: ser  verdadeira é suficiente para se concluir que :tex q: é também verdadeira.</p>
+</div></blockquote>
+<p>Por fim, temos o exemplo da implicação mútua.</p>
+<blockquote id="example-5">
+<div><p><a class="reference internal" href="#example-2">Example 5</a> (implicação mútua). Duas proposições :tex p, q: estão relacionadas por <em>implicação mútua</em> (escrevendo-se :tex p \leftrightarrow q:) quando ambas são verdadeiras ou quando ambas são falsas. Em outras palavras, :tex p \leftrightarrow q: é verdadeira (resp. falsa) precisamente quando tanto :tex p: quando :tex q: são verdadeiras (resp. falsas).</p>
+</div></blockquote>
+</section>
+<section id="conectivos-derivados">
+<h1>Conectivos Derivados<a class="headerlink" href="#conectivos-derivados" title="Link to this heading"></a></h1>
+<p>Podemos definir novos conectivos a partir de conectivos já existentes. Por exemplo, dado o conectivo binário :tex \wedge: e o conectivo unário :tex \neg:, podemos definir dois novos conectivos :tex \neg\wedge: e  :tex \wedge \neg:, tais que:</p>
+<ol class="arabic simple">
+<li><p>:tex p (\neg\wedge) q: é verdadeiro precisamente quando :tex (\neg p)\wedge q: é verdadeiro</p></li>
+<li><p>:tex p (\wedge \neg) q: é verdadeiro precisamente quando :tex p \wedge (\neg q): é verdadeiro.</p></li>
+</ol>
+<blockquote id="exercise-2">
+<div><p><a class="reference internal" href="#exercise-2">Exercise 2)</a>). Divirta-se definindo novos conectivos derivados.</p>
+</div></blockquote>
+</section>
+<section id="equivalencia">
+<h1>Equivalência<a class="headerlink" href="#equivalencia" title="Link to this heading"></a></h1>
+<p>Diferentes conectivos podem ser <em>equivalentes</em> entre si.</p>
+<blockquote id="def-3">
+<div><p><a class="reference internal" href="#def-3">Definition 3</a>. Dois conectivos :tex \alpha: e :tex \beta, …: são ditos serem <em>equivalentes</em> se:</p>
+<ol class="arabic simple">
+<li><p>possuem o mesmo grau, isto é, são ambos :tex n:-ários para um mesmo :tex n:;</p></li>
+<li><p>para quaisquer sejam as proposições :tex p_1, p_2, …, p_n:, tem-se uma relação de implicação mútua entre :tex \alpha(p_1, p_2, …, p_n): e :tex \beta(p_1, p_2, …, p_n):.</p></li>
+</ol>
+</div></blockquote>
+<blockquote id="notation-4">
+<div><p><a class="reference internal" href="#notation-4">Notation</a>. Se dois conectivos :tex \alpha, \beta: são equivalentes, escreve-se :tex \alpha \equiv \beta:.</p>
+</div></blockquote>
+<p>Os seguintes exercícios nos ensinam equivalentes formas de mostrar que duas proposição estão relacionadas por implicação mútua.</p>
+<blockquote id="exercise-3">
+<div><p><a class="reference internal" href="#exercise-2">Exercise 3</a>.</p>
+<ol class="arabic simple">
+<li><p>Convença-se de que, independente de quais forem as proposições :tex p, q:, tem-se uma relação de implicação mútua entre :tex p \to q: e :tex (\neg q) \to (\neg p):.</p></li>
+<li><p>Defina um conectivo derivado :tex \to_\neg: que represente :tex(\neg q) \to (\neg p):.</p></li>
+<li><p>Conclua que :tex \to: e :tex \to_\neg: são equivalentes.</p></li>
+</ol>
+</div></blockquote>
+<blockquote id="exercise-4">
+<div><p><a class="reference internal" href="#exercise-3">Exercise 4</a>. Partindo do exercício anterior:</p>
+<ol class="arabic simple">
+<li><p>Mostre que :tex p \leftrightarrow q: se relaciona via implicação mútua com :tex (p \to q)\wedge (\neg p \to \neq q ):.</p></li>
+<li><p>Defina um conectivo derivado :tex \to_{\wedge,\neg}: para :tex (p \to q)\wedge (\neg p \to \neq q ):.</p></li>
+<li><p>Conclua que :tex \leftrightarrow \equiv \to_{\wedge,\neg}:.</p></li>
+</ol>
+</div></blockquote>
+<blockquote id="exercise-5">
+<div><p><a class="reference internal" href="#exercise-5">Exercise 5</a>.</p>
+<ol class="arabic simple">
+<li><p>Mostre que há também uma implicação mútua entre :tex p \leftrightarrow q: e :tex (p \wedge q) \vee ((\neg p) \wedge (\neg q)):.</p></li>
+<li><p>Defina um conectivo derivado para :tex (p \wedge q) \vee ((\neg p) \wedge (\neg q)):.</p></li>
+<li><p>Conclua que ele é equivalente ao conectivo :tex \leftrightarrow:.</p></li>
+</ol>
+</div></blockquote>
+</section>
+</main>
+            </div>
+        </div>
+        <footer class="footer">
+            <p class="footer-text">
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/07 at 19:55</purple>.<br>
+                Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
+            </p>
+        </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.matchMedia("(max-width: 768px)").matches) {
+                document.querySelectorAll('.sidebar-collapsible > details[open]').forEach(function(details){
+                    details.removeAttribute('open');
+                });
+            }
+        });
+    </script>
+    </body>  
+</html>
