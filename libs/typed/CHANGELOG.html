@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>yx - libs/typed/CHANGELOG</title>
+        <link rel="stylesheet" href="/_static/index.css">
+        <link rel="stylesheet" href="/_static/pygments.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                renderMathInElement(document.body, {
+                  delimiters: [
+                      {left: ':::tex', right: ':::', display: true},
+                      {left: ':tex', right: ':', display: false},
+                  ],
+                  throwOnError : false
+                });
+            });
+        </script>
+    </head>     
+    <body>
+        <header class="header">
+            <div class="menu-div">
+                
+                    <a href="/" class="menu-item">home</a>
+                
+                    <a href="/about" class="menu-item">about</a>
+                
+                    <a href="/education" class="menu-item">education</a>
+                
+                    <a href="/research" class="menu-item">research</a>
+                
+                    <a href="/publications" class="menu-item">publications</a>
+                
+                    <a href="/work" class="menu-item">work</a>
+                
+                    <a href="/setup" class="menu-item">setup</a>
+                
+                    <a href="/libs" class="menu-item">libs</a>
+                
+                    <a href="/notes" class="menu-item">notes</a>
+                
+            </div>    
+        </header>
+        <div class="content">
+            
+            
+            <div class="sidebar">
+                <span class="sidebar-title">libs menu</span>
+                <ul class="sidebar-ul">
+                    
+                        
+    
+    
+
+    
+        <li class="sidebar-collapsible">
+            <details open>
+                <summary>
+                  <span></span>
+                  
+                      <a href="/libs/typed">typed</a>
+                  
+                </summary>
+                <ul class="sidebar-ul-inner-1">
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix-1">├─</span>
+            
+                <a href="/libs/typed/types">types</a>
+            
+            
+        </li>
+    
+
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix-1">├─</span>
+            
+                <a href="/libs/typed/models">models</a>
+            
+            
+        </li>
+    
+
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix-1">├─</span>
+            
+                <a href="/libs/typed/errors">errors</a>
+            
+            
+        </li>
+    
+
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix-1">├─</span>
+            
+                <a href="/libs/typed/examples">examples</a>
+            
+            
+        </li>
+    
+
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix-1">├─</span>
+            
+                <a href="/libs/typed/entities">lists of entities</a>
+            
+            
+        </li>
+    
+
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix-1">└─</span>
+            
+                <a href="/libs/typed/CHANGELOG">CHANGELOG</a>
+            
+            
+        </li>
+    
+
+                    
+                </ul>
+            </details>
+        </li>
+    
+
+                    
+                        
+    
+    
+
+    
+        <li class="sidebar-collapsible">
+            <details open>
+                <summary>
+                  <span></span>
+                  
+                      <a href="/libs/app">app</a>
+                  
+                </summary>
+                <ul class="sidebar-ul-inner-1">
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix-1">├─</span>
+            
+                <a href="/libs/app/components">component system</a>
+            
+            
+                <ul class="sidebar-ul-inner">
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix">&nbsp;│   &nbsp;&nbsp;├─</span>
+            
+                <a href="/libs/app/components/components">components</a>
+            
+            
+        </li>
+    
+
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix">&nbsp;│   &nbsp;&nbsp;├─</span>
+            
+                <a href="/libs/app/components/models">models</a>
+            
+            
+        </li>
+    
+
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix">&nbsp;│   &nbsp;&nbsp;├─</span>
+            
+                <a href="/libs/app/components/rendering">rendering</a>
+            
+            
+        </li>
+    
+
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix">&nbsp;│   &nbsp;&nbsp;├─</span>
+            
+                <a href="/libs/app/components/statics">statics</a>
+            
+            
+        </li>
+    
+
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix">&nbsp;│   &nbsp;&nbsp;├─</span>
+            
+                <a href="/libs/app/components/compatibility">compatibility</a>
+            
+            
+        </li>
+    
+
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix">&nbsp;│   &nbsp;&nbsp;└─</span>
+            
+                <a href="/libs/app/components/entities">list of entities</a>
+            
+            
+        </li>
+    
+
+                    
+                </ul>
+            
+        </li>
+    
+
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix-1">└─</span>
+            
+                <a href="/libs/app/app">app system</a>
+            
+            
+        </li>
+    
+
+                    
+                </ul>
+            </details>
+        </li>
+    
+
+                    
+                        
+    
+    
+
+    
+        <li class="sidebar-li-0">
+            <span></span>
+              
+                  <a href="/libs/cli">cli</a>
+               
+        </li>
+    
+
+                    
+                        
+    
+    
+
+    
+        <li class="sidebar-li-0">
+            <span></span>
+              
+                  <a href="/libs/utils">utils</a>
+               
+        </li>
+    
+
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="main">
+                
+                    
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+    
+    
+        
+            
+            <li class="breadcrumb-item">
+                <a href="/libs">libs</a>
+            </li>
+        
+    
+        
+            
+            <li class="breadcrumb-item">
+                <span class="breadcrumb-separator">/</span><a href="/libs/typed">typed</a>
+            </li>
+        
+    
+        
+            <li class="breadcrumb-item active" aria-current="page">
+                <span class="breadcrumb-separator">/</span><a href="/libs/typed/CHANGELOG">CHANGELOG</a>
+            </li>
+        
+    
+    </ol>
+</nav>
+
+                
+                
+                <main><section id="about">
+<h1>About<a class="headerlink" href="#about" title="Link to this heading"></a></h1>
+<p>Here you will find some important changelogs for the library <a class="autolink reference external" href="/libs/typed">typed</a>. For the full list of tags, see <a class="reference external" href="https://github.com/ximenesyuri/typed/tags">here</a>.</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#about">About</a></p></li>
+<li><p><a class="reference internal" href="#v0-1-9-extendable-models-and-exact-models">v0.1.9: extendable models and  exact models</a></p></li>
+<li><p><a class="reference internal" href="#v0-1-13-base-type-factories-as-functors">v0.1.13: base type factories as functors</a></p></li>
+<li><p><a class="reference internal" href="#v0-1-15-type-safety-for-variables">v0.1.15: type safety for variables</a></p></li>
+<li><p><a class="reference internal" href="#v0-3-0-compatibility-with-pydantic-and-dataclasses">v0.3.0: compatibility with pydantic and dataclasses</a></p></li>
+<li><p><a class="reference internal" href="#v0-4-0-inclusion-of-new-model-types">v0.4.0: inclusion of new model types</a></p></li>
+<li><p><a class="reference internal" href="#v0-4-1-optional-without-default-value">v0.4.1: optional without default value</a></p></li>
+<li><p><a class="reference internal" href="#v0-4-2-refactoring-function-types">v0.4.2: refactoring function types</a></p></li>
+<li><p><a class="reference internal" href="#v0-4-3-introduction-of-optional-decorator">v0.4.3: introduction of &#64;optional decorator</a></p></li>
+<li><p><a class="reference internal" href="#v0-4-4-introduction-of-model-attributes">v0.4.4: introduction of model attributes</a></p></li>
+</ol>
+</section>
+<section id="v0-1-9-extendable-models-and-exact-models">
+<h1>v0.1.9: extendable models and  exact models<a class="headerlink" href="#v0-1-9-extendable-models-and-exact-models" title="Link to this heading"></a></h1>
+<p>The possibility of creating a <em>Model</em> or an <em>ExactModel</em> that inherits all components from previously constructed models has been introduced.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">Model1</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span>
+<span class="linenos"> 5</span>    <span class="n">arg1</span><span class="o">=</span><span class="n">Str</span><span class="p">,</span>
+<span class="linenos"> 6</span>    <span class="n">arg2</span><span class="o">=</span><span class="n">List</span><span class="p">(</span><span class="n">Dict</span><span class="p">(</span><span class="n">Int</span><span class="p">)),</span>
+<span class="linenos"> 7</span>    <span class="c1"># ...</span>
+<span class="linenos"> 8</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">Model2</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span>
+<span class="linenos">11</span>    <span class="n">argA</span><span class="o">=</span><span class="n">Float</span><span class="p">,</span>
+<span class="linenos">12</span>    <span class="n">argB</span><span class="o">=</span><span class="n">Union</span><span class="p">(</span><span class="n">Null</span><span class="p">(</span><span class="n">Dict</span><span class="p">(</span><span class="n">Str</span><span class="p">)),</span> <span class="n">Str</span><span class="p">)</span>
+<span class="linenos">13</span>    <span class="c1"># ....</span>
+<span class="linenos">14</span><span class="p">)</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="n">Model3</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span>
+<span class="linenos">17</span>    <span class="n">__extends__</span><span class="o">=</span><span class="p">[</span><span class="n">Model1</span><span class="p">,</span> <span class="n">Model2</span><span class="p">],</span>
+<span class="linenos">18</span>    <span class="n">other_arg</span><span class="o">=</span><span class="n">SomeType</span><span class="p">,</span>
+<span class="linenos">19</span>    <span class="c1"># ....</span>
+<span class="linenos">20</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Fully compatible with typed functions.</p>
+</section>
+<section id="v0-1-13-base-type-factories-as-functors">
+<h1>v0.1.13: base type factories as functors<a class="headerlink" href="#v0-1-13-base-type-factories-as-functors" title="Link to this heading"></a></h1>
+<p>In <a class="autolink reference external" href="/libs/typed">typed</a>, there are various type factories, which operate between types to construct new types.</p>
+<p>Among these factories are the “base factories,” which essentially correspond to implementations as concrete types of annotations from the <code class="docutils literal notranslate"><span class="pre">typing</span></code> library, along with a few more factories.</p>
+<blockquote id="example-1">
+<div><p><a class="reference internal" href="#example-1">Example</a>.</p>
+<ol class="arabic simple">
+<li><p>from <code class="docutils literal notranslate"><span class="pre">typing</span></code>: <code class="docutils literal notranslate"><span class="pre">Union</span></code>, <code class="docutils literal notranslate"><span class="pre">List</span></code>, <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>, <code class="docutils literal notranslate"><span class="pre">Dict</span></code>, <code class="docutils literal notranslate"><span class="pre">Set</span></code>, …</p></li>
+<li><p>additional: <code class="docutils literal notranslate"><span class="pre">Prod</span></code>, <code class="docutils literal notranslate"><span class="pre">UProd</span></code>, <code class="docutils literal notranslate"><span class="pre">Null</span></code>, …</p></li>
+</ol>
+</div></blockquote>
+<p>Types have a semantics given by a certain class of sets. Among the types, we have typed functions, so we can think of the category <code class="docutils literal notranslate"><span class="pre">TYPE</span></code>, where objects are types and morphisms are typed functions.</p>
+<p>In this sense, type factories operate at the level of <code class="docutils literal notranslate"><span class="pre">TYPE</span></code> objects, and it would be natural to try to extend them to functors <code class="docutils literal notranslate"><span class="pre">F:</span> <span class="pre">TYPE</span> <span class="pre">-&gt;</span> <span class="pre">TYPE</span></code>.</p>
+<p>In version <a class="autolink reference external" href="/libs/typed">typed</a> v0.1.13, this was done for the base type factories listed above.</p>
+<p>This means, for example, that we can now take a function: <code class="docutils literal notranslate"><span class="pre">f:</span> <span class="pre">SomeType</span> <span class="pre">-&gt;</span> <span class="pre">OtherType</span></code> and apply the <code class="docutils literal notranslate"><span class="pre">List</span></code>, <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>, etc. operations to it:</p>
+<p><code class="docutils literal notranslate"><span class="pre">List(f):</span> <span class="pre">List(f.domain)</span> <span class="pre">-&gt;</span> <span class="pre">List(f.codomain)</span></code>.</p>
+<p>Furthermore, such a construction is done in a way that compositions are respected:</p>
+<p><code class="docutils literal notranslate"><span class="pre">List(g*f)</span> <span class="pre">==</span> <span class="pre">List(g)*List(f)</span></code></p>
+<p>Naturally, operations at the function level can be concatenated (just as they were at the type level).</p>
+<p>This brings <a class="autolink reference external" href="/libs/typed">typed</a> closer to providing not only a “typed approach” to Python, but also a truly functional approach.</p>
+</section>
+<section id="v0-1-15-type-safety-for-variables">
+<h1>v0.1.15: type safety for variables<a class="headerlink" href="#v0-1-15-type-safety-for-variables" title="Link to this heading"></a></h1>
+<p>Previously, <code class="docutils literal notranslate"><span class="pre">typed</span></code> was limited to providing factories (and models) to create new types and to check types passed as type hints to <code class="docutils literal notranslate"><span class="pre">typed</span> <span class="pre">functions</span></code> calls.</p>
+<p>Now, it’s also possible to use <code class="docutils literal notranslate"><span class="pre">typed</span></code> to check values assigned to variables.</p>
+<p>Instead of:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">my_var</span> <span class="o">=</span> <span class="n">some_value</span>
+</pre></div>
+</div>
+<p>use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">my_var</span> <span class="o">=</span> <span class="n">typed</span><span class="p">(</span><span class="n">ExpectedType</span><span class="p">)(</span><span class="n">some_value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>At runtime, the interpreter will check if the variable <code class="docutils literal notranslate"><span class="pre">my_var</span></code> has a value whose type is <code class="docutils literal notranslate"><span class="pre">ExpectedType</span></code>.</p>
+</section>
+<section id="v0-3-0-compatibility-with-pydantic-and-dataclasses">
+<h1>v0.3.0: compatibility with pydantic and dataclasses<a class="headerlink" href="#v0-3-0-compatibility-with-pydantic-and-dataclasses" title="Link to this heading"></a></h1>
+<p>It is now possible to transform any class into a model, exact model, or conditional model.</p>
+<p>In version <a class="autolink reference external" href="/libs/typed">typed</a> v0.3.0, the decorators <code class="docutils literal notranslate"><span class="pre">&#64;model</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;exact</span></code>, and <code class="docutils literal notranslate"><span class="pre">&#64;conditional</span></code> were included. These decorators can be applied to any class, collecting its attributes and passing them as arguments to the <code class="docutils literal notranslate"><span class="pre">Model</span></code>, <code class="docutils literal notranslate"><span class="pre">Exact</span></code>, and <code class="docutils literal notranslate"><span class="pre">Conditional</span></code> type factories, respectively.</p>
+<p>This, in particular, allows you to transform other types of model constructs (such as <code class="docutils literal notranslate"><span class="pre">pydantic</span></code> models and dataclasses) into models in the <code class="docutils literal notranslate"><span class="pre">typed</span></code> sense.</p>
+<p>This also enables better integration with LSPs (type factories are dynamic by nature, while classes are static).</p>
+</section>
+<section id="v0-4-0-inclusion-of-new-model-types">
+<h1>v0.4.0: inclusion of new model types<a class="headerlink" href="#v0-4-0-inclusion-of-new-model-types" title="Link to this heading"></a></h1>
+<p>The <a class="autolink reference external" href="/libs/typed">typed</a> models system has been completely refactored. It is now possible to create custom model factories from the <code class="docutils literal notranslate"><span class="pre">ModelFactory</span></code> metaclass.</p>
+<p>Additionally, new model factories have been introduced:</p>
+<ol class="arabic simple">
+<li><p><em>Ordered</em>: Validates data with respect to the ordering of entries.</p></li>
+<li><p><em>Rigid</em>: Validates data with respect to the exactness and ordering of entries.</p></li>
+</ol>
+<p>The <code class="docutils literal notranslate"><span class="pre">Conditional</span></code> model factory has been removed. It is now possible to pass a <code class="docutils literal notranslate"><span class="pre">__conditions__</span></code> variable to each of the model factories, which defines additional conditions for validation.</p>
+</section>
+<section id="v0-4-1-optional-without-default-value">
+<h1>v0.4.1: optional without default value<a class="headerlink" href="#v0-4-1-optional-without-default-value" title="Link to this heading"></a></h1>
+<p>In <a class="autolink reference external" href="/libs/typed">typed</a>, you can create models by applying the <code class="docutils literal notranslate"><span class="pre">&#64;model</span></code> decorator to a class. If you want an entry to be optional, you simply use the <code class="docutils literal notranslate"><span class="pre">Optional</span></code> type factory, passing the type with a default value:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span>
+<span class="linenos">2</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">model</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="nd">@model</span>
+<span class="linenos">5</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">:</span>
+<span class="linenos">6</span>    <span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span>
+<span class="linenos">7</span>    <span class="n">y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">(</span><span class="n">OtherType</span><span class="p">,</span> <span class="n">some_value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The vast majority of <code class="docutils literal notranslate"><span class="pre">typed</span></code>’s builtin types (and also those constructed by its type factories) are <code class="docutils literal notranslate"><span class="pre">nullable</span></code>, meaning that a “null object” is defined for them, which can be accessed via the <code class="docutils literal notranslate"><span class="pre">null</span></code> function.</p>
+<p>In the new update, if a value is not passed along with a type in the <code class="docutils literal notranslate"><span class="pre">Optional</span></code> function, it attempts to take that value as the null object of the type in question:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">Optional</span><span class="p">(</span><span class="n">SomeType</span><span class="p">)</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="n">SomeType</span><span class="p">,</span> <span class="n">null</span><span class="p">(</span><span class="n">SomeType</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Naturally, if the type in question is not <code class="docutils literal notranslate"><span class="pre">nullable</span></code>, an error is returned.</p>
+</section>
+<section id="v0-4-2-refactoring-function-types">
+<h1>v0.4.2: refactoring function types<a class="headerlink" href="#v0-4-2-refactoring-function-types" title="Link to this heading"></a></h1>
+<p>One of <a class="autolink reference external" href="/libs/typed">typed</a> premisses is:</p>
+<blockquote>
+<div><p>If a type <code class="docutils literal notranslate"><span class="pre">X</span></code> is a subtype of a type <code class="docutils literal notranslate"><span class="pre">Y</span></code>, then every instance of <code class="docutils literal notranslate"><span class="pre">X</span></code> should be an instance of <code class="docutils literal notranslate"><span class="pre">Y</span></code>.</p>
+</div></blockquote>
+<p>This is not a natural behavior of Python, which completely distinguishes elements of a class from the elements of any of its extensions.</p>
+<p>Mathematically, this is not the expected behavior, something we have “fixed” within <a class="autolink reference external" href="/libs/typed">typed</a>’s builtin types and type factories.</p>
+<p>To exhibit such behavior, classes need to be constructed from specific metaclasses, in which we specify (within the <code class="docutils literal notranslate"><span class="pre">__instancecheck__</span></code> method) the necessary conditions to validate instantiation.</p>
+<p>I noticed that some function types were not exhibiting the desired behavior. They were then refactored, and now there is a natural chain of function types, in which one is not only a subtype of the other but also preserves instantiation:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Callable</span></code>: general callable entities</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Builtin</span></code>: builtin functions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Lambda</span></code>: lambda functions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Function</span></code> (or <code class="docutils literal notranslate"><span class="pre">FuncType</span></code>): user defined functions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CompFuncType</span></code>: composable functions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HintedDomFuncType</span></code>: user defined functions that have type hint in domain</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HintedCodFuncType</span></code>: user defined functions that have type hint in codomain</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HintedFuncType</span></code>: user defined functions that have type hint in both domain and codomain</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TypedDomFuncType</span></code>: user defined functions with type hints in domain, which is checked at runtime</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TypedCodFuncType</span></code>: user defined functions with type hints in codomain, which is checked at runtime</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TypedFuncType</span></code>: user defined functions with type hints in domain and codomain, which are checked at runtime</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BoolFuncType</span></code>: user defined typed functions whose codomain is <code class="docutils literal notranslate"><span class="pre">Bool</span></code></p></li>
+</ul>
+</section>
+<section id="v0-4-3-introduction-of-optional-decorator">
+<h1>v0.4.3: introduction of <code class="docutils literal notranslate"><span class="pre">&#64;optional</span></code> decorator<a class="headerlink" href="#v0-4-3-introduction-of-optional-decorator" title="Link to this heading"></a></h1>
+<p>In some cases, we need to build models where all inputs are optional. In the new version of <a class="autolink reference external" href="/libs/typed">typed</a>, a decorator to facilitate the construction of this type of model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">optional</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="nd">@optional</span>
+<span class="linenos">4</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">:</span>
+<span class="linenos">5</span>    <span class="n">some_var</span><span class="p">:</span> <span class="n">SomeType</span>
+<span class="linenos">6</span>    <span class="n">other_var</span><span class="p">:</span> <span class="n">OtherType</span> <span class="o">=</span> <span class="n">some_value</span>
+<span class="linenos">7</span>    <span class="o">...</span>
+</pre></div>
+</div>
+<p>The snippet above is equivalent to the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">model</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="nd">@model</span>
+<span class="linenos">4</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">:</span>
+<span class="linenos">5</span>    <span class="n">some_var</span><span class="p">:</span> <span class="n">Optional</span><span class="p">(</span><span class="n">Maybe</span><span class="p">(</span><span class="n">SomeType</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+<span class="linenos">6</span>    <span class="n">other_var</span><span class="p">:</span> <span class="n">Optional</span><span class="p">(</span><span class="n">OtherType</span><span class="p">,</span> <span class="n">some_value</span><span class="p">)</span>
+<span class="linenos">7</span>    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">Maybe</span></code> is the type factory that receives a type and returns <code class="docutils literal notranslate"><span class="pre">Union(SomeType,</span> <span class="pre">None)</span></code>. This means that, by default, <code class="docutils literal notranslate"><span class="pre">&#64;optional</span></code> assumes that if a default value is not provided, then <code class="docutils literal notranslate"><span class="pre">None</span></code> is taken as the default.</p>
+<p>Instead of passing <code class="docutils literal notranslate"><span class="pre">None</span></code> as the default, you might want to pass the null object of the type (if it is <code class="docutils literal notranslate"><span class="pre">nullable</span></code>). To do this, simply use the <code class="docutils literal notranslate"><span class="pre">nullable</span></code> variable:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">optional</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="nd">@optional</span><span class="p">(</span><span class="n">nullable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos">4</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">:</span>
+<span class="linenos">5</span>    <span class="n">some_var</span><span class="p">:</span> <span class="n">SomeType</span>
+<span class="linenos">6</span>    <span class="n">other_var</span><span class="p">:</span> <span class="n">OtherType</span> <span class="o">=</span> <span class="n">some_value</span>
+<span class="linenos">7</span>    <span class="o">...</span>
+</pre></div>
+</div>
+<p>In this case, the snippet above is equivalent to:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">model</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="nd">@model</span>
+<span class="linenos">4</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">:</span>
+<span class="linenos">5</span>    <span class="n">some_var</span><span class="p">:</span> <span class="n">Optional</span><span class="p">(</span><span class="n">SomeType</span><span class="p">,</span> <span class="n">null</span><span class="p">(</span><span class="n">SomeType</span><span class="p">))</span>
+<span class="linenos">6</span>    <span class="n">other_var</span><span class="p">:</span> <span class="n">Optional</span><span class="p">(</span><span class="n">OtherType</span><span class="p">,</span> <span class="n">some_value</span><span class="p">)</span>
+<span class="linenos">7</span>    <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="v0-4-4-introduction-of-model-attributes">
+<h1>v0.4.4: introduction of model attributes<a class="headerlink" href="#v0-4-4-introduction-of-model-attributes" title="Link to this heading"></a></h1>
+<p>In <a class="autolink reference external" href="/libs/typed">typed</a> we have several types of models:</p>
+<ol class="arabic simple">
+<li><p><em>Models</em> (the standard type, where the instance must contain at least the defined attributes)</p></li>
+<li><p><em>Exact Models</em> (where the instance must contain exactly the defined attributes)</p></li>
+<li><p><em>Ordered Models</em> (where the instance must contain at least the defined attributes, but in the order they were defined)</p></li>
+<li><p><em>Rigid Models</em> (where the instance must contain exactly the defined attributes, and in the same order they were defined)</p></li>
+</ol>
+<p>There is a type whose instances are models of each of the above classes: <code class="docutils literal notranslate"><span class="pre">MODEL</span></code>, <code class="docutils literal notranslate"><span class="pre">EXACT</span></code>, <code class="docutils literal notranslate"><span class="pre">ORDERED</span></code>, and <code class="docutils literal notranslate"><span class="pre">RIGID</span></code>.</p>
+<p>Now, such types come with attributes that allow identifying if a given model belongs to a specific class:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MyModel.is_model</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MyModel.is_exact</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MyModel.is_ordered</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MyModel.is_rigid</span></code></p></li>
+</ol>
+<p>Attributes that return optional and mandatory attributes have also been added:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MyModel.attrs</span></code>: returns all attributes, with name, type, default value, and whether it is optional or not.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MyModel.optional_attrs</span></code>: returns only the optional attributes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MyModel.mandatory_attrs</span></code>: returns only the mandatory attributes.</p></li>
+</ol>
+</section>
+</main>
+            </div>
+        </div>
+        <footer class="footer">
+            <p class="footer-text">
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/11 at 13:32</purple>.<br>
+                Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
+            </p>
+        </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.matchMedia("(max-width: 768px)").matches) {
+                document.querySelectorAll('.sidebar-collapsible > details[open]').forEach(function(details){
+                    details.removeAttribute('open');
+                });
+            }
+        });
+    </script>
+    </body>  
+</html>
