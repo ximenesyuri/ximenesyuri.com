@@ -17,7 +17,7 @@ Nestas notas, introduziremos os conceitos de _proposição_, _predicados_ e _con
 
 A Matemática trata da definição, construção e estudo de _conceitos_. Novos conceitos são definidos e novas construções são realizadas partindo-se de conceitos preexistentes. Isso significa que para fazer Matemática são necessários certos conceitos iniciais, os quais se assume existentes _a priori_, e que não são construídos por nenhum outro conceito prévio. Tais conceitos são chamados de _primitivos_.  Tratam-se do ponto de partida para desenvolver nova Matemática.
 
-Diferentes escolas estudam os fundamentos da Matemática de diferentes maneiras, assumindo como primitivos diferentes conceitos. Para nossa discussão futura, é suficiente que assumamos como primitivos conceitos bastante intuitivos (mais filosoficamente bastante complexos), como:
+Diferentes escolas estudam os fundamentos da Matemática de diferentes maneiras, assumindo como primitivos diferentes conceitos. Para nossa discussão futura, é suficiente que assumamos como primitivos conceitos bastante intuitivos (mas filosoficamente bastante complexos), como:
 
 1. algo ser _verdadeiro_ ou ser _falso_;
 2. o ato de _contar_;
@@ -137,12 +137,12 @@ Os seguintes exercícios nos ensinam equivalentes formas de mostrar que duas pro
 
 (exercise-4)=
 > [Exercise 4](#exercise-3). Partindo do exercício anterior:
-> 1. Mostre que :tex p \leftrightarrow q: se relaciona via implicação mútua com :tex (p \to q)\wedge (\neg p \to \neq q ):.
-> 2. Defina um conectivo derivado :tex \to_{\wedge,\neg}: para :tex (p \to q)\wedge (\neg p \to \neq q ):.
+> 1. Mostre que :tex p \leftrightarrow q: se relaciona via implicação mútua com :tex (p \to q)\wedge (\neg p \to \neg q ):.
+> 2. Defina um conectivo derivado :tex \to_{\wedge,\neg}: para :tex (p \to q)\wedge (\neg p \to \neg q ):.
 > 3. Conclua que :tex \leftrightarrow \equiv \to_{\wedge,\neg}:.
 
 (exercise-5)=
 > [Exercise 5](#exercise-5). 
-> 1. Mostre que há também uma implicação mútua entre :tex p \leftrightarrow q: e :tex (p \wedge q) \vee ((\neg p) \wedge (\neg q)):.
-> 2. Defina um conectivo derivado para :tex (p \wedge q) \vee ((\neg p) \wedge (\neg q)):.
+> 1. Mostre que há também uma implicação mútua entre :tex p \leftrightarrow q: e :tex (p \wedge q) \vee (\neg p \wedge \neg q):.
+> 2. Defina um conectivo derivado para :tex (p \wedge q) \vee (\neg p \wedge \neg q):.
 > 3. Conclua que ele é equivalente ao conectivo :tex \leftrightarrow:.
