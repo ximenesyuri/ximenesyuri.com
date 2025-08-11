@@ -3,9 +3,8 @@ title: base
 desc: 
 draft: false
 weight: 10
+version: 1
 ---
-
-<u>version: 1</u>
 
 # Sobre
 

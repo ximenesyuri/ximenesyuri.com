@@ -69,3 +69,5 @@ with open(os.path.join(CONF_DIR, 'yml', 'libs.yml'), 'r') as file:
 with open(os.path.join(CONF_DIR, 'yml', 'notes.yml'), 'r') as file:
     autolink.update(yaml.safe_load(file))
 
+with open(os.path.join(CONF_DIR, 'yml', 'glossary.yml'), 'r') as file:
+    autolink.update(yaml.safe_load(file))
