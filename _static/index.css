@@ -277,8 +277,8 @@ table {
 table th,
 table td {
     border: none;
-    padding: 0;        /* Remove all padding by default */
-    text-align: left;   /* Left-align columns */
+    padding: 0;
+    text-align: left;
     vertical-align: top;
 }
 
@@ -311,13 +311,13 @@ table tr:last-child td {
 }
 
 table thead {
-    border-bottom: 2px dashed var(--purple2);
+    border-bottom: 2px dashed var(--white);
 }
 
 table tbody {
     padding-top: 5px;
     padding-bottom: 5px;
-    border-bottom: 2px dashed var(--purple2);
+    border-bottom: 2px dashed var(--white);
 }
 
 .title {
