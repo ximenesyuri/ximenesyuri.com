@@ -446,6 +446,7 @@
 <li><p><a class="reference internal" href="#v0-4-2-refactoring-function-types">v0.4.2: refactoring function types</a></p></li>
 <li><p><a class="reference internal" href="#v0-4-3-introduction-of-optional-decorator">v0.4.3: introduction of &#64;optional decorator</a></p></li>
 <li><p><a class="reference internal" href="#v0-4-4-introduction-of-model-attributes">v0.4.4: introduction of model attributes</a></p></li>
+<li><p><a class="reference internal" href="#v0-4-5-optional-and-mandatory-models">v0.4.5: optional and mandatory models</a></p></li>
 </ol>
 </section>
 <section id="v0-1-9-extendable-models-and-exact-models">
@@ -639,12 +640,21 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">MyModel.mandatory_attrs</span></code>: returns only the mandatory attributes.</p></li>
 </ol>
 </section>
+<section id="v0-4-5-optional-and-mandatory-models">
+<h1>v0.4.5: optional and mandatory models<a class="headerlink" href="#v0-4-5-optional-and-mandatory-models" title="Link to this heading"></a></h1>
+<p>In v0.4.3 it was introduced the <code class="docutils literal notranslate"><span class="pre">&#64;optional</span></code> decorator, from which one can to quickly create <em>optional models</em>, which are models whose all attributes are optional.</p>
+<p>In this new version, a type <code class="docutils literal notranslate"><span class="pre">OPTIONAL</span></code> of all  <em>optional models</em> was created. Also, the <code class="docutils literal notranslate"><span class="pre">&#64;optional</span></code> decorator was extended to be applied directory in already existing models, turning them into optional models.</p>
+<p>Analogously, it was introduced the type <code class="docutils literal notranslate"><span class="pre">MANDATORY</span></code> of all <em>mandatory models</em>, i.e, models with none optional arguments. A decorator <code class="docutils literal notranslate"><span class="pre">&#64;mandatory</span></code> was created, allowed to turn any model into a mandatory model.</p>
+<blockquote>
+<div><p>If applied in already existing models, both <code class="docutils literal notranslate"><span class="pre">&#64;optional</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;mandatory</span></code> preserves the underlying model kind, i.e, exact models are mapped into exact models, and so on.</p>
+</div></blockquote>
+</section>
 </main>
             </div>
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/11 at 20:00</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/12 at 12:38</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
