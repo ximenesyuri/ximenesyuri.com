@@ -232,3 +232,13 @@ Attributes that return optional and mandatory attributes have also been added:
 1.  `MyModel.attrs`: returns all attributes, with name, type, default value, and whether it is optional or not.
 2.  `MyModel.optional_attrs`: returns only the optional attributes.
 3.  `MyModel.mandatory_attrs`: returns only the mandatory attributes.
+
+# v0.4.5: optional and mandatory models
+
+In v0.4.3 it was introduced the `@optional` decorator, from which one can to quickly create _optional models_, which are models whose all attributes are optional.
+
+In this new version, a type `OPTIONAL` of all  _optional models_ was created. Also, the `@optional` decorator was extended to be applied directory in already existing models, turning them into optional models.
+
+Analogously, it was introduced the type `MANDATORY` of all _mandatory models_, i.e, models with none optional arguments. A decorator `@mandatory` was created, allowed to turn any model into a mandatory model.
+
+> If applied in already existing models, both `@optional` and `@mandatory` preserves the underlying model kind, i.e, exact models are mapped into exact models, and so on.
