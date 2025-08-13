@@ -2,18 +2,49 @@ afirmacao-logica:
   terms: ["afirmação lógica", "afirmação"]
   url: /notes/glossary#afirmacao-logica
 
+alfabeto-logica:
+  terms: ["alfabeto", "alfabetos", "alfabeto de uma linguagem"]
+  url: /notes/glossary#alfabeto-logica
+
+conceito:
+  terms: ["conceito", "conceitos"]
+  url: /notes/glossary#conceito-primitivo  
+
 conceito-primitivo:
-  terms: ["conceito primitivo",]
+  terms: ["conceito primitivo", "conceitos primitivos"]
   url: /notes/glossary#conceito-primitivo
 
+formula-logica:
+  terms: ["fórmula", "fórmula lógica"]
+  url: /notes/glossary#formula-logica
+
+linguagem:
+  terms: ["linguagem", "linguagens"]
+  url: /notes/glossary#linguagem
+
+linguagem-formal:
+  terms: ["linguagem formal", "linguagens formais"]
+  url: /notes/glossary#linguagem
+
+notacao-infixa:
+  terms: ["notação infixa",]
+  url: /notes/glossary#notacao-infixa
+
 predicado-logica:
-  terms: ["predicado lógico", "predicado"]
+  terms: ["predicado lógico", "predicado", "predicados"]
   url: /notes/glossary#predicado-logica  
 
 proposicao-logica:
-  terms: ["proposição lógica", "proposição"]
+  terms: ["proposição lógica", "proposição", "proposições"]
   url: /notes/glossary#proposicao-logica
 
 simbolo:
-  terms: ["símbolo"]
+  terms: ["símbolo", "símbolos"]
   url: /notes/glossary#simbolo
+
+termo:
+  terms: ["termo", "termos"]
+  url: /notes/glossary#termo-logica
+
+variavel:
+  terms: ["variável", "variáveis"]
