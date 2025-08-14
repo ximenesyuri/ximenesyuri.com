@@ -18,13 +18,20 @@ formula-logica:
   terms: ["fórmula", "fórmula lógica"]
   url: /notes/glossary#formula-logica
 
+aridade-logica:
+  terms: ["aridade", "aridade de uma relação", "aridade de uma função", "arity"]
+
 linguagem:
   terms: ["linguagem", "linguagens"]
   url: /notes/glossary#linguagem
 
 linguagem-formal:
   terms: ["linguagem formal", "linguagens formais"]
-  url: /notes/glossary#linguagem
+  url: /notes/glossary#linguagem-formal
+
+notacao-funcional:
+  terms: ["notação funcional",]
+  url: /notes/glossary#notacao-funcional
 
 notacao-infixa:
   terms: ["notação infixa",]
@@ -46,5 +53,6 @@ termo:
   terms: ["termo", "termos"]
   url: /notes/glossary#termo-logica
 
-variavel:
+variavel-logica:
   terms: ["variável", "variáveis"]
+  url: /notes/glossary#variavel-logica
