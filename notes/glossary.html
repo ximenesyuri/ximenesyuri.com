@@ -207,6 +207,8 @@
 <ol class="arabic simple">
 <li><p><a class="reference internal" href="#a">A</a></p></li>
 <li><p><a class="reference internal" href="#c">C</a></p></li>
+<li><p><a class="reference internal" href="#d">D</a></p></li>
+<li><p><a class="reference internal" href="#n">N</a></p></li>
 <li><p><a class="reference internal" href="#p">P</a></p></li>
 <li><p><a class="reference internal" href="#r">R</a></p></li>
 <li><p><a class="reference internal" href="#s">S</a></p></li>
@@ -217,6 +219,9 @@
 <ul class="simple" id="afirmacao-logica">
 <li><p><a class="reference internal" href="#afirmacao-logica">Afirmação</a> (Lógica). Na área de Lógica Matemática, uma <em>afirmação</em> é sinônimo para uma <a class="autolink reference external" href="/notes/glossary#proposicao-logica">proposição lógica</a>.</p></li>
 </ul>
+<ul class="simple" id="alfabeto">
+<li><p><a class="reference internal" href="#alfabeto">Alfabeto</a> (Lógica). Dentro da Lógica, um <em>alfabeto</em> é o que contém os símbolos definidores de uma <a class="autolink reference external" href="/notes/glossary#linguagem-formal">linguagem formal</a>.</p></li>
+</ul>
 </section>
 <section id="c">
 <h1>C<a class="headerlink" href="#c" title="Link to this heading"></a></h1>
@@ -224,7 +229,23 @@
 <li><p><a class="reference internal" href="#conceito-primitivo">Conceito Primitivo</a>. Um <em>conceito primitivo</em> é aquele que é assumido como dado <em>à priori</em>: que não é definido a partir de outros <a class="autolink reference external" href="/notes/glossary#conceito-primitivo">conceitos</a>, e a partir dos quais se define <a class="autolink reference external" href="/notes/glossary#conceito-primitivo">conceitos</a> que não são primitivos.</p></li>
 </ul>
 <ul class="simple" id="constante-logica">
-<li><p><a class="reference internal" href="#constante-logica">Constante</a>. Em Lógica Matemática, <em>constantes</em> são símbolos específicos do <a class="autolink reference external" href="/notes/glossary#alfabeto-logica">alfabeto</a> de uma <a class="autolink reference external" href="/notes/glossary#linguagem">linguagem formal</a>, os quais não aparecem dentro de {relações lógicas} ou {símbolos funcionais}. Podem também ser vistas como relações de {grau} zero.</p></li>
+<li><p><a class="reference internal" href="#constante-logica">Constante</a>. Em Lógica Matemática, <em>constantes</em> são símbolos específicos do <a class="autolink reference external" href="/notes/glossary#alfabeto-logica">alfabeto</a> de uma <a class="autolink reference external" href="/notes/glossary#linguagem-formal">linguagem formal</a>, os quais não aparecem dentro de {relações lógicas} ou {símbolos funcionais}. Podem também ser vistas como relações de {aridade} zero.</p></li>
+</ul>
+</section>
+<section id="d">
+<h1>D<a class="headerlink" href="#d" title="Link to this heading"></a></h1>
+<p>(delimitadores-logica)</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#delimitadores-logica"><span class="xref myst">Delimitadores</span></a>. Em Lógica Matemática, <em>delimitadores</em> são símbolos dentro do <a class="autolink reference external" href="/notes/glossary#alfabeto-logica">alfabeto</a> de uma <a class="autolink reference external" href="/notes/glossary#linguagem-formal">linguagem formal</a>, normalmente representados por parênteses ou colchetes, os quais são utilizados para explicitar o ordenamento de {operações} dentro de uma <a class="autolink reference external" href="/notes/glossary#formula-logica">fórmula</a>. Também são utilizados entre variáveis  para dizer que estão sendo sujeitas à ação destes da {relação lógica} ou do {símbolo funcional} que os precede.</p></li>
+</ul>
+</section>
+<section id="n">
+<h1>N<a class="headerlink" href="#n" title="Link to this heading"></a></h1>
+<ul class="simple" id="notacao-funcional">
+<li><p><a class="reference internal" href="#notacao-funcional">Notação Funcional</a>. Notação <em>funcional</em> é aquela que faz uso de parênteses como {delimitadores lógicos} para representar a dependência de um <a class="autolink reference external" href="/notes/glossary#simbolo">símbolo</a> (digamos :tex f:) com respeito a outros símbolos: :tex f(x, y, z):.</p></li>
+</ul>
+<ul class="simple" id="notacao-infixa">
+<li><p><a class="reference internal" href="#notacao-infixa">Notação Infixa</a>. Notação <em>infixa</em> é aquela que coloca um <a class="autolink reference external" href="/notes/glossary#simbolo">símbolo</a> (digamos :tex f:) entre outros símbolos (digamos :tex x, y:) para representar a dependência do primeiro com relação aos demais: :tex xfy:.</p></li>
 </ul>
 </section>
 <section id="p">
@@ -239,19 +260,25 @@
 <section id="r">
 <h1>R<a class="headerlink" href="#r" title="Link to this heading"></a></h1>
 <ul class="simple" id="relacao-logica">
-<li><p><a class="reference internal" href="#relacao-logica">Relação</a> (Lógica). Dentro da Lógica Matemática, uma <em>relação</em> é um <a class="autolink reference external" href="/notes/glossary#simbolo">símbolo</a> que <em>depende</em> de outros símbolos (a saber, de {variáveis}). Para cada relação está associado um número não negativo, chamado de {grau}: trata-se do número de símbolos ao qual a relação depende. Relações são normalmente denotadas por letras gregas, como :tex \alpha, \beta, \varphi:. A expressão do fato de que {variáveis} :tex x, y, z: se relacionam através de uma dada relação :tex \varphi: é normalmente denotada fazendo-se uso de {delimitadores lógicos} :tex \varphi(x, y, z, …):</p></li>
+<li><p><a class="reference internal" href="#relacao-logica">Relação</a> (Lógica). Dentro da Lógica Matemática, uma <em>relação</em> é um <a class="autolink reference external" href="/notes/glossary#simbolo">símbolo</a> que <em>depende</em> de outros símbolos (a saber, de <a class="autolink reference external" href="/notes/glossary#variavel-logica">variáveis</a>). Para cada relação está associado um número não negativo, chamado de {aridade}: trata-se do número de símbolos ao qual a relação depende. Relações são normalmente denotadas por letras gregas, como :tex \alpha, \beta, \varphi:. A expressão do fato de que <a class="autolink reference external" href="/notes/glossary#variavel-logica">variáveis</a> :tex x, y, z: se relacionam através de uma dada relação :tex \varphi: é normalmente denotada via <a class="autolink reference external" href="/notes/glossary#notacao-funcional">notação funcional</a> :tex \varphi(x, y, z, …):.</p></li>
 </ul>
 <ul class="simple" id="relacao-unaria-logica">
-<li><p><a class="reference internal" href="#relacao-logica">Relação Unária</a> (Lógica). No contexto da Lógica Matemática, dizemos que uma  {relação} é <em>unária</em> se ela depende de apenas uma {variável}.</p></li>
+<li><p><a class="reference internal" href="#relacao-unaria-logica">Relação Unária</a> (Lógica). No contexto da Lógica Matemática, dizemos que uma  {relação} é <em>unária</em> se ela depende de apenas uma <a class="autolink reference external" href="/notes/glossary#variavel-logica">variável</a>. Ao aturem, relações unárias são normalmente denotadas sem o uso de {delimitadores lógicos}: escreve-se :tex \varphi x: ou :tex x \varphi:.</p></li>
 </ul>
 <ul class="simple" id="relacao-binaria-logica">
-<li><p><a class="reference internal" href="#relacao-logica">Relação Unária</a> (Lógica). Em Lógica Matemática, uma {relação} é dita ser <em>binária</em> se ela depende de precisamente duas {variáveis}. Normalmente uma relação unária é apresentada em <a class="autolink reference external" href="/notes/glossary#notacao-infixa">notação infixa</a>.</p></li>
+<li><p><a class="reference internal" href="#relacao-binaria-logica">Relação Binária</a> (Lógica). Em Lógica Matemática, uma {relação} é dita ser <em>binária</em> se ela depende de precisamente duas <a class="autolink reference external" href="/notes/glossary#variavel-logica">variáveis</a>. Normalmente, a atuação de uma relação binária é apresentada em <a class="autolink reference external" href="/notes/glossary#notacao-infixa">notação infixa</a>: :tex x \varphi y:.</p></li>
 </ul>
 </section>
 <section id="s">
 <h1>S<a class="headerlink" href="#s" title="Link to this heading"></a></h1>
 <ul class="simple" id="simbolo">
-<li><p><a class="reference internal" href="#simbolo">Símbolo</a>. Um <em>símbolo</em> é uma representação linguística de algo que possui um significado específico dentro de um certo contexto. Em Lógica Matemática, mais precisamente no âmbito das <a class="autolink reference external" href="/notes/glossary#linguagem">linguagens formais</a>, um símbolo é um elemento do <a class="autolink reference external" href="/notes/glossary#alfabeto-logica">alfabeto</a> de uma <a class="autolink reference external" href="/notes/glossary#linguagem">linguagem</a>.</p></li>
+<li><p><a class="reference internal" href="#simbolo">Símbolo</a>. Um <em>símbolo</em> é uma representação linguística de algo que possui um significado específico dentro de um certo contexto. Em Lógica Matemática, mais precisamente no âmbito das <a class="autolink reference external" href="/notes/glossary#linguagem-formal">linguagens formais</a>, um símbolo é um elemento do <a class="autolink reference external" href="/notes/glossary#alfabeto-logica">alfabeto</a> de uma <a class="autolink reference external" href="/notes/glossary#linguagem-formal">linguagem formal</a>.</p></li>
+</ul>
+<ul class="simple" id="simbolo-funcional">
+<li><p><a class="reference internal" href="#simbolo-funcional">Símbolo Funcional</a>. No escopo da Lógica Matemática, um <em>símbolo funcional</em> é uma classe particular de <a class="autolink reference external" href="/notes/glossary#simbolo">símbolos</a> dentro do <a class="autolink reference external" href="/notes/glossary#alfabeto-logica">alfabeto</a> de uma {linguagem funcional} a qual, ao lado das {relações lógicas}, depende de <a class="autolink reference external" href="/notes/glossary#variavel-logica">variáveis</a>.</p></li>
+</ul>
+<ul class="simple" id="string">
+<li><p><a class="reference internal" href="#string">String</a> (Lógica).</p></li>
 </ul>
 </section>
 </main>
@@ -259,7 +286,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/13 at 19:44</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/14 at 13:45</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
