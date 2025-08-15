@@ -242,3 +242,25 @@ In this new version, a type `OPTIONAL` of all  _optional models_ was created. Al
 Analogously, it was introduced the type `MANDATORY` of all _mandatory models_, i.e, models with none optional arguments. A decorator `@mandatory` was created, allowed to turn any model into a mandatory model.
 
 > If applied in already existing models, both `@optional` and `@mandatory` preserves the underlying model kind, i.e, exact models are mapped into exact models, and so on.
+
+# v0.5.0: refactor of factories
+
+In v0.5.0 all factories were reviewed:
+1. error messages are now more descriptive
+2. unification of function types with function factories
+3. `BoolFunc` has now the name `Condition`
+
+So, for example:
+1. `CompType` is now `Composable` which can be applied to both a function or to a pair of integers
+2. `TypedFuncType` and `TypedFunc` are now just `Typed`, which can be applied to functions, types or pair of integers:
+3. and so on
+
+```python
+from typed import Typed, SomeType, OtherType
+from some.where import some_function
+
+Typed # the same as the old TypedFuncType
+Typed(SomeType, cod=OtherType) # the same as the old TypedFunc(SomeType, cod=OtherType)
+Typed(some_function) # the same as the old TypedFunc(some_function)
+...
+```
