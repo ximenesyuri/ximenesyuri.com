@@ -1,19 +1,18 @@
 ---
-title: component system
-desc: overview
-weight: 10
+title: overview
+weight: 1
 ---
 
 # About
 
-Here you will find documentations on the _component system_ of the {app} library.
+Here you will find an overview for the {comp} library.
 
 ```{toc}
 ```
 
 # Overview: Components
 
-The component system of {app} deals with _components_. These are typed functions (in the sense of {typed}) which returns _jinja strings_, i.e, Python strings of type `Jinja`, which contains {jinja2} syntax. Components should also be defined using the `@component` decorator.
+The lib {comp} deals with _components_. These are typed functions (in the sense of {typed}) which returns _jinja strings_, i.e, Python strings of type `Jinja`, which contains {jinja2} syntax. Components should also be defined using the `@component` decorator.
 
 The typical way to define a component is to first define a model (in the sense of {typed}) containing the _structure_ of the component, and then take this model as argument:
 
@@ -94,7 +93,7 @@ table 1: render variables
 
 ... TBA ...
 
-# Docs
+# Other Docs
 
 ```{toc-dir}
 ```

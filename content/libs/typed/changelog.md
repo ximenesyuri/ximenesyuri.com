@@ -1,5 +1,5 @@
 ---
-title: CHANGELOG
+title: changelog
 weight: 1000
 ---
 
