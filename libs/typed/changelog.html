@@ -501,6 +501,7 @@
 <li><p><a class="reference internal" href="#v0-4-4-introduction-of-model-attributes">v0.4.4: introduction of model attributes</a></p></li>
 <li><p><a class="reference internal" href="#v0-4-5-optional-and-mandatory-models">v0.4.5: optional and mandatory models</a></p></li>
 <li><p><a class="reference internal" href="#v0-5-0-refactor-of-factories">v0.5.0: refactor of factories</a></p></li>
+<li><p><a class="reference internal" href="#v0-5-1-introduce-null-in-factories">v0.5.1: introduce __null__ in factories</a></p></li>
 </ol>
 </section>
 <section id="v0-1-9-extendable-models-and-exact-models">
@@ -727,12 +728,21 @@
 </pre></div>
 </div>
 </section>
+<section id="v0-5-1-introduce-null-in-factories">
+<h1>v0.5.1: introduce <code class="docutils literal notranslate"><span class="pre">__null__</span></code> in factories<a class="headerlink" href="#v0-5-1-introduce-null-in-factories" title="Link to this heading"></a></h1>
+<p>In <a class="autolink reference external" href="/libs/typed">typed</a> we have <em>nullable</em> types. These are the types for which the <code class="docutils literal notranslate"><span class="pre">null</span></code> function is defined. In v0.5.1 the <code class="docutils literal notranslate"><span class="pre">null</span></code> function was revisited to look for two cases:</p>
+<ol class="arabic simple">
+<li><p>predefined builtin nullable types</p></li>
+<li><p>types with a <code class="docutils literal notranslate"><span class="pre">__null__</span></code> defined.</p></li>
+</ol>
+<p>Also, all factories were reviewed to include a <code class="docutils literal notranslate"><span class="pre">__null__</span></code> attribute to the type they construct.</p>
+</section>
 </main>
             </div>
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/16 at 18:00</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/18 at 13:44</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
