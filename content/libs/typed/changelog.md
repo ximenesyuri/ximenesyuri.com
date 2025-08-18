@@ -264,3 +264,11 @@ Typed(SomeType, cod=OtherType) # the same as the old TypedFunc(SomeType, cod=Oth
 Typed(some_function) # the same as the old TypedFunc(some_function)
 ...
 ```
+
+# v0.5.1: introduce `__null__` in factories
+
+In {typed} we have _nullable_ types. These are the types for which the `null` function is defined. In v0.5.1 the `null` function was revisited to look for two cases:
+1. predefined builtin nullable types
+2. types with a `__null__` defined.
+
+Also, all factories were reviewed to include a `__null__` attribute to the type they construct.
