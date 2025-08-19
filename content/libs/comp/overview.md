@@ -5,26 +5,25 @@ weight: 1
 
 # About
 
-Here you will find an overview for the {comp} library.
+Here you will find an overview for the {l:comp} library.
 
 ```{toc}
 ```
 
 # Overview: Components
 
-The lib {comp} deals with _components_. These are typed functions (in the sense of {typed}) which returns _jinja strings_, i.e, Python strings of type `Jinja`, which contains {jinja2} syntax. Components should also be defined using the `@component` decorator.
+The lib {l:comp} deals with _components_. These are typed functions (in the sense of {l:typed}) which return _jinja strings_, i.e, Python strings of type `Jinja`, which contain {l:jinja2} syntax. Components should also be defined using the `@component` decorator.
 
-The typical way to define a component is to first define a model (in the sense of {typed}) containing the _structure_ of the component, and then take this model as argument:
+The typical way to define a component is to first define a model (in the sense of {l:typed}, typically a optional model) containing the _structure_ of the component, and then take this model as argument:
 
 ```python
-from typed import null, SomeType, OtherType
-from typed.models import model
+from typed import optional, null, SomeType, OtherType
 from app import component
 
-@model
+@optional
 class MyModel:
-    some_var: Optional(SomeType, null(SomeType))
-    other_var: Optional(OtherType, null(OtherType))
+    some_var:  SomeType=null(SomeType)
+    other_var: OtherType=null(OtherType)
     ...
 
 @component
@@ -35,7 +34,7 @@ def my_comp(my_comp: MyModel) -> Jinja:
 """
 ```
 
-Components define a type `COMPONENT` and there are three main operations between them, each of them corresponding to an arithmetic symbol:
+Components define a type `COMPONENT` and there are four three main operations between them (the ), each of them corresponding to an arithmetic symbol:
 
 (table-1)=
 ```

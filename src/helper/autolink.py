@@ -26,11 +26,40 @@ def get_delimiters(autolink_config):
 def build_delimiter_regex(delimiters):
     regex_list = []
     for left, right in delimiters:
-        left_esc = re.escape(left)
-        right_esc = re.escape(right)
-        regex_list.append(f"{left_esc}(.*?){right_esc}")
+        l = re.escape(left)
+        r = re.escape(right)
+        regex = rf"{l}(?:([\w\-_]+)\s*:\s*([^\{{\}}]+?)|([^\{{\}}]+?)){r}"
+        regex_list.append(regex)
     pattern = "|".join(regex_list)
     return re.compile(pattern)
+
+def _collect_terms(autolinks):
+    sources = {}
+    global_terms = {}
+    source_classes = {}
+
+    for source, source_data in autolinks.items():
+        if source == "__delimiters__":
+            continue
+        if not isinstance(source_data, dict):
+            continue
+        entries = source_data.get("entries", {})
+        s_classes = source_data.get("classes") or source_data.get("class") or []
+        if isinstance(s_classes, str):
+            s_classes = s_classes.split()
+        source_classes[source] = list(s_classes)
+        if source == "global":
+            # Handle global lookups
+            for entry_key, entry in entries.items():
+                for term in entry.get("terms", []):
+                    global_terms[term.lower()] = (entry_key, entry)
+        else:
+            if source not in sources:
+                sources[source] = {}
+            for entry_key, entry in entries.items():
+                for term in entry.get("terms", []):
+                    sources[source][term.lower()] = (entry_key, entry)
+    return sources, global_terms, source_classes
 
 class AutoLinkPostTransform(SphinxPostTransform):
     default_priority = 900
@@ -43,13 +72,7 @@ class AutoLinkPostTransform(SphinxPostTransform):
         delimiters = get_delimiters(autolink_config)
         term_pattern = build_delimiter_regex(delimiters)
 
-        term_to_entry_map = {}
-        for entry_data in autolink_config.values():
-            if not isinstance(entry_data, dict):
-                continue
-            if 'terms' in entry_data and 'url' in entry_data:
-                for term in entry_data['terms']:
-                    term_to_entry_map[term.lower()] = entry_data
+        sources, global_terms, source_classes = _collect_terms(autolink_config)
 
         for text_node in list(self.document.traverse(nodes.Text)):
             parent = text_node.parent
@@ -69,42 +92,67 @@ class AutoLinkPostTransform(SphinxPostTransform):
             last_idx = 0
 
             for match in matches:
-                # Find which group matched and extract
-                matched_term_full = match.group(0)
-                matched_term_content = None
-                # Which group contains the match? (groups 1,3,5,...)
-                for g in range(1, len(match.groups()) + 1):
-                    content = match.group(g)
-                    if content is not None:
-                        matched_term_content = content.strip()
-                        break
+                matched_full = match.group(0)
+                prefix = match.group(1)
+                body = match.group(2)
+                global_body = match.group(3)
 
                 if match.start() > last_idx:
                     new_nodes.append(nodes.Text(text[last_idx:match.start()]))
 
-                entry_data = None
-                if matched_term_content:
-                    entry_data = term_to_entry_map.get(matched_term_content.lower())
-                if entry_data:
-                    ref_attribs = {'refuri': entry_data['url'], 'classes': ['autolink']}
-                    classes = ref_attribs['classes'].copy()
-                    custom_class = entry_data.get("class")
-                    if custom_class:
-                        if isinstance(custom_class, str):
-                            classes += custom_class.split()
-                        elif isinstance(custom_class, (list, tuple)):
-                            classes += list(custom_class)
-                        classes = [c for c in classes if c]
-                        ref_attribs['classes'] = classes
-                    style = entry_data.get("style")
+                classes = []
+                url = None
+                entry_label = None
+
+                if prefix and body:
+                    source = prefix.strip()
+                    entry_term = body.strip()
+                    term_l = entry_term.lower()
+                    source_map = sources.get(source)
+                    if source_map and term_l in source_map:
+                        entry_key, entry = source_map[term_l]
+                        url = entry.get("url")
+                        entry_label = entry_term
+                        classes = ["autolink"]
+                        classes += source_classes.get(source, [])
+                        if entry.get("classes") or entry.get("class"):
+                            ec = entry.get("classes") or entry.get("class")
+                            if isinstance(ec, str): ec = ec.split()
+                            classes += list(ec)
+                    else:
+                        new_nodes.append(nodes.Text(matched_full))
+                        last_idx = match.end()
+                        continue
+
+                elif global_body:
+                    entry_term = global_body.strip()
+                    term_l = entry_term.lower()
+                    if term_l in global_terms:
+                        entry_key, entry = global_terms[term_l]
+                        url = entry.get("url")
+                        entry_label = entry_term
+                        classes = ["autolink"]
+                        classes += source_classes.get("global", [])
+                        if entry.get("classes") or entry.get("class"):
+                            ec = entry.get("classes") or entry.get("class")
+                            if isinstance(ec, str): ec = ec.split()
+                            classes += list(ec)
+                    else:
+                        new_nodes.append(nodes.Text(matched_full))
+                        last_idx = match.end()
+                        continue
+
+                if url and entry_label:
+                    ref_attribs = {'refuri': url, 'classes': classes}
+                    style = entry.get("style")
                     if style:
                         ref_attribs["style"] = style
-
                     ref_node = nodes.reference(**ref_attribs)
-                    ref_node += nodes.Text(matched_term_content)
+                    ref_node += nodes.Text(entry_label)
                     new_nodes.append(ref_node)
                 else:
-                    new_nodes.append(nodes.Text(matched_term_full))
+                    new_nodes.append(nodes.Text(matched_full))
+
                 last_idx = match.end()
 
             if last_idx < len(text):
@@ -117,9 +165,9 @@ class AutoLinkPostTransform(SphinxPostTransform):
 def setup(app):
     app.add_config_value('autolink', {}, 'env')
     app.add_post_transform(AutoLinkPostTransform)
-    app.add_css_file('autolink.css')  # optional
     return {
-        'version': '0.6',
+        'version': '0.7',
         'parallel_read_safe': True,
         'parallel_write_safe': True,
     }
+

@@ -27,8 +27,8 @@
     <body>
         <header class="header">
             <div class="menu-div">
-                {% for item_name, item_url in menu.items() %}
-                    <a href="{{ item_url }}" class="menu-item">{{item_name}}</a>
+                {% for item_name, item in menu.items() %}
+                    <a href="{{ item.path }}" class="menu-item{% if item.class is defined %} {{ item.class }}{% endif %}">{{item_name}}</a>
                 {% endfor %}
             </div>    
         </header>

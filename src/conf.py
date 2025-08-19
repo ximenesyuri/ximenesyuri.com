@@ -47,27 +47,37 @@ html_context={
     'year': _year(),
     'now': _now(),
     'menu': {
-        'home': '/',
-        'about': '/about',
-        'education': '/education',
-        'research': '/research',
-        'publications': '/publications',
-        'work': '/work',
-        'setup': '/setup',
-        'libs': '/libs',
-        'notes': '/notes'
+        'home': {"path": "/"},
+        'about': {"path": '/about'},
+        'education': {"path": '/education'},
+        'research': {"path": '/research'},
+        'publications': {"path": '/publications'},
+        'work': {"path": '/work'},
+        'setup': {"path": '/setup'},
+        'libs': {"path": '/libs', "class": ""},
+        'notes': {"path": '/notes', "class": ""}
     },
     'libs_menu': _get_menu_items(CONTENT_DIR, 'libs'),
     'notes_menu': _get_menu_items(CONTENT_DIR, 'notes')
 }
 
-autolink = { }
+autolink = {
+    "l": {
+        "class": "autolink-libs"
+    },
+    "n": {
+        "class": "autolink-notes"
+    },
+    "g": {
+        "class": "autolink-glossary"
+    }
+}
 
 with open(os.path.join(CONF_DIR, 'yml', 'libs.yml'), 'r') as file:
-    autolink.update(yaml.safe_load(file))
+    autolink["l"]["entries"] = yaml.safe_load(file)
 
 with open(os.path.join(CONF_DIR, 'yml', 'notes.yml'), 'r') as file:
-    autolink.update(yaml.safe_load(file))
+    autolink["n"]["entries"] = yaml.safe_load(file)
 
 with open(os.path.join(CONF_DIR, 'yml', 'glossary.yml'), 'r') as file:
-    autolink.update(yaml.safe_load(file))
+    autolink["g"]["entries"] = yaml.safe_load(file)

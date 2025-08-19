@@ -329,6 +329,11 @@ table tbody {
     text-decoration: underline;
 }
 
+.autolink-libs {
+    color: var(--purple);
+    text-decoration: underline;
+}
+
 .breadcrumb {
     padding: 0.75rem 1rem;
     margin-bottom: 1rem;
