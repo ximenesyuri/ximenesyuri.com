@@ -42,9 +42,9 @@
                 
                     <a href="/setup" class="menu-item">setup</a>
                 
-                    <a href="/libs" class="menu-item">libs</a>
+                    <a href="/libs" class="menu-item ">libs</a>
                 
-                    <a href="/notes" class="menu-item">notes</a>
+                    <a href="/notes" class="menu-item ">notes</a>
                 
             </div>    
         </header>
@@ -407,7 +407,7 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">└─</span>
             
-                <a href="/libs/comp/CHANGELOG">changelog</a>
+                <a href="/libs/comp/changelog">changelog</a>
             
             
         </li>
@@ -501,7 +501,7 @@
 </section>
 <section id="review">
 <h1>Review<a class="headerlink" href="#review" title="Link to this heading"></a></h1>
-<p>Recall that in the <code class="docutils literal notranslate"><span class="pre">app</span></code> component system, a <em>component</em> is a typed function (in the sense of <a class="autolink reference external" href="/libs/typed">typed</a>) such that:</p>
+<p>Recall that in the <code class="docutils literal notranslate"><span class="pre">app</span></code> component system, a <em>component</em> is a typed function (in the sense of {typed}) such that:</p>
 <ol class="arabic simple">
 <li><p>it returns a <em>jinja string</em>, i.e, its codomain is a subtype of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>;</p></li>
 <li><p>it is decorated with the <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> decorator.</p></li>
@@ -516,7 +516,7 @@
 <section id="models">
 <h1>Models<a class="headerlink" href="#models" title="Link to this heading"></a></h1>
 <p>By definition, there is no restriction on the <em>domain</em> of a component, except by the fact that it can contains certain special variables, as described above. This means that the “typical variables” may have any type.</p>
-<p>However, a better way to organize the components is to work with <em>models</em> (in the sense of <a class="autolink reference external" href="/libs/typed">typed</a>), grouping the “typical variables” in a more semantic entity.</p>
+<p>However, a better way to organize the components is to work with <em>models</em> (in the sense of {typed}), grouping the “typical variables” in a more semantic entity.</p>
 <p>So, for example, consider the following component:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span>
 <span class="linenos">2</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Jinja</span>
@@ -528,7 +528,7 @@
 <span class="linenos">8</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>You could join <code class="docutils literal notranslate"><span class="pre">some_var</span></code> and <code class="docutils literal notranslate"><span class="pre">other_var</span></code> into a single entity (for full details on using models, see <a class="autolink reference external" href="/libs/typed/2-models">typed/models</a>):</p>
+<p>You could join <code class="docutils literal notranslate"><span class="pre">some_var</span></code> and <code class="docutils literal notranslate"><span class="pre">other_var</span></code> into a single entity (for full details on using models, see {typed/models}):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span><span class="p">,</span> <span class="o">...</span>
 <span class="linenos">2</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">model</span><span class="p">,</span> <span class="n">Optional</span>
 <span class="linenos">3</span>
@@ -551,7 +551,7 @@
 </pre></div>
 </div>
 <blockquote id="rem-1">
-<div><p><a class="reference internal" href="#rem-1">Remark 1</a>. The recommendation is to create models with the decorator <code class="docutils literal notranslate"><span class="pre">&#64;model</span></code> and all variables being <code class="docutils literal notranslate"><span class="pre">Optional</span></code> (in the sense of <a class="autolink reference external" href="/libs/typed/2-models">typed/models</a>). This will allow more flexibility in the rendering of the component, as described in <a class="reference internal" href="#./3-rendering"><span class="xref myst">Rendering</span></a>, without breaking type safety. However, you are free to create the models as you want, say using more rigid decorators, as <code class="docutils literal notranslate"><span class="pre">&#64;exact</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;ordered</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;rigid</span></code>, or avoiding <code class="docutils literal notranslate"><span class="pre">Optional</span></code> arguments.</p>
+<div><p><a class="reference internal" href="#rem-1">Remark 1</a>. The recommendation is to create models with the decorator <code class="docutils literal notranslate"><span class="pre">&#64;model</span></code> and all variables being <code class="docutils literal notranslate"><span class="pre">Optional</span></code> (in the sense of {typed/models}). This will allow more flexibility in the rendering of the component, as described in <a class="reference internal" href="#./3-rendering"><span class="xref myst">Rendering</span></a>, without breaking type safety. However, you are free to create the models as you want, say using more rigid decorators, as <code class="docutils literal notranslate"><span class="pre">&#64;exact</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;ordered</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;rigid</span></code>, or avoiding <code class="docutils literal notranslate"><span class="pre">Optional</span></code> arguments.</p>
 </div></blockquote>
 </section>
 <section id="accessing-values">
@@ -651,7 +651,7 @@
 </table>
 <p><a class="table-caption reference external" href="#table-1">table 1</a></p>
 </div>
-<p>The attributes of the builtin models correspond to (mostly of) the <a class="autolink reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes">HTML tag attributes</a> of the underlying HTML tags. There is also a <code class="docutils literal notranslate"><span class="pre">Globals</span></code> model, which contains the <a class="autolink reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes">HTML global attributes</a>, which are shared across all HTML tags.</p>
+<p>The attributes of the builtin models correspond to (mostly of) the {HTML tag attributes} of the underlying HTML tags. There is also a <code class="docutils literal notranslate"><span class="pre">Globals</span></code> model, which contains the {HTML global attributes}, which are shared across all HTML tags.</p>
 <p>The global attributes can be accessed in each builtin model from a <code class="docutils literal notranslate"><span class="pre">globals</span></code> variable. The only exception are the global attributes <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">class</span></code>, which appears as independent variables inside each model, named according to the tag name:</p>
 <div class="captioned-table" id="table-2">
 <table class="custom-pre-table docutils align-default">
@@ -796,7 +796,7 @@
 <li><p><a class="reference internal" href="compatibility.html">compatibility</a></p></li>
 <li><p><a class="reference internal" href="entities.html">list of entities</a></p></li>
 <li><p><a class="reference internal" href="glossary.html">glossary</a></p></li>
-<li><p><a class="reference internal" href="CHANGELOG.html">changelog</a></p></li>
+<li><p><a class="reference internal" href="changelog.html">changelog</a></p></li>
 </ol>
 </section>
 </main>
@@ -804,7 +804,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/18 at 13:44</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/19 at 18:09</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>

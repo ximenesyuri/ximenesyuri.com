@@ -42,9 +42,9 @@
                 
                     <a href="/setup" class="menu-item">setup</a>
                 
-                    <a href="/libs" class="menu-item">libs</a>
+                    <a href="/libs" class="menu-item ">libs</a>
                 
-                    <a href="/notes" class="menu-item">notes</a>
+                    <a href="/notes" class="menu-item ">notes</a>
                 
             </div>    
         </header>
@@ -407,7 +407,7 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">└─</span>
             
-                <a href="/libs/comp/CHANGELOG">changelog</a>
+                <a href="/libs/comp/changelog">changelog</a>
             
             
         </li>
@@ -488,7 +488,7 @@
                 
                 <main><section id="about">
 <h1>About<a class="headerlink" href="#about" title="Link to this heading"></a></h1>
-<p>This documentation covers the <em>models system</em> of <a class="autolink reference external" href="/libs/typed">typed</a> which is used specifically to data validation.</p>
+<p>This documentation covers the <em>models system</em> of {typed} which is used specifically to data validation.</p>
 <ol class="arabic simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#model-factories">Model Factories</a></p></li>
@@ -520,7 +520,7 @@
 </section>
 <section id="model-factories">
 <h1>Model Factories<a class="headerlink" href="#model-factories" title="Link to this heading"></a></h1>
-<p>Recall that in <a class="autolink reference external" href="/libs/typed">typed</a> we have <em>type factories</em>, which are functions that return a <em>type</em>, hence that take values into the <em>metatype</em> <code class="docutils literal notranslate"><span class="pre">TYPE</span></code> of all types. Recall, yet, that we have a primitive type <code class="docutils literal notranslate"><span class="pre">Json</span></code>.</p>
+<p>Recall that in {typed} we have <em>type factories</em>, which are functions that return a <em>type</em>, hence that take values into the <em>metatype</em> <code class="docutils literal notranslate"><span class="pre">TYPE</span></code> of all types. Recall, yet, that we have a primitive type <code class="docutils literal notranslate"><span class="pre">Json</span></code>.</p>
 <p>In a very general perspective, a <em>model factory</em> is a <em>type factory</em> such that:</p>
 <ol class="arabic simple">
 <li><p>it has only keyword arguments;</p></li>
@@ -561,7 +561,7 @@
 </section>
 <section id="validation-conditions">
 <h1>Validation Conditions<a class="headerlink" href="#validation-conditions" title="Link to this heading"></a></h1>
-<p>In <a class="autolink reference external" href="/libs/typed">typed</a>, a <em>model</em> is precisely a <em>type</em> which is constructed from a <em>model factory</em>. In other words, it is an instance <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">ModelFactory(**kwargs)</span></code> for some <code class="docutils literal notranslate"><span class="pre">ModelFactory</span></code> listed above, and some <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> in <code class="docutils literal notranslate"><span class="pre">Dict(TYPE)</span></code>.</p>
+<p>In {typed}, a <em>model</em> is precisely a <em>type</em> which is constructed from a <em>model factory</em>. In other words, it is an instance <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">ModelFactory(**kwargs)</span></code> for some <code class="docutils literal notranslate"><span class="pre">ModelFactory</span></code> listed above, and some <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> in <code class="docutils literal notranslate"><span class="pre">Dict(TYPE)</span></code>.</p>
 <p>The difference between the <em>model factories</em> is precisely how their <em>models</em> are validated.</p>
 <p>More precisely, since the <em>model factories</em> produces subtypes of <code class="docutils literal notranslate"><span class="pre">Json</span></code>, it follows that if <code class="docutils literal notranslate"><span class="pre">isinstance(x,</span> <span class="pre">model)</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, then <code class="docutils literal notranslate"><span class="pre">x</span></code> is a <code class="docutils literal notranslate"><span class="pre">Json</span></code> data. Each <code class="docutils literal notranslate"><span class="pre">key</span></code> in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> corresponds to an attribute of <code class="docutils literal notranslate"><span class="pre">model</span></code>, which, in turn, corresponds to an entry in each instance <code class="docutils literal notranslate"><span class="pre">x</span></code> of <code class="docutils literal notranslate"><span class="pre">model</span></code>, when viewed as a <code class="docutils literal notranslate"><span class="pre">Json</span></code> datas. The different flavors of <em>model factories</em> deals, precisely, with the reciprocal question:</p>
 <blockquote>
@@ -688,10 +688,10 @@
 </pre></div>
 </div>
 <blockquote>
-<div><p>This approach can also be used to convert models from other sources into <a class="autolink reference external" href="/libs/typed">typed</a> models. In particular, this can be used to generate <a class="autolink reference external" href="/libs/typed">typed</a> models from <a class="reference external" href="https://github.com/pydantic/pydantic">pydantic</a> models and from Python <a class="reference external" href="https://docs.python.org/3/library/dataclasses.html">dataclasses</a>.</p>
+<div><p>This approach can also be used to convert models from other sources into {typed} models. In particular, this can be used to generate {typed} models from <a class="reference external" href="https://github.com/pydantic/pydantic">pydantic</a> models and from Python <a class="reference external" href="https://docs.python.org/3/library/dataclasses.html">dataclasses</a>.</p>
 </div></blockquote>
 <blockquote>
-<div><p>The approach of creating <a class="autolink reference external" href="/libs/typed">typed</a> models from <em>model decorators</em> is recommended. Indeed, while created directly from a <em>model factory</em>, the model a fully dynamically entity. This means that a LSP will not collect its attributes. On the other hand, while using the <em>model decorators</em>, they are applied to static classes, whose attributes are recognized by LSPs, providing a better developing experience.</p>
+<div><p>The approach of creating {typed} models from <em>model decorators</em> is recommended. Indeed, while created directly from a <em>model factory</em>, the model a fully dynamically entity. This means that a LSP will not collect its attributes. On the other hand, while using the <em>model decorators</em>, they are applied to static classes, whose attributes are recognized by LSPs, providing a better developing experience.</p>
 </div></blockquote>
 </section>
 <section id="universal-decorator">
@@ -769,7 +769,7 @@
 </div>
 <p>Independently of the case, if some condition used in the definition of the model <code class="docutils literal notranslate"><span class="pre">MyModel</span></code> is not satisfied, a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> will be raised.</p>
 <blockquote>
-<div><p>For more on the <a class="autolink reference external" href="/libs/typed">typed</a> error messages, see <a class="reference internal" href="errors"><span class="doc std std-doc">errors</span></a>.</p>
+<div><p>For more on the {typed} error messages, see <a class="reference internal" href="errors"><span class="doc std std-doc">errors</span></a>.</p>
 </div></blockquote>
 </section>
 <section id="optional-attributes">
@@ -989,7 +989,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/18 at 13:44</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/19 at 18:09</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>

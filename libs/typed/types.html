@@ -42,9 +42,9 @@
                 
                     <a href="/setup" class="menu-item">setup</a>
                 
-                    <a href="/libs" class="menu-item">libs</a>
+                    <a href="/libs" class="menu-item ">libs</a>
                 
-                    <a href="/notes" class="menu-item">notes</a>
+                    <a href="/notes" class="menu-item ">notes</a>
                 
             </div>    
         </header>
@@ -407,7 +407,7 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">└─</span>
             
-                <a href="/libs/comp/CHANGELOG">changelog</a>
+                <a href="/libs/comp/changelog">changelog</a>
             
             
         </li>
@@ -488,7 +488,7 @@
                 
                 <main><section id="about">
 <h1>About<a class="headerlink" href="#about" title="Link to this heading"></a></h1>
-<p>This documentation describes the <em>type system</em> provided by <a class="autolink reference external" href="/libs/typed">typed</a> and how to use it.</p>
+<p>This documentation describes the <em>type system</em> provided by {typed} and how to use it.</p>
 <ol class="arabic simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#types">Types</a></p></li>
@@ -504,7 +504,7 @@
 </section>
 <section id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
-<p>In <a class="autolink reference external" href="/libs/typed">typed</a> type system we have three kinds of entities:</p>
+<p>In {typed} type system we have three kinds of entities:</p>
 <ol class="arabic simple">
 <li><p><em>types</em>: are the basic entities</p></li>
 <li><p><em>factories</em>: are functions used to build <code class="docutils literal notranslate"><span class="pre">types</span></code></p></li>
@@ -513,7 +513,7 @@
 </section>
 <section id="types">
 <h1>Types<a class="headerlink" href="#types" title="Link to this heading"></a></h1>
-<p>A <a class="autolink reference external" href="/libs/typed">typed</a> is just a class named in <code class="docutils literal notranslate"><span class="pre">CamelCase</span></code>. Types can be organized into <em>primitive types</em> and <em>derived types</em>. The first ones are those that come already defined in <a class="autolink reference external" href="/libs/typed">typed</a>. The other ones are those constructed by the user by making use of <code class="docutils literal notranslate"><span class="pre">factories</span></code>, as we will see in the sequence.</p>
+<p>A {typed} is just a class named in <code class="docutils literal notranslate"><span class="pre">CamelCase</span></code>. Types can be organized into <em>primitive types</em> and <em>derived types</em>. The first ones are those that come already defined in {typed}. The other ones are those constructed by the user by making use of <code class="docutils literal notranslate"><span class="pre">factories</span></code>, as we will see in the sequence.</p>
 <p>There are a lot of <em>primitive types</em>. Some of them are Python builtins.</p>
 <div class="captioned-table" id="table-1">
 <table class="custom-pre-table docutils align-default">
@@ -542,7 +542,7 @@
 </table>
 <p><a class="table-caption reference external" href="#table-1">table 1</a></p>
 </div>
-<p>Other examples of <em>primitive types</em> in <a class="autolink reference external" href="/libs/typed">typed</a> which are not Python builtins, include:</p>
+<p>Other examples of <em>primitive types</em> in {typed} which are not Python builtins, include:</p>
 <div class="captioned-table" id="table-2">
 <table class="custom-pre-table docutils align-default">
 <thead>
@@ -573,10 +573,10 @@
 </section>
 <section id="defining-types">
 <h1>Defining Types<a class="headerlink" href="#defining-types" title="Link to this heading"></a></h1>
-<p>Although any <code class="docutils literal notranslate"><span class="pre">CamelCase</span></code> class is an acceptable type, in <a class="autolink reference external" href="/libs/typed">typed</a> the types are typically subject to the following conditions:</p>
+<p>Although any <code class="docutils literal notranslate"><span class="pre">CamelCase</span></code> class is an acceptable type, in {typed} the types are typically subject to the following conditions:</p>
 <ol class="arabic simple">
 <li><p>they are constructed as the concretization of a <code class="docutils literal notranslate"><span class="pre">metaclass</span></code></p></li>
-<li><p>they are a subclass of some already defined <a class="autolink reference external" href="/libs/typed">typed</a> type</p></li>
+<li><p>they are a subclass of some already defined {typed} type</p></li>
 <li><p>they have a explicit <code class="docutils literal notranslate"><span class="pre">__instancecheck__</span></code> method</p></li>
 <li><p>they may contains a explicit <code class="docutils literal notranslate"><span class="pre">__subclasscheck__</span></code> method</p></li>
 </ol>
@@ -611,11 +611,11 @@
 </section>
 <section id="factories">
 <h1>Factories<a class="headerlink" href="#factories" title="Link to this heading"></a></h1>
-<p>In <a class="autolink reference external" href="/libs/typed">typed</a>, a <em>factory</em> is a <code class="docutils literal notranslate"><span class="pre">CamelCase</span></code> named function that returns a type. It can receive types (i.e, instances of <code class="docutils literal notranslate"><span class="pre">TYPE</span></code>) as arguments or anything else. In the case where it receive only types as arguments, a <em>factory</em> is viewed as a “type operation”.</p>
+<p>In {typed}, a <em>factory</em> is a <code class="docutils literal notranslate"><span class="pre">CamelCase</span></code> named function that returns a type. It can receive types (i.e, instances of <code class="docutils literal notranslate"><span class="pre">TYPE</span></code>) as arguments or anything else. In the case where it receive only types as arguments, a <em>factory</em> is viewed as a “type operation”.</p>
 <blockquote>
 <div><p>Another way of thinking about a <em>factory</em> is as a <a class="reference external" href="https://en.wikipedia.org/wiki/Dependent_type">dependent type</a>, as will be discussed later.</p>
 </div></blockquote>
-<p>There a lot of predefined <em>factories</em> in <a class="autolink reference external" href="/libs/typed">typed</a>. Some examples of factories that can be viewed as “type operations” are the following:</p>
+<p>There a lot of predefined <em>factories</em> in {typed}. Some examples of factories that can be viewed as “type operations” are the following:</p>
 <div class="captioned-table" id="table-3">
 <table class="custom-pre-table docutils align-default">
 <thead>
@@ -730,15 +730,15 @@
 <h1>Annotations, Models and Dependent Types<a class="headerlink" href="#annotations-models-and-dependent-types" title="Link to this heading"></a></h1>
 <p>As you can note from <a class="reference internal" href="#table-1">table above</a>, there is a factory associated to each annotation in the library <code class="docutils literal notranslate"><span class="pre">typing</span></code>. In this sense, you can also think of a <code class="docutils literal notranslate"><span class="pre">factory</span></code> as a way to implement the type annotations from <code class="docutils literal notranslate"><span class="pre">typing</span></code>:</p>
 <blockquote>
-<div><p><a class="autolink reference external" href="/libs/typed">typed</a> <em>can be viewed as a library in which type hints really work</em>.</p>
+<div><p>{typed} <em>can be viewed as a library in which type hints really work</em>.</p>
 </div></blockquote>
-<p>Note that the <em>factories</em> of <a class="autolink reference external" href="/libs/typed">typed</a> that corresponds to type annotations in <code class="docutils literal notranslate"><span class="pre">typing</span> </code> are always “type operations”. On other and, we commented that there are other kinds of factories. Therefore, actually</p>
+<p>Note that the <em>factories</em> of {typed} that corresponds to type annotations in <code class="docutils literal notranslate"><span class="pre">typing</span> </code> are always “type operations”. On other and, we commented that there are other kinds of factories. Therefore, actually</p>
 <blockquote>
-<div><p><a class="autolink reference external" href="/libs/typed">typed</a> <em>does much more than just implement type annotations</em>.</p>
+<div><p>{typed} <em>does much more than just implement type annotations</em>.</p>
 </div></blockquote>
 <p>A special flavor of factories are the so-called <em>models</em>. They receive a bunch of arguments and produces types that have such arguments as attributes. They work similar  to <a class="reference external" href="https://docs.python.org/3/library/dataclasses.html">dataclasses</a> or to classes that extends <code class="docutils literal notranslate"><span class="pre">BaseModel</span></code> in <a class="reference external" href="https://docs.pydantic.dev/latest/">pydantic</a>, being specially used for data validation (this will be discussed in the sequence - see <a class="reference internal" href="models"><span class="doc std std-doc">here</span></a>). So:</p>
 <blockquote>
-<div><p><a class="autolink reference external" href="/libs/typed">typed</a> <em>provides an effective mechanism for data validation</em>.</p>
+<div><p>{typed} <em>provides an effective mechanism for data validation</em>.</p>
 </div></blockquote>
 <p>A generic factory is a function <code class="docutils literal notranslate"><span class="pre">factory:</span> <span class="pre">X</span> <span class="pre">-&gt;</span> <span class="pre">TYPE</span></code> that assigns a type to a collection of arguments, hence can be viewed as an “indexed family of types”, hence as an implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Dependent_type">dependent types</a> in Python:</p>
 <blockquote>
@@ -747,11 +747,11 @@
 </section>
 <section id="typed-functions">
 <h1>Typed Functions<a class="headerlink" href="#typed-functions" title="Link to this heading"></a></h1>
-<p>In <a class="autolink reference external" href="/libs/typed">typed</a>, there is a distinguished class of functions: the <em>typed functions</em>. They have the following characteristics:</p>
+<p>In {typed}, there is a distinguished class of functions: the <em>typed functions</em>. They have the following characteristics:</p>
 <ol class="arabic simple">
 <li><p>they are defined using the <code class="docutils literal notranslate"><span class="pre">&#64;typed</span></code> decorator;</p></li>
-<li><p>each of its arguments is decorated with an annotation given by a <a class="autolink reference external" href="/libs/typed">typed</a> <em>type</em>;</p></li>
-<li><p>it also has a return annotation given by a <a class="autolink reference external" href="/libs/typed">typed</a> <em>type</em>.</p></li>
+<li><p>each of its arguments is decorated with an annotation given by a {typed} <em>type</em>;</p></li>
+<li><p>it also has a return annotation given by a {typed} <em>type</em>.</p></li>
 </ol>
 <p>So, in essence, the structure of a <em>typed function</em> is as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">typed</span><span class="p">,</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span><span class="p">,</span> <span class="o">...</span>
@@ -763,7 +763,7 @@
 </div>
 <p>When you define a function as a <em>typed function</em>, its type annotations are checked at runtime, ensuring type safety. This means that, looking at the examples above, if at runtime <code class="docutils literal notranslate"><span class="pre">some_var</span></code> is not an instance of <code class="docutils literal notranslate"><span class="pre">SomeType</span></code>, or if the return value of <code class="docutils literal notranslate"><span class="pre">my_function</span></code> is not an instance of <code class="docutils literal notranslate"><span class="pre">OtherType</span></code>, then a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> will be raised.</p>
 <blockquote>
-<div><p>The type errors from <a class="autolink reference external" href="/libs/typed">typed</a> are as intuitive as possible. For more about them, see <a class="reference internal" href="errors"><span class="doc std std-doc">errors</span></a>.</p>
+<div><p>The type errors from {typed} are as intuitive as possible. For more about them, see <a class="reference internal" href="errors"><span class="doc std std-doc">errors</span></a>.</p>
 </div></blockquote>
 </section>
 <section id="typed-variables">
@@ -795,7 +795,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/18 at 13:44</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/19 at 18:09</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>

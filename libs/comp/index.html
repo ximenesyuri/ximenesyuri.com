@@ -42,9 +42,9 @@
                 
                     <a href="/setup" class="menu-item">setup</a>
                 
-                    <a href="/libs" class="menu-item">libs</a>
+                    <a href="/libs" class="menu-item ">libs</a>
                 
-                    <a href="/notes" class="menu-item">notes</a>
+                    <a href="/notes" class="menu-item ">notes</a>
                 
             </div>    
         </header>
@@ -407,7 +407,7 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">└─</span>
             
-                <a href="/libs/comp/CHANGELOG">changelog</a>
+                <a href="/libs/comp/changelog">changelog</a>
             
             
         </li>
@@ -499,7 +499,7 @@
 </div>
 <section id="about">
 <h1>About<a class="headerlink" href="#about" title="Link to this heading"></a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">comp</span></code> is a Python functional style component system based in <a class="autolink reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a>, presenting type safety through an intensive use of <a class="autolink reference external" href="/libs/typed">typed</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">comp</span></code> is a Python functional style component system based in {jinja}, presenting type safety through an intensive use of {typed}.</p>
 <ol class="arabic simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#install">Install</a></p></li>
@@ -509,9 +509,9 @@
 </section>
 <section id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
-<p>With <a class="autolink reference external" href="/libs/comp">comp</a> you can construct <em>components</em>, which are <em>typed functions</em> (in the sense of <a class="autolink reference external" href="/libs/typed">typed</a>) returning <em>jinja strings</em> (i.e, strings presenting a valid <a class="autolink reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> syntax),  constituting a type <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>.</p>
-<p>Components (i.e, instances of <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>) have the structure determined by <em>models</em> (in the sense of <a class="autolink reference external" href="/libs/typed">typed</a>). Furthermore, they can be composed through four <em>component operations</em> (<code class="docutils literal notranslate"><span class="pre">join</span></code>, <code class="docutils literal notranslate"><span class="pre">concat</span></code>, <code class="docutils literal notranslate"><span class="pre">eval</span></code> and <code class="docutils literal notranslate"><span class="pre">copy</span></code>), which corresponds, respectively, to certain magic methods in <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>. This allow us to create <em>derived components</em> from <em>primitive components</em> by making use of <em>component equations</em>.</p>
-<p>After constructed, components can be <em>rendered</em> into raw HTML strings by making use of the <code class="docutils literal notranslate"><span class="pre">render</span></code> service function. To render a component we need to pass a <em>context</em>, which is the minimum information needed to provide a sense to the component. This could include, for example, <code class="docutils literal notranslate"><span class="pre">markdown</span></code> content (which is rendered through <a class="autolink reference external" href="https://github.com/Python-Markdown/markdown">python-markdown</a>), <code class="docutils literal notranslate"><span class="pre">rst</span></code> content (rendered via <a class="autolink reference external" href="https://docutils.sourceforge.io/">docutils</a>), other components, and so on. This flexibility allows the use of <a class="autolink reference external" href="/libs/comp">comp</a> in both dynamic and static environments.</p>
+<p>With {comp} you can construct <em>components</em>, which are <em>typed functions</em> (in the sense of {typed}) returning <em>jinja strings</em> (i.e, strings presenting a valid {jinja} syntax),  constituting a type <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>.</p>
+<p>Components (i.e, instances of <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>) have the structure determined by <em>models</em> (in the sense of {typed}). Furthermore, they can be composed through four <em>component operations</em> (<code class="docutils literal notranslate"><span class="pre">join</span></code>, <code class="docutils literal notranslate"><span class="pre">concat</span></code>, <code class="docutils literal notranslate"><span class="pre">eval</span></code> and <code class="docutils literal notranslate"><span class="pre">copy</span></code>), which corresponds, respectively, to certain magic methods in <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>. This allow us to create <em>derived components</em> from <em>primitive components</em> by making use of <em>component equations</em>.</p>
+<p>After constructed, components can be <em>rendered</em> into raw HTML strings by making use of the <code class="docutils literal notranslate"><span class="pre">render</span></code> service function. To render a component we need to pass a <em>context</em>, which is the minimum information needed to provide a sense to the component. This could include, for example, <code class="docutils literal notranslate"><span class="pre">markdown</span></code> content (which is rendered through {python-markdown}), <code class="docutils literal notranslate"><span class="pre">rst</span></code> content (rendered via {docutils}), other components, and so on. This flexibility allows the use of {comp} in both dynamic and static environments.</p>
 <p>Components can also be <em>previewed</em> by putting them into a <em>preview stack</em>.</p>
 <ul class="simple">
 <li><p>For a more detailed overview, see <a class="reference internal" href="overview"><span class="doc std std-doc">overview</span></a>.</p></li>
@@ -544,7 +544,7 @@
 <li><p><a class="reference internal" href="compatibility.html">compatibility</a></p></li>
 <li><p><a class="reference internal" href="entities.html">list of entities</a></p></li>
 <li><p><a class="reference internal" href="glossary.html">glossary</a></p></li>
-<li><p><a class="reference internal" href="CHANGELOG.html">changelog</a></p></li>
+<li><p><a class="reference internal" href="changelog.html">changelog</a></p></li>
 </ol>
 </section>
 </main>
@@ -552,7 +552,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/18 at 13:44</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/19 at 18:09</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>

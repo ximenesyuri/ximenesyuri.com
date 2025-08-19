@@ -42,9 +42,9 @@
                 
                     <a href="/setup" class="menu-item">setup</a>
                 
-                    <a href="/libs" class="menu-item">libs</a>
+                    <a href="/libs" class="menu-item ">libs</a>
                 
-                    <a href="/notes" class="menu-item">notes</a>
+                    <a href="/notes" class="menu-item ">notes</a>
                 
             </div>    
         </header>
@@ -407,7 +407,7 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">└─</span>
             
-                <a href="/libs/comp/CHANGELOG">changelog</a>
+                <a href="/libs/comp/changelog">changelog</a>
             
             
         </li>
@@ -488,7 +488,7 @@
                 
                 <main><section id="about">
 <h1>About<a class="headerlink" href="#about" title="Link to this heading"></a></h1>
-<p>Here you will find an overview for the <a class="autolink reference external" href="/libs/comp">comp</a> library.</p>
+<p>Here you will find an overview for the <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> library.</p>
 <ol class="arabic simple">
 <li><p><a class="reference internal" href="#overview-components">Overview: Components</a></p></li>
 <li><p><a class="reference internal" href="#overview-rendering">Overview: Rendering</a></p></li>
@@ -498,27 +498,26 @@
 </section>
 <section id="overview-components">
 <h1>Overview: Components<a class="headerlink" href="#overview-components" title="Link to this heading"></a></h1>
-<p>The lib <a class="autolink reference external" href="/libs/comp">comp</a> deals with <em>components</em>. These are typed functions (in the sense of <a class="autolink reference external" href="/libs/typed">typed</a>) which returns <em>jinja strings</em>, i.e, Python strings of type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>, which contains <a class="autolink reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> syntax. Components should also be defined using the <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> decorator.</p>
-<p>The typical way to define a component is to first define a model (in the sense of <a class="autolink reference external" href="/libs/typed">typed</a>) containing the <em>structure</em> of the component, and then take this model as argument:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">null</span><span class="p">,</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span>
-<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">model</span>
-<span class="linenos"> 3</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span>
-<span class="linenos"> 4</span>
-<span class="linenos"> 5</span><span class="nd">@model</span>
-<span class="linenos"> 6</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">:</span>
-<span class="linenos"> 7</span>    <span class="n">some_var</span><span class="p">:</span> <span class="n">Optional</span><span class="p">(</span><span class="n">SomeType</span><span class="p">,</span> <span class="n">null</span><span class="p">(</span><span class="n">SomeType</span><span class="p">))</span>
-<span class="linenos"> 8</span>    <span class="n">other_var</span><span class="p">:</span> <span class="n">Optional</span><span class="p">(</span><span class="n">OtherType</span><span class="p">,</span> <span class="n">null</span><span class="p">(</span><span class="n">OtherType</span><span class="p">))</span>
-<span class="linenos"> 9</span>    <span class="o">...</span>
-<span class="linenos">10</span>
-<span class="linenos">11</span><span class="nd">@component</span>
-<span class="linenos">12</span><span class="k">def</span><span class="w"> </span><span class="nf">my_comp</span><span class="p">(</span><span class="n">my_comp</span><span class="p">:</span> <span class="n">MyModel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
-<span class="linenos">13</span>    <span class="o">...</span>
-<span class="linenos">14</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
-<span class="linenos">15</span><span class="s2">    ...</span>
-<span class="linenos">16</span><span class="s2">&quot;&quot;&quot;</span>
+<p>The lib <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> deals with <em>components</em>. These are typed functions (in the sense of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>) which return <em>jinja strings</em>, i.e, Python strings of type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>, which contain <a class="autolink autolink-libs reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> syntax. Components should also be defined using the <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> decorator.</p>
+<p>The typical way to define a component is to first define a model (in the sense of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, typically a optional model) containing the <em>structure</em> of the component, and then take this model as argument:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">optional</span><span class="p">,</span> <span class="n">null</span><span class="p">,</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="nd">@optional</span>
+<span class="linenos"> 5</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">:</span>
+<span class="linenos"> 6</span>    <span class="n">some_var</span><span class="p">:</span>  <span class="n">SomeType</span><span class="o">=</span><span class="n">null</span><span class="p">(</span><span class="n">SomeType</span><span class="p">)</span>
+<span class="linenos"> 7</span>    <span class="n">other_var</span><span class="p">:</span> <span class="n">OtherType</span><span class="o">=</span><span class="n">null</span><span class="p">(</span><span class="n">OtherType</span><span class="p">)</span>
+<span class="linenos"> 8</span>    <span class="o">...</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="nd">@component</span>
+<span class="linenos">11</span><span class="k">def</span><span class="w"> </span><span class="nf">my_comp</span><span class="p">(</span><span class="n">my_comp</span><span class="p">:</span> <span class="n">MyModel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
+<span class="linenos">12</span>    <span class="o">...</span>
+<span class="linenos">13</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
+<span class="linenos">14</span><span class="s2">    ...</span>
+<span class="linenos">15</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Components define a type <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> and there are three main operations between them, each of them corresponding to an arithmetic symbol:</p>
+<p>Components define a type <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> and there are four three main operations between them (the ), each of them corresponding to an arithmetic symbol:</p>
 <div class="captioned-table" id="table-1">
 <table class="custom-pre-table docutils align-default">
 <thead>
@@ -612,7 +611,7 @@
 <li><p><a class="reference internal" href="compatibility.html">compatibility</a></p></li>
 <li><p><a class="reference internal" href="entities.html">list of entities</a></p></li>
 <li><p><a class="reference internal" href="glossary.html">glossary</a></p></li>
-<li><p><a class="reference internal" href="CHANGELOG.html">changelog</a></p></li>
+<li><p><a class="reference internal" href="changelog.html">changelog</a></p></li>
 </ol>
 </section>
 </main>
@@ -620,7 +619,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/18 at 13:44</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/19 at 18:09</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>

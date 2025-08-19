@@ -42,9 +42,9 @@
                 
                     <a href="/setup" class="menu-item">setup</a>
                 
-                    <a href="/libs" class="menu-item">libs</a>
+                    <a href="/libs" class="menu-item ">libs</a>
                 
-                    <a href="/notes" class="menu-item">notes</a>
+                    <a href="/notes" class="menu-item ">notes</a>
                 
             </div>    
         </header>
@@ -407,7 +407,7 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">└─</span>
             
-                <a href="/libs/comp/CHANGELOG">changelog</a>
+                <a href="/libs/comp/changelog">changelog</a>
             
             
         </li>
@@ -505,8 +505,8 @@
 </section>
 <section id="jinja-strings">
 <h1>Jinja Strings<a class="headerlink" href="#jinja-strings" title="Link to this heading"></a></h1>
-<p>The component system of <code class="docutils literal notranslate"><span class="pre">app</span></code> is based in <a class="autolink reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a>. This means that the components constructs strings following <a class="autolink reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> syntax. We have a specific type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> (which is a subtype of <code class="docutils literal notranslate"><span class="pre">Str</span></code>) whose instances are the so-called <em>jinja strings</em>: Python strings preppended with the “<code class="docutils literal notranslate"><span class="pre">jinja</span></code>” keyword.</p>
-<p>So, more precisely, an instance of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> is a string as follows (see <a class="autolink reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> to discover the full valid syntax):</p>
+<p>The component system of <code class="docutils literal notranslate"><span class="pre">app</span></code> is based in {jinja2}. This means that the components constructs strings following {jinja2} syntax. We have a specific type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> (which is a subtype of <code class="docutils literal notranslate"><span class="pre">Str</span></code>) whose instances are the so-called <em>jinja strings</em>: Python strings preppended with the “<code class="docutils literal notranslate"><span class="pre">jinja</span></code>” keyword.</p>
+<p>So, more precisely, an instance of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> is a string as follows (see {jinja2} to discover the full valid syntax):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">my_jinja_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;jinja</span>
 <span class="linenos"> 2</span><span class="s2">{</span><span class="si">% f</span><span class="s2">or i in x %}</span>
 <span class="linenos"> 3</span><span class="s2">&lt;some html&gt;</span>
@@ -524,7 +524,7 @@
 </section>
 <section id="components">
 <h1>Components<a class="headerlink" href="#components" title="Link to this heading"></a></h1>
-<p>The basic unities of <code class="docutils literal notranslate"><span class="pre">app</span></code> component systems are, of course, the <em>components</em>. A <em>component</em> is a typed function (in the sense of <a class="autolink reference external" href="/libs/typed">typed</a>) such that:</p>
+<p>The basic unities of <code class="docutils literal notranslate"><span class="pre">app</span></code> component systems are, of course, the <em>components</em>. A <em>component</em> is a typed function (in the sense of {typed}) such that:</p>
 <ol class="arabic simple">
 <li><p>it returns a <em>jinja string</em>, so that its returning type is the <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> type;</p></li>
 <li><p>it is decorated with the <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> decorator.</p></li>
@@ -577,7 +577,7 @@
 </section>
 <section id="tags">
 <h1>Tags<a class="headerlink" href="#tags" title="Link to this heading"></a></h1>
-<p>Typically, components are delimited by a HTML tag. In <code class="docutils literal notranslate"><span class="pre">app</span></code> there is a <em>type factory</em> (in the sense of <a class="autolink reference external" href="/libs/typed">typed</a>)  <code class="docutils literal notranslate"><span class="pre">Tag:</span> <span class="pre">Tuple(Str)</span> <span class="pre">-&gt;</span> <span class="pre">SUB(Jinja)</span></code> that receives a tuple of HTML tag names and returns the subtype <code class="docutils literal notranslate"><span class="pre">Tag(*tags)</span></code> of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> of all <em>jinja strings</em> enclosed by one of the given tags.</p>
+<p>Typically, components are delimited by a HTML tag. In <code class="docutils literal notranslate"><span class="pre">app</span></code> there is a <em>type factory</em> (in the sense of {typed})  <code class="docutils literal notranslate"><span class="pre">Tag:</span> <span class="pre">Tuple(Str)</span> <span class="pre">-&gt;</span> <span class="pre">SUB(Jinja)</span></code> that receives a tuple of HTML tag names and returns the subtype <code class="docutils literal notranslate"><span class="pre">Tag(*tags)</span></code> of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> of all <em>jinja strings</em> enclosed by one of the given tags.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># example of instance of &#39;Tag(&#39;some-tag&#39;)&#39;</span>
 <span class="linenos">2</span><span class="sd">&quot;&quot;&quot;jinja</span>
 <span class="linenos">3</span><span class="sd">&lt;some-tag&gt;</span>
@@ -824,7 +824,7 @@
 <li><p><a class="reference internal" href="compatibility.html">compatibility</a></p></li>
 <li><p><a class="reference internal" href="entities.html">list of entities</a></p></li>
 <li><p><a class="reference internal" href="glossary.html">glossary</a></p></li>
-<li><p><a class="reference internal" href="CHANGELOG.html">changelog</a></p></li>
+<li><p><a class="reference internal" href="changelog.html">changelog</a></p></li>
 </ol>
 </section>
 </main>
@@ -832,7 +832,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/18 at 13:44</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/19 at 18:09</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
