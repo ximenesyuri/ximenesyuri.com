@@ -12,13 +12,13 @@ Here you will find an overview for the {l:comp} library.
 
 # Overview: Components
 
-The lib {l:comp} deals with _components_. These are typed functions (in the sense of {l:typed}) which return _jinja strings_, i.e, Python strings of type `Jinja`, which contain {l:jinja2} syntax. Components should also be defined using the `@component` decorator.
+The lib {l:comp} deals with _components_. These are {l:typed functions} (in the sense of {l:typed}) which return _jinja strings_, i.e, Python strings of type `Jinja`, which contain {l:jinja2} syntax. Components should also be defined using the `@component` decorator.
 
-The typical way to define a component is to first define a model (in the sense of {l:typed}, typically a optional model) containing the _structure_ of the component, and then take this model as argument:
+The typical way to define a component is to first define a {l:model} (in the sense of {l:typed}, typically a {l:optional model}) containing the _structure_ of the component, and then take this model as argument:
 
 ```python
 from typed import optional, null, SomeType, OtherType
-from app import component
+from comp import component
 
 @optional
 class MyModel:
@@ -34,7 +34,7 @@ def my_comp(my_comp: MyModel) -> Jinja:
 """
 ```
 
-Components define a type `COMPONENT` and there are four three main operations between them (the ), each of them corresponding to an arithmetic symbol:
+Components define a type `COMPONENT` and there are four main operations between them, each of them corresponding to an arithmetic symbol:
 
 (table-1)=
 ```
@@ -43,6 +43,7 @@ operation      symbol    description
 join             +       join the jinja strings of the components
 concat           *       put a jinja string inside the other
 eval             /       fixes some arguments
+copy             ^       copy a component, eventually changing var names
 -----------------------------
 table 1: component operations
 ```
@@ -53,23 +54,23 @@ This means that we can construct complex components through _component equations
 my_comp = (
     (comp_1 * comp_2) +
     (comp_3 / {'some_var': some_value})
-) / {"other_var": other_value}
+) ^ {"some_var": new_name}
 ```
 
 (rem-1)=
-> [Remark 1](#rem-1). The modules `app.models` and `app.components` provides, respectively, a plethora of already defined models and corresponding components, one for each builtin HTML tag.
+> [Remark 1](#rem-1). The modules `comp.models` and `comp.components` provides, respectively, a plethora of already defined models and corresponding components, one for each builtin HTML tag.
 
 # Overview: Rendering
 
 After being constructed, components can be _rendered_, producing raw HTML. This is done using a typed function `render`:
 
 ```python
-from app import render
+from comp import render
 
 html = render(my_comp, **context)
 ```
 
-To render a component one needs to pass a _context_, which is a dictionary. It attaches values to each argument of the component, as well as to other "free variables".
+To {l:render} a component one needs to pass a _context_, which is a dictionary. It attaches values to each argument of the component, as well as to other {l:free variables}.
 
 The rendering process can be customized to produce optimized raw HTML by passing certain special variables to `render`:
 

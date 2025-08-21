@@ -29,6 +29,10 @@ linguagem-formal:
   terms: ["linguagem formal", "linguagens formais"]
   url: /notes/glossary#linguagem-formal
 
+metalinguagem:
+  terms: ["metalinguagem", "metalinguagens"]
+  utl: /notes/glossary#metalinguagem
+
 notacao-funcional:
   terms: ["notação funcional",]
   url: /notes/glossary#notacao-funcional

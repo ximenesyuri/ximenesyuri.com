@@ -49,16 +49,16 @@ def _collect_terms(autolinks):
             s_classes = s_classes.split()
         source_classes[source] = list(s_classes)
         if source == "global":
-            # Handle global lookups
             for entry_key, entry in entries.items():
                 for term in entry.get("terms", []):
                     global_terms[term.lower()] = (entry_key, entry)
         else:
             if source not in sources:
                 sources[source] = {}
-            for entry_key, entry in entries.items():
-                for term in entry.get("terms", []):
-                    sources[source][term.lower()] = (entry_key, entry)
+            if entries:
+                for entry_key, entry in entries.items():
+                    for term in entry.get("terms", []):
+                        sources[source][term.lower()] = (entry_key, entry)
     return sources, global_terms, source_classes
 
 class AutoLinkPostTransform(SphinxPostTransform):

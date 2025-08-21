@@ -188,6 +188,10 @@ li > p {
     margin-bottom: 0px;
 }
 
+ul ol {
+    line-height: 2;
+}
+
 blockquote {
     margin-top: 40px;
     border-left: 2px solid var(--white);

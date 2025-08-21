@@ -62,6 +62,7 @@ html_context={
 }
 
 autolink = {
+    "global": {},
     "l": {
         "class": "autolink-libs"
     },
@@ -70,8 +71,15 @@ autolink = {
     },
     "g": {
         "class": "autolink-glossary"
-    }
+    },
+    "p": {
+        "class": "autolink-python"
+    },
+
 }
+
+with open(os.path.join(CONF_DIR, 'yml', 'global.yml'), 'r') as file:
+    autolink["global"]["entries"] = yaml.safe_load(file)
 
 with open(os.path.join(CONF_DIR, 'yml', 'libs.yml'), 'r') as file:
     autolink["l"]["entries"] = yaml.safe_load(file)
@@ -81,3 +89,6 @@ with open(os.path.join(CONF_DIR, 'yml', 'notes.yml'), 'r') as file:
 
 with open(os.path.join(CONF_DIR, 'yml', 'glossary.yml'), 'r') as file:
     autolink["g"]["entries"] = yaml.safe_load(file)
+
+with open(os.path.join(CONF_DIR, 'yml', 'python.yml'), 'r') as file:
+    autolink["p"]["entries"] = yaml.safe_load(file)

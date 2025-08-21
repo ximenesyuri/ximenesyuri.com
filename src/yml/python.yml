@@ -1,0 +1,36 @@
+class:
+  terms: ["class", "classes", "classe"]
+  url: https://docs.python.org/3/tutorial/classes.html
+
+subclass:
+  terms: ["subclass", "subclasses", "subclasse"]
+  url: https://docs.python.org/3/library/functions.html#issubclass
+
+f-string:
+  terms: ["f-string", "f-strings"]
+  url: https://docs.python.org/3/reference/lexical_analysis.html#f-strings
+
+decorator:
+  terms: ["decorator", "decorators"]
+  url: https://docs.python.org/3/glossary.html#term-decorator
+
+locals:
+  terms: ["local var", "local vars", "local variables", "local variable", "locals", "variável local", "variáveis locais"]
+  url: https://docs.python.org/3/library/functions.html#locals
+
+scope:
+  terms: ["scope", "escopo"]
+  url: https://docs.python.org/3/reference/executionmodel.html#resolution-of-names
+
+string:
+  terms: ["string", "strings"]
+  url: https://docs.python.org/3/reference/datamodel.html#immutable-sequences
+
+attr:
+  terms: ["attr", "attribute", "attrs", "attributes", "atributo", "atributos"]
+  url: https://docs.python.org/3/glossary.html#term-attribute
+
+property:
+  terms: ["property", "properties", "propriedade", "propriedades"]
+  url: https://docs.python.org/3/library/functions.html#property
+

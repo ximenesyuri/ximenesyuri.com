@@ -6,66 +6,118 @@ weight: 10
 
 # About
 
-In the following we will briefly describe how the _components_ in `app` component system work.
+In the following we will briefly describe how the _components_ in {l:comp} component system work.
 
 ```{toc}
 ```
 
 # Jinja Strings
 
-The component system of `app` is based in {jinja2}. This means that the components constructs strings following {jinja2} syntax. We have a specific type `Jinja` (which is a subtype of `Str`) whose instances are the so-called _jinja strings_: Python strings preppended with the "`jinja`" keyword.
+The component system of {l:comp} is based in {l:jinja2}. This means that the {l:components} constructs strings following {l:jinja2} syntax. We have a specific type `Jinja` (which is a subtype of `Str`) whose instances are the so-called _jinja strings_: Python strings preppended with the "`jinja`" keyword.
 
-So, more precisely, an instance of `Jinja` is a string as follows (see {jinja2} to discover the full valid syntax):
+So, more precisely, an instance of `Jinja` is a string as follows (see {l:jinja2} to discover the full valid syntax):
 
+(jinja-string)=
 ```python
 my_jinja_string = """jinja
-{% for i in x %}
+[% for i in x %]
 <some html>
-    {% if y is True %}
+    [% if y is True %]
     <more html>
     ...
+[# my beautiful comment #]
+    [[ z ]]
+    ...
     </more html>
-    {% endif %}
+    [% endif %]
 </some html>
-{% endfor %}
+[% endfor %]
 """
 ```
 
-Above, `x` and `y` are _jinja variables_, which must be defined inside some _context_, for example as part of a component, before converting the _jinja string_ to HTML (see the [rendering](./3-rendering) documentation). 
+Above, `x`, `y` and `z` are _jinja variables_, which must be defined inside some _context_, for example as part of a {l:component}, before converting the {l:jinja string} to HTML (see the [rendering](./rendering) documentation).
+
+# Delimiters
+
+You should note that the {l:jinja2} code provided in the [previous](#jinja-string) {l:jinja string} is using delimiters which differ from the standard ones: while {l:jinja} uses `{%`, `{{` and `{#` as default for blocks, variables and comments, respectively, we are using `[`, `[[` and `[#`. 
+
+The reason is that as we will see below, {l:jinja strings} are returned by functions and one would like to use variables of the function inside the return string. This implies to consider the jinja strings as {p:f-strings}. But variables already use `{` as delimiters, causing certain conflict with the default {l:jinja} delimiters.
+
+If you don't like to use `[` as the basic delimiter for {l:jinja strings}, you can set one of the following options, or some mix of them:
+
+(table-1)=
+```
+blocks      variables      comments        
+--------------------------------------------------
+[% ... %]   [[ ... ]]      [# ... #]
+(% ... %)   (( ... ))      (# ... #)
+<% ... %>   << ... >>      <# ... #>
+--------------------------------------------------
+table 1: jinja delimiters
+```
+
+This is done by setting the following environment variables:
+
+(table-2)=
+```
+env                          description                     default value
+------------------------------------------------------------------------------
+COMP_JINJA_VAR_DELIM         delimiters for jinja vars       ("[[", "]]")
+COMP_JINJA_BLOCK_DELIM       delimiters for jinja blocks     ("[%", "%]")
+COMP_JINJA_COMMENT_DELIM     delimiters for jinja comments   ("[#", "#]")
+-------------------------------------------------------------------------------
+table 2: jinja delimiters envs
+```
 
 # Components
 
-The basic unities of `app` component systems are, of course, the _components_. A _component_ is a typed function (in the sense of {typed}) such that:
-1. it returns a _jinja string_, so that its returning type is the `Jinja` type;
-2. it is decorated with the `@component` decorator.
+In {l:comp}, a _component_ is a {l:typed function} (in the sense of {l:typed}) such that:
+1. it returns a {l:jinja string}, so that its returning type is the `Jinja` type;
+2. it is decorated with the `@component` {p:decorator}.
 
 Thus, a typical component is defined as follows:
 
+(component)=
 ```python
-from typed import SomeType, OtherType
-from app import component, Jinja
+from typed import SomeType, OtherType, AnotherType ...
+from comp import component, Jinja
 
 @component
-def my_comp(x: SomeType, y: OtherType, ...) -> Jinja:
+def my_comp(x: SomeType, y: OtherType, z: AnotherType ...) -> Jinja:
     ...
-    return """jinja
-{% for i in x %}
+    return f"""jinja
+[% for i in x %]
 <some html>
-    {% if y is True %}
+    [% if y is True %]
     <more html>
     ...
+    { z }
+    ...
     </more html>
-    {% endif %}
+    [% endif %]
 </some html>
-{% endfor %}
+[% endfor %]
 """
 ```
+
+# Contexts
+
+As we will see in [rendering](./rendering) documentation, {l:components} are entities that can be converted into raw HTML. In order to do that one needs to set a value to all {l:free jinja variables} in its {l:jinja string}. This is done by providing the _jinja context_ of the component, which is given by a dictionary whose keys are strings with the name of the free jinja vars and the values are their associated values.
+
+In a healthy component, the only free jinja vars to be defined in the {l:jinja context} are the {l:component variables}, i.e, the variables of .
+
+Notice that in the [above](#component) example, the variables of the `my_comp` function was used inside the blocks of the {l:jinja string}. This is valid because the variables of a {l:component} are automatically included in its {l:jinja context} of its returning jinja string.
+
+One should point, however, that {p:local variables} (i.e, variables in the function {p:scope} of the function defining the {l:component}) are not in the {l:jinja context} of the component. This means, for example, that, 
+
+
+To each {l:component} it is associated a _local context_, which is a dictionary
 
 One should note that local variables of a component are automatically included in the context of the returning jinja string. This means that _local variables_ defined in the body of a component can be directly used as _jinja vars_:
 
 ```python
 from typed import SomeType, OtherType
-from app import component, Jinja
+from comp import component, Jinja
 
 @component
 def my_comp(x: SomeType, y: OtherType, ...) -> Jinja:
@@ -86,11 +138,11 @@ def my_comp(x: SomeType, y: OtherType, ...) -> Jinja:
 ```
 
 (rem-1)=
-> [Remark 1](#rem-1). There is the type `COMPONENT` whose instances are precisely the `app` components. It is constructed as a subtype of `TypedFunc(Any, cod=Jinja)`, i.e., of all typed functions whose codomain is `Jinja`.  
+> [Remark 1](#rem-1). There is the type `COMPONENT` whose instances are precisely the `comp` components. It is constructed as a subtype of `TypedFunc(Any, cod=Jinja)`, i.e., of all typed functions whose codomain is `Jinja`.  
 
 # Tags
       
-Typically, components are delimited by a HTML tag. In `app` there is a _type factory_ (in the sense of {typed})  `Tag: Tuple(Str) -> SUB(Jinja)` that receives a tuple of HTML tag names and returns the subtype `Tag(*tags)` of `Jinja` of all _jinja strings_ enclosed by one of the given tags.
+Typically, components are delimited by a HTML tag. In `comp` there is a _type factory_ (in the sense of {typed})  `Tag: Tuple(Str) -> SUB(Jinja)` that receives a tuple of HTML tag names and returns the subtype `Tag(*tags)` of `Jinja` of all _jinja strings_ enclosed by one of the given tags.
 
 ```python
 # example of instance of 'Tag('some-tag')'
@@ -104,7 +156,7 @@ Typically, components are delimited by a HTML tag. In `app` there is a _type fac
 With such type factory one can construct type safe tag-based components:
 
 ```python
-from app import component, Tag
+from comp import component, Tag
 
 @component
 def my_tag_comp(...) -> Tag('some-tag'):
@@ -121,7 +173,7 @@ For each tuple of tags there is a subtype `TAG(*tags)` of `COMPONENT` of all com
 So, for the component `my_tag_comp` above:
 
 ```python
-from app import TAG
+from comp import TAG
 
 # the following returns True
 print(isinstance(my_tag_comp, TAG('some-tag')))
@@ -134,7 +186,7 @@ Components can depend one each others. More precisely, a component has a special
 One time listed in the `__depends_on__` variable, the dependent components are included into the context, so that they are turned into _jinja vars_ and can be called inside the _jinja string_ of the defining component, as follows:
 
 ```python
-from app import Jinja, Tag, component
+from comp import Jinja, Tag, component
 
 @component
 def comp_1(...) -> Jinja:
@@ -180,11 +232,11 @@ A _jinja var_ which does not satisfies some of the conditions above is called a 
    
 # Inners
     
-In `app`, the components may have another special kind of variables: the _inner_ ones. They are necessarily of type `Inner`, and work as placeholders for future inserts inside the component.
+In `comp`, the components may have another special kind of variables: the _inner_ ones. They are necessarily of type `Inner`, and work as placeholders for future inserts inside the component.
 
 (inner-comp)=
 ```python
-from app import component, Tag, Inner
+from comp import component, Tag, Inner
 
 @component
 def my_inner_comp(..., inner: Inner, ...) -> Tag('some-tag'):
@@ -209,7 +261,7 @@ This decomposes the type `COMPONENT` into distinct subtypes of components with a
 So, for example, for the `my_inner_comp` defined [above](#inner-comp) one would have: 
 
 ```python
-from app import Component
+from comp import Component
 
 print(isinstance(my_inner_comp, Component(1)) # will return 'True'
 print(isinstance(my_inner_comp, Component(0)) # will return 'False' 
@@ -254,7 +306,7 @@ So, for example, consider the following generic components:
 
 ```python
 from typed import SomeType, OtherType
-from app import Jinja, component, Tag, Inner, join, concat, eval
+from comp import Jinja, component, Tag, Inner, join, concat, eval
 
 @component
 def some_comp(x: SomeType, ...) -> Jinja
