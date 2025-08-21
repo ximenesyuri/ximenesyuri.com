@@ -13,9 +13,9 @@ In the following we discuss  _jinja strings_, which are the return entity of an 
 
 # Jinja Strings
 
-The component system of {l:comp} is based in {l:jinja2}. This means that the {l:components} construct strings following {l:jinja2} syntax. We have a specific type `Jinja` (which is a subtype of `Str`) whose instances are the so-called _jinja strings_. These are Python {p:strings} preppended with the "`jinja`" keyword.
+The component system of {l:comp} is based in {jinja2}. This means that the {l:components} construct strings following {jinja2} syntax. We have a specific type `Jinja` (which is a subtype of `Str`) whose instances are the so-called _jinja strings_. These are Python {p:strings} preppended with the "`jinja`" keyword.
 
-So, more precisely, an instance of `Jinja` is a string as follows (see {l:jinja2} to discover the full valid syntax):
+So, more precisely, an instance of `Jinja` is a string as follows (see {jinja2} to discover the full valid syntax):
 
 (jinja-string)=
 ```python
@@ -38,7 +38,7 @@ my_jinja_string = """jinja
 
 # Delimiters
 
-You should note that the {l:jinja2} code provided in the [previous](#jinja-string) {l:jinja string} uses delimiters differing from the standard ones: while {l:jinja} uses `{%`, `{{` and `{#` as default for blocks, variables and comments, respectively, we are using `[`, `[[` and `[#`. 
+You should note that the {jinja2} code provided in the [previous](#jinja-string) {l:jinja string} uses delimiters differing from the standard ones: while {l:jinja} uses `{%`, `{{` and `{#` as default for blocks, variables and comments, respectively, we are using `[`, `[[` and `[#`. 
 
 The reason is that as we will see in [components](./components) documentation, in {l:comp} the {l:jinja strings} are typically returned by functions, and one would like to use variables of the function inside the return jinja string. This implies to consider the jinja strings as {p:f-strings}. But in f-strings, variables already use `{` as delimiters, causing certain conflict with the default {l:jinja} delimiters.
 
@@ -161,14 +161,14 @@ render(my_jinja_string)
 
 To conclude, let us say some words on how to improve syntax highlight while working with {l:jinja strings}. We have two points to consider:
 1. jinja strings are used inside files with Python filetype;
-2. jinja strings use delimiters differing from the standard {l:jinja} delimiters.
+2. jinja strings use delimiters differing from the standard {jinja} delimiters.
 
-From the first point, to get a nice highlight one needs to mix both Python and Jinja syntax highlights. This can be done by creating a custom filetype or by maintainning the Python filetype and using some regex filtering that includes Jinja highlight precisely for {l:jinja strings}.
+From the first point, to get a nice highlight one needs to mix both Python and Jinja syntax highlights. This can be done by creating a custom filetype or by maintaining the Python filetype and using some regex filtering that includes Jinja highlight precisely for {l:jinja strings}.
 
 Since the only non-pythonic feature we need is highlight, the second option is highly preferable. Indeed, notice that {l:jinja strings} are defined as:
 1. Python {p:strings}
 2. prefixed with `jinja`
-3. that contains {l:jinja} syntax.
+3. that contains {jinja} syntax.
 
 The fact that they are prefixed with a special keyword was introduced precisely to allow an easy parsing of the region that will be highlighted with Jinja syntax. Indeed: everything in between `"""jinja` and a triple quotes `"""`.
 

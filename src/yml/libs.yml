@@ -25,23 +25,3 @@ utils:
 cli:
   terms: [cli]
   url: /libs/cli
-
-jinja:
-  terms: [jinja2, jinja, Jinja, Jinja2]
-  url: https://jinja.palletsprojects.com/en/stable/
-
-python-markdown:
-  terms: ["python-markdown"]
-  url: https://github.com/Python-Markdown/markdown
-
-docutils:
-  terms: ["docutils"]
-  url: https://docutils.sourceforge.io/
-
-tag-attributes:
-  terms: ["HTML tag attributes"]
-  url: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes
-
-global-attributes:
-  terms: ["HTML global attributes"]
-  url: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes
