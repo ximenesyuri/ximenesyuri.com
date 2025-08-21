@@ -255,25 +255,6 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">├─</span>
             
-                <a href="/libs/comp/jinja">jinja</a>
-            
-            
-        </li>
-    
-
-                    
-                        
-    
-    
-        
-            
-        
-    
-
-    
-        <li class="sidebar-li">
-            <span class="sidebar-prefix-1">├─</span>
-            
                 <a href="/libs/comp/overview">overview</a>
             
             
@@ -294,6 +275,25 @@
             <span class="sidebar-prefix-1">├─</span>
             
                 <a href="/libs/comp/components">components</a>
+            
+            
+        </li>
+    
+
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix-1">├─</span>
+            
+                <a href="/libs/comp/jinja">jinja</a>
             
             
         </li>
@@ -507,10 +507,12 @@
                 
                 <main><section id="about">
 <h1>About<a class="headerlink" href="#about" title="Link to this heading"></a></h1>
-<p>In the following we will briefly describe how the <em>components</em> in <code class="docutils literal notranslate"><span class="pre">app</span></code> component system work.</p>
+<p>In the following we will briefly describe how the <em>components</em> in <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> component system work.</p>
 <ol class="arabic simple">
 <li><p><a class="reference internal" href="#jinja-strings">Jinja Strings</a></p></li>
+<li><p><a class="reference internal" href="#delimiters">Delimiters</a></p></li>
 <li><p><a class="reference internal" href="#components">Components</a></p></li>
+<li><p><a class="reference internal" href="#contexts">Contexts</a></p></li>
 <li><p><a class="reference internal" href="#tags">Tags</a></p></li>
 <li><p><a class="reference internal" href="#dependences">Dependences</a></p></li>
 <li><p><a class="reference internal" href="#free-variables">Free Variables</a></p></li>
@@ -524,53 +526,123 @@
 </section>
 <section id="jinja-strings">
 <h1>Jinja Strings<a class="headerlink" href="#jinja-strings" title="Link to this heading"></a></h1>
-<p>The component system of <code class="docutils literal notranslate"><span class="pre">app</span></code> is based in {jinja2}. This means that the components constructs strings following {jinja2} syntax. We have a specific type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> (which is a subtype of <code class="docutils literal notranslate"><span class="pre">Str</span></code>) whose instances are the so-called <em>jinja strings</em>: Python strings preppended with the “<code class="docutils literal notranslate"><span class="pre">jinja</span></code>” keyword.</p>
-<p>So, more precisely, an instance of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> is a string as follows (see {jinja2} to discover the full valid syntax):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">my_jinja_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;jinja</span>
-<span class="linenos"> 2</span><span class="s2">{</span><span class="si">% f</span><span class="s2">or i in x %}</span>
+<p>The component system of <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> is based in <a class="autolink autolink-libs reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a>. This means that the {l:components} constructs strings following <a class="autolink autolink-libs reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> syntax. We have a specific type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> (which is a subtype of <code class="docutils literal notranslate"><span class="pre">Str</span></code>) whose instances are the so-called <em>jinja strings</em>: Python strings preppended with the “<code class="docutils literal notranslate"><span class="pre">jinja</span></code>” keyword.</p>
+<p>So, more precisely, an instance of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> is a string as follows (see <a class="autolink autolink-libs reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> to discover the full valid syntax):</p>
+<div class="highlight-python notranslate" id="jinja-string"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">my_jinja_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;jinja</span>
+<span class="linenos"> 2</span><span class="s2">[</span><span class="si">% f</span><span class="s2">or i in x %]</span>
 <span class="linenos"> 3</span><span class="s2">&lt;some html&gt;</span>
-<span class="linenos"> 4</span><span class="s2">    {</span><span class="si">% i</span><span class="s2">f y is True %}</span>
+<span class="linenos"> 4</span><span class="s2">    [</span><span class="si">% i</span><span class="s2">f y is True %]</span>
 <span class="linenos"> 5</span><span class="s2">    &lt;more html&gt;</span>
 <span class="linenos"> 6</span><span class="s2">    ...</span>
-<span class="linenos"> 7</span><span class="s2">    &lt;/more html&gt;</span>
-<span class="linenos"> 8</span><span class="s2">    {</span><span class="si">% e</span><span class="s2">ndif %}</span>
-<span class="linenos"> 9</span><span class="s2">&lt;/some html&gt;</span>
-<span class="linenos">10</span><span class="s2">{</span><span class="si">% e</span><span class="s2">ndfor %}</span>
-<span class="linenos">11</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="linenos"> 7</span><span class="s2">[# my beautiful comment #]</span>
+<span class="linenos"> 8</span><span class="s2">    [[ z ]]</span>
+<span class="linenos"> 9</span><span class="s2">    ...</span>
+<span class="linenos">10</span><span class="s2">    &lt;/more html&gt;</span>
+<span class="linenos">11</span><span class="s2">    [</span><span class="si">% e</span><span class="s2">ndif %]</span>
+<span class="linenos">12</span><span class="s2">&lt;/some html&gt;</span>
+<span class="linenos">13</span><span class="s2">[</span><span class="si">% e</span><span class="s2">ndfor %]</span>
+<span class="linenos">14</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Above, <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are <em>jinja variables</em>, which must be defined inside some <em>context</em>, for example as part of a component, before converting the <em>jinja string</em> to HTML (see the <a class="reference internal" href="#./3-rendering"><span class="xref myst">rendering</span></a> documentation).</p>
+<p>Above, <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">z</span></code> are <em>jinja variables</em>, which must be defined inside some <em>context</em>, for example as part of a {l:component}, before converting the {l:jinja string} to HTML (see the <a class="reference internal" href="rendering"><span class="doc std std-doc">rendering</span></a> documentation).</p>
+</section>
+<section id="delimiters">
+<h1>Delimiters<a class="headerlink" href="#delimiters" title="Link to this heading"></a></h1>
+<p>You should note that the <a class="autolink autolink-libs reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> code provided in the <a class="reference internal" href="#jinja-string">previous</a> {l:jinja string} is using delimiters which differ from the standard ones: while <a class="autolink autolink-libs reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> uses <code class="docutils literal notranslate"><span class="pre">{%</span></code>, <code class="docutils literal notranslate"><span class="pre">{{</span></code> and <code class="docutils literal notranslate"><span class="pre">{#</span></code> as default for blocks, variables and comments, respectively, we are using <code class="docutils literal notranslate"><span class="pre">[</span></code>, <code class="docutils literal notranslate"><span class="pre">[[</span></code> and <code class="docutils literal notranslate"><span class="pre">[#</span></code>.</p>
+<p>The reason is that as we will see below, {l:jinja strings} are returned by functions and one would like to use variables of the function inside the return string. This implies to consider the jinja strings as <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/lexical_analysis.html#f-strings">f-strings</a>. But variables already use <code class="docutils literal notranslate"><span class="pre">{</span></code> as delimiters, causing certain conflict with the default <a class="autolink autolink-libs reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> delimiters.</p>
+<p>If you don’t like to use <code class="docutils literal notranslate"><span class="pre">[</span></code> as the basic delimiter for {l:jinja strings}, you can set one of the following options, or some mix of them:</p>
+<div class="captioned-table" id="table-1">
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>blocks</p></th>
+<th class="head"><p>variables</p></th>
+<th class="head"><p>comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[% … %]</p></td>
+<td><p>[[ … ]]</p></td>
+<td><p>[# … #]</p></td>
+</tr>
+<tr class="row-odd"><td><p>(% … %)</p></td>
+<td><p>(( … ))</p></td>
+<td><p>(# … #)</p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;% … %&gt;</p></td>
+<td><p>&lt;&lt; … &gt;&gt;</p></td>
+<td><p>&lt;# … #&gt;</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="table-caption reference external" href="#table-1">table 1: jinja delimiters</a></p>
+</div>
+<p>This is done by setting the following environment variables:</p>
+<div class="captioned-table" id="table-2">
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>env</p></th>
+<th class="head"><p>description</p></th>
+<th class="head"><p>default value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>COMP_JINJA_VAR_DELIM</p></td>
+<td><p>delimiters for jinja vars</p></td>
+<td><p>(“[[”, “]]”)</p></td>
+</tr>
+<tr class="row-odd"><td><p>COMP_JINJA_BLOCK_DELIM</p></td>
+<td><p>delimiters for jinja blocks</p></td>
+<td><p>(“[%”, “%]”)</p></td>
+</tr>
+<tr class="row-even"><td><p>COMP_JINJA_COMMENT_DELIM</p></td>
+<td><p>delimiters for jinja comments</p></td>
+<td><p>(“[#”, “#]”)</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="table-caption reference external" href="#table-2">table 2: jinja delimiters envs</a></p>
+</div>
 </section>
 <section id="components">
 <h1>Components<a class="headerlink" href="#components" title="Link to this heading"></a></h1>
-<p>The basic unities of <code class="docutils literal notranslate"><span class="pre">app</span></code> component systems are, of course, the <em>components</em>. A <em>component</em> is a typed function (in the sense of {typed}) such that:</p>
+<p>In <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a>, a <em>component</em> is a {l:typed function} (in the sense of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>) such that:</p>
 <ol class="arabic simple">
-<li><p>it returns a <em>jinja string</em>, so that its returning type is the <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> type;</p></li>
-<li><p>it is decorated with the <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> decorator.</p></li>
+<li><p>it returns a {l:jinja string}, so that its returning type is the <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> type;</p></li>
+<li><p>it is decorated with the <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-decorator">decorator</a>.</p></li>
 </ol>
 <p>Thus, a typical component is defined as follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span>
-<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Jinja</span>
+<div class="highlight-python notranslate" id="component"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span><span class="p">,</span> <span class="n">AnotherType</span> <span class="o">...</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Jinja</span>
 <span class="linenos"> 3</span>
 <span class="linenos"> 4</span><span class="nd">@component</span>
-<span class="linenos"> 5</span><span class="k">def</span><span class="w"> </span><span class="nf">my_comp</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
+<span class="linenos"> 5</span><span class="k">def</span><span class="w"> </span><span class="nf">my_comp</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">AnotherType</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
 <span class="linenos"> 6</span>    <span class="o">...</span>
-<span class="linenos"> 7</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
-<span class="linenos"> 8</span><span class="s2">{</span><span class="si">% f</span><span class="s2">or i in x %}</span>
+<span class="linenos"> 7</span>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;jinja</span>
+<span class="linenos"> 8</span><span class="s2">[% for i in x %]</span>
 <span class="linenos"> 9</span><span class="s2">&lt;some html&gt;</span>
-<span class="linenos">10</span><span class="s2">    {</span><span class="si">% i</span><span class="s2">f y is True %}</span>
+<span class="linenos">10</span><span class="s2">    [% if y is True %]</span>
 <span class="linenos">11</span><span class="s2">    &lt;more html&gt;</span>
 <span class="linenos">12</span><span class="s2">    ...</span>
-<span class="linenos">13</span><span class="s2">    &lt;/more html&gt;</span>
-<span class="linenos">14</span><span class="s2">    {</span><span class="si">% e</span><span class="s2">ndif %}</span>
-<span class="linenos">15</span><span class="s2">&lt;/some html&gt;</span>
-<span class="linenos">16</span><span class="s2">{</span><span class="si">% e</span><span class="s2">ndfor %}</span>
-<span class="linenos">17</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="linenos">13</span><span class="s2">    </span><span class="si">{</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="si">}</span>
+<span class="linenos">14</span><span class="s2">    ...</span>
+<span class="linenos">15</span><span class="s2">    &lt;/more html&gt;</span>
+<span class="linenos">16</span><span class="s2">    [% endif %]</span>
+<span class="linenos">17</span><span class="s2">&lt;/some html&gt;</span>
+<span class="linenos">18</span><span class="s2">[% endfor %]</span>
+<span class="linenos">19</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
+</section>
+<section id="contexts">
+<h1>Contexts<a class="headerlink" href="#contexts" title="Link to this heading"></a></h1>
+<p>As we will see in <a class="reference internal" href="rendering"><span class="doc std std-doc">rendering</span></a> documentation, {l:components} are entities that can be converted into raw HTML. In order to do that one needs to set a value to all {l:free jinja variables} in its {l:jinja string}. This is done by providing the <em>jinja context</em> of the component, which is given by a dictionary whose keys are strings with the name of the free jinja vars and the values are their associated values.</p>
+<p>In a healthy component, the only free jinja vars to be defined in the {l:jinja context} are the {l:component variables}, i.e, the variables of .</p>
+<p>Notice that in the <a class="reference internal" href="#component">above</a> example, the variables of the <code class="docutils literal notranslate"><span class="pre">my_comp</span></code> function was used inside the blocks of the {l:jinja string}. This is valid because the variables of a {l:component} are automatically included in its {l:jinja context} of its returning jinja string.</p>
+<p>One should point, however, that <a class="autolink autolink-python reference external" href="https://docs.python.org/3/library/functions.html#locals">local variables</a> (i.e, variables in the function <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/executionmodel.html#resolution-of-names">scope</a> of the function defining the {l:component}) are not in the {l:jinja context} of the component. This means, for example, that,</p>
+<p>To each {l:component} it is associated a <em>local context</em>, which is a dictionary</p>
 <p>One should note that local variables of a component are automatically included in the context of the returning jinja string. This means that <em>local variables</em> defined in the body of a component can be directly used as <em>jinja vars</em>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span>
-<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Jinja</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Jinja</span>
 <span class="linenos"> 3</span>
 <span class="linenos"> 4</span><span class="nd">@component</span>
 <span class="linenos"> 5</span><span class="k">def</span><span class="w"> </span><span class="nf">my_comp</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
@@ -591,12 +663,12 @@
 </pre></div>
 </div>
 <blockquote id="rem-1">
-<div><p><a class="reference internal" href="#rem-1">Remark 1</a>. There is the type <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> whose instances are precisely the <code class="docutils literal notranslate"><span class="pre">app</span></code> components. It is constructed as a subtype of <code class="docutils literal notranslate"><span class="pre">TypedFunc(Any,</span> <span class="pre">cod=Jinja)</span></code>, i.e., of all typed functions whose codomain is <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>.</p>
+<div><p><a class="reference internal" href="#rem-1">Remark 1</a>. There is the type <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> whose instances are precisely the <code class="docutils literal notranslate"><span class="pre">comp</span></code> components. It is constructed as a subtype of <code class="docutils literal notranslate"><span class="pre">TypedFunc(Any,</span> <span class="pre">cod=Jinja)</span></code>, i.e., of all typed functions whose codomain is <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>.</p>
 </div></blockquote>
 </section>
 <section id="tags">
 <h1>Tags<a class="headerlink" href="#tags" title="Link to this heading"></a></h1>
-<p>Typically, components are delimited by a HTML tag. In <code class="docutils literal notranslate"><span class="pre">app</span></code> there is a <em>type factory</em> (in the sense of {typed})  <code class="docutils literal notranslate"><span class="pre">Tag:</span> <span class="pre">Tuple(Str)</span> <span class="pre">-&gt;</span> <span class="pre">SUB(Jinja)</span></code> that receives a tuple of HTML tag names and returns the subtype <code class="docutils literal notranslate"><span class="pre">Tag(*tags)</span></code> of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> of all <em>jinja strings</em> enclosed by one of the given tags.</p>
+<p>Typically, components are delimited by a HTML tag. In <code class="docutils literal notranslate"><span class="pre">comp</span></code> there is a <em>type factory</em> (in the sense of {typed})  <code class="docutils literal notranslate"><span class="pre">Tag:</span> <span class="pre">Tuple(Str)</span> <span class="pre">-&gt;</span> <span class="pre">SUB(Jinja)</span></code> that receives a tuple of HTML tag names and returns the subtype <code class="docutils literal notranslate"><span class="pre">Tag(*tags)</span></code> of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> of all <em>jinja strings</em> enclosed by one of the given tags.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># example of instance of &#39;Tag(&#39;some-tag&#39;)&#39;</span>
 <span class="linenos">2</span><span class="sd">&quot;&quot;&quot;jinja</span>
 <span class="linenos">3</span><span class="sd">&lt;some-tag&gt;</span>
@@ -606,7 +678,7 @@
 </pre></div>
 </div>
 <p>With such type factory one can construct type safe tag-based components:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Tag</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Tag</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="nd">@component</span>
 <span class="linenos"> 4</span><span class="k">def</span><span class="w"> </span><span class="nf">my_tag_comp</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tag</span><span class="p">(</span><span class="s1">&#39;some-tag&#39;</span><span class="p">):</span>
@@ -620,7 +692,7 @@
 </div>
 <p>For each tuple of tags there is a subtype <code class="docutils literal notranslate"><span class="pre">TAG(*tags)</span></code> of <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> of all components whose returning string belongs to <code class="docutils literal notranslate"><span class="pre">Tag(*tags)</span></code>. There is, actually, a supplementary type factory <code class="docutils literal notranslate"><span class="pre">TAG:</span> <span class="pre">Tuple(Str)</span> <span class="pre">-&gt;</span> <span class="pre">SUB(COMPONENT)</span></code> that associates to each tuple the corresponding type <code class="docutils literal notranslate"><span class="pre">TAG(*tags)</span></code>.</p>
 <p>So, for the component <code class="docutils literal notranslate"><span class="pre">my_tag_comp</span></code> above:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">TAG</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">TAG</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="c1"># the following returns True</span>
 <span class="linenos">4</span><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">my_tag_comp</span><span class="p">,</span> <span class="n">TAG</span><span class="p">(</span><span class="s1">&#39;some-tag&#39;</span><span class="p">)))</span>
@@ -631,7 +703,7 @@
 <h1>Dependences<a class="headerlink" href="#dependences" title="Link to this heading"></a></h1>
 <p>Components can depend one each others. More precisely, a component has a special optional variable <code class="docutils literal notranslate"><span class="pre">__depends_on__</span></code>, which lists other already defined components of which the defining component depends on.</p>
 <p>One time listed in the <code class="docutils literal notranslate"><span class="pre">__depends_on__</span></code> variable, the dependent components are included into the context, so that they are turned into <em>jinja vars</em> and can be called inside the <em>jinja string</em> of the defining component, as follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">Jinja</span><span class="p">,</span> <span class="n">Tag</span><span class="p">,</span> <span class="n">component</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">Jinja</span><span class="p">,</span> <span class="n">Tag</span><span class="p">,</span> <span class="n">component</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="nd">@component</span>
 <span class="linenos"> 4</span><span class="k">def</span><span class="w"> </span><span class="nf">comp_1</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
@@ -679,8 +751,8 @@
 </section>
 <section id="inners">
 <h1>Inners<a class="headerlink" href="#inners" title="Link to this heading"></a></h1>
-<p>In <code class="docutils literal notranslate"><span class="pre">app</span></code>, the components may have another special kind of variables: the <em>inner</em> ones. They are necessarily of type <code class="docutils literal notranslate"><span class="pre">Inner</span></code>, and work as placeholders for future inserts inside the component.</p>
-<div class="highlight-python notranslate" id="inner-comp"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Tag</span><span class="p">,</span> <span class="n">Inner</span>
+<p>In <code class="docutils literal notranslate"><span class="pre">comp</span></code>, the components may have another special kind of variables: the <em>inner</em> ones. They are necessarily of type <code class="docutils literal notranslate"><span class="pre">Inner</span></code>, and work as placeholders for future inserts inside the component.</p>
+<div class="highlight-python notranslate" id="inner-comp"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Tag</span><span class="p">,</span> <span class="n">Inner</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="nd">@component</span>
 <span class="linenos"> 4</span><span class="k">def</span><span class="w"> </span><span class="nf">my_inner_comp</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">inner</span><span class="p">:</span> <span class="n">Inner</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tag</span><span class="p">(</span><span class="s1">&#39;some-tag&#39;</span><span class="p">):</span>
@@ -702,7 +774,7 @@
 <p>There is a type factory <code class="docutils literal notranslate"><span class="pre">Component:</span> <span class="pre">Int</span> <span class="pre">-&gt;</span> <span class="pre">SUB(COMPONENT)</span></code> that to each integer <code class="docutils literal notranslate"><span class="pre">n&gt;=0</span></code> returns the subtype <code class="docutils literal notranslate"><span class="pre">Component(n)</span></code> of <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> of all components that have exactly <code class="docutils literal notranslate"><span class="pre">n</span></code> inner vars.</p>
 <p>This decomposes the type <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> into distinct subtypes of components with a fixed amount of <code class="docutils literal notranslate"><span class="pre">inner</span></code> variables.</p>
 <p>So, for example, for the <code class="docutils literal notranslate"><span class="pre">my_inner_comp</span></code> defined <a class="reference internal" href="#inner-comp">above</a> one would have:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">Component</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">Component</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">my_inner_comp</span><span class="p">,</span> <span class="n">Component</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># will return &#39;True&#39;</span>
 <span class="linenos">4</span><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">my_inner_comp</span><span class="p">,</span> <span class="n">Component</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># will return &#39;False&#39; </span>
@@ -715,7 +787,7 @@
 <section id="attributes">
 <h1>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h1>
 <p>The type <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> of all components has some properties, which define some attributes to the components:</p>
-<div class="captioned-table" id="table-1">
+<div class="captioned-table" id="id1">
 <table class="custom-pre-table docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>attribute</p></th>
@@ -743,7 +815,7 @@
 </tr>
 </tbody>
 </table>
-<p><a class="table-caption reference external" href="#table-1">table 1: component attributes</a></p>
+<p><a class="table-caption reference external" href="#id1">table 1: component attributes</a></p>
 </div>
 </section>
 <section id="operations">
@@ -774,7 +846,7 @@
 </ol>
 <p>So, for example, consider the following generic components:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span>
-<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">Jinja</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">Tag</span><span class="p">,</span> <span class="n">Inner</span><span class="p">,</span> <span class="n">join</span><span class="p">,</span> <span class="n">concat</span><span class="p">,</span> <span class="nb">eval</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">Jinja</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">Tag</span><span class="p">,</span> <span class="n">Inner</span><span class="p">,</span> <span class="n">join</span><span class="p">,</span> <span class="n">concat</span><span class="p">,</span> <span class="nb">eval</span>
 <span class="linenos"> 3</span>
 <span class="linenos"> 4</span><span class="nd">@component</span>
 <span class="linenos"> 5</span><span class="k">def</span><span class="w"> </span><span class="nf">some_comp</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span>
@@ -836,8 +908,8 @@
 <section id="other-docs">
 <h1>Other Docs<a class="headerlink" href="#other-docs" title="Link to this heading"></a></h1>
 <ol class="arabic simple">
-<li><p><a class="reference internal" href="jinja.html">jinja</a></p></li>
 <li><p><a class="reference internal" href="overview.html">overview</a></p></li>
+<li><p><a class="reference internal" href="jinja.html">jinja</a></p></li>
 <li><p><a class="reference internal" href="models.html">models</a></p></li>
 <li><p><a class="reference internal" href="rendering.html">rendering</a></p></li>
 <li><p><a class="reference internal" href="statics.html">statics</a></p></li>
@@ -852,7 +924,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/21 at 18:39</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/21 at 20:10</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>

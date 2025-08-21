@@ -255,25 +255,6 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">├─</span>
             
-                <a href="/libs/comp/jinja">jinja</a>
-            
-            
-        </li>
-    
-
-                    
-                        
-    
-    
-        
-            
-        
-    
-
-    
-        <li class="sidebar-li">
-            <span class="sidebar-prefix-1">├─</span>
-            
                 <a href="/libs/comp/overview">overview</a>
             
             
@@ -294,6 +275,25 @@
             <span class="sidebar-prefix-1">├─</span>
             
                 <a href="/libs/comp/components">components</a>
+            
+            
+        </li>
+    
+
+                    
+                        
+    
+    
+        
+            
+        
+    
+
+    
+        <li class="sidebar-li">
+            <span class="sidebar-prefix-1">├─</span>
+            
+                <a href="/libs/comp/jinja">jinja</a>
             
             
         </li>
@@ -507,7 +507,7 @@
                 
                 <main><section id="about">
 <h1>About<a class="headerlink" href="#about" title="Link to this heading"></a></h1>
-<p>In this documentation we will discuss the <em>rendering process</em> in the <code class="docutils literal notranslate"><span class="pre">app</span></code> component system.</p>
+<p>In this documentation we will discuss the <em>rendering process</em> in the <code class="docutils literal notranslate"><span class="pre">comp</span></code> component system.</p>
 <ol class="arabic simple">
 <li><p><a class="reference internal" href="#review">Review</a></p></li>
 <li><p><a class="reference internal" href="#rendering">Rendering</a></p></li>
@@ -521,12 +521,12 @@
 </section>
 <section id="review">
 <h1>Review<a class="headerlink" href="#review" title="Link to this heading"></a></h1>
-<p>Recall that the <code class="docutils literal notranslate"><span class="pre">app</span></code> component system is composed by <em>components</em> which are entities of type <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>. They are functions decorated with <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> that receive arguments and return <em>jinja strings</em>, i.e, instances of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>. A component may have special variables, as <code class="docutils literal notranslate"><span class="pre">__depends_on__</span></code>.</p>
+<p>Recall that the <code class="docutils literal notranslate"><span class="pre">comp</span></code> component system is composed by <em>components</em> which are entities of type <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>. They are functions decorated with <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> that receive arguments and return <em>jinja strings</em>, i.e, instances of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>. A component may have special variables, as <code class="docutils literal notranslate"><span class="pre">__depends_on__</span></code>.</p>
 </section>
 <section id="rendering">
 <h1>Rendering<a class="headerlink" href="#rendering" title="Link to this heading"></a></h1>
 <p>After constructed, components can be <em>rendered</em>: the process of evaluating the component in a <em>context</em>, producing raw HTML. Technically, the render is implemented as a typed function (in the sense of {typed}) <code class="docutils literal notranslate"><span class="pre">render:</span> <span class="pre">Component</span> <span class="pre">x</span> <span class="pre">Context</span> <span class="pre">-&gt;</span> <span class="pre">HTML</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="n">html</span> <span class="o">=</span> <span class="n">render</span><span class="p">(</span><span class="n">my_comp</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">context</span><span class="o">&gt;</span><span class="p">)</span>
 </pre></div>
@@ -535,7 +535,7 @@
 <section id="context">
 <h1>Context<a class="headerlink" href="#context" title="Link to this heading"></a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">Context</span></code> type is a representation of <code class="docutils literal notranslate"><span class="pre">Dict(Any)</span></code>, meaning that it is a dictionary with key and values. Typically, one pass this dictionary to the <code class="docutils literal notranslate"><span class="pre">render</span></code> function as <em>keyword arguments</em>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="n">html</span> <span class="o">=</span> <span class="n">render</span><span class="p">(</span>
 <span class="linenos">4</span>    <span class="n">my_comp</span><span class="p">,</span>
@@ -550,9 +550,9 @@
 <li><p>local variables</p></li>
 <li><p>depending components in the <code class="docutils literal notranslate"><span class="pre">__depends_on__</span></code> variable.</p></li>
 </ol>
-<p>In practical terms, rendering a component is similarly to using <code class="docutils literal notranslate"><span class="pre">eval</span></code> operation applied to all variables of a component, followed by a <code class="docutils literal notranslate"><span class="pre">jinja</span></code> renderization. This means that if <code class="docutils literal notranslate"><span class="pre">some_var</span></code> is a variable of some component <code class="docutils literal notranslate"><span class="pre">my_comp</span></code>, then to render <code class="docutils literal notranslate"><span class="pre">my_comp</span></code> we need to pass <code class="docutils literal notranslate"><span class="pre">some_var</span></code> with some value:</p>
+<p>In practical terms, rendering a component is similarly to using <code class="docutils literal notranslate"><span class="pre">eval</span></code> operation complied to all variables of a component, followed by a <code class="docutils literal notranslate"><span class="pre">jinja</span></code> renderization. This means that if <code class="docutils literal notranslate"><span class="pre">some_var</span></code> is a variable of some component <code class="docutils literal notranslate"><span class="pre">my_comp</span></code>, then to render <code class="docutils literal notranslate"><span class="pre">my_comp</span></code> we need to pass <code class="docutils literal notranslate"><span class="pre">some_var</span></code> with some value:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">SomeType</span>
-<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Jinja</span><span class="p">,</span> <span class="n">render</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Jinja</span><span class="p">,</span> <span class="n">render</span>
 <span class="linenos"> 3</span>
 <span class="linenos"> 4</span><span class="nd">@component</span>
 <span class="linenos"> 5</span><span class="k">def</span><span class="w"> </span><span class="nf">my_comp</span><span class="p">(</span><span class="n">some_var</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
@@ -572,7 +572,7 @@
 <h1>Minify<a class="headerlink" href="#minify" title="Link to this heading"></a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">render</span></code> function has certain special variables, as we pass to discuss. The first of those variables in <code class="docutils literal notranslate"><span class="pre">__minify__</span></code>. It is a boolean variable with default value to <code class="docutils literal notranslate"><span class="pre">False</span></code>. If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the obtained HTML is returned compacted.</p>
 <p>So, if you want to produce compacted HTML, just use:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="n">html</span> <span class="o">=</span> <span class="n">render</span><span class="p">(</span><span class="n">my_comp</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">context_vars</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">__minify__</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -580,16 +580,16 @@
 </section>
 <section id="scripts">
 <h1>Scripts<a class="headerlink" href="#scripts" title="Link to this heading"></a></h1>
-<p>In the sequence, we have the variable <code class="docutils literal notranslate"><span class="pre">__scripts__</span></code> of type <code class="docutils literal notranslate"><span class="pre">List(Script)</span></code>. It should be used to append a component with certain auxiliary scripts. The <code class="docutils literal notranslate"><span class="pre">Script</span></code> model has a mandatory attribute <code class="docutils literal notranslate"><span class="pre">script_src</span></code> which defines its origin.</p>
+<p>In the sequence, we have the variable <code class="docutils literal notranslate"><span class="pre">__scripts__</span></code> of type <code class="docutils literal notranslate"><span class="pre">List(Script)</span></code>. It should be used to compend a component with certain auxiliary scripts. The <code class="docutils literal notranslate"><span class="pre">Script</span></code> model has a mandatory attribute <code class="docutils literal notranslate"><span class="pre">script_src</span></code> which defines its origin.</p>
 <p>The attribute <code class="docutils literal notranslate"><span class="pre">script_src</span></code> is of type <code class="docutils literal notranslate"><span class="pre">Union(Extension('js'),</span> <span class="pre">Url('http',</span> <span class="pre">'https')</span></code>, which means that it accepts both:</p>
 <ol class="arabic simple">
 <li><p>a <code class="docutils literal notranslate"><span class="pre">http</span></code> or <code class="docutils literal notranslate"><span class="pre">https</span></code> url</p></li>
 <li><p>a path to some <code class="docutils literal notranslate"><span class="pre">.js</span></code> file.</p></li>
 </ol>
-<p>If in <code class="docutils literal notranslate"><span class="pre">__script__</span></code> it is passed a script object with <code class="docutils literal notranslate"><span class="pre">script_src</span></code> given by a url, then, during the rendering, the component is appended with the builtin <code class="docutils literal notranslate"><span class="pre">script</span></code> component applied the given script object. On the other hand, if the script object contains a <code class="docutils literal notranslate"><span class="pre">script_src</span></code> which is the path to a <code class="docutils literal notranslate"><span class="pre">.js</span></code> file, then the content of the file is added to the component inside a <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> block.</p>
+<p>If in <code class="docutils literal notranslate"><span class="pre">__script__</span></code> it is passed a script object with <code class="docutils literal notranslate"><span class="pre">script_src</span></code> given by a url, then, during the rendering, the component is compended with the builtin <code class="docutils literal notranslate"><span class="pre">script</span></code> component complied the given script object. On the other hand, if the script object contains a <code class="docutils literal notranslate"><span class="pre">script_src</span></code> which is the path to a <code class="docutils literal notranslate"><span class="pre">.js</span></code> file, then the content of the file is added to the component inside a <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> block.</p>
 <p>So, for example, suppose you need to incorporate a script located in the url <code class="docutils literal notranslate"><span class="pre">https://my_script_url.com</span></code> to a component <code class="docutils literal notranslate"><span class="pre">my_comp</span></code>. All you need to do is:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span>
-<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">app.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Script</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Script</span>
 <span class="linenos"> 3</span>
 <span class="linenos"> 4</span><span class="n">my_script</span> <span class="o">=</span> <span class="n">Script</span><span class="p">(</span>
 <span class="linenos"> 5</span>    <span class="n">script_src</span><span class="o">=</span><span class="s2">&quot;https://my_script_url.com&quot;</span><span class="p">,</span>
@@ -615,7 +615,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/21 at 18:39</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/21 at 20:10</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
