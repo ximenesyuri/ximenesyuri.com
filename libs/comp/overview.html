@@ -517,7 +517,7 @@
 </section>
 <section id="overview-components">
 <h1>Overview: Components<a class="headerlink" href="#overview-components" title="Link to this heading"></a></h1>
-<p>The lib <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> deals with <em>components</em>. These are {l:typed functions} (in the sense of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>) which return <em>jinja strings</em>, i.e, Python strings of type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>, which contain <a class="autolink autolink-libs reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> syntax. Components should also be defined using the <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> decorator.</p>
+<p>The lib <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> deals with <em>components</em>. These are {l:typed functions} (in the sense of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>) which return <em>jinja strings</em>, i.e, Python strings of type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>, which contain {l:jinja2} syntax. Components should also be defined using the <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> decorator.</p>
 <p>The typical way to define a component is to first define a {l:model} (in the sense of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, typically a {l:optional model}) containing the <em>structure</em> of the component, and then take this model as argument:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">optional</span><span class="p">,</span> <span class="n">null</span><span class="p">,</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span>
 <span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span>
@@ -643,7 +643,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/21 at 20:10</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/21 at 20:20</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
