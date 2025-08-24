@@ -274,7 +274,7 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">├─</span>
             
-                <a href="/libs/comp/components">components</a>
+                <a href="/libs/comp/jinja">jinja</a>
             
             
         </li>
@@ -293,7 +293,7 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">├─</span>
             
-                <a href="/libs/comp/jinja">jinja</a>
+                <a href="/libs/comp/components">components</a>
             
             
         </li>
@@ -513,14 +513,15 @@
 <li><p><a class="reference internal" href="#delimiters">Delimiters</a></p></li>
 <li><p><a class="reference internal" href="#variables">Variables</a></p></li>
 <li><p><a class="reference internal" href="#rendering">Rendering</a></p></li>
+<li><p><a class="reference internal" href="#factories">Factories</a></p></li>
 <li><p><a class="reference internal" href="#highlight">Highlight</a></p></li>
 <li><p><a class="reference internal" href="#other-docs">Other Docs</a></p></li>
 </ol>
 </section>
 <section id="jinja-strings">
 <h1>Jinja Strings<a class="headerlink" href="#jinja-strings" title="Link to this heading"></a></h1>
-<p>The component system of <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> is based in <a class="autolink reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a>. This means that the {l:components} construct strings following <a class="autolink reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> syntax. We have a specific type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> (which is a subtype of <code class="docutils literal notranslate"><span class="pre">Str</span></code>) whose instances are the so-called <em>jinja strings</em>. These are Python <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/datamodel.html#immutable-sequences">strings</a> preppended with the “<code class="docutils literal notranslate"><span class="pre">jinja</span></code>” keyword.</p>
-<p>So, more precisely, an instance of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> is a string as follows (see <a class="autolink reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> to discover the full valid syntax):</p>
+<p>The component system of <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> is based in <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a>. This means that the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a> construct strings following <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> syntax. We have a specific type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> (which is a subtype of <code class="docutils literal notranslate"><span class="pre">Str</span></code> - the string <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>) whose instances are the so-called <em>jinja strings</em>. These are Python <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/datamodel.html#immutable-sequences">strings</a> preppended with the “<code class="docutils literal notranslate"><span class="pre">jinja</span></code>” keyword.</p>
+<p>So, more precisely, an instance of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> is a string as follows (see <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> to discover the full valid syntax):</p>
 <div class="highlight-python notranslate" id="jinja-string"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">my_jinja_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;jinja</span>
 <span class="linenos"> 2</span><span class="s2">[</span><span class="si">% f</span><span class="s2">or i in x %]</span>
 <span class="linenos"> 3</span><span class="s2">&lt;some html&gt;</span>
@@ -541,9 +542,9 @@
 </section>
 <section id="delimiters">
 <h1>Delimiters<a class="headerlink" href="#delimiters" title="Link to this heading"></a></h1>
-<p>You should note that the <a class="autolink reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> code provided in the <a class="reference internal" href="#jinja-string">previous</a> {l:jinja string} uses delimiters differing from the standard ones: while {l:jinja} uses <code class="docutils literal notranslate"><span class="pre">{%</span></code>, <code class="docutils literal notranslate"><span class="pre">{{</span></code> and <code class="docutils literal notranslate"><span class="pre">{#</span></code> as default for blocks, variables and comments, respectively, we are using <code class="docutils literal notranslate"><span class="pre">[</span></code>, <code class="docutils literal notranslate"><span class="pre">[[</span></code> and <code class="docutils literal notranslate"><span class="pre">[#</span></code>.</p>
-<p>The reason is that as we will see in <a class="reference internal" href="components"><span class="doc std std-doc">components</span></a> documentation, in <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> the {l:jinja strings} are typically returned by functions, and one would like to use variables of the function inside the return jinja string. This implies to consider the jinja strings as <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/lexical_analysis.html#f-strings">f-strings</a>. But in f-strings, variables already use <code class="docutils literal notranslate"><span class="pre">{</span></code> as delimiters, causing certain conflict with the default {l:jinja} delimiters.</p>
-<p>If you don’t like using <code class="docutils literal notranslate"><span class="pre">[</span></code> as the basic delimiter for {l:jinja strings}, you can set one of the following options, or some mix of them:</p>
+<p>You should note that the <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> code provided in the <a class="reference internal" href="#jinja-string">previous</a> <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> uses delimiters differing from the standard ones: while {l:jinja} uses <code class="docutils literal notranslate"><span class="pre">{%</span></code>, <code class="docutils literal notranslate"><span class="pre">{{</span></code> and <code class="docutils literal notranslate"><span class="pre">{#</span></code> as default for blocks, variables and comments, respectively, we are using <code class="docutils literal notranslate"><span class="pre">[</span></code>, <code class="docutils literal notranslate"><span class="pre">[[</span></code> and <code class="docutils literal notranslate"><span class="pre">[#</span></code>.</p>
+<p>The reason is that as we will see in <a class="reference internal" href="components"><span class="doc std std-doc">components</span></a> documentation, in <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a> are typically returned by functions, and one would like to use variables of the function inside the return jinja string. This implies to consider the jinja strings as <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/lexical_analysis.html#f-strings">f-strings</a>. But in f-strings, variables already use <code class="docutils literal notranslate"><span class="pre">{</span></code> as delimiters, causing certain conflict with the default {l:jinja} delimiters.</p>
+<p>If you don’t like using <code class="docutils literal notranslate"><span class="pre">[</span></code> as the basic delimiter for <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a>, you can set one of the following options, or some mix of them:</p>
 <div class="captioned-table" id="table-1">
 <table class="custom-pre-table docutils align-default">
 <thead>
@@ -598,13 +599,13 @@
 </section>
 <section id="variables">
 <h1>Variables<a class="headerlink" href="#variables" title="Link to this heading"></a></h1>
-<p>When working with {l:jinja strings} we have two kinds of variables:</p>
+<p>When working with <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a> we have two kinds of variables:</p>
 <ol class="arabic simple">
 <li><p><em>inner jinja variables</em>, which are defined as part of the jinja string through a <code class="docutils literal notranslate"><span class="pre">[%</span> <span class="pre">set</span> <span class="pre">...</span> <span class="pre">%]</span></code> block;</p></li>
 <li><p><em>free jinja variables</em>, which are not defined inside the jinja string.</p></li>
 </ol>
 <p>So, for example, in the <a class="reference internal" href="#jinja-string">above</a> jinja string, <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">z</span></code> are all <em>free jinja variables</em>, while <code class="docutils literal notranslate"><span class="pre">w</span></code> is an <em>inner jinja var</em>.</p>
-<p>The variables of a {l:jinja string} are accessible as <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-attribute">attributes</a> corresponding to <a class="autolink autolink-python reference external" href="https://docs.python.org/3/library/functions.html#property">properties</a> of the type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>:</p>
+<p>The variables of a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> are accessible as <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-attribute">attributes</a> corresponding to <a class="autolink autolink-python reference external" href="https://docs.python.org/3/library/functions.html#property">properties</a> of the type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>:</p>
 <div class="captioned-table" id="table-3">
 <table class="custom-pre-table docutils align-default">
 <thead>
@@ -669,8 +670,8 @@
 </section>
 <section id="rendering">
 <h1>Rendering<a class="headerlink" href="#rendering" title="Link to this heading"></a></h1>
-<p>The main objective of using {l:jinja strings} is to create “dynamic HTML”, where the dynamic aspects is provided precisely by the existence of {f:free jinja vars}, which are leaved to be fixed <em>a posteriori</em>. The process of transforming jinja strings into raw HTML is called <em>rendering</em>.</p>
-<p>Notice that  the {l:inner vars} of a {l:jinja string} already comes equipped with a value, which is set in the moment of its definition. To be rendered we then need to set values to its {l:free jinja vars}. This is done by defining a <em>jinja context</em>, which is a dictionary whose keys are strings with the names of the {l:free jinja vars}, and the values are the values that will be set to them.</p>
+<p>The main objective of using <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a> is to create “dynamic HTML”, where the dynamic aspects is provided precisely by the existence of {f:free jinja vars}, which are leaved to be fixed <em>a posteriori</em>. The process of transforming jinja strings into raw HTML is called <em>rendering</em>.</p>
+<p>Notice that  the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#inner-var">inner vars</a> of a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> already comes equipped with a value, which is set in the moment of its definition. To be rendered we then need to set values to its <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-free-var">free jinja vars</a>. This is done by defining a <em>jinja context</em>, which is a dictionary whose keys are strings with the names of the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-free-var">free jinja vars</a>, and the values are the values that will be set to them.</p>
 <p>As example of <em>jinja context</em> for the <a class="reference internal" href="#jinja-string">above</a> jinja string would be:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">my_context</span> <span class="o">=</span> <span class="p">{</span>
 <span class="linenos">2</span>    <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">some_value</span><span class="p">,</span>
@@ -679,7 +680,7 @@
 <span class="linenos">5</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>One time defined the context, one renders a {l:jinja string} by making use of the <code class="docutils literal notranslate"><span class="pre">.render</span></code> method:</p>
+<p>One time defined the context, one renders a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> by making use of the <code class="docutils literal notranslate"><span class="pre">.render</span></code> method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">Jinja</span>
 <span class="linenos">2</span><span class="kn">from</span><span class="w"> </span><span class="nn">some.where</span><span class="w"> </span><span class="kn">import</span> <span class="n">my_jinja_string</span>
 <span class="linenos">3</span>
@@ -694,26 +695,31 @@
 </pre></div>
 </div>
 </section>
+<section id="factories">
+<h1>Factories<a class="headerlink" href="#factories" title="Link to this heading"></a></h1>
+<p>Inside <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> we find some <em>jinja factories</em>. These are {l:type factories} constructing subtypes of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>. In other words, are {l:typed functions} taking values into <code class="docutils literal notranslate"><span class="pre">SUB(Jinja)</span></code>, the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> of subtypes of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>.</p>
+</section>
 <section id="highlight">
 <h1>Highlight<a class="headerlink" href="#highlight" title="Link to this heading"></a></h1>
-<p>To conclude, let us say some words on how to improve syntax highlight while working with {l:jinja strings}. We have two points to consider:</p>
+<p>To conclude, let us talk briefly on how to improve syntax highlight while working with <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a>. We have two points to consider:</p>
 <ol class="arabic simple">
 <li><p>jinja strings are used inside files with Python filetype;</p></li>
-<li><p>jinja strings use delimiters differing from the standard <a class="autolink reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> delimiters.</p></li>
+<li><p>jinja strings use delimiters differing from the standard <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> delimiters.</p></li>
 </ol>
-<p>From the first point, to get a nice highlight one needs to mix both Python and Jinja syntax highlights. This can be done by creating a custom filetype or by maintaining the Python filetype and using some regex filtering that includes Jinja highlight precisely for {l:jinja strings}.</p>
-<p>Since the only non-pythonic feature we need is highlight, the second option is highly preferable. Indeed, notice that {l:jinja strings} are defined as:</p>
+<p>From the first point, to get a nice highlighting one needs to mix both Python and Jinja highlights. This can be done by means of creating a custom filetype or by maintaining the Python filetype and using some regex filtering that includes Jinja highlight inside Python highlighting precisely for <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a>.</p>
+<p>Since in <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> the only non-pythonic feature we will need is highlighting, the second option is highly preferable. Indeed, notice that <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a> are defined as:</p>
 <ol class="arabic simple">
 <li><p>Python <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/datamodel.html#immutable-sequences">strings</a></p></li>
 <li><p>prefixed with <code class="docutils literal notranslate"><span class="pre">jinja</span></code></p></li>
-<li><p>that contains <a class="autolink reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> syntax.</p></li>
+<li><p>that contains <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> syntax.</p></li>
 </ol>
-<p>The fact that they are prefixed with a special keyword was introduced precisely to allow an easy parsing of the region that will be highlighted with Jinja syntax. Indeed: everything in between <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;jinja</span></code> and a triple quotes <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>.</p>
-<p>There are multiple solutions to embed syntax of a language inside the syntax of other language by giving certain delimiters, depending of your IDE. For <code class="docutils literal notranslate"><span class="pre">vim</span></code> you can use <a class="reference external" href="https://github.com/inkarkat/vim-SyntaxRange">vim-SyntaxRange</a>. For <code class="docutils literal notranslate"><span class="pre">neovim</span></code>, you can use <a class="reference external" href="https://github.com/nvim-treesitter/nvim-treesitter">nvim-treesitter</a>. For instance, in the case of <code class="docutils literal notranslate"><span class="pre">vim</span></code> with <code class="docutils literal notranslate"><span class="pre">SyntaxRange</span></code>, you can just add the following line to your <code class="docutils literal notranslate"><span class="pre">.vimrc</span></code>:</p>
+<p>The fact that they are prefixed with a special keyword was introduced precisely to allow an easy parsing of the region that will be highlighted with Jinja syntax. Indeed: it is the region in  between a <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;jinja</span></code> and a triple quotes <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>.</p>
+<p>There are multiple solutions to embed syntax of a language inside the syntax of other language by giving certain delimiters. Such solutions depend on the development environment. For <code class="docutils literal notranslate"><span class="pre">vim</span></code> you can use <a class="reference external" href="https://github.com/inkarkat/vim-SyntaxRange">vim-SyntaxRange</a>. For <code class="docutils literal notranslate"><span class="pre">neovim</span></code>, try <a class="reference external" href="https://github.com/nvim-treesitter/nvim-treesitter">nvim-treesitter</a>.</p>
+<p>In the case of <code class="docutils literal notranslate"><span class="pre">vim</span></code> with <code class="docutils literal notranslate"><span class="pre">SyntaxRange</span></code>, to embed Jinja highlight with the given delimiters you can just add the following line to your <code class="docutils literal notranslate"><span class="pre">.vimrc</span></code>:</p>
 <div class="highlight-vim notranslate"><div class="highlight"><pre><span></span>autocmd <span class="nb">BufWinEnter</span><span class="p">,</span><span class="nb">FileType</span> python <span class="k">call</span> SyntaxRange#Include<span class="p">(</span><span class="s1">&#39;f&quot;&quot;&quot;jinja&#39;</span><span class="p">,</span> <span class="s1">&#39;&quot;&quot;&quot;&#39;</span><span class="p">,</span> <span class="s1">&#39;jinja&#39;</span><span class="p">,</span> <span class="s1">&#39;NonText&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Concerning the second point above, before embedding Jinja syntax inside Python syntax, one first needs to modify the Jinja syntax to highlight the correct delimiters. For <code class="docutils literal notranslate"><span class="pre">vim</span></code> users, you can use <a class="reference external" href="https://github.com/Glench/Vim-Jinja2-Syntax">Vim-Jinja2-Syntax</a> with minor modifications.</p>
+<p>Concerning the second point above, before embedding Jinja syntax inside Python syntax, one first need to modify the Jinja syntax to highlight the correct delimiters. For <code class="docutils literal notranslate"><span class="pre">vim</span></code> users, you can use <a class="reference external" href="https://github.com/Glench/Vim-Jinja2-Syntax">Vim-Jinja2-Syntax</a> with minor modifications.</p>
 </section>
 <section id="other-docs">
 <h1>Other Docs<a class="headerlink" href="#other-docs" title="Link to this heading"></a></h1>
@@ -734,7 +740,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/22 at 18:45</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/24 at 00:11</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>

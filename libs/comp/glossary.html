@@ -274,7 +274,7 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">├─</span>
             
-                <a href="/libs/comp/components">components</a>
+                <a href="/libs/comp/jinja">jinja</a>
             
             
         </li>
@@ -293,7 +293,7 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">├─</span>
             
-                <a href="/libs/comp/jinja">jinja</a>
+                <a href="/libs/comp/components">components</a>
             
             
         </li>
@@ -517,43 +517,55 @@
 <h1>Concepts<a class="headerlink" href="#concepts" title="Link to this heading"></a></h1>
 <blockquote id="jinja-string">
 <div><p><a class="reference internal" href="#jinja-string">jinja string</a>.</p>
-<p>A <em>jinja string</em> is a Python <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/datamodel.html#immutable-sequences">string</a> preppended with the keyword <code class="docutils literal notranslate"><span class="pre">jinja</span></code>, and which contains <a class="autolink reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> syntax. They form a type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>, which is a subtype of <code class="docutils literal notranslate"><span class="pre">Str</span></code>, the <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> string type.</p>
+<p>A <em>jinja string</em> is a Python <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/datamodel.html#immutable-sequences">string</a> preppended with the keyword <code class="docutils literal notranslate"><span class="pre">jinja</span></code>, and which contains <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> syntax. They form a type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>, which is a subtype of <code class="docutils literal notranslate"><span class="pre">Str</span></code>, the <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> string type.</p>
 </div></blockquote>
 <blockquote id="jinja-delimiter">
 <div><p><a class="reference internal" href="#jinja-delimiter">jinja delimiter</a>.</p>
-<p>The <em>jinja delimiters</em> are the logic delimiters used to define code blocks, variables and comments in the <a class="autolink reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> syntax. In <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> they are given by <code class="docutils literal notranslate"><span class="pre">[%</span></code>, <code class="docutils literal notranslate"><span class="pre">[[</span></code> and <code class="docutils literal notranslate"><span class="pre">[#</span></code>, respectively, but can also be customized through the envs <code class="docutils literal notranslate"><span class="pre">COMP_JINJA_BLOCK_DELIM</span></code>, <code class="docutils literal notranslate"><span class="pre">COMP_JINJA_VAR_DELIM</span></code> and <code class="docutils literal notranslate"><span class="pre">COMP_JINJA_COMMMENT_DELIM</span></code>.</p>
+<p>The <em>jinja delimiters</em> are the logic delimiters used to define code blocks, variables and comments in the <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> syntax. In <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> they are given by <code class="docutils literal notranslate"><span class="pre">[%</span></code>, <code class="docutils literal notranslate"><span class="pre">[[</span></code> and <code class="docutils literal notranslate"><span class="pre">[#</span></code>, respectively, but can also be customized through the envs <code class="docutils literal notranslate"><span class="pre">COMP_JINJA_BLOCK_DELIM</span></code>, <code class="docutils literal notranslate"><span class="pre">COMP_JINJA_VAR_DELIM</span></code> and <code class="docutils literal notranslate"><span class="pre">COMP_JINJA_COMMMENT_DELIM</span></code>.</p>
 </div></blockquote>
 <blockquote id="jinja-inner-var">
 <div><p><a class="reference internal" href="#jinja-inner-var">jinja inner var</a>.</p>
-<p>A <em>jinja inner variable</em> is a variable in the <a class="autolink reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> syntax of a {l:jinja string} which is defined inside the {l:jinja string} by making use of the <code class="docutils literal notranslate"><span class="pre">[%</span> <span class="pre">set</span> <span class="pre">...</span> <span class="pre">%]</span></code> block. Those variables can be accessed through the attribute <code class="docutils literal notranslate"><span class="pre">.inner_vars</span></code> of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> or through the {l:typed function} <code class="docutils literal notranslate"><span class="pre">jinja_inner_vars</span></code>.</p>
+<p>A <em>jinja inner variable</em> is a variable in the <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> syntax of a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> which is defined inside the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> by making use of the <code class="docutils literal notranslate"><span class="pre">[%</span> <span class="pre">set</span> <span class="pre">...</span> <span class="pre">%]</span></code> block. Those variables can be accessed through the attribute <code class="docutils literal notranslate"><span class="pre">.inner_vars</span></code> of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> or through the {l:typed function} <code class="docutils literal notranslate"><span class="pre">jinja_inner_vars</span></code>.</p>
 </div></blockquote>
 <blockquote id="jinja-free-var">
 <div><p><a class="reference internal" href="#jinja-free-var">jinja free var</a>.</p>
-<p>A <em>jinja free variable</em> is a variable in the <a class="autolink reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> syntax of a {l:jinja string} which is <strong>not</strong> defined inside the {l:jinja string}. Their values should be included in the {l:jinja context} in order to {l:render} the {l:jinja string}. They can be accessed through the attribute <code class="docutils literal notranslate"><span class="pre">.free_vars</span></code> of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> or through the {l:typed function} <code class="docutils literal notranslate"><span class="pre">jinja_free_vars</span></code>.</p>
+<p>A <em>jinja free variable</em> is a variable in the <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> syntax of a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> which is <strong>not</strong> defined inside the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a>. Their values should be included in the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-context">jinja context</a> in order to <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-rendering">render</a> the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a>. They can be accessed through the attribute <code class="docutils literal notranslate"><span class="pre">.free_vars</span></code> of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> or through the {l:typed function} <code class="docutils literal notranslate"><span class="pre">jinja_free_vars</span></code>.</p>
 </div></blockquote>
 <blockquote id="jinja-context">
 <div><p><a class="reference internal" href="#jinja-context">jinja context</a>.</p>
-<p>The <em>jinja context</em> of a {l:jinja string} is a Python {p:dictionary} whose keys are the {l:free jinja vars} of the {l:jinja string}.</p>
+<p>The <em>jinja context</em> of a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> is a Python <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/datamodel.html#dictionaries">dictionary</a> whose keys are the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-free-var">free jinja vars</a> of the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a>.</p>
 </div></blockquote>
 <blockquote id="jinja-rendering">
 <div><p><a class="reference internal" href="#jinja-rendering">rendering</a>.</p>
-<p>In the context of {l:jinja strings}, <em>jinja rendering</em> is the process of turning them into raw HTML by giving a {l:jinja context}.</p>
+<p>In the context of <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a>, <em>jinja rendering</em> is the process of turning them into raw HTML by giving a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-context">jinja context</a>.</p>
 </div></blockquote>
 <blockquote id="jinja-factory">
 <div><p><a class="reference internal" href="#jinja-factory">jinja factory</a>.</p>
-<p>A <em>jinja factory</em> is a {l:type factory} taking values into a subtype of the <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> type. An example is <code class="docutils literal notranslate"><span class="pre">Tag:</span> <span class="pre">Tuple(Str)</span> <span class="pre">-&gt;</span> <span class="pre">TYPE</span></code>, which assigns to a tuple of strings the subtype of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> consisting of those {l:jinja strings} which are delimited by the HTML tag named by some of the strings in the given tuple.</p>
+<p>A <em>jinja factory</em> is a {l:type factory} taking values into a subtype of the <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> type. An example is <code class="docutils literal notranslate"><span class="pre">Tag:</span> <span class="pre">Tuple(Str)</span> <span class="pre">-&gt;</span> <span class="pre">TYPE</span></code>, which assigns to a tuple of strings the subtype of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> consisting of those <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a> which are delimited by the HTML tag named by some of the strings in the given tuple.</p>
 </div></blockquote>
 <blockquote id="component">
 <div><p><a class="reference internal" href="#component">component</a>.</p>
-<p>A <em>component</em> is a {l:typed function} decorated with the <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-decorator">decorator</a> and that returns a subtype of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>: the type of {l:jinja strings}. Components form the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>. Components are typically structured by some {l:component model}.</p>
+<p>A <em>component</em> is a {l:typed function} decorated with the <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-decorator">decorator</a> and that returns a subtype of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>: the type of <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a>. Components form the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>. Components are typically structured by some <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-model">component model</a>.</p>
+</div></blockquote>
+<blockquote id="local-context">
+<div><p><a class="reference internal" href="#local-context">local context</a>.</p>
+<p>The <em>local context</em>  of a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> is that defined by the special variable <code class="docutils literal notranslate"><span class="pre">__context__</span></code>.</p>
+</div></blockquote>
+<blockquote id="component-leak">
+<div><p><a class="reference internal" href="#component-leak">component leak</a>.</p>
+<p>A <em>leak</em>  of a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> is a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-free-var">jinja free var</a> on its underlying <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> which is not declared in the {l:local context}.</p>
+</div></blockquote>
+<blockquote id="bouded-component">
+<div><p><a class="reference internal" href="#bounded-component"><span class="xref myst">bounded component</span></a>.</p>
+<p>A <em>bounded component</em>  is a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> without <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-leak">leaks</a>. In other words, it is a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> such that every <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-free-var">jinja free var</a> is  declared in the {l:local context}.</p>
 </div></blockquote>
 <blockquote id="inner-var">
 <div><p><a class="reference internal" href="#inner-var">inner var</a>.</p>
-<p>An <em>inner variable</em> in a {l:component} is a variable of type <code class="docutils literal notranslate"><span class="pre">Inner</span></code>, which is {l:type equivalent} to <code class="docutils literal notranslate"><span class="pre">Str</span></code>.  Such variables are used to denote a placeholder for future insert inside a component.</p>
+<p>An <em>inner variable</em> in a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> is a variable of type <code class="docutils literal notranslate"><span class="pre">Inner</span></code>, which is {l:type equivalent} to <code class="docutils literal notranslate"><span class="pre">Str</span></code>.  Such variables are used to denote a placeholder for future insert inside a component.</p>
 </div></blockquote>
 <blockquote id="content-var">
 <div><p><a class="reference internal" href="#content-var">content var</a>.</p>
-<p>A <em>content variable</em> in a {l:component} is a variable of type <code class="docutils literal notranslate"><span class="pre">Content</span></code>, which is given by <code class="docutils literal notranslate"><span class="pre">Union(Str,</span> <span class="pre">Extension('md',</span> <span class="pre">'rst'))</span></code>. These variables represent static content (Markdown of ReStructuredText) to be included somewhere in a component.</p>
+<p>A <em>content variable</em> in a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> is a variable of type <code class="docutils literal notranslate"><span class="pre">Content</span></code>, which is given by <code class="docutils literal notranslate"><span class="pre">Union(Str,</span> <span class="pre">Extension('md',</span> <span class="pre">'rst'))</span></code>. These variables represent static content (<code class="docutils literal notranslate"><span class="pre">Markdown</span></code> of <code class="docutils literal notranslate"><span class="pre">ReStructuredText</span></code>) to be included somewhere in a component.</p>
 </div></blockquote>
 <blockquote id="component-factory">
 <div><p><a class="reference internal" href="#component-factory">component factory</a>.</p>
@@ -561,31 +573,31 @@
 </div></blockquote>
 <blockquote id="component-model">
 <div><p><a class="reference internal" href="#component-model">component model</a>.</p>
-<p>A <em>component model</em> is a {l:model} (typically an {l:optional model}) that describes the structure of a {l:component}.</p>
+<p>A <em>component model</em> is a {l:model} (typically an {l:optional model}) that describes the structure of a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>.</p>
 </div></blockquote>
 <blockquote id="tag-component">
 <div><p><a class="reference internal" href="#tag-component">tag component</a>.</p>
-<p>A <em>tag component</em> is a {l:component} whose {l:jinja string} is encapsulated in some HTML tag block, hence that take values into the image of the {l:jinja factory} <code class="docutils literal notranslate"><span class="pre">Tag</span></code>. In other words, a tag component is an instance of <code class="docutils literal notranslate"><span class="pre">TAG(*tags)</span></code> for some <code class="docutils literal notranslate"><span class="pre">*tags</span></code>.</p>
+<p>A <em>tag component</em> is a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> whose <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> is encapsulated in some HTML tag block, hence that take values into the image of the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-factory">jinja factory</a> <code class="docutils literal notranslate"><span class="pre">Tag</span></code>. In other words, a tag component is an instance of <code class="docutils literal notranslate"><span class="pre">TAG(*tags)</span></code> for some <code class="docutils literal notranslate"><span class="pre">*tags</span></code>.</p>
 </div></blockquote>
 <blockquote id="component-operation">
 <div><p><a class="reference internal" href="#component-operation">component operation</a>.</p>
-<p>A <em>component operation</em> is a {l:typed function} that receive {l:components} and return other component.</p>
+<p>A <em>component operation</em> is a {l:typed function} that receive <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a> and return other component.</p>
 </div></blockquote>
 <blockquote id="component-join">
 <div><p><a class="reference internal" href="#component-join">component join</a>.</p>
-<p>The <em>component join</em> is a {l:component operation} <code class="docutils literal notranslate"><span class="pre">join:</span> <span class="pre">Tuple(COMPONENT)</span> <span class="pre">-&gt;</span> <span class="pre">COMPONENT</span></code> that receive components <code class="docutils literal notranslate"><span class="pre">*comps</span></code> and return the new component <code class="docutils literal notranslate"><span class="pre">join(*comps)</span></code> whose {l:jinja string} is the string join of the corresponding {l:jinja strings}.</p>
+<p>The <em>component join</em> is a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-operation">component operation</a> <code class="docutils literal notranslate"><span class="pre">join:</span> <span class="pre">Tuple(COMPONENT)</span> <span class="pre">-&gt;</span> <span class="pre">COMPONENT</span></code> that receive components <code class="docutils literal notranslate"><span class="pre">*comps</span></code> and return the new component <code class="docutils literal notranslate"><span class="pre">join(*comps)</span></code> whose <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> is the string join of the corresponding <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a>.</p>
 </div></blockquote>
 <blockquote id="component-concat">
 <div><p><a class="reference internal" href="#component-concat">component concat</a>.</p>
-<p>The <em>component concat</em> is a {l:component operation} <code class="docutils literal notranslate"><span class="pre">join:</span> <span class="pre">Prod(COMPONENT(1),COMPONENT)</span> <span class="pre">-&gt;</span> <span class="pre">COMPONENT</span></code> that evaluates the {l:inner var} of a {l:component} with the {l:jinja string} of other component.</p>
+<p>The <em>component concat</em> is a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-operation">component operation</a> <code class="docutils literal notranslate"><span class="pre">join:</span> <span class="pre">Prod(COMPONENT(1),COMPONENT)</span> <span class="pre">-&gt;</span> <span class="pre">COMPONENT</span></code> that evaluates the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#inner-var">inner var</a> of a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> with the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> of other component.</p>
 </div></blockquote>
 </section>
 <section id="other-docs">
 <h1>Other Docs<a class="headerlink" href="#other-docs" title="Link to this heading"></a></h1>
 <ol class="arabic simple">
 <li><p><a class="reference internal" href="overview.html">overview</a></p></li>
-<li><p><a class="reference internal" href="components.html">components</a></p></li>
 <li><p><a class="reference internal" href="jinja.html">jinja</a></p></li>
+<li><p><a class="reference internal" href="components.html">components</a></p></li>
 <li><p><a class="reference internal" href="models.html">models</a></p></li>
 <li><p><a class="reference internal" href="rendering.html">rendering</a></p></li>
 <li><p><a class="reference internal" href="statics.html">statics</a></p></li>
@@ -599,7 +611,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/22 at 18:45</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/24 at 00:11</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
