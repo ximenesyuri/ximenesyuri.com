@@ -1,10 +1,16 @@
+# types
 class:
   terms: ["class", "classes", "classe"]
   url: https://docs.python.org/3/tutorial/classes.html
-
 subclass:
   terms: ["subclass", "subclasses", "subclasse"]
   url: https://docs.python.org/3/library/functions.html#issubclass
+string:
+  terms: ["string", "strings"]
+  url: https://docs.python.org/3/reference/datamodel.html#immutable-sequences
+dict:
+  terms: ["dict", "dictionary", "dicionário"]
+  url: https://docs.python.org/3/reference/datamodel.html#dictionaries
 
 f-string:
   terms: ["f-string", "f-strings"]
@@ -22,10 +28,6 @@ scope:
   terms: ["scope", "escopo"]
   url: https://docs.python.org/3/reference/executionmodel.html#resolution-of-names
 
-string:
-  terms: ["string", "strings"]
-  url: https://docs.python.org/3/reference/datamodel.html#immutable-sequences
-
 attr:
   terms: ["attr", "attribute", "attrs", "attributes", "atributo", "atributos"]
   url: https://docs.python.org/3/glossary.html#term-attribute
@@ -34,3 +36,18 @@ property:
   terms: ["property", "properties", "propriedade", "propriedades"]
   url: https://docs.python.org/3/library/functions.html#property
 
+magic-method:
+  terms: ["special method", "magic method"]
+  url: https://docs.python.org/3/glossary.html#term-magic-method
+
+annotation:
+  terms: ["annotation", "annotations", "type annotation", "type annotations"]
+  url: https://docs.python.org/3/glossary.html#term-annotation
+
+parameter:
+  terms: ["parameter", "parameters", "parâmetros", "parâmetro"]
+  url: https://docs.python.org/3/glossary.html#term-parameter
+
+callable:
+  terms: ["callable object", "callable", "callable entity", "callables", "callable objects", "callable entities"]
+  url: https://docs.python.org/3/glossary.html#term-callable

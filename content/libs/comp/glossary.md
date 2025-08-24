@@ -52,6 +52,21 @@ Here you will find the definition for the main concepts introduced in {l:comp} l
 >
 > A _component_ is a {l:typed function} decorated with the `@component` {p:decorator} and that returns a subtype of `Jinja`: the type of {l:jinja strings}. Components form the {l:type} `COMPONENT`. Components are typically structured by some {l:component model}.
 
+(local-context)=
+> [local context](#local-context).
+>
+> The _local context_  of a {l:component} is that defined by the special variable `__context__`.
+
+(component-leak)=
+> [component leak](#component-leak).
+>
+> A _leak_  of a {l:component} is a {l:jinja free var} on its underlying {l:jinja string} which is not declared in the {l:local context}.
+
+(bouded-component)=
+> [bounded component](#bounded-component).
+>
+> A _bounded component_  is a {l:component} without {l:leaks}. In other words, it is a {l:component} such that every {l:jinja free var} is  declared in the {l:local context}.
+
 (inner-var)=
 > [inner var](#inner-var).
 >
@@ -60,7 +75,7 @@ Here you will find the definition for the main concepts introduced in {l:comp} l
 (content-var)=
 > [content var](#content-var).
 >
-> A _content variable_ in a {l:component} is a variable of type `Content`, which is given by `Union(Str, Extension('md', 'rst'))`. These variables represent static content (Markdown of ReStructuredText) to be included somewhere in a component.
+> A _content variable_ in a {l:component} is a variable of type `Content`, which is given by `Union(Str, Extension('md', 'rst'))`. These variables represent static content (`Markdown` of `ReStructuredText`) to be included somewhere in a component.
 
 (component-factory)=
 > [component factory](#component-factory).

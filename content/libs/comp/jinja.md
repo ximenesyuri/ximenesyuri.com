@@ -1,7 +1,7 @@
 ---
 title: jinja
 desc: jinja
-weight: 15
+weight: 5
 ---
 
 # About
@@ -13,7 +13,7 @@ In the following we discuss  _jinja strings_, which are the return entity of an 
 
 # Jinja Strings
 
-The component system of {l:comp} is based in {jinja2}. This means that the {l:components} construct strings following {jinja2} syntax. We have a specific type `Jinja` (which is a subtype of `Str`) whose instances are the so-called _jinja strings_. These are Python {p:strings} preppended with the "`jinja`" keyword.
+The component system of {l:comp} is based in {jinja2}. This means that the {l:components} construct strings following {jinja2} syntax. We have a specific type `Jinja` (which is a subtype of `Str` - the string {l:type} of {l:typed}) whose instances are the so-called _jinja strings_. These are Python {p:strings} preppended with the "`jinja`" keyword.
 
 So, more precisely, an instance of `Jinja` is a string as follows (see {jinja2} to discover the full valid syntax):
 
@@ -157,28 +157,34 @@ from some.where import my_jinja_string
 render(my_jinja_string)
 ```
 
+# Factories
+
+Inside {l:comp} we find some _jinja factories_. These are {l:type factories} constructing subtypes of `Jinja`. In other words, are {l:typed functions} taking values into `SUB(Jinja)`, the {l:type} of subtypes of `Jinja`.
+
 # Highlight
 
-To conclude, let us say some words on how to improve syntax highlight while working with {l:jinja strings}. We have two points to consider:
+To conclude, let us talk briefly on how to improve syntax highlight while working with {l:jinja strings}. We have two points to consider:
 1. jinja strings are used inside files with Python filetype;
 2. jinja strings use delimiters differing from the standard {jinja} delimiters.
 
-From the first point, to get a nice highlight one needs to mix both Python and Jinja syntax highlights. This can be done by creating a custom filetype or by maintaining the Python filetype and using some regex filtering that includes Jinja highlight precisely for {l:jinja strings}.
+From the first point, to get a nice highlighting one needs to mix both Python and Jinja highlights. This can be done by means of creating a custom filetype or by maintaining the Python filetype and using some regex filtering that includes Jinja highlight inside Python highlighting precisely for {l:jinja strings}.
 
-Since the only non-pythonic feature we need is highlight, the second option is highly preferable. Indeed, notice that {l:jinja strings} are defined as:
+Since in {l:comp} the only non-pythonic feature we will need is highlighting, the second option is highly preferable. Indeed, notice that {l:jinja strings} are defined as:
 1. Python {p:strings}
 2. prefixed with `jinja`
 3. that contains {jinja} syntax.
 
-The fact that they are prefixed with a special keyword was introduced precisely to allow an easy parsing of the region that will be highlighted with Jinja syntax. Indeed: everything in between `"""jinja` and a triple quotes `"""`.
+The fact that they are prefixed with a special keyword was introduced precisely to allow an easy parsing of the region that will be highlighted with Jinja syntax. Indeed: it is the region in  between a `"""jinja` and a triple quotes `"""`.
 
-There are multiple solutions to embed syntax of a language inside the syntax of other language by giving certain delimiters, depending of your IDE. For `vim` you can use [vim-SyntaxRange](https://github.com/inkarkat/vim-SyntaxRange). For `neovim`, you can use [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter). For instance, in the case of `vim` with `SyntaxRange`, you can just add the following line to your `.vimrc`:
+There are multiple solutions to embed syntax of a language inside the syntax of other language by giving certain delimiters. Such solutions depend on the development environment. For `vim` you can use [vim-SyntaxRange](https://github.com/inkarkat/vim-SyntaxRange). For `neovim`, try [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter). 
+
+In the case of `vim` with `SyntaxRange`, to embed Jinja highlight with the given delimiters you can just add the following line to your `.vimrc`:
 
 ```vim
 autocmd BufWinEnter,FileType python call SyntaxRange#Include('f"""jinja', '"""', 'jinja', 'NonText')
 ```
 
-Concerning the second point above, before embedding Jinja syntax inside Python syntax, one first needs to modify the Jinja syntax to highlight the correct delimiters. For `vim` users, you can use [Vim-Jinja2-Syntax](https://github.com/Glench/Vim-Jinja2-Syntax) with minor modifications.
+Concerning the second point above, before embedding Jinja syntax inside Python syntax, one first need to modify the Jinja syntax to highlight the correct delimiters. For `vim` users, you can use [Vim-Jinja2-Syntax](https://github.com/Glench/Vim-Jinja2-Syntax) with minor modifications.
 
 # Other Docs
 

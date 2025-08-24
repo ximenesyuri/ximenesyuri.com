@@ -1,0 +1,15 @@
+typed:
+  terms: [typed]
+  url: /libs/typed
+
+typed/models:
+  terms: [typed/models]
+  url: /libs/typed/models
+
+typed/type:
+  terms: [type, types]
+  url: /libs/typed/glossary#type
+
+typed/metatype:
+  terms: [metatype, metatypes]
+  url: /libs/typed/glossary#metatype

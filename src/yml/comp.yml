@@ -1,0 +1,95 @@
+comp:
+  terms: ["comp"]
+  url: /libs/comp
+
+comp/jinja-string:
+  terms: ["jinja string", "jinja strings"]
+  url: /libs/comp/glossary#jinja-strings
+
+comp/jinja-delimiter:
+  terms: ["jinja delimiter", "jinja delimiters"]
+  url: /libs/comp/glossary#jinja-delimiter
+
+comp/jinja-inner-var:
+  terms: ["inner jinja var", "inner jinja variable", "inner jinja variables", "inner jinja vars", "jinja inner var", "jinja inner variable", "jinja inner vars", "jinja inner variables"]
+  url: /libs/comp/glossary#jinja-inner-var
+
+comp/jinja-free-var:
+  terms: ["free jinja var", "free jinja variable", "free jinja variables", "free jinja vars", "jinja free var", "jinja free variable", "jinja free vars", "jinja free variables"]
+  url: /libs/comp/glossary#jinja-free-var
+
+comp/jinja-context:
+  terms: ["jinja context"]
+  url: /libs/comp/glossary#jinja-context
+
+comp/jinja-rendering:
+  terms: ["jinja render", "jinja rendering", "render a jinja string"]
+  url: /libs/comp/glossary#rendering
+
+comp/jinja-factory:
+  terms: ["jinja factory", "jinja factories"]
+  url: /libs/comp/glossary#jinja-factory
+
+comp/component:
+  terms: ["component", "components"]
+  url: /libs/comp/glossary#component
+
+comp/local-context:
+  terms: ["render", "rendering", "component rendering"]
+  url: /libs/comp/glossary#local-context
+
+comp/component-leak:
+  terms: ["leak", "component leak", "leaks", "component leaks"]
+  url: /libs/comp/glossary#component-leak
+
+comp/bounded-component:
+  terms: ["bounded component", "bounded components"]
+  url: /libs/comp/glossary#bounded-component
+
+comp/inner-var:
+  terms: ["inner var", "inner vars", "inner variable", "inner variables"]
+  url: /libs/comp/glossary#inner-var
+
+comp/content-var:
+  terms: ["content var", "content vars", "content variable", "content variables"]
+  url: /libs/comp/glossary#content-var
+
+comp/component-factory:
+  terms: ["component factory", "component factories"]
+  url: /libs/comp/glossary#component-factory
+
+comp/component-model:
+  terms: ["component model", "component models"]
+  url: /libs/comp/glossary#component-model
+
+comp/tag-component:
+  terms: ["tag component", "tag components"]
+  url: /libs/comp/glossary#tag-component
+
+comp/component-attr:
+  terms: ["component attribute", "component attributes"]
+  url: /libs/comp/glossary#component-attr
+
+comp/component-operation:
+  terms: ["component operation", "component operations"]
+  url: /libs/comp/glossary#component-operation
+
+comp/component-join:
+  terms: ["component join", "join"]
+  url: /libs/comp/glossary#component-join
+
+comp/component-concat:
+  terms: ["component concat"]
+  url: /libs/comp/glossary#component-concat
+
+comp/component-eval:
+  terms: ["component eval"]
+  url: /libs/comp/glossary#component-eval
+
+comp/component-copy:
+  terms: ["component copy"]
+  url: /libs/comp/glossary#component-copy
+
+comp/component-rendering:
+  terms: ["render", "rendering", "component rendering"]
+  url: /libs/comp/glossary#component-rendering

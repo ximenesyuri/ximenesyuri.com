@@ -1,9 +1,8 @@
-import os
 import sys
-import yaml
+from utils import yml, path
 from src.helper.menu import _get_menu_items
 from src.helper.date import _year, _now
-sys.path.insert(0, os.path.abspath('./helper'))
+path.insert('./helper')
 
 extensions = [
     'myst_parser',
@@ -38,9 +37,10 @@ html_use_dirhtml = True
 
 myst_enable_includes = True
 
-CONF_DIR = os.path.dirname(__file__)
-ROOT_DIR = os.path.abspath(os.path.join(CONF_DIR, '..'))
-CONTENT_DIR = os.path.join(ROOT_DIR, 'content')
+CONF_DIR = path.dirname(__file__)
+YML_DIR = path.join(CONF_DIR, "yml")
+ROOT_DIR = path.join(CONF_DIR, '..')
+CONTENT_DIR = path.join(ROOT_DIR, 'content')
 
 html_context={
     'title': 'Yuri Ximenes',
@@ -62,33 +62,31 @@ html_context={
 }
 
 autolink = {
-    "global": {},
+    "global": {
+        "class": "autolink-global",
+        "entries": yml.read(path.join(YML_DIR, "global.yml"))
+    },
     "l": {
-        "class": "autolink-libs"
+        "class": "autolink-libs",
+        "entries": yml.read(path.join(YML_DIR, "libs.yml"))
     },
     "n": {
-        "class": "autolink-notes"
+        "class": "autolink-notes",
+        "entries": yml.read(path.join(YML_DIR, "notes.yml"))
     },
     "g": {
-        "class": "autolink-glossary"
+        "class": "autolink-glossary",
+        "entries": yml.read(path.join(YML_DIR, "glossary.yml"))
     },
     "p": {
-        "class": "autolink-python"
+        "class": "autolink-python",
+        "entries": yml.read(path.join(YML_DIR, "python.yml"))
     },
 
 }
 
-with open(os.path.join(CONF_DIR, 'yml', 'global.yml'), 'r') as file:
-    autolink["global"]["entries"] = yaml.safe_load(file)
+libs = ["comp", "typed"]
 
-with open(os.path.join(CONF_DIR, 'yml', 'libs.yml'), 'r') as file:
-    autolink["l"]["entries"] = yaml.safe_load(file)
-
-with open(os.path.join(CONF_DIR, 'yml', 'notes.yml'), 'r') as file:
-    autolink["n"]["entries"] = yaml.safe_load(file)
-
-with open(os.path.join(CONF_DIR, 'yml', 'glossary.yml'), 'r') as file:
-    autolink["g"]["entries"] = yaml.safe_load(file)
-
-with open(os.path.join(CONF_DIR, 'yml', 'python.yml'), 'r') as file:
-    autolink["p"]["entries"] = yaml.safe_load(file)
+for lib in libs:
+    lib_yml = path.join(YML_DIR, f"{lib}.yml")
+    autolink['l']['entries'].update(yml.read(lib_yml))

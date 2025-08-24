@@ -12,9 +12,9 @@ Here you will find an overview for the {l:comp} library.
 
 # Overview: Components
 
-The lib {l:comp} deals with _components_. These are {l:typed functions} (in the sense of {l:typed}) which return _jinja strings_, i.e, Python strings of type `Jinja`, which contain {l:jinja2} syntax. Components should also be defined using the `@component` decorator.
+The lib {l:comp} deals with _components_. These are {l:typed functions} (in the sense of {l:typed}) which return _jinja strings_, i.e, Python strings of type `Jinja`, which contain {jinja2} syntax. Components should also be defined using the `@component` decorator.
 
-The typical way to define a component is to first define a {l:model} (in the sense of {l:typed}, typically a {l:optional model}) containing the _structure_ of the component, and then take this model as argument:
+The typical way to define a {l:component} is to first define a {l:model} (in the sense of {l:typed}, typically a {l:optional model}) containing the _structure_ of the {l:component}, and then take this model as argument:
 
 ```python
 from typed import optional, null, SomeType, OtherType
@@ -34,7 +34,7 @@ def my_comp(my_comp: MyModel) -> Jinja:
 """
 ```
 
-Components define a type `COMPONENT` and there are four main operations between them, each of them corresponding to an arithmetic symbol:
+Components define a {l:type} `COMPONENT` and there are four main {l:component operations} between them, each of them corresponding to an arithmetic symbol ({p:magic methods} in Python):
 
 (table-1)=
 ```
@@ -48,7 +48,7 @@ copy             ^       copy a component, eventually changing var names
 table 1: component operations
 ```
 
-This means that we can construct complex components through _component equations_:
+This means that we can construct complex {l:components} through _component equations_:
 
 ```python
 my_comp = (
@@ -58,11 +58,11 @@ my_comp = (
 ```
 
 (rem-1)=
-> [Remark 1](#rem-1). The modules `comp.models` and `comp.components` provides, respectively, a plethora of already defined models and corresponding components, one for each builtin HTML tag.
+> [Remark 1](#rem-1). The modules `comp.models` and `comp.components` provides, respectively, a plethora of already defined {l:models} and corresponding {l:components}, one for each builtin HTML tag.
 
 # Overview: Rendering
 
-After being constructed, components can be _rendered_, producing raw HTML. This is done using a typed function `render`:
+After being constructed, {l:components} can be _rendered_, producing raw HTML. This is done using a {l:typed function} `render`:
 
 ```python
 from comp import render
@@ -70,7 +70,7 @@ from comp import render
 html = render(my_comp, **context)
 ```
 
-To {l:render} a component one needs to pass a _context_, which is a dictionary. It attaches values to each argument of the component, as well as to other {l:free variables}.
+To {l:render} a component one needs to pass a _context_, which is a {p:dictionary}. It attaches values to each argument of the component, as well as to other {l:free variables}.
 
 The rendering process can be customized to produce optimized raw HTML by passing certain special variables to `render`:
 
