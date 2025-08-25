@@ -208,20 +208,25 @@ table 1: component attributes and their typed functions
 
 # Operations
 
-There are three main operations involving components:
-1. `join: COMPONENT x COMPONENT -> COMPONENT`:
-    - receive a tuple of components and creates a new component whose _jinja string_ is the join of the _jinja strings_ of the provided components;
-2. `concat: Component(1) x COMPONENT -> COMPONENT`:
-    - receive a component with a single _inner var_ and another arbitrary component, producing a new component whose _jinja str_ is obtained by replacing the placeholder given by _inner var_ in the first component with the _jinja string_ of the second component.
-3. `eval: COMPONENT x Dict(Any) -> COMPONENT`:
-    - receive a component and a list of key-values and returns the component obtained by fixing each variable associated to a _key_ with the corresponding _value_, leaving the other variables unchanged.
+There are four main operations involving {l:components}:
+1. `join: Prod(COMPONENT, n) -> COMPONENT`:
+    - receives a tuple of components and creates a new component whose {l:jinja string} is the join of the {l:jinja strings} of the provided components;
+2. `concat: Prod(COMPONENT(1), COMPONENT) -> COMPONENT`:
+    - receives a component with a single {l:inner var} and another arbitrary component, producing a new component whose {l:jinja string} is obtained by replacing the placeholder given by {l:inner var} in the first component with the {l:jinja string} of the second component.
+3. `eval: Prod(COMPONENT, Dict(Any)) -> COMPONENT`:
+    - receives a {l:component} and a list with keys and values, returning the component obtained by fixing each variable associated to a _key_ with the corresponding _value_, leaving the other variables unchanged.
+4. `copy: Prod(COMPONENT, Dict(Str)) -> COMPONENT`:
+    - receives a {l:component} and a list with keys and values, returning a copy of the given component 
 
-The intuition for each of such operations is as follows:
-1. `join`: put a component _after_ other component
-2. `concat`: put a component _inside_ other component
-3. `eval`: from a component, _fixes_ some part
+The intuition for each of such {l:component operations} is as follows:
+1. `join`: put a component _after_ other component;
+2. `concat`: put a component _inside_ other component;
+3. `eval`: from a component, _fixes_ some part of it;
+4. `copy`: from a component, _copy_ it.
 
-So, for example, consider the following generic components:
+# Example
+
+Consider the following generic components:
 
 ```python
 from typed import SomeType, OtherType

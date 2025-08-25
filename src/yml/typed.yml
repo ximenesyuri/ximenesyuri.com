@@ -2,14 +2,18 @@ typed:
   terms: [typed]
   url: /libs/typed
 
-typed/models:
-  terms: [typed/models]
-  url: /libs/typed/models
-
 typed/type:
-  terms: [type, types]
+  terms: [type, types, "typed type", "typed types"]
   url: /libs/typed/glossary#type
 
 typed/metatype:
-  terms: [metatype, metatypes]
+  terms: [metatype, metatypes, "typed metatype", "typed metatypes"]
   url: /libs/typed/glossary#metatype
+
+typed/inner-metatype:
+  terms: ["inner metatype", "inner metatypes"]
+  url: /libs/typed/glossary#inner-metatype
+
+typed/model:
+  terms: [model, models, "typed model", "typed models"]
+  url: /libs/typed/glossary#model

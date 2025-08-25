@@ -6,14 +6,10 @@ weight: 30
 
 # About
 
-In this documentation we will discuss the _rendering process_ in the `comp` component system.
+In this documentation we will discuss the _rendering process_ in the {l:comp} component system.
 
 ```{toc}
 ```
-
-# Review
-
-Recall that the `comp` component system is composed by _components_ which are entities of type `COMPONENT`. They are functions decorated with `@component` that receive arguments and return _jinja strings_, i.e, instances of `Jinja`. A component may have special variables, as `__depends_on__`.
 
 # Rendering
 

@@ -60,6 +60,15 @@ my_comp = (
 (rem-1)=
 > [Remark 1](#rem-1). The modules `comp.models` and `comp.components` provides, respectively, a plethora of already defined {l:models} and corresponding {l:components}, one for each builtin HTML tag.
 
+# Overview: Special Vars
+
+A {l:component} have certain _special vars_:
+1. `__context__`: defines the {l:local context} of the component, where needed information to {l:render} it is introduced (see [below](#overview-rendering));
+2. vars of type `Inner`: used as placeholder to introduced content of other components;
+3. vars of type `Content`: receive _static context_ in the form of Markdown or ReStructuredText.
+
+For example, {l:inner vars} are used in the {l:component concat} operation, while {l:content vars} allows the use of {l:comp} in both dynamic and static environments.
+
 # Overview: Rendering
 
 After being constructed, {l:components} can be _rendered_, producing raw HTML. This is done using a {l:typed function} `render`:
@@ -88,10 +97,6 @@ table 1: render variables
 
 (rem-2)=
 > [Remark 2](#rem-2). During the construction of a component you can preview it using the `preview` function, which renders the component and creates a server that looks automatically for updates in the component file. 
-
-# Overview: Statics
-
-... TBA ...
 
 # Other Docs
 
