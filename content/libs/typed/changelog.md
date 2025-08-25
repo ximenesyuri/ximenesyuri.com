@@ -5,7 +5,7 @@ weight: 1000
 
 # About
 
-Here you will find some important changelogs for the library {typed}. For the full list of tags, see [here](https://github.com/ximenesyuri/typed/tags).
+Here you will find some important changelogs for the library {l:typed}. For the full list of tags, see [here](https://github.com/ximenesyuri/typed/tags).
 
 ```{toc}
 ```
@@ -41,7 +41,7 @@ Fully compatible with typed functions.
 
 # v0.1.13: base type factories as functors
 
-In {typed}, there are various type factories, which operate between types to construct new types.
+In {l:typed}, there are various type factories, which operate between types to construct new types.
 
 Among these factories are the "base factories," which essentially correspond to implementations as concrete types of annotations from the `typing` library, along with a few more factories.
 
@@ -54,7 +54,7 @@ Types have a semantics given by a certain class of sets. Among the types, we hav
 
 In this sense, type factories operate at the level of `TYPE` objects, and it would be natural to try to extend them to functors `F: TYPE -> TYPE`.
 
-In version {typed} v0.1.13, this was done for the base type factories listed above.
+In version {l:typed} v0.1.13, this was done for the base type factories listed above.
 
 This means, for example, that we can now take a function: `f: SomeType -> OtherType` and apply the `List`, `Tuple`, etc. operations to it:
 
@@ -66,7 +66,7 @@ Furthermore, such a construction is done in a way that compositions are respecte
 
 Naturally, operations at the function level can be concatenated (just as they were at the type level).
 
-This brings {typed} closer to providing not only a "typed approach" to Python, but also a truly functional approach.
+This brings {l:typed} closer to providing not only a "typed approach" to Python, but also a truly functional approach.
 
 # v0.1.15: type safety for variables
 
@@ -90,7 +90,7 @@ At runtime, the interpreter will check if the variable `my_var` has a value whos
 
 It is now possible to transform any class into a model, exact model, or conditional model.
 
-In version {typed} v0.3.0, the decorators `@model`, `@exact`, and `@conditional` were included. These decorators can be applied to any class, collecting its attributes and passing them as arguments to the `Model`, `Exact`, and `Conditional` type factories, respectively.
+In version {l:typed} v0.3.0, the decorators `@model`, `@exact`, and `@conditional` were included. These decorators can be applied to any class, collecting its attributes and passing them as arguments to the `Model`, `Exact`, and `Conditional` type factories, respectively.
 
 This, in particular, allows you to transform other types of model constructs (such as `pydantic` models and dataclasses) into models in the `typed` sense.
 
@@ -98,7 +98,7 @@ This also enables better integration with LSPs (type factories are dynamic by na
 
 # v0.4.0: inclusion of new model types
 
-The {typed} models system has been completely refactored. It is now possible to create custom model factories from the `ModelFactory` metaclass.
+The {l:typed} models system has been completely refactored. It is now possible to create custom model factories from the `ModelFactory` metaclass.
 
 Additionally, new model factories have been introduced:
 1.  _Ordered_: Validates data with respect to the ordering of entries.
@@ -109,7 +109,7 @@ The `Conditional` model factory has been removed. It is now possible to pass a `
 
 # v0.4.1: optional without default value
 
-In {typed}, you can create models by applying the `@model` decorator to a class. If you want an entry to be optional, you simply use the `Optional` type factory, passing the type with a default value:
+In {l:typed}, you can create models by applying the `@model` decorator to a class. If you want an entry to be optional, you simply use the `Optional` type factory, passing the type with a default value:
 
 ```python
 from typed import SomeType, OtherType
@@ -133,13 +133,13 @@ Naturally, if the type in question is not `nullable`, an error is returned.
 
 # v0.4.2: refactoring function types
 
-One of {typed} premisses is:
+One of {l:typed} premisses is:
 
 > If a type `X` is a subtype of a type `Y`, then every instance of `X` should be an instance of `Y`.
 
 This is not a natural behavior of Python, which completely distinguishes elements of a class from the elements of any of its extensions.
 
-Mathematically, this is not the expected behavior, something we have "fixed" within {typed}'s builtin types and type factories.
+Mathematically, this is not the expected behavior, something we have "fixed" within {l:typed}'s builtin types and type factories.
 
 To exhibit such behavior, classes need to be constructed from specific metaclasses, in which we specify (within the `__instancecheck__` method) the necessary conditions to validate instantiation.
 
@@ -160,7 +160,7 @@ I noticed that some function types were not exhibiting the desired behavior. The
 
 # v0.4.3: introduction of `@optional` decorator
 
-In some cases, we need to build models where all inputs are optional. In the new version of {typed}, a decorator to facilitate the construction of this type of model:
+In some cases, we need to build models where all inputs are optional. In the new version of {l:typed}, a decorator to facilitate the construction of this type of model:
 
 ```python
 from typed.models import optional
@@ -212,7 +212,7 @@ class MyModel:
 
 # v0.4.4: introduction of model attributes
 
-In {typed} we have several types of models:
+In {l:typed} we have several types of models:
 1.  _Models_ (the standard type, where the instance must contain at least the defined attributes)
 2.  _Exact Models_ (where the instance must contain exactly the defined attributes)
 3.  _Ordered Models_ (where the instance must contain at least the defined attributes, but in the order they were defined)
@@ -267,8 +267,40 @@ Typed(some_function) # the same as the old TypedFunc(some_function)
 
 # v0.5.1: introduce `__null__` in factories
 
-In {typed} we have _nullable_ types. These are the types for which the `null` function is defined. In v0.5.1 the `null` function was revisited to look for two cases:
+In {l:typed} we have _nullable_ types. These are the types for which the `null` function is defined. In v0.5.1 the `null` function was revisited to look for two cases:
 1. predefined builtin nullable types
 2. types with a `__null__` defined.
 
 Also, all factories were reviewed to include a `__null__` attribute to the type they construct.
+
+# v0.5.2: review the basic types
+
+In {l:typed}, a {l:type} is suppose to be constructed from an {l:inner metatype}. Previously we have applied this definition to all _constructed_ types, meaning that they are not Python _builtin types_. So, for example, previously:
+
+(table-1)=
+```
+typed type          definition 
+------------------------------
+Str                 str
+Bool                bool
+Int                 int
+Float               float
+TYPE                type
+Nill                type(None)
+------------------------------
+table 1
+```
+
+In version v0.5.2 these types are now {l:typed types}, so that are constructed from {l:inner metatypes}.
+
+# v0.5.3: symmetrization of basic factories
+
+Some {l:factories} are supposed to be _symmetric_ in the sense that they should not depend on the ordering of their arguments. Examples include:
+1. `Union`
+2. `Inter`
+3. `Tuple`
+4. `List`
+5. `Set`
+6. `Dict`
+
+Previously such factories were __not__ symmetric. In version v0.5.3 they were made symmetric.
