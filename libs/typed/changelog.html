@@ -507,7 +507,7 @@
                 
                 <main><section id="about">
 <h1>About<a class="headerlink" href="#about" title="Link to this heading"></a></h1>
-<p>Here you will find some important changelogs for the library {typed}. For the full list of tags, see <a class="reference external" href="https://github.com/ximenesyuri/typed/tags">here</a>.</p>
+<p>Here you will find some important changelogs for the library <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>. For the full list of tags, see <a class="reference external" href="https://github.com/ximenesyuri/typed/tags">here</a>.</p>
 <ol class="arabic simple">
 <li><p><a class="reference internal" href="#v0-1-9-extendable-models-and-exact-models">v0.1.9: extendable models and  exact models</a></p></li>
 <li><p><a class="reference internal" href="#v0-1-13-base-type-factories-as-functors">v0.1.13: base type factories as functors</a></p></li>
@@ -521,6 +521,8 @@
 <li><p><a class="reference internal" href="#v0-4-5-optional-and-mandatory-models">v0.4.5: optional and mandatory models</a></p></li>
 <li><p><a class="reference internal" href="#v0-5-0-refactor-of-factories">v0.5.0: refactor of factories</a></p></li>
 <li><p><a class="reference internal" href="#v0-5-1-introduce-null-in-factories">v0.5.1: introduce __null__ in factories</a></p></li>
+<li><p><a class="reference internal" href="#v0-5-2-review-the-basic-types">v0.5.2: review the basic types</a></p></li>
+<li><p><a class="reference internal" href="#v0-5-3-symmetrization-of-basic-factories">v0.5.3: symmetrization of basic factories</a></p></li>
 </ol>
 </section>
 <section id="v0-1-9-extendable-models-and-exact-models">
@@ -552,7 +554,7 @@
 </section>
 <section id="v0-1-13-base-type-factories-as-functors">
 <h1>v0.1.13: base type factories as functors<a class="headerlink" href="#v0-1-13-base-type-factories-as-functors" title="Link to this heading"></a></h1>
-<p>In {typed}, there are various type factories, which operate between types to construct new types.</p>
+<p>In <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, there are various type factories, which operate between types to construct new types.</p>
 <p>Among these factories are the “base factories,” which essentially correspond to implementations as concrete types of annotations from the <code class="docutils literal notranslate"><span class="pre">typing</span></code> library, along with a few more factories.</p>
 <blockquote id="example-1">
 <div><p><a class="reference internal" href="#example-1">Example</a>.</p>
@@ -563,13 +565,13 @@
 </div></blockquote>
 <p>Types have a semantics given by a certain class of sets. Among the types, we have typed functions, so we can think of the category <code class="docutils literal notranslate"><span class="pre">TYPE</span></code>, where objects are types and morphisms are typed functions.</p>
 <p>In this sense, type factories operate at the level of <code class="docutils literal notranslate"><span class="pre">TYPE</span></code> objects, and it would be natural to try to extend them to functors <code class="docutils literal notranslate"><span class="pre">F:</span> <span class="pre">TYPE</span> <span class="pre">-&gt;</span> <span class="pre">TYPE</span></code>.</p>
-<p>In version {typed} v0.1.13, this was done for the base type factories listed above.</p>
+<p>In version <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> v0.1.13, this was done for the base type factories listed above.</p>
 <p>This means, for example, that we can now take a function: <code class="docutils literal notranslate"><span class="pre">f:</span> <span class="pre">SomeType</span> <span class="pre">-&gt;</span> <span class="pre">OtherType</span></code> and apply the <code class="docutils literal notranslate"><span class="pre">List</span></code>, <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>, etc. operations to it:</p>
 <p><code class="docutils literal notranslate"><span class="pre">List(f):</span> <span class="pre">List(f.domain)</span> <span class="pre">-&gt;</span> <span class="pre">List(f.codomain)</span></code>.</p>
 <p>Furthermore, such a construction is done in a way that compositions are respected:</p>
 <p><code class="docutils literal notranslate"><span class="pre">List(g*f)</span> <span class="pre">==</span> <span class="pre">List(g)*List(f)</span></code></p>
 <p>Naturally, operations at the function level can be concatenated (just as they were at the type level).</p>
-<p>This brings {typed} closer to providing not only a “typed approach” to Python, but also a truly functional approach.</p>
+<p>This brings <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> closer to providing not only a “typed approach” to Python, but also a truly functional approach.</p>
 </section>
 <section id="v0-1-15-type-safety-for-variables">
 <h1>v0.1.15: type safety for variables<a class="headerlink" href="#v0-1-15-type-safety-for-variables" title="Link to this heading"></a></h1>
@@ -588,13 +590,13 @@
 <section id="v0-3-0-compatibility-with-pydantic-and-dataclasses">
 <h1>v0.3.0: compatibility with pydantic and dataclasses<a class="headerlink" href="#v0-3-0-compatibility-with-pydantic-and-dataclasses" title="Link to this heading"></a></h1>
 <p>It is now possible to transform any class into a model, exact model, or conditional model.</p>
-<p>In version {typed} v0.3.0, the decorators <code class="docutils literal notranslate"><span class="pre">&#64;model</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;exact</span></code>, and <code class="docutils literal notranslate"><span class="pre">&#64;conditional</span></code> were included. These decorators can be applied to any class, collecting its attributes and passing them as arguments to the <code class="docutils literal notranslate"><span class="pre">Model</span></code>, <code class="docutils literal notranslate"><span class="pre">Exact</span></code>, and <code class="docutils literal notranslate"><span class="pre">Conditional</span></code> type factories, respectively.</p>
+<p>In version <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> v0.3.0, the decorators <code class="docutils literal notranslate"><span class="pre">&#64;model</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;exact</span></code>, and <code class="docutils literal notranslate"><span class="pre">&#64;conditional</span></code> were included. These decorators can be applied to any class, collecting its attributes and passing them as arguments to the <code class="docutils literal notranslate"><span class="pre">Model</span></code>, <code class="docutils literal notranslate"><span class="pre">Exact</span></code>, and <code class="docutils literal notranslate"><span class="pre">Conditional</span></code> type factories, respectively.</p>
 <p>This, in particular, allows you to transform other types of model constructs (such as <code class="docutils literal notranslate"><span class="pre">pydantic</span></code> models and dataclasses) into models in the <code class="docutils literal notranslate"><span class="pre">typed</span></code> sense.</p>
 <p>This also enables better integration with LSPs (type factories are dynamic by nature, while classes are static).</p>
 </section>
 <section id="v0-4-0-inclusion-of-new-model-types">
 <h1>v0.4.0: inclusion of new model types<a class="headerlink" href="#v0-4-0-inclusion-of-new-model-types" title="Link to this heading"></a></h1>
-<p>The {typed} models system has been completely refactored. It is now possible to create custom model factories from the <code class="docutils literal notranslate"><span class="pre">ModelFactory</span></code> metaclass.</p>
+<p>The <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> models system has been completely refactored. It is now possible to create custom model factories from the <code class="docutils literal notranslate"><span class="pre">ModelFactory</span></code> metaclass.</p>
 <p>Additionally, new model factories have been introduced:</p>
 <ol class="arabic simple">
 <li><p><em>Ordered</em>: Validates data with respect to the ordering of entries.</p></li>
@@ -604,7 +606,7 @@
 </section>
 <section id="v0-4-1-optional-without-default-value">
 <h1>v0.4.1: optional without default value<a class="headerlink" href="#v0-4-1-optional-without-default-value" title="Link to this heading"></a></h1>
-<p>In {typed}, you can create models by applying the <code class="docutils literal notranslate"><span class="pre">&#64;model</span></code> decorator to a class. If you want an entry to be optional, you simply use the <code class="docutils literal notranslate"><span class="pre">Optional</span></code> type factory, passing the type with a default value:</p>
+<p>In <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, you can create models by applying the <code class="docutils literal notranslate"><span class="pre">&#64;model</span></code> decorator to a class. If you want an entry to be optional, you simply use the <code class="docutils literal notranslate"><span class="pre">Optional</span></code> type factory, passing the type with a default value:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span>
 <span class="linenos">2</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">model</span><span class="p">,</span> <span class="n">Optional</span>
 <span class="linenos">3</span>
@@ -623,12 +625,12 @@
 </section>
 <section id="v0-4-2-refactoring-function-types">
 <h1>v0.4.2: refactoring function types<a class="headerlink" href="#v0-4-2-refactoring-function-types" title="Link to this heading"></a></h1>
-<p>One of {typed} premisses is:</p>
+<p>One of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> premisses is:</p>
 <blockquote>
 <div><p>If a type <code class="docutils literal notranslate"><span class="pre">X</span></code> is a subtype of a type <code class="docutils literal notranslate"><span class="pre">Y</span></code>, then every instance of <code class="docutils literal notranslate"><span class="pre">X</span></code> should be an instance of <code class="docutils literal notranslate"><span class="pre">Y</span></code>.</p>
 </div></blockquote>
 <p>This is not a natural behavior of Python, which completely distinguishes elements of a class from the elements of any of its extensions.</p>
-<p>Mathematically, this is not the expected behavior, something we have “fixed” within {typed}’s builtin types and type factories.</p>
+<p>Mathematically, this is not the expected behavior, something we have “fixed” within <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>’s builtin types and type factories.</p>
 <p>To exhibit such behavior, classes need to be constructed from specific metaclasses, in which we specify (within the <code class="docutils literal notranslate"><span class="pre">__instancecheck__</span></code> method) the necessary conditions to validate instantiation.</p>
 <p>I noticed that some function types were not exhibiting the desired behavior. They were then refactored, and now there is a natural chain of function types, in which one is not only a subtype of the other but also preserves instantiation:</p>
 <ul class="simple">
@@ -648,7 +650,7 @@
 </section>
 <section id="v0-4-3-introduction-of-optional-decorator">
 <h1>v0.4.3: introduction of <code class="docutils literal notranslate"><span class="pre">&#64;optional</span></code> decorator<a class="headerlink" href="#v0-4-3-introduction-of-optional-decorator" title="Link to this heading"></a></h1>
-<p>In some cases, we need to build models where all inputs are optional. In the new version of {typed}, a decorator to facilitate the construction of this type of model:</p>
+<p>In some cases, we need to build models where all inputs are optional. In the new version of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, a decorator to facilitate the construction of this type of model:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">optional</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="nd">@optional</span>
@@ -692,7 +694,7 @@
 </section>
 <section id="v0-4-4-introduction-of-model-attributes">
 <h1>v0.4.4: introduction of model attributes<a class="headerlink" href="#v0-4-4-introduction-of-model-attributes" title="Link to this heading"></a></h1>
-<p>In {typed} we have several types of models:</p>
+<p>In <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> we have several types of models:</p>
 <ol class="arabic simple">
 <li><p><em>Models</em> (the standard type, where the instance must contain at least the defined attributes)</p></li>
 <li><p><em>Exact Models</em> (where the instance must contain exactly the defined attributes)</p></li>
@@ -749,19 +751,67 @@
 </section>
 <section id="v0-5-1-introduce-null-in-factories">
 <h1>v0.5.1: introduce <code class="docutils literal notranslate"><span class="pre">__null__</span></code> in factories<a class="headerlink" href="#v0-5-1-introduce-null-in-factories" title="Link to this heading"></a></h1>
-<p>In {typed} we have <em>nullable</em> types. These are the types for which the <code class="docutils literal notranslate"><span class="pre">null</span></code> function is defined. In v0.5.1 the <code class="docutils literal notranslate"><span class="pre">null</span></code> function was revisited to look for two cases:</p>
+<p>In <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> we have <em>nullable</em> types. These are the types for which the <code class="docutils literal notranslate"><span class="pre">null</span></code> function is defined. In v0.5.1 the <code class="docutils literal notranslate"><span class="pre">null</span></code> function was revisited to look for two cases:</p>
 <ol class="arabic simple">
 <li><p>predefined builtin nullable types</p></li>
 <li><p>types with a <code class="docutils literal notranslate"><span class="pre">__null__</span></code> defined.</p></li>
 </ol>
 <p>Also, all factories were reviewed to include a <code class="docutils literal notranslate"><span class="pre">__null__</span></code> attribute to the type they construct.</p>
 </section>
+<section id="v0-5-2-review-the-basic-types">
+<h1>v0.5.2: review the basic types<a class="headerlink" href="#v0-5-2-review-the-basic-types" title="Link to this heading"></a></h1>
+<p>In <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> is suppose to be constructed from an {l:inner metatype}. Previously we have applied this definition to all <em>constructed</em> types, meaning that they are not Python <em>builtin types</em>. So, for example, previously:</p>
+<div class="captioned-table" id="table-1">
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>typed type</p></th>
+<th class="head"><p>definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Str</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bool</p></td>
+<td><p>bool</p></td>
+</tr>
+<tr class="row-even"><td><p>Int</p></td>
+<td><p>int</p></td>
+</tr>
+<tr class="row-odd"><td><p>Float</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>TYPE</p></td>
+<td><p>type</p></td>
+</tr>
+<tr class="row-odd"><td><p>Nill</p></td>
+<td><p>type(None)</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="table-caption reference external" href="#table-1">table 1</a></p>
+</div>
+<p>In version v0.5.2 these types are now {l:typed types}, so that are constructed from {l:inner metatypes}.</p>
+</section>
+<section id="v0-5-3-symmetrization-of-basic-factories">
+<h1>v0.5.3: symmetrization of basic factories<a class="headerlink" href="#v0-5-3-symmetrization-of-basic-factories" title="Link to this heading"></a></h1>
+<p>Some {l:factories} are supposed to be <em>symmetric</em> in the sense that they should not depend on the ordering of their arguments. Examples include:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Union</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Inter</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Tuple</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">List</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Set</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Dict</span></code></p></li>
+</ol>
+<p>Previously such factories were <strong>not</strong> symmetric. In version v0.5.3 they were made symmetric.</p>
+</section>
 </main>
             </div>
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/24 at 00:11</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/25 at 14:07</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
