@@ -510,15 +510,15 @@
 <p>Here you will find an overview for the <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> library.</p>
 <ol class="arabic simple">
 <li><p><a class="reference internal" href="#overview-components">Overview: Components</a></p></li>
+<li><p><a class="reference internal" href="#overview-special-vars">Overview: Special Vars</a></p></li>
 <li><p><a class="reference internal" href="#overview-rendering">Overview: Rendering</a></p></li>
-<li><p><a class="reference internal" href="#overview-statics">Overview: Statics</a></p></li>
 <li><p><a class="reference internal" href="#other-docs">Other Docs</a></p></li>
 </ol>
 </section>
 <section id="overview-components">
 <h1>Overview: Components<a class="headerlink" href="#overview-components" title="Link to this heading"></a></h1>
 <p>The lib <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> deals with <em>components</em>. These are {l:typed functions} (in the sense of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>) which return <em>jinja strings</em>, i.e, Python strings of type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>, which contain <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> syntax. Components should also be defined using the <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> decorator.</p>
-<p>The typical way to define a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> is to first define a {l:model} (in the sense of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, typically a {l:optional model}) containing the <em>structure</em> of the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>, and then take this model as argument:</p>
+<p>The typical way to define a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> is to first define a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#model">model</a> (in the sense of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, typically a {l:optional model}) containing the <em>structure</em> of the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>, and then take this model as argument:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">optional</span><span class="p">,</span> <span class="n">null</span><span class="p">,</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span>
 <span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span>
 <span class="linenos"> 3</span>
@@ -574,8 +574,18 @@
 </pre></div>
 </div>
 <blockquote id="rem-1">
-<div><p><a class="reference internal" href="#rem-1">Remark 1</a>. The modules <code class="docutils literal notranslate"><span class="pre">comp.models</span></code> and <code class="docutils literal notranslate"><span class="pre">comp.components</span></code> provides, respectively, a plethora of already defined {l:models} and corresponding <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a>, one for each builtin HTML tag.</p>
+<div><p><a class="reference internal" href="#rem-1">Remark 1</a>. The modules <code class="docutils literal notranslate"><span class="pre">comp.models</span></code> and <code class="docutils literal notranslate"><span class="pre">comp.components</span></code> provides, respectively, a plethora of already defined <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#model">models</a> and corresponding <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a>, one for each builtin HTML tag.</p>
 </div></blockquote>
+</section>
+<section id="overview-special-vars">
+<h1>Overview: Special Vars<a class="headerlink" href="#overview-special-vars" title="Link to this heading"></a></h1>
+<p>A <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> have certain <em>special vars</em>:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__context__</span></code>: defines the {l:local context} of the component, where needed information to <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-rendering">render</a> it is introduced (see <a class="reference internal" href="#overview-rendering"><span class="xref myst">below</span></a>);</p></li>
+<li><p>vars of type <code class="docutils literal notranslate"><span class="pre">Inner</span></code>: used as placeholder to introduced content of other components;</p></li>
+<li><p>vars of type <code class="docutils literal notranslate"><span class="pre">Content</span></code>: receive <em>static context</em> in the form of Markdown or ReStructuredText.</p></li>
+</ol>
+<p>For example, <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#inner-var">inner vars</a> are used in the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-concat">component concat</a> operation, while <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#content-var">content vars</a> allows the use of <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> in both dynamic and static environments.</p>
 </section>
 <section id="overview-rendering">
 <h1>Overview: Rendering<a class="headerlink" href="#overview-rendering" title="Link to this heading"></a></h1>
@@ -620,10 +630,6 @@
 <div><p><a class="reference internal" href="#rem-2">Remark 2</a>. During the construction of a component you can preview it using the <code class="docutils literal notranslate"><span class="pre">preview</span></code> function, which renders the component and creates a server that looks automatically for updates in the component file.</p>
 </div></blockquote>
 </section>
-<section id="overview-statics">
-<h1>Overview: Statics<a class="headerlink" href="#overview-statics" title="Link to this heading"></a></h1>
-<p>… TBA …</p>
-</section>
 <section id="other-docs">
 <h1>Other Docs<a class="headerlink" href="#other-docs" title="Link to this heading"></a></h1>
 <ol class="arabic simple">
@@ -643,7 +649,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/25 at 14:07</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/25 at 14:44</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>

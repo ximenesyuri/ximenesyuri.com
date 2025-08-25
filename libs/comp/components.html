@@ -518,6 +518,7 @@
 <li><p><a class="reference internal" href="#contents">Contents</a></p></li>
 <li><p><a class="reference internal" href="#attributes">Attributes</a></p></li>
 <li><p><a class="reference internal" href="#operations">Operations</a></p></li>
+<li><p><a class="reference internal" href="#example">Example</a></p></li>
 <li><p><a class="reference internal" href="#arithmetic">Arithmetic</a></p></li>
 <li><p><a class="reference internal" href="#other-docs">Other Docs</a></p></li>
 </ol>
@@ -747,31 +748,40 @@
 </section>
 <section id="operations">
 <h1>Operations<a class="headerlink" href="#operations" title="Link to this heading"></a></h1>
-<p>There are three main operations involving components:</p>
+<p>There are four main operations involving <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a>:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">join:</span> <span class="pre">COMPONENT</span> <span class="pre">x</span> <span class="pre">COMPONENT</span> <span class="pre">-&gt;</span> <span class="pre">COMPONENT</span></code>:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">join:</span> <span class="pre">Prod(COMPONENT,</span> <span class="pre">n)</span> <span class="pre">-&gt;</span> <span class="pre">COMPONENT</span></code>:</p>
 <ul class="simple">
-<li><p>receive a tuple of components and creates a new component whose <em>jinja string</em> is the join of the <em>jinja strings</em> of the provided components;</p></li>
+<li><p>receives a tuple of components and creates a new component whose <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> is the join of the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a> of the provided components;</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">concat:</span> <span class="pre">Component(1)</span> <span class="pre">x</span> <span class="pre">COMPONENT</span> <span class="pre">-&gt;</span> <span class="pre">COMPONENT</span></code>:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">concat:</span> <span class="pre">Prod(COMPONENT(1),</span> <span class="pre">COMPONENT)</span> <span class="pre">-&gt;</span> <span class="pre">COMPONENT</span></code>:</p>
 <ul class="simple">
-<li><p>receive a component with a single <em>inner var</em> and another arbitrary component, producing a new component whose <em>jinja str</em> is obtained by replacing the placeholder given by <em>inner var</em> in the first component with the <em>jinja string</em> of the second component.</p></li>
+<li><p>receives a component with a single <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#inner-var">inner var</a> and another arbitrary component, producing a new component whose <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> is obtained by replacing the placeholder given by <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#inner-var">inner var</a> in the first component with the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> of the second component.</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">eval:</span> <span class="pre">COMPONENT</span> <span class="pre">x</span> <span class="pre">Dict(Any)</span> <span class="pre">-&gt;</span> <span class="pre">COMPONENT</span></code>:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">eval:</span> <span class="pre">Prod(COMPONENT,</span> <span class="pre">Dict(Any))</span> <span class="pre">-&gt;</span> <span class="pre">COMPONENT</span></code>:</p>
 <ul class="simple">
-<li><p>receive a component and a list of key-values and returns the component obtained by fixing each variable associated to a <em>key</em> with the corresponding <em>value</em>, leaving the other variables unchanged.</p></li>
+<li><p>receives a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> and a list with keys and values, returning the component obtained by fixing each variable associated to a <em>key</em> with the corresponding <em>value</em>, leaving the other variables unchanged.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">copy:</span> <span class="pre">Prod(COMPONENT,</span> <span class="pre">Dict(Str))</span> <span class="pre">-&gt;</span> <span class="pre">COMPONENT</span></code>:</p>
+<ul class="simple">
+<li><p>receives a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> and a list with keys and values, returning a copy of the given component</p></li>
 </ul>
 </li>
 </ol>
-<p>The intuition for each of such operations is as follows:</p>
+<p>The intuition for each of such <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-operation">component operations</a> is as follows:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">join</span></code>: put a component <em>after</em> other component</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">concat</span></code>: put a component <em>inside</em> other component</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">eval</span></code>: from a component, <em>fixes</em> some part</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">join</span></code>: put a component <em>after</em> other component;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">concat</span></code>: put a component <em>inside</em> other component;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eval</span></code>: from a component, <em>fixes</em> some part of it;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">copy</span></code>: from a component, <em>copy</em> it.</p></li>
 </ol>
-<p>So, for example, consider the following generic components:</p>
+</section>
+<section id="example">
+<h1>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h1>
+<p>Consider the following generic components:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span>
 <span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">Jinja</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">Tag</span><span class="p">,</span> <span class="n">Inner</span><span class="p">,</span> <span class="n">join</span><span class="p">,</span> <span class="n">concat</span><span class="p">,</span> <span class="nb">eval</span>
 <span class="linenos"> 3</span>
@@ -851,7 +861,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/25 at 14:07</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/08/25 at 14:44</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
