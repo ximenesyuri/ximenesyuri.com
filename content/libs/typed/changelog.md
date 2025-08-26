@@ -304,3 +304,33 @@ Some {l:factories} are supposed to be _symmetric_ in the sense that they should 
 6. `Dict`
 
 Previously such factories were __not__ symmetric. In version v0.5.3 they were made symmetric.
+
+# v0.6.0: reorganize structure and imports
+
+Previously the code entries were centered in a `main.py` file which imported everything from the feature files using a `from typed.mods... import *`. The main advantage of this dynamic approach is being stable under changes in the feature files, as the addition or deletion of new {l:types}, {l:factories}, {l:models}, and so on. 
+
+However, it has some disadvantages: 
+1. it requires a more complex dependencies resolution
+2. it exposes to the user an API with internal functions
+
+In v0.6.0 the code were revisited and the imports were made static. Now we have three main modules: 
+
+(table-2)=
+```
+module             description 
+------------------------------------
+typed.types        expose all types
+typed.factories    expose all factories
+typed.models       expose all models
+------------------------------------
+table 2: new API modules
+```
+
+The use of these modules provide a better LSP experience to the user. The basic decorators `@typed` and `@factory` should be imported directly from `typed`.  Alternatively, it can still import anything directly from `typed`. Indeed, the main entry point `__init__.py` of {l:typed} imports everything from the above modules:
+
+```python
+from typed.mods.decorators import typed, factory
+from typed.types     import *
+from typed.factories import *
+from typed.models    import *
+```
