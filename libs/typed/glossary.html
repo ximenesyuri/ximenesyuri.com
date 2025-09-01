@@ -507,31 +507,89 @@
                 
                 <main><section id="about">
 <h1>About<a class="headerlink" href="#about" title="Link to this heading"></a></h1>
-<p>This documentation contains the definition of the main concepts introduced in {n:typed}.</p>
+<p>This documentation contains the definition of the main concepts introduced in <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>. They are present in logic ordering.</p>
 </section>
 <section id="concepts">
 <h1>Concepts<a class="headerlink" href="#concepts" title="Link to this heading"></a></h1>
-<ul class="simple" id="metatype">
-<li><p><a class="reference internal" href="#metatype">Metatype</a>. In <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, a <em>metatype</em> is a Python <a class="autolink autolink-python reference external" href="https://docs.python.org/3/tutorial/classes.html">class</a> which is a subclass of Python builtin type <code class="docutils literal notranslate"><span class="pre">type</span></code>, and which can be organized into two kinds:</p>
-<ol class="arabic simple">
-<li><p><em>global metatypes</em>: which appear outside the definition of a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a>.</p></li>
-</ol>
-</li>
-</ul>
-<ul class="simple" id="type">
-<li><p><a class="reference internal" href="#type">Type</a>. In <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, a <em>type</em> consists of the following data:</p>
-<ol class="arabic simple">
-<li><p>a</p></li>
-</ol>
-</li>
-</ul>
+<blockquote id="universe">
+<div><p><a class="reference internal" href="#universe">universe</a>.</p>
+<p>The <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> <em>universe</em> is the <a class="autolink autolink-python reference external" href="https://docs.python.org/3/tutorial/classes.html">class</a> <code class="docutils literal notranslate"><span class="pre">__UNIVERSE__</span></code> that works as the <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/datamodel.html#metaclasses">metaclass</a> for all <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#abstract-metatype">abstract metatypes</a>. It requires the implementation of a <code class="docutils literal notranslate"><span class="pre">__instancecheck__</span></code> method. Also, it provides a <code class="docutils literal notranslate"><span class="pre">__contains__</span></code> method which is implemented precisely by the given <code class="docutils literal notranslate"><span class="pre">__instancecheck__</span></code>.</p>
+</div></blockquote>
+<blockquote id="universal-metatype">
+<div><p><a class="reference internal" href="#universal-metatype">universal metatype</a>.</p>
+<p>A <em>universal metatype</em> is a Python {l:class} that has the <code class="docutils literal notranslate"><span class="pre">__UNIVERSE__</span></code> as <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/datamodel.html#metaclasses">metaclass</a>. The canonical example is <code class="docutils literal notranslate"><span class="pre">_TYPE_</span></code>: the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#universal-metatype">universal metatype</a> which is the {p:abstract metatype} of the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#concrete-metatype">concrete metatype</a> <code class="docutils literal notranslate"><span class="pre">TYPE</span></code> of all <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">types</a>.</p>
+</div></blockquote>
+<blockquote id="abstract-metatype">
+<div><p><a class="reference internal" href="#abstract-metatype">abstract metatype</a>.</p>
+<p>An <em>abstract metatype</em> is a Python <a class="autolink autolink-python reference external" href="https://docs.python.org/3/tutorial/classes.html">class</a> which is a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/library/functions.html#issubclass">subclass</a> of a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#universal-metatype">universal metatype</a>. They are named in uppercase: <code class="docutils literal notranslate"><span class="pre">SOME_META</span></code>, <code class="docutils literal notranslate"><span class="pre">OTHER_META</span></code>, …</p>
+</div></blockquote>
+<blockquote id="type">
+<div><p><a class="reference internal" href="#type">type</a>.</p>
+<p>A <em>type</em> is a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/tutorial/classes.html">class</a> that has an <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#abstract-metatype">abstract metatype</a> as a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/datamodel.html#metaclasses">metaclass</a>. Types are names in <code class="docutils literal notranslate"><span class="pre">CamelCase</span></code>: <code class="docutils literal notranslate"><span class="pre">SomeType</span></code>, <code class="docutils literal notranslate"><span class="pre">OtherType</span></code>, …</p>
+</div></blockquote>
+<blockquote id="object">
+<div><p><a class="reference internal" href="#object">object</a>.</p>
+<p>An <em>object</em> of a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> is an instance of some <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a>. Thus, <code class="docutils literal notranslate"><span class="pre">x</span></code> is an object of a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">SomeType</span></code> iff <code class="docutils literal notranslate"><span class="pre">isinstance(x,</span> <span class="pre">SomeType)</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>. Equivalently, iff <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">in</span> <span class="pre">SomeType</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</div></blockquote>
+<blockquote id="concrete-metatype">
+<div><p><a class="reference internal" href="#concrete-metatype">concrete metatype</a>.</p>
+<p>A <em>concrete metatype</em> is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">SomeType</span></code> whose <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#object">objects</a> are themselves <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">types</a>. There is the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#concrete-metatype">concrete metatype</a> <code class="docutils literal notranslate"><span class="pre">TYPE</span></code> of all <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">types</a>.</p>
+</div></blockquote>
+<blockquote id="subtype">
+<div><p><a class="reference internal" href="#subtype">subtype</a>.</p>
+<p>A <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">SomeType</span></code> is a <em>subtype</em> of another <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">OtherType</span></code> if, as a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/tutorial/classes.html">class</a> it is a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/library/functions.html#issubclass">subclass</a> of <code class="docutils literal notranslate"><span class="pre">OtherType</span></code>.</p>
+</div></blockquote>
+<blockquote id="dom-hinted-function">
+<div><p><a class="reference internal" href="#dom-hinted-function">domain hinted function</a>.</p>
+<p>A <em>domain hinted function</em> is a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/compound_stmts.html#function">function</a> such that every <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-parameter">parameter</a> has a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-annotation">type annotation</a>. They form a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">DomHinted</span></code>.</p>
+</div></blockquote>
+<blockquote id="cod-hinted-function">
+<div><p><a class="reference internal" href="#cod-hinted-function">codomain hinted function</a>.</p>
+<p>A <em>codomain hinted function</em> is a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/compound_stmts.html#function">function</a> whose return have a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-annotation">type annotation</a>. They form a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">CodHinted</span></code>.</p>
+</div></blockquote>
+<blockquote id="hinted-function">
+<div><p><a class="reference internal" href="#hinted-function">hinted function</a>.</p>
+<p>A <em>hinted function</em> is a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/compound_stmts.html#function">function</a> which is both <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#dom-hinted-function">domain hinted</a> and <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#cod-hinted-function">codomain hinted</a>. There is the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">Hinted</span></code> of all <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#hinted-function">hinted functions</a>. It is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#subtype">subtype</a> of both <code class="docutils literal notranslate"><span class="pre">DomHinted</span></code> and <code class="docutils literal notranslate"><span class="pre">CodHinted</span></code>.</p>
+</div></blockquote>
+<blockquote id="domain">
+<div><p><a class="reference internal" href="#domain">domain</a>.</p>
+<p>The <em>domain</em> of a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#dom-hinted-function">domain hinted function</a> is the <a class="autolink autolink-python reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a> of the <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-annotation">type annotations</a> of their <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-parameter">parameters</a>.</p>
+</div></blockquote>
+<blockquote id="codomain">
+<div><p><a class="reference internal" href="#codomain">codomain</a>.</p>
+<p>The <em>codomain</em> of a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#cod-hinted-function">codomain hinted function</a> is its return <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-annotation">type annotations</a>.</p>
+</div></blockquote>
+<blockquote id="dom-typed-function">
+<div><p><a class="reference internal" href="#dom-typed-function">domain typed function</a>.</p>
+<p>A <em>domain typed function</em> is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#dom-hinted-function">domain hinted function</a> whose <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-annotation">type annotations</a> are <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">types</a> or <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#dependent-type">dependent types</a> which are checked at runtime. They form a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">DomTyped</span></code> which is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#subtype">subtype</a> of <code class="docutils literal notranslate"><span class="pre">DomHinted</span></code>.</p>
+</div></blockquote>
+<blockquote id="cod-typed-function">
+<div><p><a class="reference internal" href="#cod-typed-function">codomain typed function</a>.</p>
+<p>A <em>codomain typed function</em> is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#cod-hinted-function">codomain hinted function</a> whose return <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-annotation">type annotation</a> is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> or a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#dependent-type">dependent type</a>, checked at runtime. They form a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">CodTyped</span></code> which is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#subtype">subtype</a> of <code class="docutils literal notranslate"><span class="pre">CodHinted</span></code>.</p>
+</div></blockquote>
+<blockquote id="typed-function">
+<div><p><a class="reference internal" href="#typed-function">typed function</a>.</p>
+<p>A <em>typed function</em> is a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/compound_stmts.html#function">function</a> which is both <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#dom-hinted-function">domain hinted</a> and <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#cod-hinted-function">codomain hinted</a>, so that all their <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-annotation">type annotations</a> are <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">types</a> or <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#dependent-type">dependent types</a>, being checked at runtime.  There is the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">Typed</span></code> of all <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed functions</a>. It is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#subtype">subtype</a> of both <code class="docutils literal notranslate"><span class="pre">DomTyped</span></code>, <code class="docutils literal notranslate"><span class="pre">CodTyped</span></code> and <code class="docutils literal notranslate"><span class="pre">Hinted</span></code>.</p>
+</div></blockquote>
+<blockquote id="type-factory">
+<div><p><a class="reference internal" href="#type-factory">type factory</a>.</p>
+<p>A <em>type factory</em> is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed function</a> whose <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#codomain">codomain</a> is <code class="docutils literal notranslate"><span class="pre">TYPE</span></code>, the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#concrete-metatype">concrete metatype</a> of all <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">types</a>. Thus, a type factory is some process constructing a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> depending on certain <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-parameter">parameters</a>.</p>
+</div></blockquote>
+<blockquote id="parametric-type">
+<div><p><a class="reference internal" href="#parametric-type">parametric type</a>.</p>
+<p>A <em>parametric type</em> is <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> which also is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type-factory">type factory</a>. Thus, it is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> whose <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#abstract-metatype">abstract metatype</a> has a <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method that returns a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type-factory">type factory</a>.</p>
+</div></blockquote>
+<blockquote id="dependent-type">
+<div><p><a class="reference internal" href="#dependent-type">dependent type</a>.</p>
+<p>A <em>dependent type</em> is <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> which also is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type-factory">type factory</a>. Thus, it is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> whose <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#abstract-metatype">abstract metatype</a> has a <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method that returns a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type-factory">type factory</a>.</p>
+</div></blockquote>
 </section>
 </main>
             </div>
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/25 at 14:44</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/09/01 at 20:46</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>

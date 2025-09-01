@@ -518,14 +518,14 @@
 <li><p><a class="reference internal" href="#contents">Contents</a></p></li>
 <li><p><a class="reference internal" href="#attributes">Attributes</a></p></li>
 <li><p><a class="reference internal" href="#operations">Operations</a></p></li>
-<li><p><a class="reference internal" href="#example">Example</a></p></li>
+<li><p><a class="reference internal" href="#overlapping">Overlapping</a></p></li>
 <li><p><a class="reference internal" href="#arithmetic">Arithmetic</a></p></li>
 <li><p><a class="reference internal" href="#other-docs">Other Docs</a></p></li>
 </ol>
 </section>
 <section id="components">
 <h1>Components<a class="headerlink" href="#components" title="Link to this heading"></a></h1>
-<p>In <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a>, a <em>component</em> is a {l:typed function} such that:</p>
+<p>In <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a>, a <em>component</em> is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed function</a> such that:</p>
 <ol class="arabic simple">
 <li><p>it returns a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a>, so that its returning type is the <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> type;</p></li>
 <li><p>it is decorated with the <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-decorator">decorator</a>.</p></li>
@@ -598,7 +598,7 @@
 </pre></div>
 </div>
 <blockquote id="rem-2">
-<div><p><a class="reference internal" href="#rem-2">Remark 2</a>. Recall that a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> is a {l:typed function}, which means that all their <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-parameter">parameters</a> need to have a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-annotation">type annotation</a>. An exception is the parameter <code class="docutils literal notranslate"><span class="pre">__context__</span></code>, whose type annotation <code class="docutils literal notranslate"><span class="pre">Dict(Any)</span></code> is automatically introduced by the <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-decorator">decorator</a> <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code>.</p>
+<div><p><a class="reference internal" href="#rem-2">Remark 2</a>. Recall that a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed function</a>, which means that all their <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-parameter">parameters</a> need to have a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-annotation">type annotation</a>. An exception is the parameter <code class="docutils literal notranslate"><span class="pre">__context__</span></code>, whose type annotation <code class="docutils literal notranslate"><span class="pre">Dict(Any)</span></code> is automatically introduced by the <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-decorator">decorator</a> <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code>.</p>
 </div></blockquote>
 </section>
 <section id="bounding">
@@ -611,8 +611,8 @@
 </section>
 <section id="factories">
 <h1>Factories<a class="headerlink" href="#factories" title="Link to this heading"></a></h1>
-<p>Some times one needs to build parameterized families of <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a>. This can be realized through <em>component factories</em>, i.e, {l:type factories} which constructs subtypes of <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>, hence that take values into <code class="docutils literal notranslate"><span class="pre">SUB(COMPONENT)</span></code>.</p>
-<p>One can construct component factories by first constructing <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-factory">jinja factories</a>. Indeed, if <code class="docutils literal notranslate"><span class="pre">factory:</span> <span class="pre">X</span> <span class="pre">-&gt;</span> <span class="pre">SUB(Jinja)</span></code> is a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-factory">jinja factory</a>, then one can obtain a subtype <code class="docutils literal notranslate"><span class="pre">FACTORY(x)</span></code> of <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>, by considering all <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a> that take values into <code class="docutils literal notranslate"><span class="pre">factory(x)</span></code> for a given <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">in</span> <span class="pre">X</span></code>. So, varying <code class="docutils literal notranslate"><span class="pre">x</span></code> we build a {l:type factory} factory <code class="docutils literal notranslate"><span class="pre">FACTORY:</span> <span class="pre">X</span> <span class="pre">-&gt;</span> <span class="pre">SUB(COMPONENT)</span></code>.</p>
+<p>Some times one needs to build parameterized families of <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a>. This can be realized through <em>component factories</em>, i.e, <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type-factory">type factories</a> which constructs subtypes of <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>, hence that take values into <code class="docutils literal notranslate"><span class="pre">SUB(COMPONENT)</span></code>.</p>
+<p>One can construct component factories by first constructing <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-factory">jinja factories</a>. Indeed, if <code class="docutils literal notranslate"><span class="pre">factory:</span> <span class="pre">X</span> <span class="pre">-&gt;</span> <span class="pre">SUB(Jinja)</span></code> is a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-factory">jinja factory</a>, then one can obtain a subtype <code class="docutils literal notranslate"><span class="pre">FACTORY(x)</span></code> of <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>, by considering all <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a> that take values into <code class="docutils literal notranslate"><span class="pre">factory(x)</span></code> for a given <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">in</span> <span class="pre">X</span></code>. So, varying <code class="docutils literal notranslate"><span class="pre">x</span></code> we build a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type-factory">type factory</a> factory <code class="docutils literal notranslate"><span class="pre">FACTORY:</span> <span class="pre">X</span> <span class="pre">-&gt;</span> <span class="pre">SUB(COMPONENT)</span></code>.</p>
 </section>
 <section id="tags">
 <h1>Tags<a class="headerlink" href="#tags" title="Link to this heading"></a></h1>
@@ -639,7 +639,7 @@
 <span class="linenos">10</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>This means that for each tuple of tags there is a subtype <code class="docutils literal notranslate"><span class="pre">TAG(*tags)</span></code> of <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> of all components whose returning string belongs to <code class="docutils literal notranslate"><span class="pre">Tag(*tags)</span></code>. There is, also, a {l:type factory} <code class="docutils literal notranslate"><span class="pre">TAG:</span> <span class="pre">Tuple(Str)</span> <span class="pre">-&gt;</span> <span class="pre">SUB(COMPONENT)</span></code> that associates to each tuple the corresponding type <code class="docutils literal notranslate"><span class="pre">TAG(*tags)</span></code>.</p>
+<p>This means that for each tuple of tags there is a subtype <code class="docutils literal notranslate"><span class="pre">TAG(*tags)</span></code> of <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> of all components whose returning string belongs to <code class="docutils literal notranslate"><span class="pre">Tag(*tags)</span></code>. There is, also, a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type-factory">type factory</a> <code class="docutils literal notranslate"><span class="pre">TAG:</span> <span class="pre">Tuple(Str)</span> <span class="pre">-&gt;</span> <span class="pre">SUB(COMPONENT)</span></code> that associates to each tuple the corresponding type <code class="docutils literal notranslate"><span class="pre">TAG(*tags)</span></code>.</p>
 </section>
 <section id="inners">
 <h1>Inners<a class="headerlink" href="#inners" title="Link to this heading"></a></h1>
@@ -714,7 +714,7 @@
 </table>
 <p><a class="table-caption reference external" href="#table-1">table 1: component attributes</a></p>
 </div>
-<p>From the {l:functions over methods} philosophy of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, such <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-attribute">attributes</a> can also be obtained from {l:typed functions}:</p>
+<p>From the {l:functions over methods} philosophy of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, such <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-attribute">attributes</a> can also be obtained from <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed functions</a>:</p>
 <div class="captioned-table" id="table-2">
 <table class="custom-pre-table docutils align-default">
 <thead>
@@ -767,7 +767,7 @@
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">copy:</span> <span class="pre">Prod(COMPONENT,</span> <span class="pre">Dict(Str))</span> <span class="pre">-&gt;</span> <span class="pre">COMPONENT</span></code>:</p>
 <ul class="simple">
-<li><p>receives a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> and a list with keys and values, returning a copy of the given component</p></li>
+<li><p>receives a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> and a list with keys and values, returning a copy of the given component such that each parameter whose name is a key is renamed with the corresponding value, maintaining its type.</p></li>
 </ul>
 </li>
 </ol>
@@ -778,52 +778,49 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">eval</span></code>: from a component, <em>fixes</em> some part of it;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">copy</span></code>: from a component, <em>copy</em> it.</p></li>
 </ol>
-</section>
-<section id="example">
-<h1>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h1>
-<p>Consider the following generic components:</p>
+<p>So, for example, consider the following generic <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span>
-<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">Jinja</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">Tag</span><span class="p">,</span> <span class="n">Inner</span><span class="p">,</span> <span class="n">join</span><span class="p">,</span> <span class="n">concat</span><span class="p">,</span> <span class="nb">eval</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">Jinja</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">Tag</span><span class="p">,</span> <span class="n">Inner</span>
 <span class="linenos"> 3</span>
 <span class="linenos"> 4</span><span class="nd">@component</span>
 <span class="linenos"> 5</span><span class="k">def</span><span class="w"> </span><span class="nf">some_comp</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span>
 <span class="linenos"> 6</span>    <span class="o">...</span>
 <span class="linenos"> 7</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
-<span class="linenos"> 8</span><span class="s2">{{ contents of &#39;some_comp&#39; jinja string }}</span>
+<span class="linenos"> 8</span><span class="s2">[[ contents of &#39;some_comp&#39; jinja string ]]</span>
 <span class="linenos"> 9</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="linenos">10</span>
 <span class="linenos">11</span><span class="nd">@component</span>
 <span class="linenos">12</span><span class="k">def</span><span class="w"> </span><span class="nf">inner_comp</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="n">inner</span><span class="p">:</span> <span class="n">Inner</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tag</span><span class="p">(</span><span class="s1">&#39;some-tag&#39;</span><span class="p">)</span>
 <span class="linenos">13</span>    <span class="o">...</span>
-<span class="linenos">14</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
+<span class="linenos">14</span>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;jinja</span>
 <span class="linenos">15</span><span class="s2">&lt;some-tag&gt;</span>
-<span class="linenos">16</span><span class="s2">    {{ inner }}</span>
+<span class="linenos">16</span><span class="s2">    </span><span class="si">{</span><span class="w"> </span><span class="n">inner</span><span class="w"> </span><span class="si">}</span>
 <span class="linenos">17</span><span class="s2">&lt;/some-tag&gt;</span>
 <span class="linenos">18</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>The resulting joined component <code class="docutils literal notranslate"><span class="pre">join(some_comp,</span> <span class="pre">inner_comp)</span></code> is equivalent to the following component:</p>
+<p>Applying the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-join">component join</a> to them we get a new <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> <code class="docutils literal notranslate"><span class="pre">join(some_comp,</span> <span class="pre">inner_comp)</span></code> which is equivalent to the following:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@component</span>
 <span class="linenos">2</span><span class="k">def</span><span class="w"> </span><span class="nf">joined_comp</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="n">inner</span><span class="p">:</span> <span class="n">Inner</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
-<span class="linenos">3</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
-<span class="linenos">4</span><span class="s2">{{ contents of &#39;some_comp&#39; jinja string }}</span>
+<span class="linenos">3</span>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;jinja</span>
+<span class="linenos">4</span><span class="s2">[[ contents of &#39;some_comp&#39; jinja string ]]</span>
 <span class="linenos">5</span><span class="s2">&lt;some-tag&gt;</span>
-<span class="linenos">6</span><span class="s2">    {{ inner }}</span>
+<span class="linenos">6</span><span class="s2">    </span><span class="si">{</span><span class="w"> </span><span class="n">inner</span><span class="w"> </span><span class="si">}</span>
 <span class="linenos">7</span><span class="s2">&lt;/some-tag&gt;</span>
 <span class="linenos">8</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>On the other hand, <code class="docutils literal notranslate"><span class="pre">concat(inner_comp,</span> <span class="pre">some_comp)</span></code> is equivalent to:</p>
+<p>On the other hand, the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-concat">component concat</a> produces a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> <code class="docutils literal notranslate"><span class="pre">concat(inner_comp,</span> <span class="pre">some_comp)</span></code> which is equivalent to:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@component</span>
 <span class="linenos">2</span><span class="k">def</span><span class="w"> </span><span class="nf">concat_comp</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tag</span><span class="p">(</span><span class="s1">&#39;some-tag&#39;</span><span class="p">):</span>
 <span class="linenos">3</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
 <span class="linenos">4</span><span class="s2">&lt;some-tag&gt;</span>
-<span class="linenos">5</span><span class="s2">    {{ contents of &#39;some_comp&#39; jinja string }}</span>
+<span class="linenos">5</span><span class="s2">    [[ contents of &#39;some_comp&#39; jinja string ]]</span>
 <span class="linenos">6</span><span class="s2">&lt;/some-tag&gt;</span>
 <span class="linenos">7</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Finally, <code class="docutils literal notranslate"><span class="pre">eval(inner_comp,</span> <span class="pre">inner=&quot;blablabla&quot;)</span></code> is the same as defining the component below.</p>
+<p>Also, <code class="docutils literal notranslate"><span class="pre">eval(inner_comp,</span> <span class="pre">inner=Jinja(blablabla))</span></code> is the same as defining the component below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@component</span>
 <span class="linenos">2</span><span class="k">def</span><span class="w"> </span><span class="nf">eval_comp</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tag</span><span class="p">(</span><span class="s1">&#39;some-tag&#39;</span><span class="p">):</span>
 <span class="linenos">3</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
@@ -833,9 +830,78 @@
 <span class="linenos">7</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<blockquote>
-<div><p>In both <code class="docutils literal notranslate"><span class="pre">join</span></code> and <code class="docutils literal notranslate"><span class="pre">concat</span></code> operations, the <code class="docutils literal notranslate"><span class="pre">__depends_on__</span></code> variable is the obtained as the concatenation of the <code class="docutils literal notranslate"><span class="pre">__depends_on__</span></code> of the underlying components. In the <code class="docutils literal notranslate"><span class="pre">eval</span></code> operation, on the other hand, the <code class="docutils literal notranslate"><span class="pre">__depends_on__</span></code> is maintained the same.</p>
-</div></blockquote>
+<p>Finally, <code class="docutils literal notranslate"><span class="pre">copy(inner_comp,</span> <span class="pre">{&quot;inner&quot;:</span> <span class="pre">&quot;other_name&quot;})</span></code> produces the following <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@component</span>
+<span class="linenos">2</span><span class="k">def</span><span class="w"> </span><span class="nf">copied_comp</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="n">other_name</span><span class="p">:</span> <span class="n">Inner</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
+<span class="linenos">3</span>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;jinja</span>
+<span class="linenos">4</span><span class="s2">&lt;some-tag&gt;</span>
+<span class="linenos">5</span><span class="s2">    </span><span class="si">{</span><span class="w"> </span><span class="n">other_name</span><span class="w"> </span><span class="si">}</span>
+<span class="linenos">6</span><span class="s2">&lt;/some-tag&gt;</span>
+<span class="linenos">7</span><span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="overlapping">
+<h1>Overlapping<a class="headerlink" href="#overlapping" title="Link to this heading"></a></h1>
+<p>One should note that the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a> subject to the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-operation">component operations</a> could have overlapping <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-parameter">parameters</a>. About that, some remarks:</p>
+<ol class="arabic simple">
+<li><p>The <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-parameter">parameters</a> of the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-join">component join</a> and the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-concat">component concat</a> are obtained from the union of tuple of <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-parameter">parameters</a> of the underlying <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a>. This means that their multiplicity is not considered. More precisely, if components <code class="docutils literal notranslate"><span class="pre">comp_1</span></code> and <code class="docutils literal notranslate"><span class="pre">comp_2</span></code> share some parameter, then it will appear a single time in <code class="docutils literal notranslate"><span class="pre">join(comp_1,</span> <span class="pre">comp_2)</span></code> and in <code class="docutils literal notranslate"><span class="pre">concat(comp_1,</span> <span class="pre">comp_2)</span></code>.</p></li>
+<li><p>If the shared parameters are of different <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">types</a>, a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError">type error</a> will be raised.</p></li>
+</ol>
+<p>So, for example, consider the following components:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span><span class="p">,</span> <span class="n">AnotherType</span><span class="p">,</span> <span class="o">...</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Jinja</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="nd">@component</span>
+<span class="linenos"> 5</span><span class="k">def</span><span class="w"> </span><span class="nf">comp_1</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
+<span class="linenos"> 6</span>    <span class="o">...</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="nd">@component</span>
+<span class="linenos"> 9</span><span class="k">def</span><span class="w"> </span><span class="nf">comp_2</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">AnotherType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
+<span class="linenos">10</span>    <span class="o">...</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="nd">@component</span>
+<span class="linenos">13</span><span class="k">def</span><span class="w"> </span><span class="nf">comp_3</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">AnotherType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
+<span class="linenos">14</span>    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Then <code class="docutils literal notranslate"><span class="pre">join(comp_1,</span> <span class="pre">comp_3)</span></code> will raise a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError">type error</a>, while <code class="docutils literal notranslate"><span class="pre">join(comp_1,</span> <span class="pre">comp_2)</span></code> and <code class="docutils literal notranslate"><span class="pre">join(comp_2,</span> <span class="pre">comp_3)</span></code> will generate components equivalent to the following ones:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span><span class="p">,</span> <span class="n">AnotherType</span><span class="p">,</span> <span class="o">...</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Jinja</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="nd">@component</span>
+<span class="linenos"> 5</span><span class="k">def</span><span class="w"> </span><span class="nf">comp_1_2</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">AnotherType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
+<span class="linenos"> 6</span>    <span class="o">...</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="nd">@component</span>
+<span class="linenos"> 9</span><span class="k">def</span><span class="w"> </span><span class="nf">comp_2_3</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">AnotherType</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
+<span class="linenos">10</span>    <span class="o">...</span>
+</pre></div>
+</div>
+<p>To avoid the overlapping behavior, you should make a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-copy">component copy</a> of some of the components before the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-join">component join</a> and <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-concat">component concat</a>, changing the name of the repeating <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-parameter">parameter</a>, as follows (this is precisely the typical use case of the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-copy">component copy</a> operation):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">copy</span>
+<span class="linenos">2</span><span class="kn">from</span><span class="w"> </span><span class="nn">some.where</span><span class="w"> </span><span class="kn">import</span> <span class="n">comp_1</span><span class="p">,</span> <span class="n">comp_2</span><span class="p">,</span> <span class="n">comp_3</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="n">copied_2</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">comp_2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x_2&quot;</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">copied_3</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">comp_2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x_3&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y_3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this case, <code class="docutils literal notranslate"><span class="pre">join(comp_1,</span> <span class="pre">copied_2,</span> <span class="pre">copied_3)</span></code> has no overlapping, being equivalent to the following <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span><span class="p">,</span> <span class="n">AnotherType</span><span class="p">,</span> <span class="o">...</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Jinja</span><span class="p">,</span> <span class="n">copy</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="nd">@component</span>
+<span class="linenos"> 5</span><span class="k">def</span><span class="w"> </span><span class="nf">joined_comp</span><span class="p">(</span>
+<span class="linenos"> 6</span>        <span class="n">x</span><span class="p">:</span>   <span class="n">SomeType</span><span class="p">,</span>
+<span class="linenos"> 7</span>        <span class="n">y</span><span class="p">:</span>   <span class="n">OtherType</span><span class="p">,</span>
+<span class="linenos"> 8</span>        <span class="n">x_2</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span>
+<span class="linenos"> 9</span>        <span class="n">z</span><span class="p">:</span>   <span class="n">AnotherType</span><span class="p">,</span>
+<span class="linenos">10</span>        <span class="n">x_3</span><span class="p">:</span> <span class="n">OtherType</span><span class="p">,</span>
+<span class="linenos">11</span>        <span class="n">y_3</span><span class="p">:</span> <span class="n">AnotherType</span>
+<span class="linenos">12</span>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
+<span class="linenos">13</span>    <span class="o">...</span>
+</pre></div>
+</div>
 </section>
 <section id="arithmetic">
 <h1>Arithmetic<a class="headerlink" href="#arithmetic" title="Link to this heading"></a></h1>
@@ -861,7 +927,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/08/25 at 14:44</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/09/01 at 20:46</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
