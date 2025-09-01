@@ -1,53 +1,71 @@
-# types
-class:
-  terms: ["class", "classes", "classe"]
-  url: https://docs.python.org/3/tutorial/classes.html
-subclass:
-  terms: ["subclass", "subclasses", "subclasse"]
-  url: https://docs.python.org/3/library/functions.html#issubclass
-string:
-  terms: ["string", "strings"]
-  url: https://docs.python.org/3/reference/datamodel.html#immutable-sequences
-dict:
-  terms: ["dict", "dictionary", "dicionário"]
-  url: https://docs.python.org/3/reference/datamodel.html#dictionaries
-
-f-string:
-  terms: ["f-string", "f-strings"]
-  url: https://docs.python.org/3/reference/lexical_analysis.html#f-strings
-
-decorator:
-  terms: ["decorator", "decorators"]
-  url: https://docs.python.org/3/glossary.html#term-decorator
-
-locals:
-  terms: ["local var", "local vars", "local variables", "local variable", "locals", "variável local", "variáveis locais"]
-  url: https://docs.python.org/3/library/functions.html#locals
-
-scope:
-  terms: ["scope", "escopo"]
-  url: https://docs.python.org/3/reference/executionmodel.html#resolution-of-names
+annotation:
+  terms: ["annotation", "annotations", "type annotation", "type annotations"]
+  url: https://docs.python.org/3/glossary.html#term-annotation
 
 attr:
   terms: ["attr", "attribute", "attrs", "attributes", "atributo", "atributos"]
   url: https://docs.python.org/3/glossary.html#term-attribute
 
-property:
-  terms: ["property", "properties", "propriedade", "propriedades"]
-  url: https://docs.python.org/3/library/functions.html#property
+callable:
+  terms: ["callable object", "callable", "callable entity", "callables", "callable objects", "callable entities"]
+  url: https://docs.python.org/3/glossary.html#term-callable
+
+class:
+  terms: ["class", "classes", "classe"]
+  url: https://docs.python.org/3/tutorial/classes.html
+
+decorator:
+  terms: ["decorator", "decorators"]
+  url: https://docs.python.org/3/glossary.html#term-decorator
+
+dict:
+  terms: ["dict", "dictionary", "dicionário"]
+  url: https://docs.python.org/3/reference/datamodel.html#dictionaries
+
+function:
+  terms: ["function", "função", "functions", "funções"]
+  url: https://docs.python.org/3/reference/compound_stmts.html#function
+
+f-string:
+  terms: ["f-string", "f-strings"]
+  url: https://docs.python.org/3/reference/lexical_analysis.html#f-strings
+
+locals:
+  terms: ["local var", "local vars", "local variables", "local variable", "locals", "variável local", "variáveis locais"]
+  url: https://docs.python.org/3/library/functions.html#locals
 
 magic-method:
   terms: ["special method", "magic method"]
   url: https://docs.python.org/3/glossary.html#term-magic-method
 
-annotation:
-  terms: ["annotation", "annotations", "type annotation", "type annotations"]
-  url: https://docs.python.org/3/glossary.html#term-annotation
+metaclass:
+  terms: ["metaclass", "metaclasse", "metaclasses"]
+  url: https://docs.python.org/3/reference/datamodel.html#metaclasses
 
 parameter:
   terms: ["parameter", "parameters", "parâmetros", "parâmetro"]
   url: https://docs.python.org/3/glossary.html#term-parameter
 
-callable:
-  terms: ["callable object", "callable", "callable entity", "callables", "callable objects", "callable entities"]
-  url: https://docs.python.org/3/glossary.html#term-callable
+property:
+  terms: ["property", "properties", "propriedade", "propriedades"]
+  url: https://docs.python.org/3/library/functions.html#property
+
+scope:
+  terms: ["scope", "escopo"]
+  url: https://docs.python.org/3/reference/executionmodel.html#resolution-of-names
+
+string:
+  terms: ["string", "strings"]
+  url: https://docs.python.org/3/reference/datamodel.html#immutable-sequences
+
+subclass:
+  terms: ["subclass", "subclasses", "subclasse"]
+  url: https://docs.python.org/3/library/functions.html#issubclass
+
+tuple:
+  terms: ["tuple", "tuples", "tupla", "tuplas"]
+  url: https://docs.python.org/3/library/stdtypes.html#tuple
+
+type-error:
+  terms: ["type error", "TypeError", "type errors"]
+  url: https://docs.python.org/3/library/exceptions.html#TypeError

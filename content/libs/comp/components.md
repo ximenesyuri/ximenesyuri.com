@@ -216,7 +216,7 @@ There are four main operations involving {l:components}:
 3. `eval: Prod(COMPONENT, Dict(Any)) -> COMPONENT`:
     - receives a {l:component} and a list with keys and values, returning the component obtained by fixing each variable associated to a _key_ with the corresponding _value_, leaving the other variables unchanged.
 4. `copy: Prod(COMPONENT, Dict(Str)) -> COMPONENT`:
-    - receives a {l:component} and a list with keys and values, returning a copy of the given component 
+    - receives a {l:component} and a list with keys and values, returning a copy of the given component such that each parameter whose name is a key is renamed with the corresponding value, maintaining its type.
 
 The intuition for each of such {l:component operations} is as follows:
 1. `join`: put a component _after_ other component;
@@ -224,57 +224,55 @@ The intuition for each of such {l:component operations} is as follows:
 3. `eval`: from a component, _fixes_ some part of it;
 4. `copy`: from a component, _copy_ it.
 
-# Example
-
-Consider the following generic components:
+So, for example, consider the following generic {l:components}:
 
 ```python
 from typed import SomeType, OtherType
-from comp import Jinja, component, Tag, Inner, join, concat, eval
+from comp import Jinja, component, Tag, Inner
 
 @component
 def some_comp(x: SomeType, ...) -> Jinja
     ...
     return """jinja
-{{ contents of 'some_comp' jinja string }}
+[[ contents of 'some_comp' jinja string ]]
 """
 
 @component
 def inner_comp(a: OtherType, inner: Inner, ...) -> Tag('some-tag')
     ...
-    return """jinja
+    return f"""jinja
 <some-tag>
-    {{ inner }}
+    { inner }
 </some-tag>
 """
 ```
 
-The resulting joined component `join(some_comp, inner_comp)` is equivalent to the following component:
+Applying the {l:component join} to them we get a new {l:component} `join(some_comp, inner_comp)` which is equivalent to the following:
 
 ```python
 @component
 def joined_comp(x: SomeType, ..., a: OtherType, inner: Inner, ...) -> Jinja:
-    return """jinja
-{{ contents of 'some_comp' jinja string }}
+    return f"""jinja
+[[ contents of 'some_comp' jinja string ]]
 <some-tag>
-    {{ inner }}
+    { inner }
 </some-tag>
 """
 ```
 
-On the other hand, `concat(inner_comp, some_comp)` is equivalent to:
+On the other hand, the {l:component concat} produces a {l:component} `concat(inner_comp, some_comp)` which is equivalent to:
 
 ```python
 @component
 def concat_comp(a: OtherType, x: SomeType, ...) -> Tag('some-tag'):
     return """jinja
 <some-tag>
-    {{ contents of 'some_comp' jinja string }}
+    [[ contents of 'some_comp' jinja string ]]
 </some-tag>
 """
 ```
 
-Finally, `eval(inner_comp, inner="blablabla")` is the same as defining the component below.
+Also, `eval(inner_comp, inner=Jinja(blablabla))` is the same as defining the component below.
 
 ```python
 @component
@@ -286,7 +284,86 @@ def eval_comp(a: OtherType, ...) -> Tag('some-tag'):
 """
 ```
 
-> In both `join` and `concat` operations, the `__depends_on__` variable is the obtained as the concatenation of the `__depends_on__` of the underlying components. In the `eval` operation, on the other hand, the `__depends_on__` is maintained the same.
+Finally, `copy(inner_comp, {"inner": "other_name"})` produces the following {l:component}:
+
+```python
+@component
+def copied_comp(a: OtherType, other_name: Inner, ...) -> Jinja:
+    return f"""jinja
+<some-tag>
+    { other_name }
+</some-tag>
+"""
+```
+
+# Overlapping
+
+One should note that the {l:components} subject to the {l:component operations} could have overlapping {p:parameters}. About that, some remarks:
+
+1. The {p:parameters} of the {l:component join} and the {l:component concat} are obtained from the union of tuple of {p:parameters} of the underlying {l:components}. This means that their multiplicity is not considered. More precisely, if components `comp_1` and `comp_2` share some parameter, then it will appear a single time in `join(comp_1, comp_2)` and in `concat(comp_1, comp_2)`.
+2. If the shared parameters are of different {l:types}, a {p:type error} will be raised.
+
+So, for example, consider the following components:
+
+```python
+from typed import SomeType, OtherType, AnotherType, ...
+from comp import component, Jinja
+
+@component
+def comp_1(x: SomeType, y: OtherType, ...) -> Jinja:
+    ...
+
+@component
+def comp_2(x: SomeType, z: AnotherType, ...) -> Jinja:
+    ...
+
+@component
+def comp_3(x: SomeType, y: AnotherType, ...) -> Jinja:
+    ...
+```
+
+Then `join(comp_1, comp_3)` will raise a {p:type error}, while `join(comp_1, comp_2)` and `join(comp_2, comp_3)` will generate components equivalent to the following ones:
+
+```python
+from typed import SomeType, OtherType, AnotherType, ...
+from comp import component, Jinja
+
+@component
+def comp_1_2(x: SomeType, y: OtherType, z: AnotherType) -> Jinja:
+    ...
+
+@component
+def comp_2_3(x: SomeType, z: AnotherType, y: OtherType) -> Jinja:
+    ...
+```
+
+To avoid the overlapping behavior, you should make a {l:component copy} of some of the components before the {l:component join} and {l:component concat}, changing the name of the repeating {p:parameter}, as follows (this is precisely the typical use case of the {l:component copy} operation):
+
+```python
+from comp import copy
+from some.where import comp_1, comp_2, comp_3
+
+copied_2 = copy(comp_2, x="x_2")
+copied_3 = copy(comp_2, x="x_3", y="y_3")
+```
+
+In this case, `join(comp_1, copied_2, copied_3)` has no overlapping, being equivalent to the following {l:component}:
+
+```python
+from typed import SomeType, OtherType, AnotherType, ...
+from comp import component, Jinja, copy
+
+@component
+def joined_comp(
+        x:   SomeType,
+        y:   OtherType,
+        x_2: OtherType,
+        z:   AnotherType,
+        x_3: OtherType,
+        y_3: AnotherType
+    ) -> Jinja:
+    ...
+```
 
 # Arithmetic
 

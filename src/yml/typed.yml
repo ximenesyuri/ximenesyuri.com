@@ -2,17 +2,77 @@ typed:
   terms: [typed]
   url: /libs/typed
 
+typed/universe:
+  terms: ["universe", "universes"]
+  url: /libs/typed/glossary#universe
+
+typed/universal-metatype:
+  terms: ["universal metatype", "universal metatypes"]
+  url: /libs/typed/glossary#universal-metatype
+
+typed/abstract-metatype:
+  terms: ["abstract metatype", "abstract metatypes"]
+  url: /libs/typed/glossary#abstract-metatype
+
 typed/type:
   terms: [type, types, "typed type", "typed types"]
   url: /libs/typed/glossary#type
 
-typed/metatype:
-  terms: [metatype, metatypes, "typed metatype", "typed metatypes"]
-  url: /libs/typed/glossary#metatype
+typed/object:
+  terms: [object, objects, "typed object", "typed objects"]
+  url: /libs/typed/glossary#object
 
-typed/inner-metatype:
-  terms: ["inner metatype", "inner metatypes"]
-  url: /libs/typed/glossary#inner-metatype
+typed/concrete-metatype:
+  terms: ["concrete metatype", "concrete metatypes"]
+  url: /libs/typed/glossary#concrete-metatype
+
+typed/subtype:
+  terms: ["subtype", "subtypes"]
+  url: /libs/typed/glossary#subtype
+
+typed/dom-hinted-func:
+  terms: ["domain hinted function", "domain hinted", "domain hinted functions"]
+  url: /libs/typed/glossary#dom-hinted-function
+
+typed/cod-hinted-func:
+  terms: ["codomain hinted function", "codomain hinted", "codomain hinted functions"]
+  url: /libs/typed/glossary#cod-hinted-function
+
+typed/hinted-func:
+  terms: ["hinted function", "hinted functions"]
+  url: /libs/typed/glossary#hinted-function
+
+typed/dom-typed-func:
+  terms: ["domain typed function", "domain typed", "domain typed functions"]
+  url: /libs/typed/glossary#dom-typed-function
+
+typed/cod-typed-func:
+  terms: ["codomain typed function", "codomain typed", "codomain typed functions"]
+  url: /libs/typed/glossary#cod-typed-function
+
+typed/typed-func:
+  terms: ["typed function", "typed functions"]
+  url: /libs/typed/glossary#typed-function
+
+typed/domain:
+  terms: ["domain", "domains"]
+  url: /libs/typed/glossary#domain
+
+typed/codomain:
+  terms: ["codomain", "codomains"]
+  url: /libs/typed/glossary#codomain
+
+typed/type-factory:
+  terms: ["type factory", "type factories"]
+  url: /libs/typed/glossary#type-factory
+
+typed/parametric-type:
+  terms: ["parametric type", "parametric types"]
+  url: /libs/typed/glossary#parametric-type
+
+typed/dependent-type:
+  terms: ["dependent type", "dependent types"]
+  url: /libs/typed/glossary#dependent-type
 
 typed/model:
   terms: [model, models, "typed model", "typed models"]
