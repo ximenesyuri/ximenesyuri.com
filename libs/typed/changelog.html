@@ -524,6 +524,7 @@
 <li><p><a class="reference internal" href="#v0-5-2-review-the-basic-types">v0.5.2: review the basic types</a></p></li>
 <li><p><a class="reference internal" href="#v0-5-3-symmetrization-of-basic-factories">v0.5.3: symmetrization of basic factories</a></p></li>
 <li><p><a class="reference internal" href="#v0-6-0-reorganize-structure-and-imports">v0.6.0: reorganize structure and imports</a></p></li>
+<li><p><a class="reference internal" href="#v0-7-0-introduction-of-dependent-types">v0.7.0: introduction of dependent types</a></p></li>
 </ol>
 </section>
 <section id="v0-1-9-extendable-models-and-exact-models">
@@ -845,12 +846,29 @@
 </pre></div>
 </div>
 </section>
+<section id="v0-7-0-introduction-of-dependent-types">
+<h1>v0.7.0: introduction of dependent types<a class="headerlink" href="#v0-7-0-introduction-of-dependent-types" title="Link to this heading"></a></h1>
+<p>Recall that a <em>dependent type</em> is some type which depends on the value of its underlying term. They make the type system much more expressive and are fundamental to ensure genuine type safety.</p>
+<p>In <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> version v0.7.0 an implementation of <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#dependent-type">dependent types</a> was introduced. They are <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type-factory">type factories</a> with a <code class="docutils literal notranslate"><span class="pre">.is_dependent_type</span></code> boolean attribute set to <code class="docutils literal notranslate"><span class="pre">True</span></code>. They can be passed as annotations to <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed functions</a>. In this case, the arguments of the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#dependent-type">dependent type</a> should be <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-parameter">parameters</a> of the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed function</a>. In this sense, the type of the parameter with annotation given by the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#dependent-type">dependent type</a> depends on the value of the <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-parameter">parameters</a> from which the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#dependent-type">dependent type</a> depends on.</p>
+<p>Dependent types are defined through the decorator <code class="docutils literal notranslate"><span class="pre">&#64;dependent</span></code> and constitute a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">Dependent</span></code>, which is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#subtype">subtype</a> of <code class="docutils literal notranslate"><span class="pre">Factory</span></code>, which in turn is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#subtype">subtype</a> of <code class="docutils literal notranslate"><span class="pre">Typed</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">dependent</span><span class="p">,</span> <span class="n">TYPE</span><span class="p">,</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">ReturnType</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="nd">@dependent</span>
+<span class="linenos">4</span><span class="k">def</span><span class="w"> </span><span class="nf">DepType</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TYPE</span><span class="p">:</span>
+<span class="linenos">5</span>    <span class="o">...</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="nd">@typed</span>
+<span class="linenos">8</span><span class="k">def</span><span class="w"> </span><span class="nf">some_function</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">DepType</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReturnType</span><span class="p">:</span>
+<span class="linenos">9</span>    <span class="o">...</span>
+</pre></div>
+</div>
+</section>
 </main>
             </div>
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/09/01 at 20:46</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/09/02 at 15:08</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
