@@ -66,6 +66,14 @@ typed/type-factory:
   terms: ["type factory", "type factories"]
   url: /libs/typed/glossary#type-factory
 
+typed/condition:
+  terms: ["condition", "predicate", "conditions", "predicates"]
+  url: /libs/typed/glossary#condition
+
+typed/operation:
+  terms: ["operation", "operations", "type operation", "type operations"]
+  url: /libs/typed/glossary#condition
+
 typed/parametric-type:
   terms: ["parametric type", "parametric types"]
   url: /libs/typed/glossary#parametric-type
@@ -73,6 +81,10 @@ typed/parametric-type:
 typed/dependent-type:
   terms: ["dependent type", "dependent types"]
   url: /libs/typed/glossary#dependent-type
+
+typed/model-factory:
+  terms: ["model factory", "model factories"]
+  url: /libs/typed/glossary#model-factory
 
 typed/model:
   terms: [model, models, "typed model", "typed models"]

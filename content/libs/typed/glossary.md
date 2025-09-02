@@ -98,3 +98,8 @@ This documentation contains the definition of the main concepts introduced in {l
 > [dependent type](#dependent-type). 
 >
 > A _dependent type_ is {l:type} which also is a {l:type factory}. Thus, it is a {l:type} whose {l:abstract metatype} has a `__call__` method that returns a {l:type factory}.
+
+(condition)=
+> [condition](#condition).
+> 
+> A _condition_ (a.k.a _predicate_) is a {l:type factory} that constructs booleans, hence that take values into `Bool`.
