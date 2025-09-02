@@ -334,3 +334,23 @@ from typed.types     import *
 from typed.factories import *
 from typed.models    import *
 ```
+
+# v0.7.0: introduction of dependent types
+
+Recall that a _dependent type_ is some type which depends on the value of its underlying term. They make the type system much more expressive and are fundamental to ensure genuine type safety.
+
+In {l:typed} version v0.7.0 an implementation of {l:dependent types} was introduced. They are {l:type factories} with a `.is_dependent_type` boolean attribute set to `True`. They can be passed as annotations to {l:typed functions}. In this case, the arguments of the {l:dependent type} should be {p:parameters} of the {l:typed function}. In this sense, the type of the parameter with annotation given by the {l:dependent type} depends on the value of the {p:parameters} from which the {l:dependent type} depends on.
+
+Dependent types are defined through the decorator `@dependent` and constitute a {l:type} `Dependent`, which is a {l:subtype} of `Factory`, which in turn is a {l:subtype} of `Typed`.
+
+```python
+from typed import dependent, TYPE, SomeType, OtherType, ..., ReturnType
+
+@dependent
+def DepType(x: SomeType, ...) -> TYPE:
+    ...
+
+@typed
+def some_function(x: SomeType, y: DepType, ...) -> ReturnType:
+    ...
+```
