@@ -511,8 +511,10 @@
 <ol class="arabic simple">
 <li><p><a class="reference internal" href="#overview-types">Overview: Types</a></p></li>
 <li><p><a class="reference internal" href="#overview-relations">Overview: Relations</a></p></li>
+<li><p><a class="reference internal" href="#overview-parametric-types">Overview: Parametric Types</a></p></li>
 <li><p><a class="reference internal" href="#overview-dependent-types">Overview: Dependent Types</a></p></li>
 <li><p><a class="reference internal" href="#overview-models">Overview: Models</a></p></li>
+<li><p><a class="reference internal" href="#other-docs">Other Docs</a></p></li>
 </ol>
 </section>
 <section id="overview-types">
@@ -568,12 +570,12 @@ UNIVERSE ────────&gt;  UNIVERSAL ─────────&gt;
 </tr>
 </tbody>
 </table>
-<p><a class="table-caption reference external" href="#table-1">python types _vs_ typed types</a></p>
+<p><a class="table-caption reference external" href="#table-1">table 1: python types _vs_ typed types</a></p>
 </div>
 </section>
 <section id="overview-relations">
 <h1>Overview: Relations<a class="headerlink" href="#overview-relations" title="Link to this heading"></a></h1>
-<p>The entities in the <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> type system can be related in different ways. The basic way is in terms of a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed function</a>. This is a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/compound_stmts.html#function">function</a> whose <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-parameter">parameters</a> have <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-annotation">type annotations</a> which are checked at runtime. They form a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">Typed</span></code>, of which the other type relations are <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#subtype">subtypes</a>, forming the following hierarchy:</p>
+<p>The entities in the <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> type system can be related in different ways. The basic way is in terms of a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed function</a>, which are <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-callable">callable</a> entities. This is a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/compound_stmts.html#function">function</a> whose <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-parameter">parameters</a> have <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-annotation">type annotations</a> which are checked at runtime. They form a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">Typed</span></code>, of which the other type relations are <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#subtype">subtypes</a>, forming the following hierarchy:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                               extends
           extends            ┌────────&gt; Operation
         ┌────────&gt; Factory ──┤
@@ -584,26 +586,101 @@ Typed ──┤                    └────────&gt; Dependent
 </div>
 <ol class="arabic simple">
 <li><p>A <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type-factory">type factory</a> is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed function</a> that constructs a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a>, hence that take values into <code class="docutils literal notranslate"><span class="pre">TYPE</span></code>.</p></li>
-<li><p>In turn, a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#condition">condition</a> is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed function</a> that returns a boolean, i.e., that take values into <code class="docutils literal notranslate"><span class="pre">Bool</span></code>.</p></li>
+<li><p>In turn, a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#condition">condition</a> (a.k.a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#condition">predicate</a>) is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed function</a> that returns a boolean, i.e., that take values into <code class="docutils literal notranslate"><span class="pre">Bool</span></code>.</p></li>
 <li><p>A <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#condition">type operation</a> is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type-factory">type factory</a> such that all <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-annotation">type annotations</a> are <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#subtype">subtypes</a> of <code class="docutils literal notranslate"><span class="pre">TYPE</span></code>.</p></li>
 <li><p>A <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#dependent-type">dependent type</a> is a special <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type-factory">type factory</a> with the attribute <code class="docutils literal notranslate"><span class="pre">.is_dependent_type</span></code> set to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 </ol>
+<p>To each kind of relation there corresponds a decorator which should be used to create such a relation:</p>
+<div class="captioned-table" id="table-2">
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>relation</p></th>
+<th class="head"><p>decorator</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Typed</p></td>
+<td><p>&#64;typed</p></td>
+</tr>
+<tr class="row-odd"><td><p>Factory</p></td>
+<td><p>&#64;factory</p></td>
+</tr>
+<tr class="row-even"><td><p>Condition</p></td>
+<td><p>&#64;condition</p></td>
+</tr>
+<tr class="row-odd"><td><p>Operation</p></td>
+<td><p>&#64;operation</p></td>
+</tr>
+<tr class="row-even"><td><p>Dependent</p></td>
+<td><p>&#64;dependent</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="table-caption reference external" href="#table-2">table 2: relations and decorators</a></p>
+</div>
+</section>
+<section id="overview-parametric-types">
+<h1>Overview: Parametric Types<a class="headerlink" href="#overview-parametric-types" title="Link to this heading"></a></h1>
+<p>In <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> there are special mixed entities, which are both <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">types</a> and type relations (more precisely, <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type-factory">type factories</a> or <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#condition">type operations</a>). These are the so-called <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#parametric-type">parametric types</a>.</p>
+<p>An example is <code class="docutils literal notranslate"><span class="pre">Typed</span></code>. It is the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> of all <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed functions</a>. It is also a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#condition">type operation</a>: it can receive a tuple of types <code class="docutils literal notranslate"><span class="pre">(SomeType,</span> <span class="pre">OtherType,</span> <span class="pre">...)</span></code> and another type <code class="docutils literal notranslate"><span class="pre">ReturnType</span></code>, returning the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#subtype">subtype</a> <code class="docutils literal notranslate"><span class="pre">Typed(SomeType,</span> <span class="pre">OtherType,</span> <span class="pre">...,</span> <span class="pre">cod=ReturnType)</span></code> of <code class="docutils literal notranslate"><span class="pre">Typed</span></code> of all <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed functions</a> whose <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#domain">domain</a> is  <code class="docutils literal notranslate"><span class="pre">(SomeType,</span> <span class="pre">OtherType,</span> <span class="pre">...)</span></code> and whose <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#codomain">codomain</a> is <code class="docutils literal notranslate"><span class="pre">ReturnType</span></code>.</p>
 </section>
 <section id="overview-dependent-types">
 <h1>Overview: Dependent Types<a class="headerlink" href="#overview-dependent-types" title="Link to this heading"></a></h1>
 <p>In a type system, dependent types are crucially important to provide a strong type expressiveness needed to ensure type safety. In <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> they are implemented as <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type-factory">type factories</a> and can be passed as <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-annotation">type annotations</a> to any <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed function</a>.</p>
-<p>This means that in <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> one may have a relation between <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">types</a> such that the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> of a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-parameter">parameter</a> depends on the value of the other parameters.</p>
+<p>This means that in <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> one may have a relation between <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">types</a> such that the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> of a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-parameter">parameter</a> depends on the value of the other <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-parameter">parameters</a>.</p>
 </section>
 <section id="overview-models">
 <h1>Overview: Models<a class="headerlink" href="#overview-models" title="Link to this heading"></a></h1>
-<p>One can say that a type system <em>presents type safety</em> when each validation is realized as a type checking. This include data validation. Data, in turn, is typically presented in terms of hierarchical structure, as JSON. In <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> one can deal with data validation by constructing parameterized subtypes of a <code class="docutils literal notranslate"><span class="pre">Json</span></code> type known as <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#model">models</a>.</p>
+<p>One can say that a type system <em>presents type safety</em> when each validation is realized as a type checking. This include data validation. Data, in turn, is typically presented in terms of hierarchical structure, as JSON.</p>
+<p>In <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> one can deal with data validation by constructing parameterized <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#subtype">subtypes</a> of a <code class="docutils literal notranslate"><span class="pre">Json</span></code> <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> known as <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#model">models</a>. These are constructed from certain <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type-factory">type factories</a> known as <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#model-factory">model factories</a>. Different <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#model-factory">model factories</a> constructs <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#model">models</a> with different kinds of validation and are constructed from specific <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#abstract-metatype">abstract metatypes</a>.</p>
+<div class="captioned-table" id="table-3">
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>model factory</p></th>
+<th class="head"><p>description</p></th>
+<th class="head"><p>metatype</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Model</p></td>
+<td><p>basic validation</p></td>
+<td><p>MODEL</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exact</p></td>
+<td><p>exact validation</p></td>
+<td><p>EXACT</p></td>
+</tr>
+<tr class="row-even"><td><p>Ordered</p></td>
+<td><p>order validation</p></td>
+<td><p>ORDERED</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rigid</p></td>
+<td><p>order and exact validation</p></td>
+<td><p>RIGID</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="table-caption reference external" href="#table-3">table 3: model factories</a></p>
+</div>
+</section>
+<section id="other-docs">
+<h1>Other Docs<a class="headerlink" href="#other-docs" title="Link to this heading"></a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="types.html">types</a></p></li>
+<li><p><a class="reference internal" href="models.html">models</a></p></li>
+<li><p><a class="reference internal" href="errors.html">errors</a></p></li>
+<li><p><a class="reference internal" href="examples.html">examples</a></p></li>
+<li><p><a class="reference internal" href="entities.html">lists of entities</a></p></li>
+<li><p><a class="reference internal" href="glossary.html">glossary</a></p></li>
+<li><p><a class="reference internal" href="changelog.html">changelog</a></p></li>
+</ol>
 </section>
 </main>
             </div>
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/09/03 at 00:16</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/09/03 at 13:31</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
