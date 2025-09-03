@@ -7,7 +7,7 @@ weight: 1000
 
 Aqui você encontrará um glossário com definições para termos que ocorrem nas notas de aula.
 
-```{toc}
+```{toc-hor}
 ```
 
 # A
@@ -20,7 +20,7 @@ Aqui você encontrará um glossário com definições para termos que ocorrem na
 (alfabeto)= 
 > [Alfabeto](#alfabeto) (Lógica).
 > 
-> Um _alfabeto_ é uma entidade que contém os símbolos definidores de uma {g:linguagem formal}. 
+> Um _alfabeto_ é uma entidade que contém os {g:símbolos} definidores de uma {g:linguagem formal}. 
 
 
 # C
@@ -31,7 +31,7 @@ Aqui você encontrará um glossário com definições para termos que ocorrem na
 > _Concatenação_ é a operação básica entre {g:strings}, a qual recebe duas {g:sequências} finitas de {g:símbolos}, digamos :tex x_1x_2...x_n: e :tex y_1y_2y_m:, e retorna a correspondente {g:sequência} :tex x_1x_2...x_ny_1y_2...y_m:. 
 
 (conceito-primitivo)=
-> [Conceito Primitivo](#conceito-primitivo).
+> [Conceito Primitivo](#conceito-primitivo) (Filosofia).
 >
 > Um _conceito primitivo_ é aquele que é assumido como dado _à priori_: que não é definido a partir de outros {g:conceitos}, e a partir dos quais se define {g:conceitos} que não são primitivos.
 
@@ -41,9 +41,9 @@ Aqui você encontrará um glossário com definições para termos que ocorrem na
 > _Constantes_ são símbolos específicos do {g:alfabeto} de uma {g:linguagem formal}, distintos de {g:variáveis}, os quais não aparecem dentro de {g:relações lógicas} ou {g:símbolos funcionais}, e cujo {g:valor} não depende de um dado {g:contexto}. Podem também ser vistas como {g:relações} de {g:aridade} zero.
 
 (contexto)=
-> [Contexto](#contexto).
+> [Contexto](#contexto) (Linguística).
 > 
-> _Contexto_ é a soma das informações que se fazem necessárias para dar sentido a uma dada sentença.
+> _Contexto_ é a soma das informações que se fazem necessárias para dar significado a um dado elemento.
 
 # D
 
@@ -54,27 +54,32 @@ Aqui você encontrará um glossário com definições para termos que ocorrem na
 
 # L
 
-(linguagem-formal)= 
-> [Linguagem Formal](#linguagem-formal).
+(linguagem)=
+> [Linguagem](#linguagem) (Linguística). 
 > 
-> Uma _linguagem formal_ é um {g:conjunto} de {g:strings} de um dado {g:alfabeto}.
+> Uma _linguagem_ é uma forma estruturada de comunicação entre indivíduos de um sistema, sendo formada por um {g:alfabeto} e um {g:vocabulário}, tipicamente construído por meio de uma {g:gramática}.
+
+(linguagem-formal)= 
+> [Linguagem Formal](#linguagem-formal) (Lógica).
+> 
+> Uma _linguagem formal_ é um {g:par ordenado} :tex L = (A, V(A)): formado por um {g:alfabeto} e um {g:conjunto} de {g:strings} do dado {g:alfabeto}, chamado de {g:vocabulário} da {g:linguagem formal} em questão.
 
 # M
 
 (metalinguagem)= 
-> [Metalinguagem](#metalinguagem).
+> [Metalinguagem](#metalinguagem) (Linguística).
 > 
 > Uma _metalinguagem_ é uma {g:linguagem} utilizada para descrever outras {g:linguagens}.
 
 # N
 
 (notacao-funcional)= 
-> [Notação Funcional](#notacao-funcional).
+> [Notação Funcional](#notacao-funcional) (Lógica).
 > 
 > Notação _funcional_ é aquela que faz uso de parênteses como {g:delimitadores lógicos} para representar a dependência de um {g:símbolo} (digamos :tex f:) com respeito a outros {g:símbolos}: :tex f(x, y, z):.
 
 (notacao-infixa)=
-> [Notação Infixa](#notacao-infixa).
+> [Notação Infixa](#notacao-infixa) (Lógica).
 > 
 > Notação _infixa_ é aquela que coloca um {g:símbolo} (digamos :tex f:) entre outros {g:símbolos} (digamos :tex x, y:) para representar a dependência do primeiro com respeito aos demais: :tex xfy:.
 
@@ -86,6 +91,11 @@ Aqui você encontrará um glossário com definições para termos que ocorrem na
 > Dizemos que {g:símbolos} :tex x, y, z, ...: então _ordenados_ (ou que possuem uma _ordem_) se, quando trocados de posição (digamos :tex x, z, y, ...:), passam a admitir um significado (isto é, um {g:valor}) diferente. Em outras palavras, se o significado (ou {g:valor}) associado aos {g:símbolos} depende da posição em que foram apresentados.
 
 # P
+
+(palavra)=
+> [Palavra](#palavra) (Linguística).
+> 
+> Uma _palavra_ é a menor unidade de {g:linguagem} ao qual está associado um significado dentro de um dado {g:contexto}. 
 
 (predicado-logica)=
 > [Predicado](#predicado-logica) (Lógica).
@@ -126,10 +136,10 @@ Aqui você encontrará um glossário com definições para termos que ocorrem na
 (simbolo)= 
 > [Símbolo](#simbolo) (Lógica).
 > 
-> Um _símbolo_ é uma representação linguística de algo que possui um significado específico dentro de um certo contexto. Em Lógica Matemática, um {g:símbolo} é um elemento do {g:alfabeto} de uma {g:linguagem formal}.
+> Um _símbolo_ é um elemento do {g:alfabeto} de uma {g:linguagem formal}.
 
 (simbolo-funcional)= 
-> [Símbolo Funcional](#simbolo-funcional).
+> [Símbolo Funcional](#simbolo-funcional) (Lógica).
 > 
 > Um _símbolo funcional_ é uma classe particular de {g:símbolos} dentro do {g:alfabeto} de uma {g:linguagem funcional} a qual, ao lado das {g:relações lógicas}, depende de {g:variáveis}. No entanto, diferentemente das {g:relações lógicas}, os {g:símbolos funcionais} retornam 
 
@@ -137,6 +147,14 @@ Aqui você encontrará um glossário com definições para termos que ocorrem na
 > [String](#string) (Lógica).
 > 
 > Uma _string_ (também chamada de _palavra_) é uma {g:sequência} finita de {g:símbolos} dentro do {g:alfabeto} de uma {g:linguagem formal}. Entre {g:strings} há a {g:operação} básica de {g:concatenação}.
+
+
+# T
+
+(teoria-ingenua)=
+> [Teoria Ingênua](#teoria-ingenua) (Lógica).
+> 
+> Uma {g:teoria} é dita ser _ingênua_ se seus objetos de estudo são {g:conceitos primitivos}. 
 
 
 # V
@@ -151,3 +169,8 @@ Aqui você encontrará um glossário com definições para termos que ocorrem na
 > [Variável](#variavel-logica) (Lógica).
 > 
 > Uma _variável_ é um {g:símbolo} dentro do {g:alfabeto} de uma {g:linguagem formal}, o qual é distinto de uma {g:constante}, e que tipicamente aparece entre {g:delimitadores lógicos} de {g:relações lógicas} ou {g:símbolos funcionais}, ao qual está associado um {g:valor} que depende do {g:contexto} no qual está inserido.
+
+(vocabulario)=
+> [Vocabulário](#vocabulario) (Linguística).
+> 
+> _Vocabulário_ é a {g:coleção} de {g:palavras} de uma dada {g:linguagem}.

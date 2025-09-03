@@ -9,7 +9,11 @@ alfabeto-logica:
 aridade-logica:
   terms: ["aridade", "aridade de uma relação", "aridade de uma função", "arity"]
   url: /notes/glossary#aridade-logica
-  
+
+concatenacao:
+  terms: ["concatenação", "concatenação de strings"]
+  url: /notes/glossary#concatenacao
+
 conceito:
   terms: ["conceito", "conceitos"]
   url: /notes/glossary#conceito-primitivo  
@@ -79,31 +83,37 @@ relacao-binaria-logica:
   url: /notes/glossary#relacao-binaria-logica
 
 sequencia-logica:
-  terms: ["sequência", "sequências", "sequência finita"]
+  terms: ["sequência", "sequências", "sequência finita", "sequence", "sequences", "finite sequence"]
   url: /notes/glossary#sequencia-logica
 
 simbolo:
-  terms: ["símbolo", "símbolos"]
+  terms: ["símbolo", "símbolos", "symbol", "symbols"]
   url: /notes/glossary#simbolo
 
 simbolo-funcional:
   terms: ["símbolos funcionais", "símbolo funcional"]
   url: /notes/glossary#simbolo-funcional
 
-string:
-  terms: ["string", "strings", "palavra", "palavras"]
-  url: /notes/glossary#string
+string-logica:
+  terms: ["string", "strings", "palavra", "palavras", "word", "words"]
+  url: /notes/glossary#string-logica
 
 termo:
-  terms: ["termo", "termos"]
+  terms: ["termo", "termos", "term", "terms"]
   url: /notes/glossary#termo-logica
 
 valor-simbolo:
-  terms: ["valor", "valores", "valor de um símbolo"]
+  terms: ["valor", "valores", "valor de um símbolo", "value"]
   url: /notes/glossary#valor-simbolo
 
 variavel-logica:
-  terms: ["variável", "variáveis"]
+  terms: ["variável", "variáveis", "variable", "variables"]
   url: /notes/glossary#variavel-logica
 
+vocabulario-linguagem:
+  terms: ["vocabulário", "vocabulary", "vocabulários", "vocabularies"]
+  url: /notes/glossary#vocabulario
 
+teoria-ingenua:
+  terms: ["teoria ingênua", "teorias ingênuas", "naive theory", "naive theories"]
+  url: /notes/glossary#vocabulario

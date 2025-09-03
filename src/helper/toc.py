@@ -54,7 +54,6 @@ def extract_frontmatter_draft(project_srcdir, docname, possible_suffixes):
                         return False
     return False
 
-
 def try_read_frontmatter_title(project_srcdir, docname, possible_suffixes):
     logger = logging.getLogger(__name__)
     logger.info(f"[toc-dir debug] try_read_frontmatter_title: docname={docname}")
@@ -84,14 +83,14 @@ def try_read_frontmatter_title(project_srcdir, docname, possible_suffixes):
     logger.info(f"[toc-dir debug]   No file found for docname: {docname}")
     return None
 
-
 class toc_placeholder(nodes.General, nodes.Element):
     pass
 
+class toc_hor_placeholder(nodes.General, nodes.Element):
+    pass
 
 class toc_dir_placeholder(nodes.General, nodes.Element):
     pass
-
 
 class TocDirective(SphinxDirective):
     has_content = False
@@ -106,6 +105,18 @@ class TocDirective(SphinxDirective):
         node.line = line
         return [node]
 
+class TocHorDirective(SphinxDirective):
+    has_content = False
+    required_arguments = 0
+    optional_arguments = 0
+    final_argument_whitespace = False
+
+    def run(self):
+        node = toc_hor_placeholder()
+        source, line = self.state_machine.get_source_and_line(self.lineno)
+        node.source = source
+        node.line = line
+        return [node]
 
 class TocDirDirective(SphinxDirective):
     has_content = False
@@ -115,7 +126,6 @@ class TocDirDirective(SphinxDirective):
 
     def run(self):
         return [toc_dir_placeholder()]
-
 
 class TocTransform(SphinxTransform):
     default_priority = 100
@@ -207,6 +217,86 @@ class TocTransform(SphinxTransform):
             logger.info(f"No headings to include in page TOC for {self.env.docname}.")
             placeholder_node.replace_self(nodes.paragraph())
 
+class TocHorTransform(SphinxTransform):
+    default_priority = 100
+
+    def apply(self):
+        for node in self.document.traverse(toc_hor_placeholder):
+            self.process_page_toc_hor(node)
+
+    def process_page_toc_hor(self, placeholder_node):
+        toc_links = []
+        placeholder_line = getattr(placeholder_node, 'line', None)
+
+        section_nodes = list(self.document.traverse(nodes.section))
+        if section_nodes:
+            for section in section_nodes:
+                title_node = section.next_node(nodes.title)
+                if not title_node:
+                    continue
+
+                title_line = getattr(title_node, 'line', None)
+                if placeholder_line is not None and title_line is not None:
+                    if title_line < placeholder_line:
+                        continue
+
+                if (section.parent is self.document
+                   and section is self.document.children[0]):
+                    doc_title_node = self.env.titles.get(self.env.docname)
+                    doc_title = (doc_title_node.astext().strip()
+                                 if doc_title_node else "")
+                    if title_node.astext().strip() == doc_title:
+                        continue
+
+                title_text = title_node.astext()
+                section_id = section.get('ids', [None])[0]
+                if not section_id:
+                    continue
+
+                ref = nodes.reference('', '', internal=True, refid=section_id)
+                ref += nodes.Text(title_text)
+                toc_links.append(ref)
+        else:
+            for node in self.document.children:
+                if isinstance(node, nodes.title):
+                    title_line = getattr(node, 'line', None)
+                    if placeholder_line is not None and title_line is not None:
+                        if title_line < placeholder_line:
+                            continue
+
+                    doc_title_node = self.env.titles.get(self.env.docname)
+                    doc_title = (doc_title_node.astext().strip() if doc_title_node else "")
+                    if node.astext().strip() == doc_title:
+                        continue
+
+                    title_text = node.astext()
+                    parent = node.parent
+                    section_id = None
+                    if parent and parent.get('ids'):
+                        section_id = parent['ids'][0]
+                    elif node.get('ids'):
+                        section_id = node['ids'][0]
+                    if not section_id:
+                        continue
+
+                    ref = nodes.reference('', '', internal=True, refid=section_id)
+                    ref += nodes.Text(title_text)
+                    toc_links.append(ref)
+
+        if toc_links:
+            para = nodes.paragraph()
+            for idx, ref in enumerate(toc_links):
+                para += ref
+                if idx < len(toc_links) - 1:
+                    para += nodes.Text(" | ")
+            placeholder_node.replace_self(para)
+            logger.info(
+                f"Injected horizontal page TOC with {len(toc_links)} items "
+                f"into {self.env.docname}."
+            )
+        else:
+            logger.info(f"No headings to include in horizontal page TOC for {self.env.docname}.")
+            placeholder_node.replace_self(nodes.paragraph())
 
 class TocDirTransform(SphinxTransform):
     default_priority = 100
@@ -352,24 +442,26 @@ class TocDirTransform(SphinxTransform):
             )
             placeholder_node.replace_self(nodes.paragraph())
 
-
 def setup(app):
     app.add_directive('toc', TocDirective)
+    app.add_directive('toc-hor', TocHorDirective)
     app.add_directive('toc-dir', TocDirDirective)
     app.add_transform(TocTransform)
+    app.add_transform(TocHorTransform)
     app.add_transform(TocDirTransform)
     logger.info("Initialized toc_generator extension.")
 
     try:
         from myst_parser.extensions.sphinx import registry as myst_registry
         myst_registry.directives["toc"] = TocDirective
+        myst_registry.directives["toc-hor"] = TocHorDirective
         myst_registry.directives["toc-dir"] = TocDirDirective
         logger.info("Registered TOC directives with myst-parser.")
     except ImportError:
         pass
 
     return {
-        'version': '0.11',
+        'version': '0.12',
         'parallel_read_safe': True,
         'parallel_write_safe': True,
     }
