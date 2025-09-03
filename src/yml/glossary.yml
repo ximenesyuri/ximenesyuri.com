@@ -6,6 +6,10 @@ alfabeto-logica:
   terms: ["alfabeto", "alfabetos", "alfabeto de uma linguagem"]
   url: /notes/glossary#alfabeto-logica
 
+aridade-logica:
+  terms: ["aridade", "aridade de uma relação", "aridade de uma função", "arity"]
+  url: /notes/glossary#aridade-logica
+  
 conceito:
   terms: ["conceito", "conceitos"]
   url: /notes/glossary#conceito-primitivo  
@@ -14,12 +18,21 @@ conceito-primitivo:
   terms: ["conceito primitivo", "conceitos primitivos"]
   url: /notes/glossary#conceito-primitivo
 
+constante-logica:
+  terms: ["constante", "constantes"]
+  url: /notes/glossary#constante-logica
+
+contexto:
+  terms: ["contexto"]
+  url: /notes/glossary#contexto
+
+delimitador-logica:
+  terms: ["delimitador lógico", "delimitadores lógicos"]
+  url: /notes/glossary#delimitador-logica
+
 formula-logica:
   terms: ["fórmula", "fórmula lógica"]
   url: /notes/glossary#formula-logica
-
-aridade-logica:
-  terms: ["aridade", "aridade de uma relação", "aridade de uma função", "arity"]
 
 linguagem:
   terms: ["linguagem", "linguagens"]
@@ -41,6 +54,10 @@ notacao-infixa:
   terms: ["notação infixa",]
   url: /notes/glossary#notacao-infixa
 
+ordem-simbolos:
+  terms: ["ordem", "ordenada", "ordenadas", "ordenado", "ordenados", "ordenamento"]
+  url: /notes/glossary#ordem-simbolos
+
 predicado-logica:
   terms: ["predicado lógico", "predicado", "predicados"]
   url: /notes/glossary#predicado-logica  
@@ -49,14 +66,44 @@ proposicao-logica:
   terms: ["proposição lógica", "proposição", "proposições"]
   url: /notes/glossary#proposicao-logica
 
+relacao-logica:
+  terms: ["relação", "relação lógica", "relações", "relações lógicas"]
+  url: /notes/glossary#relacao-logica
+
+relacao-unaria-logica:
+  terms: ["relação unária", "relação lógica unária"]
+  url: /notes/glossary#relacao-unaria-logica
+
+relacao-binaria-logica:
+  terms: ["relação binária", "relação lógica ária"]
+  url: /notes/glossary#relacao-binaria-logica
+
+sequencia-logica:
+  terms: ["sequência", "sequências", "sequência finita"]
+  url: /notes/glossary#sequencia-logica
+
 simbolo:
   terms: ["símbolo", "símbolos"]
   url: /notes/glossary#simbolo
+
+simbolo-funcional:
+  terms: ["símbolos funcionais", "símbolo funcional"]
+  url: /notes/glossary#simbolo-funcional
+
+string:
+  terms: ["string", "strings", "palavra", "palavras"]
+  url: /notes/glossary#string
 
 termo:
   terms: ["termo", "termos"]
   url: /notes/glossary#termo-logica
 
+valor-simbolo:
+  terms: ["valor", "valores", "valor de um símbolo"]
+  url: /notes/glossary#valor-simbolo
+
 variavel-logica:
   terms: ["variável", "variáveis"]
   url: /notes/glossary#variavel-logica
+
+
