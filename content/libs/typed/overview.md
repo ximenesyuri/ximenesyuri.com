@@ -42,12 +42,12 @@ float                 Float             FLOAT
 str                   Str               STR
 ...
 --------------------------------------------------
-python types _vs_ typed types
+table 1: python types _vs_ typed types
 ```
 
 # Overview: Relations
 
-The entities in the {l:typed} type system can be related in different ways. The basic way is in terms of a {l:typed function}. This is a {p:function} whose {p:parameters} have {p:type annotations} which are checked at runtime. They form a {l:type} `Typed`, of which the other type relations are {l:subtypes}, forming the following hierarchy:
+The entities in the {l:typed} type system can be related in different ways. The basic way is in terms of a {l:typed function}, which are {p:callable} entities. This is a {p:function} whose {p:parameters} have {p:type annotations} which are checked at runtime. They form a {l:type} `Typed`, of which the other type relations are {l:subtypes}, forming the following hierarchy:
 
 ```
                                extends
@@ -59,18 +59,56 @@ Typed ──┤                    └────────> Dependent
 ```
 
 1. A {l:type factory} is a {l:typed function} that constructs a {l:type}, hence that take values into `TYPE`.
-2. In turn, a {l:condition} is a {l:typed function} that returns a boolean, i.e., that take values into `Bool`.
+2. In turn, a {l:condition} (a.k.a {l:predicate}) is a {l:typed function} that returns a boolean, i.e., that take values into `Bool`.
 3. A {l:type operation} is a {l:type factory} such that all {p:type annotations} are {l:subtypes} of `TYPE`.
-4. A {l:dependent type} is a special {l:type factory} with the attribute `.is_dependent_type` set to `True`. 
+4. A {l:dependent type} is a special {l:type factory} with the attribute `.is_dependent_type` set to `True`.
+
+To each kind of relation there corresponds a decorator which should be used to create such a relation:
+
+(table-2)=
+```
+relation        decorator 
+-----------------------------
+Typed           @typed
+Factory         @factory
+Condition       @condition
+Operation       @operation
+Dependent       @dependent
+-----------------------------
+table 2: relations and decorators
+```
+
+# Overview: Parametric Types
+
+In {l:typed} there are special mixed entities, which are both {l:types} and type relations (more precisely, {l:type factories} or {l:type operations}). These are the so-called {l:parametric types}.
+
+An example is `Typed`. It is the {l:type} of all {l:typed functions}. It is also a {l:type operation}: it can receive a tuple of types `(SomeType, OtherType, ...)` and another type `ReturnType`, returning the {l:subtype} `Typed(SomeType, OtherType, ..., cod=ReturnType)` of `Typed` of all {l:typed functions} whose {l:domain} is  `(SomeType, OtherType, ...)` and whose {l:codomain} is `ReturnType`.
 
 # Overview: Dependent Types
 
 In a type system, dependent types are crucially important to provide a strong type expressiveness needed to ensure type safety. In {l:typed} they are implemented as {l:type factories} and can be passed as {p:type annotations} to any {l:typed function}.
 
-This means that in {l:typed} one may have a relation between {l:types} such that the {l:type} of a {p:parameter} depends on the value of the other parameters.
+This means that in {l:typed} one may have a relation between {l:types} such that the {l:type} of a {p:parameter} depends on the value of the other {p:parameters}.
 
 # Overview: Models
 
-One can say that a type system _presents type safety_ when each validation is realized as a type checking. This include data validation. Data, in turn, is typically presented in terms of hierarchical structure, as JSON. In {l:typed} one can deal with data validation by constructing parameterized subtypes of a `Json` type known as {l:models}.
+One can say that a type system _presents type safety_ when each validation is realized as a type checking. This include data validation. Data, in turn, is typically presented in terms of hierarchical structure, as JSON.  
 
+In {l:typed} one can deal with data validation by constructing parameterized {l:subtypes} of a `Json` {l:type} known as {l:models}. These are constructed from certain {l:type factories} known as {l:model factories}. Different {l:model factories} constructs {l:models} with different kinds of validation and are constructed from specific {l:abstract metatypes}.
 
+(table-3)=
+```
+model factory      description                   metatype   
+------------------------------------------------------------
+Model              basic validation              MODEL
+Exact              exact validation              EXACT
+Ordered            order validation              ORDERED
+Rigid              order and exact validation    RIGID
+------------------------------------------------------------
+table 3: model factories
+```
+
+# Other Docs
+
+```{toc-dir}
+```
