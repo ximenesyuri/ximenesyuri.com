@@ -177,7 +177,7 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">├─</span>
             
-                <a href="/libs/typed/entities">lists of entities</a>
+                <a href="/libs/typed/api">api</a>
             
             
         </li>
@@ -797,7 +797,7 @@
 </section>
 <section id="v0-5-3-symmetrization-of-basic-factories">
 <h1>v0.5.3: symmetrization of basic factories<a class="headerlink" href="#v0-5-3-symmetrization-of-basic-factories" title="Link to this heading"></a></h1>
-<p>Some {l:factories} are supposed to be <em>symmetric</em> in the sense that they should not depend on the ordering of their arguments. Examples include:</p>
+<p>Some <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type-factory">factories</a> are supposed to be <em>symmetric</em> in the sense that they should not depend on the ordering of their arguments. Examples include:</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Union</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Inter</span></code></p></li>
@@ -810,7 +810,7 @@
 </section>
 <section id="v0-6-0-reorganize-structure-and-imports">
 <h1>v0.6.0: reorganize structure and imports<a class="headerlink" href="#v0-6-0-reorganize-structure-and-imports" title="Link to this heading"></a></h1>
-<p>Previously the code entries were centered in a <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file which imported everything from the feature files using a <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">typed.mods...</span> <span class="pre">import</span> <span class="pre">*</span></code>. The main advantage of this dynamic approach is being stable under changes in the feature files, as the addition or deletion of new <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">types</a>, {l:factories}, <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#model">models</a>, and so on.</p>
+<p>Previously the code entries were centered in a <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file which imported everything from the feature files using a <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">typed.mods...</span> <span class="pre">import</span> <span class="pre">*</span></code>. The main advantage of this dynamic approach is being stable under changes in the feature files, as the addition or deletion of new <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">types</a>, <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type-factory">factories</a>, <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#model">models</a>, and so on.</p>
 <p>However, it has some disadvantages:</p>
 <ol class="arabic simple">
 <li><p>it requires a more complex dependencies resolution</p></li>
@@ -868,7 +868,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/09/04 at 17:54</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/09/04 at 23:23</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
