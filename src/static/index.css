@@ -276,6 +276,9 @@ table {
     color: var(--white);
     border-collapse: collapse;
     width: auto;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 table th,
