@@ -78,8 +78,6 @@ class AutoLinkPostTransform(SphinxPostTransform):
             parent = text_node.parent
             if parent is None:
                 continue
-            if not isinstance(parent, nodes.paragraph):
-                continue
             if is_inside_reference(text_node):
                 continue
 

@@ -23,7 +23,7 @@ typed/object:
   url: /libs/typed/glossary#object
 
 typed/concrete-metatype:
-  terms: ["concrete metatype", "concrete metatypes"]
+  terms: ["metatype", "metatypes", "concrete metatype", "concrete metatypes"]
   url: /libs/typed/glossary#concrete-metatype
 
 typed/subtype:
@@ -63,7 +63,7 @@ typed/codomain:
   url: /libs/typed/glossary#codomain
 
 typed/type-factory:
-  terms: ["type factory", "type factories"]
+  terms: ["factory", "factories", "type factory", "type factories"]
   url: /libs/typed/glossary#type-factory
 
 typed/condition:

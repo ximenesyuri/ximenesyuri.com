@@ -56,31 +56,19 @@ def extract_frontmatter_draft(project_srcdir, docname, possible_suffixes):
 
 def try_read_frontmatter_title(project_srcdir, docname, possible_suffixes):
     logger = logging.getLogger(__name__)
-    logger.info(f"[toc-dir debug] try_read_frontmatter_title: docname={docname}")
     for suffix in possible_suffixes:
         candidate = Path(project_srcdir) / (docname + suffix)
-        logger.info(f"[toc-dir debug]   Checking: {candidate}")
         if candidate.is_file():
             with candidate.open("rt", encoding="utf-8") as f:
                 text = f.read()
             if text.startswith('---'):
                 block_end = text.find('---', 3)
-                logger.info(f"[toc-dir debug]   block_end: {block_end}")
                 if block_end != -1:
                     block = text[3:block_end].strip()
-                    logger.info(f"[toc-dir debug]   frontmatter block: {repr(block)}")
                     match = re.search(r'^title:\s*[\'"]?(.+?)[\'"]?$', block, re.MULTILINE)
                     if match:
                         title = match.group(1).strip()
-                        logger.info(f"[toc-dir debug]   MATCH! title: {title}")
                         return title
-                    else:
-                        logger.info(f"[toc-dir debug]   No title found")
-                else:
-                    logger.info(f"[toc-dir debug]   Block end not found")
-            else:
-                logger.info(f"[toc-dir debug]   Doesn't start with ---")
-    logger.info(f"[toc-dir debug]   No file found for docname: {docname}")
     return None
 
 class toc_placeholder(nodes.General, nodes.Element):
@@ -209,12 +197,7 @@ class TocTransform(SphinxTransform):
             for item in toc_list_items:
                 toc_container += item
             placeholder_node.replace_self(toc_container)
-            logger.info(
-                f"Injected page TOC with {len(toc_list_items)} items "
-                f"into {self.env.docname}."
-            )
         else:
-            logger.info(f"No headings to include in page TOC for {self.env.docname}.")
             placeholder_node.replace_self(nodes.paragraph())
 
 class TocHorTransform(SphinxTransform):
@@ -290,12 +273,7 @@ class TocHorTransform(SphinxTransform):
                 if idx < len(toc_links) - 1:
                     para += nodes.Text(" | ")
             placeholder_node.replace_self(para)
-            logger.info(
-                f"Injected horizontal page TOC with {len(toc_links)} items "
-                f"into {self.env.docname}."
-            )
         else:
-            logger.info(f"No headings to include in horizontal page TOC for {self.env.docname}.")
             placeholder_node.replace_self(nodes.paragraph())
 
 class TocDirTransform(SphinxTransform):
@@ -344,7 +322,6 @@ class TocDirTransform(SphinxTransform):
         toc_entries = []
         for other in sibling_docnames:
             meta = self.env.metadata.get(other, {})
-            # draft?
             is_draft = False
             if "draft" in meta:
                 d = meta["draft"]
@@ -353,7 +330,6 @@ class TocDirTransform(SphinxTransform):
             else:
                 is_draft = extract_frontmatter_draft(self.app.srcdir, other, suffixes)
             if is_draft:
-                logger.info(f"[toc-dir] Skipping draft file: {other}")
                 continue
 
             weight = None
@@ -432,14 +408,7 @@ class TocDirTransform(SphinxTransform):
             for li in toc_list_items:
                 toc_container += li
             placeholder_node.replace_self(toc_container)
-            logger.info(
-                f"Injected directory TOC with {len(toc_list_items)} "
-                f"items into {self.env.docname}."
-            )
         else:
-            logger.info(
-                f"No files in directory for '{self.env.docname}' to add to TOC."
-            )
             placeholder_node.replace_self(nodes.paragraph())
 
 def setup(app):
