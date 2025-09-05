@@ -17,18 +17,18 @@ weight: 20
 
 # About
 
-{l:comp} is a Python functional style component system based in {jinja}, presenting type safety through an intensive use of {l:typed}.
+{lib:comp} is a Python functional style component system based in {jinja}, presenting type safety through an intensive use of {lib:typed}.
 
 ```{toc}
 ```
 
 # Overview
 
-With {l:comp} you can construct _components_, which are _typed functions_ (in the sense of {l:typed}) returning _jinja strings_ (i.e, strings presenting a valid {jinja} syntax),  constituting a type `COMPONENT`. 
+With {lib:comp} you can construct _components_, which are _typed functions_ (in the sense of {lib:typed}) returning _jinja strings_ (i.e, strings presenting a valid {jinja} syntax),  constituting a type `COMPONENT`. 
 
-Components (i.e, instances of `COMPONENT`) have the structure determined by _models_ (in the sense of {l:typed}). Furthermore, they can be composed through four _component operations_ (`join`, `concat`, `eval` and `copy`), which corresponds, respectively, to certain magic methods in `COMPONENT`. This allow us to create _derived components_ from _primitive components_ by making use of _component equations_.
+Components (i.e, instances of `COMPONENT`) have the structure determined by _models_ (in the sense of {lib:typed}). Furthermore, they can be composed through four _component operations_ (`join`, `concat`, `eval` and `copy`), which corresponds, respectively, to certain magic methods in `COMPONENT`. This allow us to create _derived components_ from _primitive components_ by making use of _component equations_.
 
-After constructed, components can be _rendered_ into raw HTML strings by making use of the `render` service function. To render a component we need to pass a _context_, which is the minimum information needed to provide a sense to the component. This could include, for example, `markdown` content (which is rendered through {python-markdown}), `rst` content (rendered via {docutils}), other components, and so on. This flexibility allows the use of {l:comp} in both dynamic and static environments.
+After constructed, components can be _rendered_ into raw HTML strings by making use of the `render` service function. To render a component we need to pass a _context_, which is the minimum information needed to provide a sense to the component. This could include, for example, `markdown` content (which is rendered through {python-markdown}), `rst` content (rendered via {docutils}), other components, and so on. This flexibility allows the use of {lib:comp} in both dynamic and static environments.
 
 Components can also be _previewed_ by putting them into a _preview stack_.
 

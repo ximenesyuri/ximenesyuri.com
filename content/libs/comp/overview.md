@@ -5,36 +5,36 @@ weight: 1
 
 # About
 
-Here you will find an overview for the {l:comp} library.
+Here you will find an overview for the {lib:comp} library.
 
 ```{toc}
 ```
 
 # Overview: Components
 
-The lib {l:comp} deals with _components_. These are {l:typed functions} (in the sense of {l:typed}) which return _jinja strings_, i.e, Python strings of type `Jinja`, which contain {jinja2} syntax. Components should also be defined using the `@component` decorator.
+The lib {lib:comp} deals with _components_. These are {lib:typed functions} (in the sense of {lib:typed}) which return _jinja strings_, i.e, Python strings of type `Jinja`, which contain {jinja2} syntax. Components should also be defined using the `@component` decorator.
 
-The typical way to define a {l:component} is to first define a {l:model} (in the sense of {l:typed}, typically a {l:optional model}) containing the _structure_ of the {l:component}, and then take this model as argument:
+The typical way to define a {lib:component} is to first define a {lib:model} (in the sense of {lib:typed}, typically a {lib:optional model}) containing the _structure_ of the {lib:component}, and then take this model as argument:
 
 ```python
 from typed import optional, null, SomeType, OtherType
 from comp import component
 
 @optional
-class MyModel:
+class MyModelib:
     some_var:  SomeType=null(SomeType)
     other_var: OtherType=null(OtherType)
     ...
 
 @component
-def my_comp(my_comp: MyModel) -> Jinja:
+def my_comp(my_compy: MyModel) -> Jinja:
     ...
     return """jinja
     ...
 """
 ```
 
-Components define a {l:type} `COMPONENT` and there are four main {l:component operations} between them, each of them corresponding to an arithmetic symbol ({p:magic methods} in Python):
+Components define a {lib:type} `COMPONENT` and there are four main {lib:component operations} between them, each of them corresponding to an arithmetic symbol ({py:magic methods} in Python):
 
 (table-1)=
 ```
@@ -48,7 +48,7 @@ copy             ^       copy a component, eventually changing var names
 table 1: component operations
 ```
 
-This means that we can construct complex {l:components} through _component equations_:
+This means that we can construct complex {lib:components} through _component equations_:
 
 ```python
 my_comp = (
@@ -58,20 +58,20 @@ my_comp = (
 ```
 
 (rem-1)=
-> [Remark 1](#rem-1). The modules `comp.models` and `comp.components` provides, respectively, a plethora of already defined {l:models} and corresponding {l:components}, one for each builtin HTML tag.
+> [Remark 1](#rem-1). The modules `comp.models` and `comp.components` provides, respectively, a plethora of already defined {lib:models} and corresponding {lib:components}, one for each builtin HTML tag.
 
 # Overview: Special Vars
 
-A {l:component} have certain _special vars_:
-1. `__context__`: defines the {l:local context} of the component, where needed information to {l:render} it is introduced (see [below](#overview-rendering));
+A {lib:component} have certain _special vars_:
+1. `__context__`: defines the {lib:local context} of the component, where needed information to {lib:render} it is introduced (see [below](#overview-rendering));
 2. vars of type `Inner`: used as placeholder to introduced content of other components;
 3. vars of type `Content`: receive _static context_ in the form of Markdown or ReStructuredText.
 
-For example, {l:inner vars} are used in the {l:component concat} operation, while {l:content vars} allows the use of {l:comp} in both dynamic and static environments.
+For example, {lib:inner vars} are used in the {lib:component concat} operation, while {lib:content vars} allows the use of {lib:comp} in both dynamic and static environments.
 
 # Overview: Rendering
 
-After being constructed, {l:components} can be _rendered_, producing raw HTML. This is done using a {l:typed function} `render`:
+After being constructed, {lib:components} can be _rendered_, producing raw HTML. This is done using a {lib:typed function} `render`:
 
 ```python
 from comp import render
@@ -79,7 +79,7 @@ from comp import render
 html = render(my_comp, **context)
 ```
 
-To {l:render} a component one needs to pass a _context_, which is a {p:dictionary}. It attaches values to each argument of the component, as well as to other {l:free variables}.
+To {lib:render} a component one needs to pass a _context_, which is a {py:dictionary}. It attaches values to each argument of the component, as well as to other {lib:free variables}.
 
 The rendering process can be customized to produce optimized raw HTML by passing certain special variables to `render`:
 

@@ -6,14 +6,14 @@ weight: 5
 
 # About
 
-In the following we discuss  _jinja strings_, which are the return entity of an entity in {l:comp} component system.
+In the following we discuss  _jinja strings_, which are the return entity of an entity in {lib:comp} component system.
 
 ```{toc}
 ```
 
 # Jinja Strings
 
-The component system of {l:comp} is based in {jinja2}. This means that the {l:components} construct strings following {jinja2} syntax. We have a specific type `Jinja` (which is a subtype of `Str` - the string {l:type} of {l:typed}) whose instances are the so-called _jinja strings_. These are Python {p:strings} preppended with the "`jinja`" keyword.
+The component system of {lib:comp} is based in {jinja2}. This means that the {lib:components} construct strings following {jinja2} syntax. We have a specific type `Jinja` (which is a subtype of `Str` - the string {lib:type} of {lib:typed}) whose instances are the so-called _jinja strings_. These are Python {py:strings} preppended with the "`jinja`" keyword.
 
 So, more precisely, an instance of `Jinja` is a string as follows (see {jinja2} to discover the full valid syntax):
 
@@ -38,11 +38,11 @@ my_jinja_string = """jinja
 
 # Delimiters
 
-You should note that the {jinja2} code provided in the [previous](#jinja-string) {l:jinja string} uses delimiters differing from the standard ones: while {l:jinja} uses `{%`, `{{` and `{#` as default for blocks, variables and comments, respectively, we are using `[`, `[[` and `[#`. 
+You should note that the {jinja2} code provided in the [previous](#jinja-string) {lib:jinja string} uses delimiters differing from the standard ones: while {lib:jinja} uses `{%`, `{{` and `{#` as default for blocks, variables and comments, respectively, we are using `[`, `[[` and `[#`. 
 
-The reason is that as we will see in [components](./components) documentation, in {l:comp} the {l:jinja strings} are typically returned by functions, and one would like to use variables of the function inside the return jinja string. This implies to consider the jinja strings as {p:f-strings}. But in f-strings, variables already use `{` as delimiters, causing certain conflict with the default {l:jinja} delimiters.
+The reason is that as we will see in [components](./components) documentation, in {lib:comp} the {lib:jinja strings} are typically returned by functions, and one would like to use variables of the function inside the return jinja string. This implies to consider the jinja strings as {py:f-strings}. But in f-strings, variables already use `{` as delimiters, causing certain conflict with the default {lib:jinja} delimiters.
 
-If you don't like using `[` as the basic delimiter for {l:jinja strings}, you can set one of the following options, or some mix of them:
+If you don't like using `[` as the basic delimiter for {lib:jinja strings}, you can set one of the following options, or some mix of them:
 
 (table-1)=
 ```
@@ -70,13 +70,13 @@ table 2: jinja delimiters envs
 
 # Variables
 
-When working with {l:jinja strings} we have two kinds of variables:
+When working with {lib:jinja strings} we have two kinds of variables:
 1. _inner jinja variables_, which are defined as part of the jinja string through a `[% set ... %]` block;
 2. _free jinja variables_, which are not defined inside the jinja string.
 
 So, for example, in the [above](#jinja-string) jinja string, `x`, `y` and `z` are all _free jinja variables_, while `w` is an _inner jinja var_.
 
-The variables of a {l:jinja string} are accessible as {p:attributes} corresponding to {p:properties} of the type `Jinja`:
+The variables of a {lib:jinja string} are accessible as {py:attributes} corresponding to {py:properties} of the type `Jinja`:
 
 (table-3)=
 ```
@@ -99,7 +99,7 @@ print(Jinja(my_jinja_string).inner_vars)  # {"w": "something"}
 print(Jinja(my_jinja_string).free_vars)   # ("x", "y", "z")
 ```
 
-Notice that the attributes are accessible only after initialization of the jinja strings in the `Jinja` type. However, following the {l:functions over methods} philosophy of {l:typed}, the properties above are actually defined through {l:typed functions}:
+Notice that the attributes are accessible only after initialization of the jinja strings in the `Jinja` type. However, following the {lib:functions over methods} philosophy of {lib:typed}, the properties above are actually defined through {lib:typed functions}:
 
 (table-4)=
 ```
@@ -125,9 +125,9 @@ print(jinja_free_vars(my_jinja_string))   # ("x", "y", "z")
 
 # Rendering
 
-The main objective of using {l:jinja strings} is to create "dynamic HTML", where the dynamic aspects is provided precisely by the existence of {f:free jinja vars}, which are leaved to be fixed _a posteriori_. The process of transforming jinja strings into raw HTML is called _rendering_.
+The main objective of using {lib:jinja strings} is to create "dynamic HTML", where the dynamic aspects is provided precisely by the existence of {f:free jinja vars}, which are leaved to be fixed _a posteriori_. The process of transforming jinja strings into raw HTML is called _rendering_.
 
-Notice that  the {l:inner vars} of a {l:jinja string} already comes equipped with a value, which is set in the moment of its definition. To be rendered we then need to set values to its {l:free jinja vars}. This is done by defining a _jinja context_, which is a dictionary whose keys are strings with the names of the {l:free jinja vars}, and the values are the values that will be set to them.
+Notice that  the {lib:inner vars} of a {lib:jinja string} already comes equipped with a value, which is set in the moment of its definition. To be rendered we then need to set values to its {lib:free jinja vars}. This is done by defining a _jinja context_, which is a dictionary whose keys are strings with the names of the {lib:free jinja vars}, and the values are the values that will be set to them.
 
 As example of _jinja context_ for the [above](#jinja-string) jinja string would be:
 
@@ -139,7 +139,7 @@ my_context = {
 }
 ```
 
-One time defined the context, one renders a {l:jinja string} by making use of the `.render` method:
+One time defined the context, one renders a {lib:jinja string} by making use of the `.render` method:
 
 ```python
 from comp import Jinja
@@ -148,7 +148,7 @@ from some.where import my_jinja_string
 Jinja(my_jinja_string).render(**my_context)
 ```
 
-Or, without initialization, through the {l:typed function} `render`:
+Or, without initialization, through the {lib:typed function} `render`:
 
 ```python
 from comp import render
@@ -159,18 +159,18 @@ render(my_jinja_string)
 
 # Factories
 
-Inside {l:comp} we find some _jinja factories_. These are {l:type factories} constructing subtypes of `Jinja`. In other words, are {l:typed functions} taking values into `SUB(Jinja)`, the {l:type} of subtypes of `Jinja`.
+Inside {lib:comp} we find some _jinja factories_. These are {lib:type factories} constructing subtypes of `Jinja`. In other words, are {lib:typed functions} taking values into `SUB(Jinja)`, the {lib:type} of subtypes of `Jinja`.
 
 # Highlight
 
-To conclude, let us talk briefly on how to improve syntax highlight while working with {l:jinja strings}. We have two points to consider:
+To conclude, let us talk briefly on how to improve syntax highlight while working with {lib:jinja strings}. We have two points to consider:
 1. jinja strings are used inside files with Python filetype;
 2. jinja strings use delimiters differing from the standard {jinja} delimiters.
 
-From the first point, to get a nice highlighting one needs to mix both Python and Jinja highlights. This can be done by means of creating a custom filetype or by maintaining the Python filetype and using some regex filtering that includes Jinja highlight inside Python highlighting precisely for {l:jinja strings}.
+From the first point, to get a nice highlighting one needs to mix both Python and Jinja highlights. This can be done by means of creating a custom filetype or by maintaining the Python filetype and using some regex filtering that includes Jinja highlight inside Python highlighting precisely for {lib:jinja strings}.
 
-Since in {l:comp} the only non-pythonic feature we will need is highlighting, the second option is highly preferable. Indeed, notice that {l:jinja strings} are defined as:
-1. Python {p:strings}
+Since in {lib:comp} the only non-pythonic feature we will need is highlighting, the second option is highly preferable. Indeed, notice that {lib:jinja strings} are defined as:
+1. Python {py:strings}
 2. prefixed with `jinja`
 3. that contains {jinja} syntax.
 

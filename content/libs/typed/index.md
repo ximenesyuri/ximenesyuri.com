@@ -19,7 +19,7 @@ weight: 10
 
 # About
 
-{typed} is a Python framework providing type safety and allowing universal constructions.
+{lib:typed} is a Python framework providing type safety and allowing universal constructions.
 
 ```{toc}
 ```
@@ -30,12 +30,12 @@ The framework provides a lot of _primitive types_ with a plethora of _type facto
 
 One time defined, the types can be used as type hints for _typed functions_, for which type hints are checked at runtime. 
 
-So, with {typed} you have a framework ensuring type safety by:
+So, with {lib:typed} you have a framework ensuring type safety by:
 1. defining custom types from _type factories_;
 2. using those custom types as type hints for _typed functions_;
 3. checking the type hints at runtime.
 
-For a definition of the main {typed} concepts, see [glossary](./glossary).
+For a definition of the main {lib:typed} concepts, see [glossary](./glossary).
 
 # Code
 

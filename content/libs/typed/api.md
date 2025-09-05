@@ -5,29 +5,29 @@ weight: 50
 
 # About
 
-In this documentation we present the interface to interact with {l:typed} library.
+In this documentation we present the interface to interact with {lib:typed} library.
 
 ```{toc}
 ```
 
 # Entry Points
 
-The lib {l:typed} has the following entry points, organized by entity kinds:
+The lib {lib:typed} has the following entry points, organized by entity kinds:
 
 ```
 typed/
-  ├── meta.py ............. importing the {l:metatypes}
-  ├── types.py ............ importing the {l:types}
-  ├── parametrics.py ...... importing {l:parametric types}
-  ├── factories.py ........ importing {l:type factories}
+  ├── meta.py ............. importing the {lib:metatypes}
+  ├── types.py ............ importing the {lib:types}
+  ├── parametrics.py ...... importing {lib:parametric types}
+  ├── factories.py ........ importing {lib:type factories}
   ├── decorators.py ....... importing the main {p:decorators}
-  ├── models.py ........... importing entities related to {l:models}
-  ├── poly.py ............. importing entities relates to {l:parametric polymorphisms}
-  ├── extra.py  ........... importing extra {l:types} and {l:type factories}
+  ├── models.py ........... importing entities related to {lib:models}
+  ├── poly.py ............. importing entities relates to {lib:parametric polymorphisms}
+  ├── extra.py  ........... importing extra {lib:types} and {lib:type factories}
   └── helper.py ........... importing helper {p:functions}
 ```
 
-Thus, for example, to use some {l:metatype}, a {l:type}, a {l:type factory}, and so on, you can do:
+Thus, for example, to use some {lib:metatype}, a {lib:type}, a {lib:type factory}, and so on, you can do:
 
 ```python
 from typed.meta       import SOME_META
@@ -46,7 +46,7 @@ typed/
   └── __init__.py ............. importing everything
 ```
 
-So, alternatively, to use a {l:metatype}, {l:type}, and so on, ou could also do:
+So, alternatively, to use a {lib:metatype}, {lib:type}, and so on, ou could also do:
 
 ```python
 from typed import SOME_META, SomeType, SomeFactory, ...
@@ -259,12 +259,12 @@ table 12: generic factories
 ```
 decorator         arguments                       description
 ----------------------------------------------------------------------------------------------------
-@hinted           func: Function                  validate and create a {l:hinted function}
-@typed            arg: Union(TYPE, Function)      validate and create a {l:typed function} or variable
-@condition        func: Function                  validate and create a {l:condition}
-@factory          func: Function                  validate and create a {l:type factory}
-@operation        func: Function                  validate and create a {l:type operation}
-@dependent        func: Function                  validate and create a {l:dependent type}
+@hinted           func: Function                  validate and create a {lib:hinted function}
+@typed            arg: Union(TYPE, Function)      validate and create a {lib:typed function} or variable
+@condition        func: Function                  validate and create a {lib:condition}
+@factory          func: Function                  validate and create a {lib:type factory}
+@operation        func: Function                  validate and create a {lib:type operation}
+@dependent        func: Function                  validate and create a {lib:dependent type}
 ----------------------------------------------------------------------------------------------------
 table 13: decorators
 ```

@@ -1,0 +1,19 @@
+general/conceito:
+  terms: ["conceito", "conceitos"]
+  url: /notes/glossary/general#conceito
+
+general/contexto:
+  terms: ["contexto"]
+  url: /notes/glossary/general#contexto
+
+general/linguagem:
+  terms: ["linguagem", "linguagens"]
+  url: /notes/glossary/general#linguagem
+
+general/metalinguagem:
+  terms: ["metalinguagem", "metalinguagens"]
+  utl: /notes/glossary/general#metalinguagem
+
+general/vocabulario:
+  terms: ["vocabulário", "vocabulary", "vocabulários", "vocabularies"]
+  url: /notes/glossary/general#vocabulario

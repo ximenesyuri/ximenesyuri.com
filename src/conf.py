@@ -66,19 +66,23 @@ autolink = {
         "class": "autolink-global",
         "entries": yml.read(path.join(YML_DIR, "global.yml"))
     },
-    "l": {
+    "lib": {
         "class": "autolink-libs",
-        "entries": yml.read(path.join(YML_DIR, "libs.yml"))
+        "entries": yml.read(path.join(YML_DIR, "libs/libs.yml"))
     },
-    "n": {
+    "notes": {
         "class": "autolink-notes",
         "entries": yml.read(path.join(YML_DIR, "notes.yml"))
     },
-    "g": {
-        "class": "autolink-glossary",
-        "entries": yml.read(path.join(YML_DIR, "glossary.yml"))
+    "general": {
+        "class": "autolink-glossary-general",
+        "entries": yml.read(path.join(YML_DIR, "glossary/general.yml"))
     },
-    "p": {
+    "logic": {
+        "class": "autolink-glossary-logic",
+        "entries": yml.read(path.join(YML_DIR, "glossary/logic.yml"))
+    },
+    "py": {
         "class": "autolink-python",
         "entries": yml.read(path.join(YML_DIR, "python.yml"))
     },
@@ -88,5 +92,5 @@ autolink = {
 libs = ["comp", "typed"]
 
 for lib in libs:
-    lib_yml = path.join(YML_DIR, f"{lib}.yml")
-    autolink['l']['entries'].update(yml.read(lib_yml))
+    lib_yml = path.join(YML_DIR, f"libs/{lib}.yml")
+    autolink['lib']['entries'].update(yml.read(lib_yml))
