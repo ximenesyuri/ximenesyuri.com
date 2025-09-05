@@ -350,25 +350,6 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">├─</span>
             
-                <a href="/libs/comp/statics">statics</a>
-            
-            
-        </li>
-    
-
-                    
-                        
-    
-    
-        
-            
-        
-    
-
-    
-        <li class="sidebar-li">
-            <span class="sidebar-prefix-1">├─</span>
-            
                 <a href="/libs/comp/compatibility">compatibility</a>
             
             
@@ -518,25 +499,25 @@
 <section id="overview-components">
 <h1>Overview: Components<a class="headerlink" href="#overview-components" title="Link to this heading"></a></h1>
 <p>The lib <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> deals with <em>components</em>. These are <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed functions</a> (in the sense of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>) which return <em>jinja strings</em>, i.e, Python strings of type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>, which contain <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> syntax. Components should also be defined using the <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> decorator.</p>
-<p>The typical way to define a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> is to first define a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#model">model</a> (in the sense of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, typically a {l:optional model}) containing the <em>structure</em> of the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>, and then take this model as argument:</p>
+<p>The typical way to define a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> is to first define a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#model">model</a> (in the sense of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, typically a {lib:optional model}) containing the <em>structure</em> of the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>, and then take this model as argument:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">optional</span><span class="p">,</span> <span class="n">null</span><span class="p">,</span> <span class="n">SomeType</span><span class="p">,</span> <span class="n">OtherType</span>
 <span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span>
 <span class="linenos"> 3</span>
 <span class="linenos"> 4</span><span class="nd">@optional</span>
-<span class="linenos"> 5</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">:</span>
+<span class="linenos"> 5</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModelib</span><span class="p">:</span>
 <span class="linenos"> 6</span>    <span class="n">some_var</span><span class="p">:</span>  <span class="n">SomeType</span><span class="o">=</span><span class="n">null</span><span class="p">(</span><span class="n">SomeType</span><span class="p">)</span>
 <span class="linenos"> 7</span>    <span class="n">other_var</span><span class="p">:</span> <span class="n">OtherType</span><span class="o">=</span><span class="n">null</span><span class="p">(</span><span class="n">OtherType</span><span class="p">)</span>
 <span class="linenos"> 8</span>    <span class="o">...</span>
 <span class="linenos"> 9</span>
 <span class="linenos">10</span><span class="nd">@component</span>
-<span class="linenos">11</span><span class="k">def</span><span class="w"> </span><span class="nf">my_comp</span><span class="p">(</span><span class="n">my_comp</span><span class="p">:</span> <span class="n">MyModel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
+<span class="linenos">11</span><span class="k">def</span><span class="w"> </span><span class="nf">my_comp</span><span class="p">(</span><span class="n">my_compy</span><span class="p">:</span> <span class="n">MyModel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jinja</span><span class="p">:</span>
 <span class="linenos">12</span>    <span class="o">...</span>
 <span class="linenos">13</span>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;jinja</span>
 <span class="linenos">14</span><span class="s2">    ...</span>
 <span class="linenos">15</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Components define a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> and there are four main <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-operation">component operations</a> between them, each of them corresponding to an arithmetic symbol ({p:magic methods} in Python):</p>
+<p>Components define a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> and there are four main <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-operation">component operations</a> between them, each of them corresponding to an arithmetic symbol ({py:magic methods} in Python):</p>
 <div class="captioned-table" id="table-1">
 <table class="custom-pre-table docutils align-default">
 <thead>
@@ -581,7 +562,7 @@
 <h1>Overview: Special Vars<a class="headerlink" href="#overview-special-vars" title="Link to this heading"></a></h1>
 <p>A <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> have certain <em>special vars</em>:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">__context__</span></code>: defines the {l:local context} of the component, where needed information to <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-rendering">render</a> it is introduced (see <a class="reference internal" href="#overview-rendering"><span class="xref myst">below</span></a>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__context__</span></code>: defines the {lib:local context} of the component, where needed information to <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-rendering">render</a> it is introduced (see <a class="reference internal" href="#overview-rendering"><span class="xref myst">below</span></a>);</p></li>
 <li><p>vars of type <code class="docutils literal notranslate"><span class="pre">Inner</span></code>: used as placeholder to introduced content of other components;</p></li>
 <li><p>vars of type <code class="docutils literal notranslate"><span class="pre">Content</span></code>: receive <em>static context</em> in the form of Markdown or ReStructuredText.</p></li>
 </ol>
@@ -595,7 +576,7 @@
 <span class="linenos">3</span><span class="n">html</span> <span class="o">=</span> <span class="n">render</span><span class="p">(</span><span class="n">my_comp</span><span class="p">,</span> <span class="o">**</span><span class="n">context</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>To <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-rendering">render</a> a component one needs to pass a <em>context</em>, which is a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/datamodel.html#dictionaries">dictionary</a>. It attaches values to each argument of the component, as well as to other {l:free variables}.</p>
+<p>To <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-rendering">render</a> a component one needs to pass a <em>context</em>, which is a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/datamodel.html#dictionaries">dictionary</a>. It attaches values to each argument of the component, as well as to other {lib:free variables}.</p>
 <p>The rendering process can be customized to produce optimized raw HTML by passing certain special variables to <code class="docutils literal notranslate"><span class="pre">render</span></code>:</p>
 <div class="captioned-table" id="id1">
 <table class="custom-pre-table docutils align-default">
@@ -637,7 +618,6 @@
 <li><p><a class="reference internal" href="components.html">components</a></p></li>
 <li><p><a class="reference internal" href="models.html">models</a></p></li>
 <li><p><a class="reference internal" href="rendering.html">rendering</a></p></li>
-<li><p><a class="reference internal" href="statics.html">statics</a></p></li>
 <li><p><a class="reference internal" href="compatibility.html">compatibility</a></p></li>
 <li><p><a class="reference internal" href="entities.html">list of entities</a></p></li>
 <li><p><a class="reference internal" href="glossary.html">glossary</a></p></li>
@@ -649,7 +629,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/09/04 at 23:23</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/09/05 at 10:18</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>

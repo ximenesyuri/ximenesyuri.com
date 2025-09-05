@@ -350,25 +350,6 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">├─</span>
             
-                <a href="/libs/comp/statics">statics</a>
-            
-            
-        </li>
-    
-
-                    
-                        
-    
-    
-        
-            
-        
-    
-
-    
-        <li class="sidebar-li">
-            <span class="sidebar-prefix-1">├─</span>
-            
                 <a href="/libs/comp/compatibility">compatibility</a>
             
             
@@ -562,7 +543,7 @@
 <div><p><a class="reference internal" href="#example-1">Example</a>.</p>
 <ol class="arabic simple">
 <li><p>from <code class="docutils literal notranslate"><span class="pre">typing</span></code>: <code class="docutils literal notranslate"><span class="pre">Union</span></code>, <code class="docutils literal notranslate"><span class="pre">List</span></code>, <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>, <code class="docutils literal notranslate"><span class="pre">Dict</span></code>, <code class="docutils literal notranslate"><span class="pre">Set</span></code>, …</p></li>
-<li><p>additional: <code class="docutils literal notranslate"><span class="pre">Prod</span></code>, <code class="docutils literal notranslate"><span class="pre">UProd</span></code>, <code class="docutils literal notranslate"><span class="pre">Null</span></code>, …</p></li>
+<li><p>additionalib: <code class="docutils literal notranslate"><span class="pre">Prod</span></code>, <code class="docutils literal notranslate"><span class="pre">UProd</span></code>, <code class="docutils literal notranslate"><span class="pre">Null</span></code>, …</p></li>
 </ol>
 </div></blockquote>
 <p>Types have a semantics given by a certain class of sets. Among the types, we have typed functions, so we can think of the category <code class="docutils literal notranslate"><span class="pre">TYPE</span></code>, where objects are types and morphisms are typed functions.</p>
@@ -613,7 +594,7 @@
 <span class="linenos">2</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">model</span><span class="p">,</span> <span class="n">Optional</span>
 <span class="linenos">3</span>
 <span class="linenos">4</span><span class="nd">@model</span>
-<span class="linenos">5</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">:</span>
+<span class="linenos">5</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModelib</span><span class="p">:</span>
 <span class="linenos">6</span>    <span class="n">x</span><span class="p">:</span> <span class="n">SomeType</span>
 <span class="linenos">7</span>    <span class="n">y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">(</span><span class="n">OtherType</span><span class="p">,</span> <span class="n">some_value</span><span class="p">)</span>
 </pre></div>
@@ -652,11 +633,11 @@
 </section>
 <section id="v0-4-3-introduction-of-optional-decorator">
 <h1>v0.4.3: introduction of <code class="docutils literal notranslate"><span class="pre">&#64;optional</span></code> decorator<a class="headerlink" href="#v0-4-3-introduction-of-optional-decorator" title="Link to this heading"></a></h1>
-<p>In some cases, we need to build models where all inputs are optional. In the new version of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, a decorator to facilitate the construction of this type of model:</p>
+<p>In some cases, we need to build models where all inputs are optional. In the new version of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, a decorator to facilitate the construction of this type of modelib:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">optional</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="nd">@optional</span>
-<span class="linenos">4</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">:</span>
+<span class="linenos">4</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModelib</span><span class="p">:</span>
 <span class="linenos">5</span>    <span class="n">some_var</span><span class="p">:</span> <span class="n">SomeType</span>
 <span class="linenos">6</span>    <span class="n">other_var</span><span class="p">:</span> <span class="n">OtherType</span> <span class="o">=</span> <span class="n">some_value</span>
 <span class="linenos">7</span>    <span class="o">...</span>
@@ -666,7 +647,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">model</span><span class="p">,</span> <span class="n">Optional</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="nd">@model</span>
-<span class="linenos">4</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">:</span>
+<span class="linenos">4</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModelib</span><span class="p">:</span>
 <span class="linenos">5</span>    <span class="n">some_var</span><span class="p">:</span> <span class="n">Optional</span><span class="p">(</span><span class="n">Maybe</span><span class="p">(</span><span class="n">SomeType</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
 <span class="linenos">6</span>    <span class="n">other_var</span><span class="p">:</span> <span class="n">Optional</span><span class="p">(</span><span class="n">OtherType</span><span class="p">,</span> <span class="n">some_value</span><span class="p">)</span>
 <span class="linenos">7</span>    <span class="o">...</span>
@@ -677,7 +658,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">optional</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="nd">@optional</span><span class="p">(</span><span class="n">nullable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="linenos">4</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">:</span>
+<span class="linenos">4</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModelib</span><span class="p">:</span>
 <span class="linenos">5</span>    <span class="n">some_var</span><span class="p">:</span> <span class="n">SomeType</span>
 <span class="linenos">6</span>    <span class="n">other_var</span><span class="p">:</span> <span class="n">OtherType</span> <span class="o">=</span> <span class="n">some_value</span>
 <span class="linenos">7</span>    <span class="o">...</span>
@@ -687,7 +668,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">model</span><span class="p">,</span> <span class="n">Optional</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="nd">@model</span>
-<span class="linenos">4</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">:</span>
+<span class="linenos">4</span><span class="k">class</span><span class="w"> </span><span class="nc">MyModelib</span><span class="p">:</span>
 <span class="linenos">5</span>    <span class="n">some_var</span><span class="p">:</span> <span class="n">Optional</span><span class="p">(</span><span class="n">SomeType</span><span class="p">,</span> <span class="n">null</span><span class="p">(</span><span class="n">SomeType</span><span class="p">))</span>
 <span class="linenos">6</span>    <span class="n">other_var</span><span class="p">:</span> <span class="n">Optional</span><span class="p">(</span><span class="n">OtherType</span><span class="p">,</span> <span class="n">some_value</span><span class="p">)</span>
 <span class="linenos">7</span>    <span class="o">...</span>
@@ -762,7 +743,7 @@
 </section>
 <section id="v0-5-2-review-the-basic-types">
 <h1>v0.5.2: review the basic types<a class="headerlink" href="#v0-5-2-review-the-basic-types" title="Link to this heading"></a></h1>
-<p>In <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> is suppose to be constructed from an {l:inner metatype}. Previously we have applied this definition to all <em>constructed</em> types, meaning that they are not Python <em>builtin types</em>. So, for example, previously:</p>
+<p>In <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> is suppose to be constructed from an {lib:inner metatype}. Previously we have applied this definition to all <em>constructed</em> types, meaning that they are not Python <em>builtin types</em>. So, for example, previously:</p>
 <div class="captioned-table" id="table-1">
 <table class="custom-pre-table docutils align-default">
 <thead>
@@ -793,7 +774,7 @@
 </table>
 <p><a class="table-caption reference external" href="#table-1">table 1</a></p>
 </div>
-<p>In version v0.5.2 these types are now <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">typed types</a>, so that are constructed from {l:inner metatypes}.</p>
+<p>In version v0.5.2 these types are now <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">typed types</a>, so that are constructed from {lib:inner metatypes}.</p>
 </section>
 <section id="v0-5-3-symmetrization-of-basic-factories">
 <h1>v0.5.3: symmetrization of basic factories<a class="headerlink" href="#v0-5-3-symmetrization-of-basic-factories" title="Link to this heading"></a></h1>
@@ -868,7 +849,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/09/04 at 23:23</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/09/05 at 10:18</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>

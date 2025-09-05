@@ -350,25 +350,6 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">├─</span>
             
-                <a href="/libs/comp/statics">statics</a>
-            
-            
-        </li>
-    
-
-                    
-                        
-    
-    
-        
-            
-        
-    
-
-    
-        <li class="sidebar-li">
-            <span class="sidebar-prefix-1">├─</span>
-            
                 <a href="/libs/comp/compatibility">compatibility</a>
             
             
@@ -563,7 +544,7 @@
 <section id="context">
 <h1>Context<a class="headerlink" href="#context" title="Link to this heading"></a></h1>
 <p>As we will see in the <a class="reference internal" href="rendering"><span class="doc std std-doc">rendering</span></a> documentation, not only <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a> but also <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a> can be rendered. Recall that to render a jinja string we need to fix all their <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-free-var">jinja free vars</a>, which is done by providing a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-context">jinja context</a>. Similarly, to render a component we need to provide a <em>component context</em>.</p>
-<p>Instead of providing the entire context while rendering a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>, one can endow it with a <em>local context</em> along its definition, which is automatically included in the {l:component context}, simplifying a lot the rendering process. This is done through a special {l:parameter} <code class="docutils literal notranslate"><span class="pre">__context__</span></code>.</p>
+<p>Instead of providing the entire context while rendering a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>, one can endow it with a <em>local context</em> along its definition, which is automatically included in the {lib:component context}, simplifying a lot the rendering process. This is done through a special {lib:parameter} <code class="docutils literal notranslate"><span class="pre">__context__</span></code>.</p>
 <p>There are two cases where the use of <code class="docutils literal notranslate"><span class="pre">__context__</span></code> is strongly recommended:</p>
 <ol class="arabic simple">
 <li><p>when using <a class="autolink autolink-python reference external" href="https://docs.python.org/3/library/functions.html#locals">local vars</a> inside the <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> syntax of the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a>;</p></li>
@@ -571,7 +552,7 @@
 </ol>
 <p>For example, these cases occur when one needs to (see below):</p>
 <ol class="arabic simple">
-<li><p>loop with <code class="docutils literal notranslate"><span class="pre">[%</span> <span class="pre">for</span> <span class="pre">...</span>&#160; <span class="pre">%]</span></code> through a {l:local var};</p></li>
+<li><p>loop with <code class="docutils literal notranslate"><span class="pre">[%</span> <span class="pre">for</span> <span class="pre">...</span>&#160; <span class="pre">%]</span></code> through a {lib:local var};</p></li>
 <li><p>add something conditionally with <code class="docutils literal notranslate"><span class="pre">[%</span> <span class="pre">if</span> <span class="pre">...</span> <span class="pre">%]</span></code> depending on a local var or an external component.</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typed</span><span class="w"> </span><span class="kn">import</span> <span class="n">SomeType</span><span class="p">,</span> <span class="o">...</span>
@@ -604,7 +585,7 @@
 <section id="bounding">
 <h1>Bounding<a class="headerlink" href="#bounding" title="Link to this heading"></a></h1>
 <p>In a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>, each parameter appearing in its <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> is a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-free-var">free jinja var</a>, so that it need to be fixed in the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-context">jinja context</a>.  A <em>leak</em> in a component is a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-free-var">jinja free var</a> of the underlying jinja string which does not corresponds to a component <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-parameter">parameter</a>.  For example, the cases listed in the previous section are typical situations where leaks occur.</p>
-<p>A <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> is said to be <em>bounded</em> if every leak is declared in the {l:local context} <code class="docutils literal notranslate"><span class="pre">__context__</span></code>.</p>
+<p>A <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> is said to be <em>bounded</em> if every leak is declared in the {lib:local context} <code class="docutils literal notranslate"><span class="pre">__context__</span></code>.</p>
 <blockquote>
 <div><p>The best practice is to always try to build <em>bounded components</em>.</p>
 </div></blockquote>
@@ -656,11 +637,11 @@
 <span class="linenos">10</span><span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>The <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">Inner</span></code> is a presentation of the <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> type. This means that it only accept <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a>. It is typically used to receive the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> of other <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>, in some sort of {l:component concatenation}.</p>
+<p>The <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">Inner</span></code> is a presentation of the <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> type. This means that it only accept <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a>. It is typically used to receive the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> of other <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>, in some sort of {lib:component concatenation}.</p>
 <p>One can filter the type <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> by looking at <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a> that have a fixed number of <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#inner-var">inner vars</a>. Indeed, when viewed as a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-callable">callable entity</a>, the type <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> accepts an integer <code class="docutils literal notranslate"><span class="pre">inners</span> <span class="pre">in</span> <span class="pre">Int</span></code> such that:</p>
 <ol class="arabic simple">
 <li><p>for <code class="docutils literal notranslate"><span class="pre">inners</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">COMPONENT(inners)</span></code> is the subtype of <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> consisting of all <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a> that have precisely <code class="docutils literal notranslate"><span class="pre">inners</span></code> <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#inner-var">inner vars</a>;</p></li>
-<li><p>for <code class="docutils literal notranslate"><span class="pre">inners</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">COMPONENT(inners)</span></code> is the subtype of <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> of all <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a> that have <strong>any</strong> number of <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#inner-var">inner vars</a>. Thus, of course, there is a {l:type equivalence} between <code class="docutils literal notranslate"><span class="pre">COMPONENT(inners&lt;0)</span></code> and <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>.</p></li>
+<li><p>for <code class="docutils literal notranslate"><span class="pre">inners</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">COMPONENT(inners)</span></code> is the subtype of <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> of all <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a> that have <strong>any</strong> number of <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#inner-var">inner vars</a>. Thus, of course, there is a {lib:type equivalence} between <code class="docutils literal notranslate"><span class="pre">COMPONENT(inners&lt;0)</span></code> and <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>.</p></li>
 </ol>
 </section>
 <section id="contents">
@@ -675,7 +656,7 @@
 <p>As happens with <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#inner-var">inner vars</a>, the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#content-var">content vars</a> also filter the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> through a integer parameter, here called <code class="docutils literal notranslate"><span class="pre">contents</span></code>:</p>
 <ol class="arabic simple">
 <li><p>for <code class="docutils literal notranslate"><span class="pre">contents</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">COMPONENT(contents)</span></code> is the subtype of <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code> given by all <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a> that have precisely <code class="docutils literal notranslate"><span class="pre">contents</span></code> <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#content-var">content vars</a>;</p></li>
-<li><p>for <code class="docutils literal notranslate"><span class="pre">contents</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">COMPONENT(contents)</span></code> {l:type equivalent} to <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>.</p></li>
+<li><p>for <code class="docutils literal notranslate"><span class="pre">contents</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">COMPONENT(contents)</span></code> {lib:type equivalent} to <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>.</p></li>
 </ol>
 <blockquote>
 <div><p>Of course, the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> of all <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a> can be simultaneously filtered by both <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#inner-var">inner vars</a> and <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#content-var">content vars</a>, producing subtypes <code class="docutils literal notranslate"><span class="pre">COMPONENT(inners,</span> <span class="pre">contents)</span></code>.</p>
@@ -714,7 +695,7 @@
 </table>
 <p><a class="table-caption reference external" href="#table-1">table 1: component attributes</a></p>
 </div>
-<p>From the {l:functions over methods} philosophy of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, such <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-attribute">attributes</a> can also be obtained from <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed functions</a>:</p>
+<p>From the {lib:functions over methods} philosophy of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, such <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-attribute">attributes</a> can also be obtained from <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed functions</a>:</p>
 <div class="captioned-table" id="table-2">
 <table class="custom-pre-table docutils align-default">
 <thead>
@@ -760,7 +741,7 @@
 <li><p>receives a component with a single <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#inner-var">inner var</a> and another arbitrary component, producing a new component whose <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> is obtained by replacing the placeholder given by <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#inner-var">inner var</a> in the first component with the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> of the second component.</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">eval:</span> <span class="pre">Prod(COMPONENT,</span> <span class="pre">Dict(Any))</span> <span class="pre">-&gt;</span> <span class="pre">COMPONENT</span></code>:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">evalib:</span> <span class="pre">Prod(COMPONENT,</span> <span class="pre">Dict(Any))</span> <span class="pre">-&gt;</span> <span class="pre">COMPONENT</span></code>:</p>
 <ul class="simple">
 <li><p>receives a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> and a list with keys and values, returning the component obtained by fixing each variable associated to a <em>key</em> with the corresponding <em>value</em>, leaving the other variables unchanged.</p></li>
 </ul>
@@ -915,7 +896,6 @@
 <li><p><a class="reference internal" href="jinja.html">jinja</a></p></li>
 <li><p><a class="reference internal" href="models.html">models</a></p></li>
 <li><p><a class="reference internal" href="rendering.html">rendering</a></p></li>
-<li><p><a class="reference internal" href="statics.html">statics</a></p></li>
 <li><p><a class="reference internal" href="compatibility.html">compatibility</a></p></li>
 <li><p><a class="reference internal" href="entities.html">list of entities</a></p></li>
 <li><p><a class="reference internal" href="glossary.html">glossary</a></p></li>
@@ -927,7 +907,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/09/04 at 23:23</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/09/05 at 10:18</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>

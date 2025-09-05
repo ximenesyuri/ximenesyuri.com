@@ -350,25 +350,6 @@
         <li class="sidebar-li">
             <span class="sidebar-prefix-1">├─</span>
             
-                <a href="/libs/comp/statics">statics</a>
-            
-            
-        </li>
-    
-
-                    
-                        
-    
-    
-        
-            
-        
-    
-
-    
-        <li class="sidebar-li">
-            <span class="sidebar-prefix-1">├─</span>
-            
                 <a href="/libs/comp/compatibility">compatibility</a>
             
             
@@ -542,8 +523,8 @@
 </section>
 <section id="delimiters">
 <h1>Delimiters<a class="headerlink" href="#delimiters" title="Link to this heading"></a></h1>
-<p>You should note that the <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> code provided in the <a class="reference internal" href="#jinja-string">previous</a> <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> uses delimiters differing from the standard ones: while {l:jinja} uses <code class="docutils literal notranslate"><span class="pre">{%</span></code>, <code class="docutils literal notranslate"><span class="pre">{{</span></code> and <code class="docutils literal notranslate"><span class="pre">{#</span></code> as default for blocks, variables and comments, respectively, we are using <code class="docutils literal notranslate"><span class="pre">[</span></code>, <code class="docutils literal notranslate"><span class="pre">[[</span></code> and <code class="docutils literal notranslate"><span class="pre">[#</span></code>.</p>
-<p>The reason is that as we will see in <a class="reference internal" href="components"><span class="doc std std-doc">components</span></a> documentation, in <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a> are typically returned by functions, and one would like to use variables of the function inside the return jinja string. This implies to consider the jinja strings as <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/lexical_analysis.html#f-strings">f-strings</a>. But in f-strings, variables already use <code class="docutils literal notranslate"><span class="pre">{</span></code> as delimiters, causing certain conflict with the default {l:jinja} delimiters.</p>
+<p>You should note that the <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja2</a> code provided in the <a class="reference internal" href="#jinja-string">previous</a> <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> uses delimiters differing from the standard ones: while {lib:jinja} uses <code class="docutils literal notranslate"><span class="pre">{%</span></code>, <code class="docutils literal notranslate"><span class="pre">{{</span></code> and <code class="docutils literal notranslate"><span class="pre">{#</span></code> as default for blocks, variables and comments, respectively, we are using <code class="docutils literal notranslate"><span class="pre">[</span></code>, <code class="docutils literal notranslate"><span class="pre">[[</span></code> and <code class="docutils literal notranslate"><span class="pre">[#</span></code>.</p>
+<p>The reason is that as we will see in <a class="reference internal" href="components"><span class="doc std std-doc">components</span></a> documentation, in <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a> are typically returned by functions, and one would like to use variables of the function inside the return jinja string. This implies to consider the jinja strings as <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/lexical_analysis.html#f-strings">f-strings</a>. But in f-strings, variables already use <code class="docutils literal notranslate"><span class="pre">{</span></code> as delimiters, causing certain conflict with the default {lib:jinja} delimiters.</p>
 <p>If you don’t like using <code class="docutils literal notranslate"><span class="pre">[</span></code> as the basic delimiter for <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a>, you can set one of the following options, or some mix of them:</p>
 <div class="captioned-table" id="table-1">
 <table class="custom-pre-table docutils align-default">
@@ -636,7 +617,7 @@
 <span class="linenos">6</span><span class="nb">print</span><span class="p">(</span><span class="n">Jinja</span><span class="p">(</span><span class="n">my_jinja_string</span><span class="p">)</span><span class="o">.</span><span class="n">free_vars</span><span class="p">)</span>   <span class="c1"># (&quot;x&quot;, &quot;y&quot;, &quot;z&quot;)</span>
 </pre></div>
 </div>
-<p>Notice that the attributes are accessible only after initialization of the jinja strings in the <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> type. However, following the {l:functions over methods} philosophy of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, the properties above are actually defined through <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed functions</a>:</p>
+<p>Notice that the attributes are accessible only after initialization of the jinja strings in the <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> type. However, following the {lib:functions over methods} philosophy of <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a>, the properties above are actually defined through <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed functions</a>:</p>
 <div class="captioned-table" id="table-4">
 <table class="custom-pre-table docutils align-default">
 <thead>
@@ -728,7 +709,6 @@
 <li><p><a class="reference internal" href="components.html">components</a></p></li>
 <li><p><a class="reference internal" href="models.html">models</a></p></li>
 <li><p><a class="reference internal" href="rendering.html">rendering</a></p></li>
-<li><p><a class="reference internal" href="statics.html">statics</a></p></li>
 <li><p><a class="reference internal" href="compatibility.html">compatibility</a></p></li>
 <li><p><a class="reference internal" href="entities.html">list of entities</a></p></li>
 <li><p><a class="reference internal" href="glossary.html">glossary</a></p></li>
@@ -740,7 +720,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/09/04 at 23:23</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/09/05 at 10:18</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
