@@ -12,4 +12,4 @@
 3. PhD in Mathematics
     - Universidade Federal de Minas Gerais, 2022
     - *Pursuing Abstraction: Problems and Ideas on Mathematics and Physics*
-    - for the moment, see [here](https://)
+    - for the moment, see [here](https://github.com/ximenesyuri/writings/blob/main/theses/phd.pdf)
