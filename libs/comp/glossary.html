@@ -490,12 +490,14 @@
 <h1>About<a class="headerlink" href="#about" title="Link to this heading"></a></h1>
 <p>Here you will find the definition for the main concepts introduced in <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a> library.</p>
 <ol class="arabic simple">
-<li><p><a class="reference internal" href="#concepts">Concepts</a></p></li>
+<li><p><a class="reference internal" href="#jinja">Jinja</a></p></li>
+<li><p><a class="reference internal" href="#components">Components</a></p></li>
+<li><p><a class="reference internal" href="#rendering">Rendering</a></p></li>
 <li><p><a class="reference internal" href="#other-docs">Other Docs</a></p></li>
 </ol>
 </section>
-<section id="concepts">
-<h1>Concepts<a class="headerlink" href="#concepts" title="Link to this heading"></a></h1>
+<section id="jinja">
+<h1>Jinja<a class="headerlink" href="#jinja" title="Link to this heading"></a></h1>
 <blockquote id="jinja-string">
 <div><p><a class="reference internal" href="#jinja-string">jinja string</a>.</p>
 <p>A <em>jinja string</em> is a Python <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/datamodel.html#immutable-sequences">string</a> preppended with the keyword <code class="docutils literal notranslate"><span class="pre">jinja</span></code>, and which contains <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> syntax. They form a type <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>, which is a subtype of <code class="docutils literal notranslate"><span class="pre">Str</span></code>, the <a class="autolink autolink-libs reference external" href="/libs/typed">typed</a> string type.</p>
@@ -510,7 +512,7 @@
 </div></blockquote>
 <blockquote id="jinja-free-var">
 <div><p><a class="reference internal" href="#jinja-free-var">jinja free var</a>.</p>
-<p>A <em>jinja free variable</em> is a variable in the <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> syntax of a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> which is <strong>not</strong> defined inside the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a>. Their values should be included in the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-context">jinja context</a> in order to <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-rendering">render</a> the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a>. They can be accessed through the attribute <code class="docutils literal notranslate"><span class="pre">.free_vars</span></code> of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> or through the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed function</a> <code class="docutils literal notranslate"><span class="pre">jinja_free_vars</span></code>.</p>
+<p>A <em>jinja free variable</em> is a variable in the <a class="autolink autolink-global reference external" href="https://jinja.palletsprojects.com/en/stable/">jinja</a> syntax of a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> which is <strong>not</strong> defined inside the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a>. Their values should be included in the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-context">jinja context</a> in order to <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#rendering">render</a> the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a>. They can be accessed through the attribute <code class="docutils literal notranslate"><span class="pre">.free_vars</span></code> of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> or through the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed function</a> <code class="docutils literal notranslate"><span class="pre">jinja_free_vars</span></code>.</p>
 </div></blockquote>
 <blockquote id="jinja-context">
 <div><p><a class="reference internal" href="#jinja-context">jinja context</a>.</p>
@@ -524,6 +526,9 @@
 <div><p><a class="reference internal" href="#jinja-factory">jinja factory</a>.</p>
 <p>A <em>jinja factory</em> is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type-factory">type factory</a> taking values into a subtype of the <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> type. An example is <code class="docutils literal notranslate"><span class="pre">Tag:</span> <span class="pre">Tuple(Str)</span> <span class="pre">-&gt;</span> <span class="pre">TYPE</span></code>, which assigns to a tuple of strings the subtype of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code> consisting of those <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a> which are delimited by the HTML tag named by some of the strings in the given tuple.</p>
 </div></blockquote>
+</section>
+<section id="components">
+<h1>Components<a class="headerlink" href="#components" title="Link to this heading"></a></h1>
 <blockquote id="component">
 <div><p><a class="reference internal" href="#component">component</a>.</p>
 <p>A <em>component</em> is a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed function</a> decorated with the <code class="docutils literal notranslate"><span class="pre">&#64;component</span></code> <a class="autolink autolink-python reference external" href="https://docs.python.org/3/glossary.html#term-decorator">decorator</a> and that returns a subtype of <code class="docutils literal notranslate"><span class="pre">Jinja</span></code>: the type of <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja strings</a>. Components form the <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#type">type</a> <code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code>. Components are typically structured by some <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-model">component model</a>.</p>
@@ -573,6 +578,37 @@
 <p>The <em>component concat</em> is a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-operation">component operation</a> <code class="docutils literal notranslate"><span class="pre">join:</span> <span class="pre">Prod(COMPONENT(1),COMPONENT)</span> <span class="pre">-&gt;</span> <span class="pre">COMPONENT</span></code> that evaluates the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#inner-var">inner var</a> of a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> with the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#jinja-strings">jinja string</a> of other component.</p>
 </div></blockquote>
 </section>
+<section id="rendering">
+<h1>Rendering<a class="headerlink" href="#rendering" title="Link to this heading"></a></h1>
+<blockquote id="id1">
+<div><p><a class="reference internal" href="#id1">rendering</a>.</p>
+<p><em>Rendering</em> is the process of turning a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> into raw HTML by means of providing a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#rendering-context">rendering context</a> and fixing {lib:rendering flags}. It is implemented as a <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed function</a> <code class="docutils literal notranslate"><span class="pre">render</span></code>.</p>
+</div></blockquote>
+<blockquote id="rendering-context">
+<div><p><a class="reference internal" href="#rendering-context">rendering context</a>.</p>
+<p>The <em>rendering context</em> is the information needed to be attached to a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> in order to <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#rendering">render</a> it. This includes, for example, values for any <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> variable any <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-leak">component leak</a>.</p>
+</div></blockquote>
+<blockquote id="rendering-flag">
+<div><p><a class="reference internal" href="#rendering-flag">rendering flag</a>.</p>
+<p>The <em>rendering flags</em> are special {py:arguments} of the <code class="docutils literal notranslate"><span class="pre">render</span></code> <a class="autolink autolink-libs reference external" href="/libs/typed/glossary#typed-function">typed function</a>, which configures the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#rendering">rendering</a> process. Examples are: <code class="docutils literal notranslate"><span class="pre">__styled__</span></code>, <code class="docutils literal notranslate"><span class="pre">__minified__</span></code>, and so on.</p>
+</div></blockquote>
+<blockquote id="rendering-style">
+<div><p><a class="reference internal" href="#rendering-style">rendering style</a>.</p>
+<p>The <em>rendering style</em> is a special feature of the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#rendering">rendering</a> process in which {lib:style strings} are automatically introduced as css classes in a <code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code> tag of the produced HTML.</p>
+</div></blockquote>
+<blockquote id="style-string">
+<div><p><a class="reference internal" href="#style-string">style string</a>.</p>
+<p>A <em>style string</em> is a string representing a css class, used as values to the attribute <code class="docutils literal notranslate"><span class="pre">&lt;comp&gt;_class</span></code> of a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>, and which are converted to the css class they represent during the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#rendering">rendering</a> process. Typically the css class is composed by a single css property, so that the {lib:style string} is named based into a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-property">style property</a>. For example, <code class="docutils literal notranslate"><span class="pre">margin-top-10px</span></code> is a {lib:style string} with a single <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-property">style property</a>: <code class="docutils literal notranslate"><span class="pre">margin-top</span></code>.</p>
+</div></blockquote>
+<blockquote id="style-property">
+<div><p><a class="reference internal" href="#style-property">style property</a>.</p>
+<p>A <em>style property</em> is a css property inside the css class represented by a {lib:style string}.</p>
+</div></blockquote>
+<blockquote id="style-alias">
+<div><p><a class="reference internal" href="#style-alias">style alias</a>.</p>
+<p>A given css class can be represented by multiples {lib:style strings}. Given a {lib:style string}, the other {lib:style strings} represented the same css class are <em>style aliases</em> for the given one. When the {lib:style string} corresponds to a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-property">style property</a>, then their <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-alias">style aliases</a> are constructed from aliases for the underlying <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-property">style property</a>. For example, the {lib:style string} <code class="docutils literal notranslate"><span class="pre">margin-top-10px</span></code> corresponds to the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-property">style property</a> <code class="docutils literal notranslate"><span class="pre">margin-top</span></code>, which have <code class="docutils literal notranslate"><span class="pre">mt</span></code> as an aliases, defining the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-alias">style alias</a> <code class="docutils literal notranslate"><span class="pre">mt-10px</span></code>.</p>
+</div></blockquote>
+</section>
 <section id="other-docs">
 <h1>Other Docs<a class="headerlink" href="#other-docs" title="Link to this heading"></a></h1>
 <ol class="arabic simple">
@@ -591,7 +627,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/09/10 at 12:56</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/09/10 at 21:24</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>

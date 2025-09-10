@@ -562,7 +562,7 @@
 <h1>Overview: Special Vars<a class="headerlink" href="#overview-special-vars" title="Link to this heading"></a></h1>
 <p>A <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a> have certain <em>special vars</em>:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">__context__</span></code>: defines the {lib:local context} of the component, where needed information to <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-rendering">render</a> it is introduced (see <a class="reference internal" href="#overview-rendering"><span class="xref myst">below</span></a>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__context__</span></code>: defines the {lib:local context} of the component, where needed information to <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#rendering">render</a> it is introduced (see <a class="reference internal" href="#overview-rendering"><span class="xref myst">below</span></a>);</p></li>
 <li><p>vars of type <code class="docutils literal notranslate"><span class="pre">Inner</span></code>: used as placeholder to introduced content of other components;</p></li>
 <li><p>vars of type <code class="docutils literal notranslate"><span class="pre">Content</span></code>: receive <em>static context</em> in the form of Markdown or ReStructuredText.</p></li>
 </ol>
@@ -576,7 +576,7 @@
 <span class="linenos">3</span><span class="n">html</span> <span class="o">=</span> <span class="n">render</span><span class="p">(</span><span class="n">my_comp</span><span class="p">,</span> <span class="o">**</span><span class="n">context</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>To <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component-rendering">render</a> a component one needs to pass a <em>context</em>, which is a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/datamodel.html#dictionaries">dictionary</a>. It attaches values to each argument of the component, as well as to other {lib:free variables}.</p>
+<p>To <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#rendering">render</a> a component one needs to pass a <em>context</em>, which is a <a class="autolink autolink-python reference external" href="https://docs.python.org/3/reference/datamodel.html#dictionaries">dictionary</a>. It attaches values to each argument of the component, as well as to other {lib:free variables}.</p>
 <p>The rendering process can be customized to produce optimized raw HTML by passing certain special variables to <code class="docutils literal notranslate"><span class="pre">render</span></code>:</p>
 <div class="captioned-table" id="id1">
 <table class="custom-pre-table docutils align-default">
@@ -629,7 +629,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/09/10 at 12:56</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/09/10 at 21:24</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
