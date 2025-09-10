@@ -90,6 +90,26 @@ comp/component-copy:
   terms: ["component copy"]
   url: /libs/comp/glossary#component-copy
 
-comp/component-rendering:
-  terms: ["render", "rendering", "component rendering"]
-  url: /libs/comp/glossary#component-rendering
+comp/rendering:
+  terms: ["render", "rendering", "component rendering", "rendered", "rendered HTML"]
+  url: /libs/comp/glossary#rendering
+
+comp/rendering-context:
+  terms: ["rendering context", "rendering contexts"]
+  url: /libs/comp/glossary#rendering-context
+
+comp/rendering-style:
+  terms: ["style", "rendering style", "styles", "rendering styles"]
+  url: /libs/comp/glossary#rendering-style
+
+comp/style-string:
+  terms: ["class string", "rendering style", "styles", "rendering styles"]
+  url: /libs/comp/glossary#style-string
+
+comp/style-property:
+  terms: ["style property", "property", "style properties", "properties"]
+  url: /libs/comp/glossary#style-property
+
+comp/style-alias:
+  terms: ["style alias", "style aliases"]
+  url: /libs/comp/glossary#style-alias

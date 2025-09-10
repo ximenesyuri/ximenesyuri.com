@@ -10,7 +10,7 @@ Here you will find the definition for the main concepts introduced in {lib:comp}
 ```{toc}
 ```
 
-# Concepts
+# Jinja
 
 (jinja-string)=
 > [jinja string](#jinja-string).
@@ -46,6 +46,8 @@ Here you will find the definition for the main concepts introduced in {lib:comp}
 > [jinja factory](#jinja-factory). 
 >
 > A _jinja factory_ is a {lib:type factory} taking values into a subtype of the `Jinja` type. An example is `Tag: Tuple(Str) -> TYPE`, which assigns to a tuple of strings the subtype of `Jinja` consisting of those {lib:jinja strings} which are delimited by the HTML tag named by some of the strings in the given tuple.
+
+# Components
 
 (component)=
 > [component](#component).
@@ -106,6 +108,44 @@ Here you will find the definition for the main concepts introduced in {lib:comp}
 > [component concat](#component-concat).
 > 
 > The _component concat_ is a {lib:component operation} `join: Prod(COMPONENT(1),COMPONENT) -> COMPONENT` that evaluates the {lib:inner var} of a {lib:component} with the {lib:jinja string} of other component.
+
+# Rendering
+
+(rendering)=
+> [rendering](#rendering). 
+> 
+> _Rendering_ is the process of turning a {lib:component} into raw HTML by means of providing a {lib:rendering context} and fixing {lib:rendering flags}. It is implemented as a {lib:typed function} `render`.
+
+(rendering-context)=
+> [rendering context](#rendering-context).
+> 
+> The _rendering context_ is the information needed to be attached to a {lib:component} in order to {lib:render} it. This includes, for example, values for any {lib:component} variable any {lib:component leak}.
+
+(rendering-flag)=
+> [rendering flag](#rendering-flag).
+> 
+> The _rendering flags_ are special {py:arguments} of the `render` {lib:typed function}, which configures the {lib:rendering} process. Examples are: `__styled__`, `__minified__`, and so on.
+
+(rendering-style)=
+> [rendering style](#rendering-style).
+> 
+> The _rendering style_ is a special feature of the {lib:component} {lib:rendering} process in which {lib:style strings} are automatically introduced as css classes in a `<style>` tag of the produced HTML.
+
+(style-string)=
+> [style string](#style-string). 
+> 
+> A _style string_ is a string representing a css class, used as values to the attribute `<comp>_class` of a {lib:component}, and which are converted to the css class they represent during the {lib:rendering} process. Typically the css class is composed by a single css property, so that the {lib:style string} is named based into a {lib:style property}. For example, `margin-top-10px` is a {lib:style string} with a single {lib:style property}: `margin-top`.
+
+(style-property)=
+> [style property](#style-property). 
+> 
+> A _style property_ is a css property inside the css class represented by a {lib:style string}.
+
+
+(style-alias)=
+> [style alias](#style-alias).
+> 
+> A given css class can be represented by multiples {lib:style strings}. Given a {lib:style string}, the other {lib:style strings} represented the same css class are _style aliases_ for the given one. When the {lib:style string} corresponds to a {lib:style property}, then their {lib:style aliases} are constructed from aliases for the underlying {lib:style property}. For example, the {lib:style string} `margin-top-10px` corresponds to the {lib:style property} `margin-top`, which have `mt` as an aliases, defining the {lib:style alias} `mt-10px`. 
 
 
 # Other Docs
