@@ -500,6 +500,7 @@
 <li><p><a class="reference internal" href="#styles-position">Styles: position</a></p></li>
 <li><p><a class="reference internal" href="#styles-float">Styles: float</a></p></li>
 <li><p><a class="reference internal" href="#styles-align">Styles: align</a></p></li>
+<li><p><a class="reference internal" href="#styles-justify">Styles: justify</a></p></li>
 <li><p><a class="reference internal" href="#styles-flex">Styles: flex</a></p></li>
 <li><p><a class="reference internal" href="#styles-space">Styles: space</a></p></li>
 <li><p><a class="reference internal" href="#styles-size">Styles: size</a></p></li>
@@ -621,6 +622,7 @@
 <section id="prefixes">
 <h1>Prefixes<a class="headerlink" href="#prefixes" title="Link to this heading"></a></h1>
 <p>One time constructed a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-string">style string</a>, one can append it with a {lib:style prefix}, producing a new <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-string">style string</a> which works only inside a specific {lib:style scope}.</p>
+<p>…</p>
 </section>
 <section id="notation">
 <h1>Notation<a class="headerlink" href="#notation" title="Link to this heading"></a></h1>
@@ -750,7 +752,83 @@
 </section>
 <section id="styles-align">
 <h1>Styles: align<a class="headerlink" href="#styles-align" title="Link to this heading"></a></h1>
-<div class="captioned-table" id="id1">
+<div class="captioned-table" id="table-4">
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>property</p></th>
+<th class="head"><p>style string</p></th>
+<th class="head"><p>aliases</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>align-items</p></td>
+<td><p>align-items-center</p></td>
+<td><p>alg-it-cnt, alg-it-c, ai-c</p></td>
+</tr>
+<tr class="row-odd"><td><p>align-items</p></td>
+<td><p>align-items-start</p></td>
+<td><p>alg-it-st, alg-it-s, ai-s</p></td>
+</tr>
+<tr class="row-even"><td><p>align-items</p></td>
+<td><p>align-items-end</p></td>
+<td><p>alg-it-end, alg-it-e, ai-e</p></td>
+</tr>
+<tr class="row-odd"><td><p>align-items</p></td>
+<td><p>align-items-flex-start</p></td>
+<td><p>alg-it-flx-st, alg-it-f-s, alg-it-fs, ai-fs</p></td>
+</tr>
+<tr class="row-even"><td><p>align-items</p></td>
+<td><p>align-items-flex-end</p></td>
+<td><p>alg-it-flx-end, alg-it-f-e, alg-it-fe, ai-fe</p></td>
+</tr>
+<tr class="row-odd"><td><p>align-items</p></td>
+<td><p>align-items-baseline</p></td>
+<td><p>alg-it-bl, ai-bl</p></td>
+</tr>
+<tr class="row-even"><td><p>align-content</p></td>
+<td><p>align-content-center</p></td>
+<td><p>alg-cont-cnt, alg-cont-c, ac-c</p></td>
+</tr>
+<tr class="row-odd"><td><p>align-content</p></td>
+<td><p>align-content-start</p></td>
+<td><p>alg-cont-st, alg-cont-s, ac-s</p></td>
+</tr>
+<tr class="row-even"><td><p>align-content</p></td>
+<td><p>align-content-end</p></td>
+<td><p>alg-cont-end, alg-cont-e, ac-e</p></td>
+</tr>
+<tr class="row-odd"><td><p>align-content</p></td>
+<td><p>align-content-flex-start</p></td>
+<td><p>alg-cont-flx-st, alg-cont-f-s, alg-cont-fs, ac-fs</p></td>
+</tr>
+<tr class="row-even"><td><p>align-content</p></td>
+<td><p>align-content-flex-end</p></td>
+<td><p>alg-cont-flx-end, alg-cont-f-e, alg-cont-fe, ac-fe</p></td>
+</tr>
+<tr class="row-odd"><td><p>align-content</p></td>
+<td><p>align-content-baseline</p></td>
+<td><p>alg-cont-bl, ac-bl</p></td>
+</tr>
+<tr class="row-even"><td><p>align-content</p></td>
+<td><p>align-content-space-between</p></td>
+<td><p>alg-cont-space-between, alg-cont-s-b, alg-cont-sb, ac-sb</p></td>
+</tr>
+<tr class="row-odd"><td><p>align-content</p></td>
+<td><p>align-content-space-around</p></td>
+<td><p>alg-cont-space-around, alg-cont-s-a, alg-cont-sa, ac-sa</p></td>
+</tr>
+<tr class="row-even"><td><p>align-content</p></td>
+<td><p>align-content-space-evenly</p></td>
+<td><p>alg-cont-space-evenly, alg-cont-s-e, alg-cont-se, ac-se</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="table-caption reference external" href="#table-4">table 4: align styles</a></p>
+</div>
+</section>
+<section id="styles-justify">
+<h1>Styles: justify<a class="headerlink" href="#styles-justify" title="Link to this heading"></a></h1>
+<div class="captioned-table" id="table-5">
 <table class="custom-pre-table docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>property</p></th>
@@ -760,29 +838,85 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>justify-items</p></td>
-<td><p>position-fixed</p></td>
-<td><p>pos-fixed, pos-fix</p></td>
+<td><p>justify-items-center</p></td>
+<td><p>just-it-center, jst-it-cnt, jst-it-c, ji-c</p></td>
 </tr>
-<tr class="row-odd"><td><p>position</p></td>
-<td><p>position-relative</p></td>
-<td><p>pos-relative, pos-rel</p></td>
+<tr class="row-odd"><td><p>justify-items</p></td>
+<td><p>justify-items-left</p></td>
+<td><p>just-it-left, just-it-left, jst-it-lft, jst-it-l, ji-l</p></td>
 </tr>
-<tr class="row-even"><td><p>position</p></td>
-<td><p>position-absolute</p></td>
-<td><p>pos-absolute, pos-abs</p></td>
+<tr class="row-even"><td><p>justify-items</p></td>
+<td><p>justify-items-right</p></td>
+<td><p>just-it-right, jst-it-rgt, jst-it-r, ji-r</p></td>
 </tr>
-<tr class="row-odd"><td><p>position</p></td>
-<td><p>position-sticky</p></td>
-<td><p>pos-sticky, pos-stk</p></td>
+<tr class="row-odd"><td><p>justify-items</p></td>
+<td><p>justify-items-start</p></td>
+<td><p>just-it-start, jst-it-st, jst-it-s, ji-s</p></td>
+</tr>
+<tr class="row-even"><td><p>justify-items</p></td>
+<td><p>justify-items-end</p></td>
+<td><p>just-it-end, jst-it-end, jst-it-e, ji-e</p></td>
+</tr>
+<tr class="row-odd"><td><p>justify-items</p></td>
+<td><p>justify-items-flex-start</p></td>
+<td><p>just-it-flex-start, jst-it-flx-st, jst-it-f-s, jst-it-fs, ji-fs</p></td>
+</tr>
+<tr class="row-even"><td><p>justify-items</p></td>
+<td><p>justify-items-flex-end</p></td>
+<td><p>just-it-flex-end, jst-it-flx-end, jst-it-f-e, jst-it-fe, ji-fe</p></td>
+</tr>
+<tr class="row-odd"><td><p>justify-items</p></td>
+<td><p>justify-items-baseline</p></td>
+<td><p>just-it-bl, ji-bl</p></td>
+</tr>
+<tr class="row-even"><td><p>justify-content</p></td>
+<td><p>justify-content-center</p></td>
+<td><p>just-cont-center, jst-cont-cnt, jst-cont-c, jc-c</p></td>
+</tr>
+<tr class="row-odd"><td><p>justify-content</p></td>
+<td><p>justify-content-left</p></td>
+<td><p>just-cont-left, just-cont-left, jst-cont-lft, jst-cont-l, jc-l</p></td>
+</tr>
+<tr class="row-even"><td><p>justify-content</p></td>
+<td><p>justify-content-right</p></td>
+<td><p>just-cont-right, jst-cont-rgt, jst-cont-r, jc-r</p></td>
+</tr>
+<tr class="row-odd"><td><p>justify-content</p></td>
+<td><p>justify-content-start</p></td>
+<td><p>just-cont-start, jst-cont-st, jst-cont-s, jc-s</p></td>
+</tr>
+<tr class="row-even"><td><p>justify-content</p></td>
+<td><p>justify-content-end</p></td>
+<td><p>just-cont-end, jst-cont-end, jst-cont-e, jc-e</p></td>
+</tr>
+<tr class="row-odd"><td><p>justify-content</p></td>
+<td><p>justify-content-flex-start</p></td>
+<td><p>just-cont-flex-start, jst-cont-flx-st, jst-cont-f-s, jst-cont-fs, jc-fs</p></td>
+</tr>
+<tr class="row-even"><td><p>justify-content</p></td>
+<td><p>justify-content-flex-end</p></td>
+<td><p>just-cont-flex-end, jst-cont-flx-end, jst-cont-f-e, jst-cont-fe, jc-fe</p></td>
+</tr>
+<tr class="row-odd"><td><p>justify-content</p></td>
+<td><p>justify-content-space-between</p></td>
+<td><p>just-cont-space-between, jst-cont-s-b, jst-cont-sb, jc-sb</p></td>
+</tr>
+<tr class="row-even"><td><p>justify-content</p></td>
+<td><p>justify-content-space-around</p></td>
+<td><p>just-cont-space-around, jst-cont-s-a, jst-cont-sa, jc-sa</p></td>
+</tr>
+<tr class="row-odd"><td><p>justify-content</p></td>
+<td><p>justify-content-space-evenly</p></td>
+<td><p>just-cont-space-evenly, jst-cont-s-e, jst-cont-se, jc-se</p></td>
 </tr>
 </tbody>
 </table>
-<p><a class="table-caption reference external" href="#id1">table 3: align styles</a></p>
+<p><a class="table-caption reference external" href="#table-5">table 5: justify styles</a></p>
 </div>
 </section>
 <section id="styles-flex">
 <h1>Styles: flex<a class="headerlink" href="#styles-flex" title="Link to this heading"></a></h1>
-<div class="captioned-table" id="id2">
+<div class="captioned-table" id="id1">
 <table class="custom-pre-table docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>description</p></th>
@@ -837,7 +971,7 @@
 </tr>
 </tbody>
 </table>
-<p><a class="table-caption reference external" href="#id2">table 2: flex styles</a></p>
+<p><a class="table-caption reference external" href="#id1">table 2: flex styles</a></p>
 </div>
 <p>In the above:</p>
 <ol class="arabic simple">
@@ -855,7 +989,7 @@
 </section>
 <section id="styles-space">
 <h1>Styles: space<a class="headerlink" href="#styles-space" title="Link to this heading"></a></h1>
-<div class="captioned-table" id="id3">
+<div class="captioned-table" id="id2">
 <table class="custom-pre-table docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>property</p></th>
@@ -934,12 +1068,12 @@
 </tr>
 </tbody>
 </table>
-<p><a class="table-caption reference external" href="#id3">table 3: spacing styles</a></p>
+<p><a class="table-caption reference external" href="#id2">table 3: spacing styles</a></p>
 </div>
 </section>
 <section id="styles-size">
 <h1>Styles: size<a class="headerlink" href="#styles-size" title="Link to this heading"></a></h1>
-<div class="captioned-table" id="table-4">
+<div class="captioned-table" id="id3">
 <table class="custom-pre-table docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>property</p></th>
@@ -988,12 +1122,12 @@
 </tr>
 </tbody>
 </table>
-<p><a class="table-caption reference external" href="#table-4">table 4: sizing styles</a></p>
+<p><a class="table-caption reference external" href="#id3">table 4: sizing styles</a></p>
 </div>
 </section>
 <section id="styles-border">
 <h1>Styles: border<a class="headerlink" href="#styles-border" title="Link to this heading"></a></h1>
-<div class="captioned-table" id="table-5">
+<div class="captioned-table" id="id4">
 <table class="custom-pre-table docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>property</p></th>
@@ -1042,7 +1176,7 @@
 </tr>
 </tbody>
 </table>
-<p><a class="table-caption reference external" href="#table-5">table 5: border styles</a></p>
+<p><a class="table-caption reference external" href="#id4">table 5: border styles</a></p>
 </div>
 </section>
 <section id="other-docs">
@@ -1063,7 +1197,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/09/11 at 15:30</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/09/11 at 17:41</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
