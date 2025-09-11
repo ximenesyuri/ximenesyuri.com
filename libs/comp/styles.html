@@ -491,10 +491,16 @@
 <p>In this documentation we describe the styles that can be used in a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>, which are automatically converted to <code class="docutils literal notranslate"><span class="pre">css</span></code> classes during the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#rendering">rendering</a> process if the flag <code class="docutils literal notranslate"><span class="pre">__styled__</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <ol class="arabic simple">
 <li><p><a class="reference internal" href="#introduction">Introduction</a></p></li>
-<li><p><a class="reference internal" href="#single-properties">Single Properties</a></p></li>
-<li><p><a class="reference internal" href="#multiple-properties">Multiple Properties</a></p></li>
+<li><p><a class="reference internal" href="#property-strings">Property Strings</a></p></li>
+<li><p><a class="reference internal" href="#class-strings">Class Strings</a></p></li>
 <li><p><a class="reference internal" href="#aliases">Aliases</a></p></li>
+<li><p><a class="reference internal" href="#prefixes">Prefixes</a></p></li>
+<li><p><a class="reference internal" href="#notation">Notation</a></p></li>
 <li><p><a class="reference internal" href="#styles-display">Styles: display</a></p></li>
+<li><p><a class="reference internal" href="#styles-position">Styles: position</a></p></li>
+<li><p><a class="reference internal" href="#styles-float">Styles: float</a></p></li>
+<li><p><a class="reference internal" href="#styles-align">Styles: align</a></p></li>
+<li><p><a class="reference internal" href="#styles-flex">Styles: flex</a></p></li>
 <li><p><a class="reference internal" href="#styles-space">Styles: space</a></p></li>
 <li><p><a class="reference internal" href="#styles-size">Styles: size</a></p></li>
 <li><p><a class="reference internal" href="#styles-border">Styles: border</a></p></li>
@@ -520,13 +526,13 @@
 <span class="linenos">14</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>You could try to incorporate all this information into a single string. In other words, one could try to consider strings representing the content of css classes, which could be used in the “class-like” attributes of <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a>: the so-called {lib:style strings}.</p>
-<p>This would allow us to create an inline <code class="docutils literal notranslate"><span class="pre">css</span></code> framework for <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a>, in which {lib:style strings} inside a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>, named as above, are automatically converted to underlying <code class="docutils literal notranslate"><span class="pre">css</span></code> classes, so that their content would be introduced in a <code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code> tag in the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#rendering">rendered HTML</a> obtained from <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#rendering">rendering</a> the given <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>.</p>
+<p>You could try to incorporate all this information into a single string. In other words, one could try to consider strings representing the content of css classes, which could be used in the “class-like” attributes of <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">components</a>: the so-called <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-string">style strings</a>.</p>
+<p>This would allow us to create an inline <code class="docutils literal notranslate"><span class="pre">css</span></code> framework for <a class="autolink autolink-libs reference external" href="/libs/comp">comp</a>, in which <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-string">style strings</a> inside a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>, named as above, are automatically converted to underlying <code class="docutils literal notranslate"><span class="pre">css</span></code> classes, so that their content would be introduced in a <code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code> tag in the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#rendering">rendered HTML</a> obtained from <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#rendering">rendering</a> the given <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#component">component</a>.</p>
 <p>In the following we brief describe how this framework works, whose execution is controlled by the {lib: rendering flag} <code class="docutils literal notranslate"><span class="pre">__styled__</span></code>.</p>
 </section>
-<section id="single-properties">
-<h1>Single Properties<a class="headerlink" href="#single-properties" title="Link to this heading"></a></h1>
-<p>Let us first consider the case of a class with a single property:</p>
+<section id="property-strings">
+<h1>Property Strings<a class="headerlink" href="#property-strings" title="Link to this heading"></a></h1>
+<p>The vast majority of <code class="docutils literal notranslate"><span class="pre">css</span></code> classes incorporated in the framework have a single property:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">some_class</span> <span class="o">=</span> <span class="p">{</span>
 <span class="linenos">2</span>    <span class="s2">&quot;property&quot;</span><span class="p">:</span> <span class="p">{</span>
 <span class="linenos">3</span>        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">some_value</span><span class="p">,</span>
@@ -536,7 +542,7 @@
 <span class="linenos">7</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>Its content can be naturally represented by the following string, which will work as a {lib:style string} for the underlying <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-property">style property</a>:</p>
+<p>Its content can be naturally represented by the following string, which works as a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-string">style string</a> for the underlying <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-property">style property</a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;property&gt;-&lt;value&gt;&lt;unit&gt;-&lt;style_1&gt;-&lt;style_2&gt;-...
 </pre></div>
 </div>
@@ -545,7 +551,7 @@
 <span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">component</span><span class="p">,</span> <span class="n">Jinja</span>
 <span class="linenos"> 3</span>
 <span class="linenos"> 4</span><span class="nd">@optional</span>
-<span class="linenos"> 5</span><span class="k">class</span><span class="w"> </span><span class="nc">SomeModel</span><span class="p">:</span>
+<span class="linenos"> 5</span><span class="k">class</span><span class="w"> </span><span class="nc">SomeCompModel</span><span class="p">:</span>
 <span class="linenos"> 6</span>    <span class="n">comp_id</span><span class="p">:</span> <span class="n">Str</span><span class="p">,</span>
 <span class="linenos"> 7</span>    <span class="n">comp_class</span><span class="p">:</span> <span class="n">Str</span><span class="p">,</span>
 <span class="linenos"> 8</span>    <span class="o">...</span>
@@ -555,8 +561,8 @@
 <span class="linenos">12</span>    <span class="o">...</span>
 </pre></div>
 </div>
-<p>Then, suppose we created an instance of <code class="docutils literal notranslate"><span class="pre">comp</span></code> with <code class="docutils literal notranslate"><span class="pre">comp_class</span></code> containing the {lib:style string}:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">some_entity</span> <span class="o">=</span> <span class="n">SomeModel</span><span class="p">(</span>
+<p>Then, suppose we created an instance of <code class="docutils literal notranslate"><span class="pre">comp</span></code> with <code class="docutils literal notranslate"><span class="pre">comp_class</span></code> containing the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-string">style string</a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">some_entity</span> <span class="o">=</span> <span class="n">SomeCompModel</span><span class="p">(</span>
 <span class="linenos">2</span>    <span class="n">comp_id</span> <span class="o">=</span> <span class="s2">&quot;some_id&quot;</span><span class="p">,</span>
 <span class="linenos">3</span>    <span class="n">comp_class</span> <span class="o">=</span> <span class="s2">&quot;&lt;property&gt;-&lt;value&gt;&lt;unit&gt;-&lt;style_1&gt;-&lt;style_2&gt;-...&quot;</span><span class="p">,</span>
 <span class="linenos">4</span>    <span class="o">...</span>
@@ -565,7 +571,7 @@
 </div>
 <p>In this case, <code class="docutils literal notranslate"><span class="pre">render(some_comp,</span> <span class="pre">comp=some_entity,</span> <span class="pre">__styled__=True)</span></code> will produce an HTML which begins with the following <code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code> tag:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="o">[</span><span class="nt">property</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nt">value</span><span class="o">][</span><span class="nt">unit</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nt">style_1</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nt">style-2</span><span class="o">]</span><span class="nt">-</span><span class="o">...</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">.[</span><span class="nt">property</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nt">value</span><span class="o">][</span><span class="nt">unit</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nt">style_1</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nt">style-2</span><span class="o">]</span><span class="nt">-</span><span class="o">...</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="err">[property]:</span><span class="w"> </span><span class="err">[value][unit]</span><span class="w"> </span><span class="err">[style_1]</span><span class="w"> </span><span class="err">[style_2]</span><span class="w"> </span><span class="err">...</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="o">...</span>
@@ -575,7 +581,7 @@
 </div>
 <p>For example, if <code class="docutils literal notranslate"><span class="pre">comp_class</span> <span class="pre">=</span> <span class="pre">'margin-top-10px'</span></code>, then the following will be added to the  <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#rendering">rendered HTML</a>:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="nt">margin-top-10px</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">.</span><span class="nc">margin-top-10px</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="o">...</span>
@@ -584,42 +590,51 @@
 </pre></div>
 </div>
 </section>
-<section id="multiple-properties">
-<h1>Multiple Properties<a class="headerlink" href="#multiple-properties" title="Link to this heading"></a></h1>
-<p>For the case of classes with multiple properties, one could try to use the same structure. Indeed, for a class like</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">some_class</span> <span class="o">=</span> <span class="p">{</span>
-<span class="linenos"> 2</span>    <span class="s2">&quot;property_1&quot;</span><span class="p">:</span> <span class="p">{</span>
-<span class="linenos"> 3</span>        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">value_1</span><span class="p">,</span>
-<span class="linenos"> 4</span>        <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="n">unit_1</span><span class="p">,</span>
-<span class="linenos"> 5</span>        <span class="s2">&quot;styles&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">style_1_1</span><span class="p">,</span> <span class="n">style_1_2</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
-<span class="linenos"> 6</span>    <span class="p">},</span>
-<span class="linenos"> 7</span>    <span class="s2">&quot;property_2&quot;</span><span class="p">:</span> <span class="p">{</span>
-<span class="linenos"> 8</span>        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">value_2</span><span class="p">,</span>
-<span class="linenos"> 9</span>        <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="n">unit_2</span><span class="p">,</span>
-<span class="linenos">10</span>        <span class="s2">&quot;styles&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">style_2_1</span><span class="p">,</span> <span class="n">style_2_2</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
-<span class="linenos">11</span>    <span class="p">},</span>
-<span class="linenos">12</span>    <span class="o">...</span>
-<span class="linenos">13</span><span class="p">}</span>
+<section id="class-strings">
+<h1>Class Strings<a class="headerlink" href="#class-strings" title="Link to this heading"></a></h1>
+<p>A few <code class="docutils literal notranslate"><span class="pre">css</span></code> classes with multiples properties are available as <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-string">style strings</a>. Instead of using the same strategy above to build them, which would become highly understandable with the increasing of the number of properties, for that cases we select a word to represent the entire class:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;word&gt;-&lt;value_1&gt;&lt;unit_1&gt;-&lt;value_2&gt;&lt;unit_2&gt;-...
 </pre></div>
 </div>
-<p>one could think in using:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(&lt;property_1&gt;-&lt;value_1&gt;&lt;unit_1&gt;-&lt;style_1_1&gt;-&lt;style_1_2&gt;)-(&lt;property_2&gt;-&lt;value_2&gt;&lt;unit_2&gt;-&lt;style_2_1&gt;-&lt;style_2_2&gt;)-...
+<p>For example, if in <code class="docutils literal notranslate"><span class="pre">some_entity</span></code> of <code class="docutils literal notranslate"><span class="pre">SomeCompModel</span></code> we set <code class="docutils literal notranslate"><span class="pre">comp_class</span> <span class="pre">=</span> <span class="pre">'left-10px'</span></code>, representing a left alignment with a padding of <code class="docutils literal notranslate"><span class="pre">10px</span></code>, then the following will be attached to the <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#rendering">rendered HTML</a>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">.</span><span class="nc">left-10px</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+<span class="w">        </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+<span class="w">        </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">flex-start</span><span class="p">;</span>
+<span class="w">        </span><span class="k">padding-left</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<p>However, notice that this becomes highly understandable when the number of property grows. At the same time, it is completely flexible, in the sense that you can control any parameter of any property of the class directly in the representing string.</p>
-<p>The majority of the classes described by {lib:style strings} will correspond to a single property, so that the first case will apply.</p>
 </section>
 <section id="aliases">
 <h1>Aliases<a class="headerlink" href="#aliases" title="Link to this heading"></a></h1>
-<p>When doing inline css, it is common to use abbreviations. To each property included in the</p>
-<blockquote id="notation-1">
-<div><p><a class="reference internal" href="#notation-1">Notation</a>. In the following:</p>
+<p>To each <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-string">style string</a> representing a <code class="docutils literal notranslate"><span class="pre">css</span></code> class there corresponds a number of other <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-string">style strings</a> that represents the same <code class="docutils literal notranslate"><span class="pre">css</span></code> class: the so-called <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-alias">style aliases</a>. The idea is to cover most of the user expected behavior.</p>
+<p>For the case of <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-string">style strings</a> associated with some <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-property">style property</a>, the alias is of the property. On the other hand, for <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-string">style strings</a> representing classes with multiple properties, the alias is of the word describing the class.</p>
+<p>For instance:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;x&gt;</span></code> represents a possible value in the <code class="docutils literal notranslate"><span class="pre">values</span></code> column</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;u&gt;</span></code> represents a possible value in the <code class="docutils literal notranslate"><span class="pre">unities</span></code> column</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;s&gt;</span></code> represents a possible value in the <code class="docutils literal notranslate"><span class="pre">styles</span></code> column</p></li>
+<li><p>instead of <code class="docutils literal notranslate"><span class="pre">margin-top-10px</span></code> one could use <code class="docutils literal notranslate"><span class="pre">mt-10px</span></code></p></li>
+<li><p>instead of <code class="docutils literal notranslate"><span class="pre">left-10px</span></code> one could use <code class="docutils literal notranslate"><span class="pre">lft-10px</span></code> or just <code class="docutils literal notranslate"><span class="pre">l-10px</span></code>, or even <code class="docutils literal notranslate"><span class="pre">left-center-10px</span></code>, <code class="docutils literal notranslate"><span class="pre">lft-cnt-10px</span></code>, <code class="docutils literal notranslate"><span class="pre">l-c-10px</span></code> or <code class="docutils literal notranslate"><span class="pre">lc-10px</span></code>.</p></li>
+</ol>
+</section>
+<section id="prefixes">
+<h1>Prefixes<a class="headerlink" href="#prefixes" title="Link to this heading"></a></h1>
+<p>One time constructed a <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-string">style string</a>, one can append it with a {lib:style prefix}, producing a new <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-string">style string</a> which works only inside a specific {lib:style scope}.</p>
+</section>
+<section id="notation">
+<h1>Notation<a class="headerlink" href="#notation" title="Link to this heading"></a></h1>
+<p>In the remaining part of this document we present the acceptable <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-string">style strings</a>, their underlying <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-property">style property</a> (if any), their meaning, their <a class="autolink autolink-libs reference external" href="/libs/comp/glossary#style-alias">style aliases</a> and the available {lib:style prefixes}.</p>
+<p>In order to do that we will use the following notations:</p>
+<blockquote id="notation-1">
+<div><p><a class="reference internal" href="#notation-1">Notation</a>.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;x&gt;</span></code> will represent a possible value in the <code class="docutils literal notranslate"><span class="pre">values</span></code> column</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;u&gt;</span></code> will represent a possible value in the <code class="docutils literal notranslate"><span class="pre">unities</span></code> column</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;s&gt;</span></code> will represent a possible value in the <code class="docutils literal notranslate"><span class="pre">styles</span></code> column</p></li>
 </ol>
 </div></blockquote>
+<p>Also, the variables <code class="docutils literal notranslate"><span class="pre">&lt;x&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;u&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;s&gt;</span></code> will be omitted in the <code class="docutils literal notranslate"><span class="pre">aliases</span></code> column.</p>
 </section>
 <section id="styles-display">
 <h1>Styles: display<a class="headerlink" href="#styles-display" title="Link to this heading"></a></h1>
@@ -627,43 +642,220 @@
 <table class="custom-pre-table docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>property</p></th>
-<th class="head"><p>inline</p></th>
+<th class="head"><p>style string</p></th>
 <th class="head"><p>aliases</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>display</p></td>
-<td><p>inline</p></td>
-<td><p>inl</p></td>
+<td><p>display-none</p></td>
+<td><p>d-none, none</p></td>
 </tr>
 <tr class="row-odd"><td><p>display</p></td>
-<td><p>block</p></td>
-<td><p>blk</p></td>
+<td><p>display-grid</p></td>
+<td><p>d-none, grid</p></td>
 </tr>
 <tr class="row-even"><td><p>display</p></td>
-<td><p>table</p></td>
-<td><p>tab</p></td>
+<td><p>display-inline</p></td>
+<td><p>d-inline, d-inl, inline, inl</p></td>
 </tr>
 <tr class="row-odd"><td><p>display</p></td>
-<td><p>flex</p></td>
-<td><p>flx</p></td>
+<td><p>display-block</p></td>
+<td><p>d-block, d-blk, block, blk</p></td>
 </tr>
 <tr class="row-even"><td><p>display</p></td>
-<td><p>inline-block</p></td>
-<td><p>inl-blk</p></td>
+<td><p>display-table</p></td>
+<td><p>d-table d-tab, table, tab</p></td>
 </tr>
 <tr class="row-odd"><td><p>display</p></td>
-<td><p>inline-flex</p></td>
-<td><p>inl-flx</p></td>
+<td><p>display-flex</p></td>
+<td><p>d-flex, d-flx, flex, flx</p></td>
+</tr>
+<tr class="row-even"><td><p>display</p></td>
+<td><p>display-inline-block</p></td>
+<td><p>d-inline-block, d-inl-blk, inline-block, inl-blk</p></td>
+</tr>
+<tr class="row-odd"><td><p>display</p></td>
+<td><p>display-inline-flex</p></td>
+<td><p>d-inline-flex, d-inl-flx, inline-flex, inl-flx</p></td>
 </tr>
 </tbody>
 </table>
 <p><a class="table-caption reference external" href="#table-1">table 1: display styles</a></p>
 </div>
 </section>
+<section id="styles-position">
+<h1>Styles: position<a class="headerlink" href="#styles-position" title="Link to this heading"></a></h1>
+<div class="captioned-table" id="table-2">
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>property</p></th>
+<th class="head"><p>style string</p></th>
+<th class="head"><p>aliases</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>position</p></td>
+<td><p>position-fixed</p></td>
+<td><p>pos-fixed, pos-fix</p></td>
+</tr>
+<tr class="row-odd"><td><p>position</p></td>
+<td><p>position-relative</p></td>
+<td><p>pos-relative, pos-rel</p></td>
+</tr>
+<tr class="row-even"><td><p>position</p></td>
+<td><p>position-absolute</p></td>
+<td><p>pos-absolute, pos-abs</p></td>
+</tr>
+<tr class="row-odd"><td><p>position</p></td>
+<td><p>position-sticky</p></td>
+<td><p>pos-sticky, pos-stk</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="table-caption reference external" href="#table-2">table 2: position styles</a></p>
+</div>
+</section>
+<section id="styles-float">
+<h1>Styles: float<a class="headerlink" href="#styles-float" title="Link to this heading"></a></h1>
+<div class="captioned-table" id="table-3">
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>property</p></th>
+<th class="head"><p>style string</p></th>
+<th class="head"><p>aliases</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>float</p></td>
+<td><p>float-left</p></td>
+<td><p>flt-lft</p></td>
+</tr>
+<tr class="row-odd"><td><p>float</p></td>
+<td><p>float-right</p></td>
+<td><p>flt-rgt</p></td>
+</tr>
+<tr class="row-even"><td><p>float</p></td>
+<td><p>float-inline-start</p></td>
+<td><p>flt-inl-st</p></td>
+</tr>
+<tr class="row-odd"><td><p>float</p></td>
+<td><p>float-inline-end</p></td>
+<td><p>flt-inl-end</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="table-caption reference external" href="#table-3">table 3: float styles</a></p>
+</div>
+</section>
+<section id="styles-align">
+<h1>Styles: align<a class="headerlink" href="#styles-align" title="Link to this heading"></a></h1>
+<div class="captioned-table" id="id1">
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>property</p></th>
+<th class="head"><p>style string</p></th>
+<th class="head"><p>aliases</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>justify-items</p></td>
+<td><p>position-fixed</p></td>
+<td><p>pos-fixed, pos-fix</p></td>
+</tr>
+<tr class="row-odd"><td><p>position</p></td>
+<td><p>position-relative</p></td>
+<td><p>pos-relative, pos-rel</p></td>
+</tr>
+<tr class="row-even"><td><p>position</p></td>
+<td><p>position-absolute</p></td>
+<td><p>pos-absolute, pos-abs</p></td>
+</tr>
+<tr class="row-odd"><td><p>position</p></td>
+<td><p>position-sticky</p></td>
+<td><p>pos-sticky, pos-stk</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="table-caption reference external" href="#id1">table 3: align styles</a></p>
+</div>
+</section>
+<section id="styles-flex">
+<h1>Styles: flex<a class="headerlink" href="#styles-flex" title="Link to this heading"></a></h1>
+<div class="captioned-table" id="id2">
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>description</p></th>
+<th class="head"><p>style string</p></th>
+<th class="head"><p>aliases</p></th>
+<th class="head"><p>values</p></th>
+<th class="head"><p>unities</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>centered</p></td>
+<td><p>flex-center</p></td>
+<td><p>flx-center, flx-cnt, center, cnt, c</p></td>
+<td><p>—</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>left-aligned centered</p></td>
+<td><p>flex-left-center-&lt;x&gt;&lt;u&gt;</p></td>
+<td><p>flx-lft-cnt, left-center, lft-cnt, l-c, lc, left, l</p></td>
+<td><p>Int &gt; 0</p></td>
+<td><p>(px, em, rem, vh, vw, %)</p></td>
+</tr>
+<tr class="row-even"><td><p>left-aligned top-aligned</p></td>
+<td><p>flex-left-top-&lt;x&gt;&lt;u&gt;</p></td>
+<td><p>flx-lft-cnt, left-top, lft-top, l-t, lt</p></td>
+<td><p>Int &gt; 0</p></td>
+<td><p>(px, em, rem, vh, vw, %)</p></td>
+</tr>
+<tr class="row-odd"><td><p>left-aligned bottom-aligned</p></td>
+<td><p>flex-left-bottom-&lt;x&gt;&lt;u&gt;</p></td>
+<td><p>flx-flt-bot, left-bottom, lft-bot, l-b, lb</p></td>
+<td><p>Int &gt; 0</p></td>
+<td><p>(px, em, rem, vh, vw, %)</p></td>
+</tr>
+<tr class="row-even"><td><p>right-aligned centered</p></td>
+<td><p>flex-right-center-&lt;x&gt;&lt;u&gt;</p></td>
+<td><p>flx-rgt-cnt, right-center, rgt-cnt, r-c, rc, right, r</p></td>
+<td><p>Int &gt; 0</p></td>
+<td><p>(px, em, rem, vh, vw, %)</p></td>
+</tr>
+<tr class="row-odd"><td><p>right-aligned top-aligned</p></td>
+<td><p>flex-right-top-&lt;x&gt;&lt;u&gt;</p></td>
+<td><p>flx-rgt-top, right-top, rgt-top, r-t, rt</p></td>
+<td><p>Int &gt; 0</p></td>
+<td><p>(px, em, rem, vh, vw, %)</p></td>
+</tr>
+<tr class="row-even"><td><p>right-aligned bottom-aligned</p></td>
+<td><p>flex-right-bottom-&lt;x&gt;&lt;u&gt;</p></td>
+<td><p>flx-rgt-bot, right-bottom, rgt-bot, r-b, rb</p></td>
+<td><p>Int &gt; 0</p></td>
+<td><p>(px, em, rem, vh, vw, %)</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="table-caption reference external" href="#id2">table 2: flex styles</a></p>
+</div>
+<p>In the above:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">flex-left-center-&lt;x&gt;&lt;u&gt;</span></code> will apply a left padding of <code class="docutils literal notranslate"><span class="pre">&lt;x&gt;&lt;u&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flex-left-top-&lt;x&gt;&lt;u&gt;</span></code> will apply a left and top padding of <code class="docutils literal notranslate"><span class="pre">&lt;x&gt;&lt;u&gt;</span></code></p></li>
+<li><p>and so on.</p></li>
+</ol>
+<p>In  the case of mixed directions, as <code class="docutils literal notranslate"><span class="pre">left-top</span></code>, <code class="docutils literal notranslate"><span class="pre">left-bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">right-top</span></code> and <code class="docutils literal notranslate"><span class="pre">right-bottom</span></code>, you could also specify a custom padding for each direction. So, for example, the table above could be extended to include:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">flex-left-top-&lt;xl&gt;&lt;ul&gt;-&lt;xt&gt;&lt;ut&gt;</span></code>, which will apply a left padding of <code class="docutils literal notranslate"><span class="pre">&lt;xl&gt;&lt;ul&gt;</span></code> and a top padding of <code class="docutils literal notranslate"><span class="pre">&lt;xt&gt;&lt;ut&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flex-left-bottom-&lt;xl&gt;&lt;ul&gt;-&lt;xb&gt;&lt;ub&gt;</span></code>, which will apply a left padding of <code class="docutils literal notranslate"><span class="pre">&lt;xl&gt;&lt;ul&gt;</span></code> and a bottom padding of <code class="docutils literal notranslate"><span class="pre">&lt;xb&gt;&lt;ub&gt;</span></code></p></li>
+<li><p>and same for <code class="docutils literal notranslate"><span class="pre">right</span></code> direction</p></li>
+<li><p>and so on for each alias.</p></li>
+</ol>
+</section>
 <section id="styles-space">
 <h1>Styles: space<a class="headerlink" href="#styles-space" title="Link to this heading"></a></h1>
-<div class="captioned-table" id="table-2">
+<div class="captioned-table" id="id3">
 <table class="custom-pre-table docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>property</p></th>
@@ -677,31 +869,31 @@
 <tr class="row-even"><td><p>margin</p></td>
 <td><p>margin-&lt;x&gt;&lt;u&gt;</p></td>
 <td><p>m</p></td>
-<td><p>Int</p></td>
+<td><p>Int &gt; 0</p></td>
 <td><p>(px, em, rem, vh, vw, %)</p></td>
 </tr>
 <tr class="row-odd"><td><p>margin-top</p></td>
 <td><p>margin-top-&lt;x&gt;&lt;u&gt;</p></td>
 <td><p>mt</p></td>
-<td><p>Int</p></td>
+<td><p>Int &gt; 0</p></td>
 <td><p>(px, em, rem, vh, vw, %)</p></td>
 </tr>
 <tr class="row-even"><td><p>margin-bottom</p></td>
 <td><p>margin-bottom-&lt;x&gt;&lt;u&gt;</p></td>
 <td><p>mb</p></td>
-<td><p>Int</p></td>
+<td><p>Int &gt; 0</p></td>
 <td><p>(px, em, rem, vh, vw, %)</p></td>
 </tr>
 <tr class="row-odd"><td><p>margin-left</p></td>
 <td><p>margin-left-&lt;x&gt;&lt;u&gt;</p></td>
 <td><p>ml</p></td>
-<td><p>Int</p></td>
+<td><p>Int &gt; 0</p></td>
 <td><p>(px, em, rem, vh, vw, %)</p></td>
 </tr>
 <tr class="row-even"><td><p>margin-right</p></td>
 <td><p>margin-right-&lt;x&gt;&lt;u&gt;</p></td>
 <td><p>mr</p></td>
-<td><p>Int</p></td>
+<td><p>Int &gt; 0</p></td>
 <td><p>(px, em, rem, vh, vw, %)</p></td>
 </tr>
 <tr class="row-odd"><td><p>padding</p></td>
@@ -736,18 +928,18 @@
 </tr>
 <tr class="row-even"><td><p>gap</p></td>
 <td><p>gap-&lt;x&gt;&lt;u&gt;</p></td>
-<td><p>—</p></td>
+<td><p>g</p></td>
 <td><p>Int &gt; 0</p></td>
 <td><p>(px, em, rem, vh, vw, %)</p></td>
 </tr>
 </tbody>
 </table>
-<p><a class="table-caption reference external" href="#table-2">table 2: spacing styles</a></p>
+<p><a class="table-caption reference external" href="#id3">table 3: spacing styles</a></p>
 </div>
 </section>
 <section id="styles-size">
 <h1>Styles: size<a class="headerlink" href="#styles-size" title="Link to this heading"></a></h1>
-<div class="captioned-table" id="table-3">
+<div class="captioned-table" id="table-4">
 <table class="custom-pre-table docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>property</p></th>
@@ -796,12 +988,12 @@
 </tr>
 </tbody>
 </table>
-<p><a class="table-caption reference external" href="#table-3">table 3: sizing styles</a></p>
+<p><a class="table-caption reference external" href="#table-4">table 4: sizing styles</a></p>
 </div>
 </section>
 <section id="styles-border">
 <h1>Styles: border<a class="headerlink" href="#styles-border" title="Link to this heading"></a></h1>
-<div class="captioned-table" id="table-4">
+<div class="captioned-table" id="table-5">
 <table class="custom-pre-table docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>property</p></th>
@@ -850,18 +1042,7 @@
 </tr>
 </tbody>
 </table>
-<p><a class="table-caption reference external" href="#table-4">table 4: border styles</a></p>
-</div>
-<div class="captioned-table" id="table-5">
-<table class="custom-pre-table docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>property</p></th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-<p><a class="table-caption reference external" href="#table-5">table 5:</a></p>
+<p><a class="table-caption reference external" href="#table-5">table 5: border styles</a></p>
 </div>
 </section>
 <section id="other-docs">
@@ -882,7 +1063,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/09/10 at 21:24</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/09/11 at 15:30</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
