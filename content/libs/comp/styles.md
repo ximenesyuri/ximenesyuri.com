@@ -144,6 +144,8 @@ For instance:
 
 One time constructed a {lib:style string}, one can append it with a {lib:style prefix}, producing a new {lib:style string} which works only inside a specific {lib:style scope}.
 
+...
+
 # Notation
 
 In the remaining part of this document we present the acceptable {lib:style strings}, their underlying {lib:style property} (if any), their meaning, their {lib:style aliases} and the available {lib:style prefixes}.
@@ -206,16 +208,55 @@ table 3: float styles
 
 # Styles: align
 
-(table-3)=
+(table-4)=
 ```
-property           style string           aliases 
---------------------------------------------------------------
-justify-items      position-fixed         pos-fixed, pos-fix
-position           position-relative      pos-relative, pos-rel
-position           position-absolute      pos-absolute, pos-abs
-position           position-sticky        pos-sticky, pos-stk
----------------------------------------------------------------
-table 3: align styles
+property           style string                     aliases 
+--------------------------------------------------------------------------------------
+align-items        align-items-center               alg-it-cnt, alg-it-c, ai-c
+align-items        align-items-start                alg-it-st, alg-it-s, ai-s
+align-items        align-items-end                  alg-it-end, alg-it-e, ai-e
+align-items        align-items-flex-start           alg-it-flx-st, alg-it-f-s, alg-it-fs, ai-fs
+align-items        align-items-flex-end             alg-it-flx-end, alg-it-f-e, alg-it-fe, ai-fe
+align-items        align-items-baseline             alg-it-bl, ai-bl
+align-content      align-content-center             alg-cont-cnt, alg-cont-c, ac-c
+align-content      align-content-start              alg-cont-st, alg-cont-s, ac-s
+align-content      align-content-end                alg-cont-end, alg-cont-e, ac-e
+align-content      align-content-flex-start         alg-cont-flx-st, alg-cont-f-s, alg-cont-fs, ac-fs
+align-content      align-content-flex-end           alg-cont-flx-end, alg-cont-f-e, alg-cont-fe, ac-fe
+align-content      align-content-baseline           alg-cont-bl, ac-bl
+align-content      align-content-space-between      alg-cont-space-between, alg-cont-s-b, alg-cont-sb, ac-sb
+align-content      align-content-space-around       alg-cont-space-around, alg-cont-s-a, alg-cont-sa, ac-sa
+align-content      align-content-space-evenly       alg-cont-space-evenly, alg-cont-s-e, alg-cont-se, ac-se
+--------------------------------------------------------------------------------------
+table 4: align styles
+```
+
+# Styles: justify
+
+(table-5)=
+```
+property           style string                    aliases
+------------------------------------------------------------------------------------------------------------------------------
+justify-items      justify-items-center            just-it-center, jst-it-cnt, jst-it-c, ji-c
+justify-items      justify-items-left              just-it-left, just-it-left, jst-it-lft, jst-it-l, ji-l
+justify-items      justify-items-right             just-it-right, jst-it-rgt, jst-it-r, ji-r
+justify-items      justify-items-start             just-it-start, jst-it-st, jst-it-s, ji-s
+justify-items      justify-items-end               just-it-end, jst-it-end, jst-it-e, ji-e
+justify-items      justify-items-flex-start        just-it-flex-start, jst-it-flx-st, jst-it-f-s, jst-it-fs, ji-fs
+justify-items      justify-items-flex-end          just-it-flex-end, jst-it-flx-end, jst-it-f-e, jst-it-fe, ji-fe
+justify-items      justify-items-baseline          just-it-bl, ji-bl
+justify-content    justify-content-center          just-cont-center, jst-cont-cnt, jst-cont-c, jc-c
+justify-content    justify-content-left            just-cont-left, just-cont-left, jst-cont-lft, jst-cont-l, jc-l
+justify-content    justify-content-right           just-cont-right, jst-cont-rgt, jst-cont-r, jc-r
+justify-content    justify-content-start           just-cont-start, jst-cont-st, jst-cont-s, jc-s
+justify-content    justify-content-end             just-cont-end, jst-cont-end, jst-cont-e, jc-e
+justify-content    justify-content-flex-start      just-cont-flex-start, jst-cont-flx-st, jst-cont-f-s, jst-cont-fs, jc-fs
+justify-content    justify-content-flex-end        just-cont-flex-end, jst-cont-flx-end, jst-cont-f-e, jst-cont-fe, jc-fe
+justify-content    justify-content-space-between   just-cont-space-between, jst-cont-s-b, jst-cont-sb, jc-sb
+justify-content    justify-content-space-around    just-cont-space-around, jst-cont-s-a, jst-cont-sa, jc-sa
+justify-content    justify-content-space-evenly    just-cont-space-evenly, jst-cont-s-e, jst-cont-se, jc-se
+-------------------------------------------------------------------------------------------------------------------------------
+table 5: justify styles
 ```
 
 # Styles: flex
