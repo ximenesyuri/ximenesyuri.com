@@ -103,7 +103,7 @@ comp/rendering-style:
   url: /libs/comp/glossary#rendering-style
 
 comp/style-string:
-  terms: ["class string", "rendering style", "styles", "rendering styles"]
+  terms: ["class string", "style string", "style strings", "class strings"]
   url: /libs/comp/glossary#style-string
 
 comp/style-property:
