@@ -164,7 +164,7 @@ Also, the variables `<x>`, `<u>` and `<s>` will be omitted in the `aliases` colu
 
 (table-1)=
 ```
-property           style string                 aliases      
+property           style string                 style aliases      
 ------------------------------------------------------------------------------------------------------
 display            display-none                 d-none, none
 display            display-grid                 d-none, grid
@@ -182,7 +182,7 @@ table 1: display styles
 
 (table-2)=
 ```
-property         style string           aliases 
+property         style string           style aliases 
 --------------------------------------------------------------
 position         position-fixed         pos-fixed, pos-fix
 position         position-relative      pos-relative, pos-rel
@@ -196,7 +196,7 @@ table 2: position styles
 
 (table-3)=
 ```
-property           style string           aliases
+property           style string           style aliases
 --------------------------------------------------------------
 float              float-left             flt-lft
 float              float-right            flt-rgt
@@ -210,7 +210,7 @@ table 3: float styles
 
 (table-4)=
 ```
-property           style string                     aliases 
+property           style string                     style aliases 
 --------------------------------------------------------------------------------------
 align-items        align-items-center               alg-it-cnt, alg-it-c, ai-c
 align-items        align-items-start                alg-it-st, alg-it-s, ai-s
@@ -235,7 +235,7 @@ table 4: align styles
 
 (table-5)=
 ```
-property           style string                    aliases
+property           style string                    style aliases
 ------------------------------------------------------------------------------------------------------------------------------
 justify-items      justify-items-center            just-it-center, jst-it-cnt, jst-it-c, ji-c
 justify-items      justify-items-left              just-it-left, just-it-left, jst-it-lft, jst-it-l, ji-l
@@ -261,19 +261,19 @@ table 5: justify styles
 
 # Styles: flex
 
-(table-2)=
+(table-6)=
 ```
-description                      style string               aliases                                                    values       unities
+description                      style string               style aliases                                              values       unities
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 centered                         flex-center                flx-center, flx-cnt, center, cnt, c                        ---
-left-aligned centered            flex-left-center-<x><u>    flx-lft-cnt, left-center, lft-cnt, l-c, lc, left, l        Int > 0      (px, em, rem, vh, vw, %)     
-left-aligned top-aligned         flex-left-top-<x><u>       flx-lft-cnt, left-top, lft-top, l-t, lt                    Int > 0      (px, em, rem, vh, vw, %)
-left-aligned bottom-aligned      flex-left-bottom-<x><u>    flx-flt-bot, left-bottom, lft-bot, l-b, lb                 Int > 0      (px, em, rem, vh, vw, %)
-right-aligned centered           flex-right-center-<x><u>   flx-rgt-cnt, right-center, rgt-cnt, r-c, rc, right, r      Int > 0      (px, em, rem, vh, vw, %)
-right-aligned top-aligned        flex-right-top-<x><u>      flx-rgt-top, right-top, rgt-top, r-t, rt                   Int > 0      (px, em, rem, vh, vw, %)
-right-aligned bottom-aligned     flex-right-bottom-<x><u>   flx-rgt-bot, right-bottom, rgt-bot, r-b, rb                Int > 0      (px, em, rem, vh, vw, %)
+left-aligned centered            flex-left-center-<x><u>    flx-lft-cnt, left-center, lft-cnt, l-c, lc, left, l        Int > 0      px, em, rem, vh, vw, %     
+left-aligned top-aligned         flex-left-top-<x><u>       flx-lft-cnt, left-top, lft-top, l-t, lt                    Int > 0      px, em, rem, vh, vw, %
+left-aligned bottom-aligned      flex-left-bottom-<x><u>    flx-flt-bot, left-bottom, lft-bot, l-b, lb                 Int > 0      px, em, rem, vh, vw, %
+right-aligned centered           flex-right-center-<x><u>   flx-rgt-cnt, right-center, rgt-cnt, r-c, rc, right, r      Int > 0      px, em, rem, vh, vw, %
+right-aligned top-aligned        flex-right-top-<x><u>      flx-rgt-top, right-top, rgt-top, r-t, rt                   Int > 0      px, em, rem, vh, vw, %
+right-aligned bottom-aligned     flex-right-bottom-<x><u>   flx-rgt-bot, right-bottom, rgt-bot, r-b, rb                Int > 0      px, em, rem, vh, vw, %
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-table 2: flex styles
+table 6: flex styles
 ```
 
 In the above:
@@ -289,55 +289,159 @@ In  the case of mixed directions, as `left-top`, `left-bottom`, `right-top` and 
 
 # Styles: space
 
-(table-3)=
+(table-7)=
 ```
-property               inline                    aliases       values            unities
+property               style string             style aliases       values            unities
 ---------------------------------------------------------------------------------------------------------------
-margin                 margin-<x><u>             m             Int > 0           (px, em, rem, vh, vw, %)
-margin-top             margin-top-<x><u>         mt            Int > 0           (px, em, rem, vh, vw, %)
-margin-bottom          margin-bottom-<x><u>      mb            Int > 0           (px, em, rem, vh, vw, %)
-margin-left            margin-left-<x><u>        ml            Int > 0           (px, em, rem, vh, vw, %)
-margin-right           margin-right-<x><u>       mr            Int > 0           (px, em, rem, vh, vw, %)
-padding                padding-<x><u>            p             Int > 0           (px, em, rem, vh, vw, %)
-padding-top            padding-top-<x><u>        pt            Int > 0           (px, em, rem, vh, vw, %)
-padding-bottom         padding-bottom-<x><u>     pb            Int > 0           (px, em, rem, vh, vw, %)
-padding-left           ppadding-left-<x><u>      pl            Int > 0           (px, em, rem, vh, vw, %)
-padding-right          padding-right-<x><u>      pr            Int > 0           (px, em, rem, vh, vw, %)
-gap                    gap-<x><u>                g             Int > 0           (px, em, rem, vh, vw, %)
+margin                 margin-<x><u>             m                  Int > 0           px, em, rem, vh, vw, %
+margin-top             margin-top-<x><u>         mt                 Int > 0           px, em, rem, vh, vw, %
+margin-bottom          margin-bottom-<x><u>      mb                 Int > 0           px, em, rem, vh, vw, %
+margin-left            margin-left-<x><u>        ml                 Int > 0           px, em, rem, vh, vw, %
+margin-right           margin-right-<x><u>       mr                 Int > 0           px, em, rem, vh, vw, %
+padding                padding-<x><u>            p                  Int > 0           px, em, rem, vh, vw, %
+padding-top            padding-top-<x><u>        pt                 Int > 0           px, em, rem, vh, vw, %
+padding-bottom         padding-bottom-<x><u>     pb                 Int > 0           px, em, rem, vh, vw, %
+padding-left           ppadding-left-<x><u>      pl                 Int > 0           px, em, rem, vh, vw, %
+padding-right          padding-right-<x><u>      pr                 Int > 0           px, em, rem, vh, vw, %
+gap                    gap-<x><u>                g                  Int > 0           px, em, rem, vh, vw, %
 -------------------------------------------------------------------------------------------------------------------
-table 3: spacing styles
+table 7: spacing styles
 ```
 
 # Styles: size
 
-(table-4)=
+(table-8)=
 ```
-property              inline                 aliases      values          unitites
+property              style string           style aliases      values          unitites
 ------------------------------------------------------------------------------------------------
-width                 width-<x><u>           w            Int > 0         (px, em, rem, vh, vw, %)
-min-width             min-width-<x><u>       mw           Int > 0         (px, em, rem, vh, vw, %)
-max-width             max-width-<x><u>       Mw           Int > 0         (px, em, rem, vh, vw, %)
-height                height-<x><u>          h            Int > 0         (px, em, rem, vh, vw, %)
-min-height            min-height-<x><u>      mh           Int > 0         (px, em, rem, vh, vw, %)
-max-height            max-height-<x><u>      Mh           Int > 0         (px, em, rem, vh, vw, %)
+width                 width-<x><u>           w                  Int > 0         px, em, rem, vh, vw, %
+min-width             min-width-<x><u>       mw                 Int > 0         px, em, rem, vh, vw, %
+max-width             max-width-<x><u>       Mw                 Int > 0         px, em, rem, vh, vw, %
+height                height-<x><u>          h                  Int > 0         px, em, rem, vh, vw, %
+min-height            min-height-<x><u>      mh                 Int > 0         px, em, rem, vh, vw, %
+max-height            max-height-<x><u>      Mh                 Int > 0         px, em, rem, vh, vw, %
 ----------------------------------------------------------------------------------------------
-table 4: sizing styles
+table 8: sizing styles
 ```
 
 # Styles: border
 
-(table-5)=
+(table-9)=
 ```
-property                   inline                        aliases        values      unities              styles
+property                   style string                  style aliases          values      unities              styles
 ----------------------------------------------------------------------------------------------------------------------------
-border-top                 border-top-<x><u>-<s>         bt             Int > 0     (px, em, rem, %)     (solid, dashed, etc.)
-border-bottom              border-bottom-<x><u>-<s>      bb             Int > 0     (px, em, rem, %)     (solid, dashed, etc.)
-border-right               border-right-<x><u>-<s>       br             Int > 0     (px, em, rem, %)     (solid, dashed, etc.)
-border-left                border-left-<x><u>-<s>        bl             Int > 0     (px, em, rem, %)     (solid, dashed, etc.)
-border-radius              border-radius-<x><u>          bR, radius     Int > 0
+border-top                 border-top-<x><u>-<s>         bt                     Int > 0     px, em, rem, %       solid, dashed, etc
+border-bottom              border-bottom-<x><u>-<s>      bb                     Int > 0     px, em, rem, %       solid, dashed, etc
+border-right               border-right-<x><u>-<s>       br                     Int > 0     px, em, rem, %       solid, dashed, etc
+border-left                border-left-<x><u>-<s>        bl                     Int > 0     px, em, rem, %       solid, dashed, etc
+border-radius              border-radius-<x><u>          bR, radius             Int > 0
 -----------------------------------------------------------------------------------------------------------------------------
-table 5: border styles
+table 9: border styles
 ```
+
+# Styles: text
+
+(table-11)=
+```
+property         style string             style aliases
+---------------------------------------------------------------------------------------------------------
+text-align       text-align-center        txt-alg-center, txt-alg-cnt, txt-alg-c, ta-c
+text-align       text-align-left          txt-alg-left, txt-alg-lft, txt-alg-l, ta-l
+text-align       text-align-right         txt-alg-right, txt-alg-rgt, txt-alg-r, ta-r
+text-align       text-align-start         txt-alg-start, txt-alg-st, txt-alg-s, ta-s
+text-align       text-align-end           txt-alg-end, txt-alg-e, ta-e
+text-align       text-align-justify       txt-alg-justify, txt-alg-just, txt-alg-jst, txt-alg-j, ta-j
+---------------------------------------------------------------------------------------------------------
+table 10: text align styles
+```
+
+(table-11)=
+``` 
+property           style string                 style aliases
+--------------------------------------------------------------------------------------
+text-justify       text-justify-none            txt-just-none, tj-none, tj-n
+text-justify       text-justify-auto            txt-just-auto, tj-auto, tj-a
+text-justify       text-justify-distribute      txt-just-distribute, tj-dist, tj-d
+text-justify       text-justify-word            text-just-word, tj-word, tj-w
+text-justify       text-justify-character       text-just-char, tj-char, tj-c
+--------------------------------------------------------------------------------------
+table 11: text justify styles
+```
+
+(table-12)=
+```
+property         style string               style aliases
+------------------------------------------------------------------------------------------------------
+text-wrap        text-wrap                  wrap, txt-wrap, tw, 
+text-wrap        text-nowrap                nowrap, txt-nowrap, txt-wrap-none, tw-none, tw-no, tw-n
+text-wrap        text-wrap-balance          txt-wrap-bal, tw-bal, tw-b
+text-wrap        text-wrap-pretty           txt-wrap-pretty, txt-wrap-pty, tw-pretty, tw-pty, tw-p
+-------------------------------------------------------------------------------------------------------
+table 12: text wrap styles
+```
+
+(table-13)=
+```
+property            style string                                    style aliases                                            value       unities            styles 1    styles 2
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+text-decoration     text-decoration-underline-<x><u>-<s1>-<s2>      underline, under, txt-decor-under, td-under, td-u        Int > 0     px, em, rem, %     HEX, RGB    solid, dashed, etc
+text-decoration     text-decoration-overline-<x><u>-<s1>-<s2>       overline, txt-decor-over, td-over, td-o                  Int > 0     px, em, rem, %     HEX, RGB    solid, dashed, etc.
+text-decoration     text-decoration-through-<x><u>-<s1>-<s2>        through, txt-decor-thr, td-thr, td-t                     Int > 0     px, em, rem, %     HEX, RGB    solid, dashed, etc.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+table 13: text decoration styles
+```
+
+(table-14)=
+```
+property            style string                    style aliases
+--------------------------------------------------------------------------------------------------------------
+text-transform      text-transform-uppercase        uppercase, upper, txt-trans-upper, tt-upper, tt-u
+text-transform      text-trasform-lowercase         lowercase, lower, txt-trans-lower, tt-lower, tt-l
+text-transform      text-transform-capitalize       capitalize, cap, txt-trans-cap, tt-cap, tt-c
+--------------------------------------------------------------------------------------------------------------
+table 14: text transform styles
+```
+
+# Styles: font
+
+(table-10)=
+```
+property          style string              style aliases          value
+---------------------------------------------------------------------------------------------------------------------------
+font-family       font-family-<x>           ff                     'Font Family', ('Some Family', 'Other Family', ...)
+font-family       font-family-sans-<x>      ff-sans, ff-ss         'Font Family', ('Some Family', 'Other Family', ...)
+font-family       font-family-serif-<x>     ff-serif, ff-s         'Font Family', ('Some Family', 'Other Family', ...)
+font-family       font-family-mono-<x>      ff-mono, ff-m          'Font Family', ('Some Family', 'Other Family', ...)
+---------------------------------------------------------------------------------------------------------------------------
+table 10: font family styles
+```
+
+(table-11)=
+```
+property       
+------------------------------------------------
+text-align
+text-justify
+text-decoration
+text-wrap           text-wrap 
+word-spacing        word-spacing-<x><u>
+white-space         white-space
+------------------------------------------------
+table 11
+```
+
+# Styles: background
+
+(table-12)=
+```
+title 
+-----------------------------
+
+-----------------------------
+table 12
+```
+
+
 
 # Other Docs
 
