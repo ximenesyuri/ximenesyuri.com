@@ -1352,7 +1352,7 @@
 </section>
 <section id="styles-font">
 <h1>Styles: font<a class="headerlink" href="#styles-font" title="Link to this heading"></a></h1>
-<div class="captioned-table" id="table-10">
+<div class="captioned-table" id="table-15">
 <table class="custom-pre-table docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>property</p></th>
@@ -1369,60 +1369,178 @@
 </tr>
 <tr class="row-odd"><td><p>font-family</p></td>
 <td><p>font-family-sans-&lt;x&gt;</p></td>
-<td><p>ff-sans, ff-ss</p></td>
+<td><p>sans, ff-sans, ff-ss</p></td>
 <td><p>‘Font Family’, (‘Some Family’, ‘Other Family’, …)</p></td>
 </tr>
 <tr class="row-even"><td><p>font-family</p></td>
 <td><p>font-family-serif-&lt;x&gt;</p></td>
-<td><p>ff-serif, ff-s</p></td>
+<td><p>serif, ff-serif, ff-s</p></td>
 <td><p>‘Font Family’, (‘Some Family’, ‘Other Family’, …)</p></td>
 </tr>
 <tr class="row-odd"><td><p>font-family</p></td>
 <td><p>font-family-mono-&lt;x&gt;</p></td>
-<td><p>ff-mono, ff-m</p></td>
+<td><p>mono, ff-mono, ff-m</p></td>
 <td><p>‘Font Family’, (‘Some Family’, ‘Other Family’, …)</p></td>
 </tr>
 </tbody>
 </table>
-<p><a class="table-caption reference external" href="#table-10">table 10: font family styles</a></p>
+<p><a class="table-caption reference external" href="#table-15">table 15: font family styles</a></p>
 </div>
-<div class="captioned-table" id="id2">
+<div class="captioned-table" id="table-16">
 <table class="custom-pre-table docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>property</p></th>
+<th class="head"><p>style string</p></th>
+<th class="head"><p>style aliases</p></th>
+<th class="head"><p>value</p></th>
+<th class="head"><p>unties</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>text-align</p></td>
+<tr class="row-even"><td><p>font-size</p></td>
+<td><p>font-size-&lt;x&gt;&lt;u&gt;</p></td>
+<td><p>fz</p></td>
+<td><p>Int &gt; 0</p></td>
+<td><p>px, em, rem, %</p></td>
 </tr>
-<tr class="row-odd"><td><p>text-justify</p></td>
+<tr class="row-odd"><td><p>font-size</p></td>
+<td><p>font-size-xx-small</p></td>
+<td><p>xx-small, fz-xx-small, fz-xx-s, fz-xxs</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
 </tr>
-<tr class="row-even"><td><p>text-decoration</p></td>
+<tr class="row-even"><td><p>font-size</p></td>
+<td><p>font-size-x-small</p></td>
+<td><p>x-small, fz-x-small, fz-x-s, fz-xs</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
 </tr>
-<tr class="row-odd"><td><p>text-wrap           text-wrap</p></td>
+<tr class="row-odd"><td><p>font-size</p></td>
+<td><p>font-size-small</p></td>
+<td><p>small, fz-small, fz-s</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
 </tr>
-<tr class="row-even"><td><p>word-spacing        word-spacing-&lt;x&gt;&lt;u&gt;</p></td>
+<tr class="row-even"><td><p>font-size</p></td>
+<td><p>font-size-medium</p></td>
+<td><p>medium, fz-medium, fz-m</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
 </tr>
-<tr class="row-odd"><td><p>white-space         white-space</p></td>
+<tr class="row-odd"><td><p>font-size</p></td>
+<td><p>font-size-large</p></td>
+<td><p>large, fz-large, fz-l</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-even"><td><p>font-size</p></td>
+<td><p>font-size-x-large</p></td>
+<td><p>x-large, fz-x-large, fz-x-l, fz-xl</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p>font-size</p></td>
+<td><p>font-size-xx-large</p></td>
+<td><p>xx-large, fz-xx-large, fz-xx-l, fz-xxl</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-even"><td><p>font-size</p></td>
+<td><p>font-size-huge</p></td>
+<td><p>huge, fz-huge, fz-h, fz-xxx-l, fz-xxxl</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
 </tr>
 </tbody>
 </table>
-<p><a class="table-caption reference external" href="#id2">table 11</a></p>
+<p><a class="table-caption reference external" href="#table-16">table 16: font size style</a></p>
+</div>
+<div class="captioned-table" id="table-17">
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>property</p></th>
+<th class="head"><p>style string</p></th>
+<th class="head"><p>style aliases</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>font-weight</p></td>
+<td><p>font-weight-xx-light</p></td>
+<td><p>xx-light, fw-xx-l, fw-xxl</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p>font-weight</p></td>
+<td><p>font-weight-x-light</p></td>
+<td><p>x-light, fw-extra-light, fw-x-l, fw-xl</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-even"><td><p>font-weight</p></td>
+<td><p>font-weight-light</p></td>
+<td><p>light, fw-light, fw-l</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p>font-weight</p></td>
+<td><p>font-weight-normal</p></td>
+<td><p>normal, fw-normal, fw-n</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-even"><td><p>font-weight</p></td>
+<td><p>font-weight-x-normal</p></td>
+<td><p>x-normal, semi-bold, fw-x-normal, fw-semi-bold, fw-sb, fw-x-n, fw-xn</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p>font-weight</p></td>
+<td><p>font-weight-bold</p></td>
+<td><p>bold, fw-bold, fw-b</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-even"><td><p>font-weight</p></td>
+<td><p>font-weight-x-bold</p></td>
+<td><p>x-bold, fw-x-bold, fw-x-b, fw-xb</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p>font-weight</p></td>
+<td><p>font-weight-xx-bold</p></td>
+<td><p>Bold, xx-bold, fw-xx-bold, fw-black, fw-xxb, fw-B</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-even"><td><p>font-weight</p></td>
+<td><p>font-weight-&lt;x&gt;</p></td>
+<td><p>fw</p></td>
+<td><p>100, 200, 300, 400, 500, 600, 700</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="table-caption reference external" href="#table-17">table 17: font weight styles</a></p>
+</div>
+<div class="captioned-table" id="table-18">
+<table class="custom-pre-table docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>property</p></th>
+<th class="head"><p>style string</p></th>
+<th class="head"><p>style aliases</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>font-style</p></td>
+<td><p>font-style-italic</p></td>
+<td><p>italic, it, fs-italic, fs-it, fs-i</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p>color</p></td>
+<td><p>font-color-&lt;x1&gt;</p></td>
+<td><p>color, fc</p></td>
+<td><p>HEX, RGB</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="table-caption reference external" href="#table-18">table 18: other font styles</a></p>
 </div>
 </section>
 <section id="styles-background">
 <h1>Styles: background<a class="headerlink" href="#styles-background" title="Link to this heading"></a></h1>
-<div class="captioned-table" id="id3">
-<table class="custom-pre-table docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>title</p></th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-<p><a class="table-caption reference external" href="#id3">table 12</a></p>
-</div>
 </section>
 <section id="other-docs">
 <h1>Other Docs<a class="headerlink" href="#other-docs" title="Link to this heading"></a></h1>
@@ -1442,7 +1560,7 @@
         </div>
         <footer class="footer">
             <p class="footer-text">
-                Yuri Ximenes, 2025. Last update: <purple>2025/09/12 at 20:23</purple>.<br>
+                Yuri Ximenes, 2025. Last update: <purple>2025/09/12 at 21:45</purple>.<br>
                 Made using <a href="https://www.sphinx-doc.org/en/master/">sphinx</a>.
             </p>
         </footer>
