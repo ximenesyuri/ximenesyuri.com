@@ -404,43 +404,64 @@ table 14: text transform styles
 
 # Styles: font
 
-(table-10)=
+(table-15)=
 ```
-property          style string              style aliases          value
+property          style string              style aliases           value
 ---------------------------------------------------------------------------------------------------------------------------
-font-family       font-family-<x>           ff                     'Font Family', ('Some Family', 'Other Family', ...)
-font-family       font-family-sans-<x>      ff-sans, ff-ss         'Font Family', ('Some Family', 'Other Family', ...)
-font-family       font-family-serif-<x>     ff-serif, ff-s         'Font Family', ('Some Family', 'Other Family', ...)
-font-family       font-family-mono-<x>      ff-mono, ff-m          'Font Family', ('Some Family', 'Other Family', ...)
+font-family       font-family-<x>           ff                      'Font Family', ('Some Family', 'Other Family', ...)
+font-family       font-family-sans-<x>      sans, ff-sans, ff-ss    'Font Family', ('Some Family', 'Other Family', ...)
+font-family       font-family-serif-<x>     serif, ff-serif, ff-s   'Font Family', ('Some Family', 'Other Family', ...)
+font-family       font-family-mono-<x>      mono, ff-mono, ff-m     'Font Family', ('Some Family', 'Other Family', ...)
 ---------------------------------------------------------------------------------------------------------------------------
-table 10: font family styles
+table 15: font family styles
 ```
 
-(table-11)=
+(table-16)=
 ```
-property       
-------------------------------------------------
-text-align
-text-justify
-text-decoration
-text-wrap           text-wrap 
-word-spacing        word-spacing-<x><u>
-white-space         white-space
-------------------------------------------------
-table 11
+property        style string            style aliases                               value       unties
+--------------------------------------------------------------------------------------------------------------------
+font-size       font-size-<x><u>        fz                                          Int > 0     px, em, rem, %
+font-size       font-size-xx-small      xx-small, fz-xx-small, fz-xx-s, fz-xxs      ---         ---
+font-size       font-size-x-small       x-small, fz-x-small, fz-x-s, fz-xs          ---         ---
+font-size       font-size-small         small, fz-small, fz-s                       ---         ---
+font-size       font-size-medium        medium, fz-medium, fz-m                     ---         ---
+font-size       font-size-large         large, fz-large, fz-l                       ---         ---
+font-size       font-size-x-large       x-large, fz-x-large, fz-x-l, fz-xl          ---         ---
+font-size       font-size-xx-large      xx-large, fz-xx-large, fz-xx-l, fz-xxl      ---         ---
+font-size       font-size-huge          huge, fz-huge, fz-h, fz-xxx-l, fz-xxxl      ---         ---
+--------------------------------------------------------------------------------------------------------------------
+table 16: font size style
+```
+
+(table-17)=
+```
+property          style string                  style aliases                                                              value
+-----------------------------------------------------------------------------------------------------------------------------------------------
+font-weight       font-weight-xx-light          xx-light, fw-xx-l, fw-xxl                                                  ---
+font-weight       font-weight-x-light           x-light, fw-extra-light, fw-x-l, fw-xl                                     ---
+font-weight       font-weight-light             light, fw-light, fw-l                                                      ---
+font-weight       font-weight-normal            normal, fw-normal, fw-n                                                    ---
+font-weight       font-weight-x-normal          x-normal, semi-bold, fw-x-normal, fw-semi-bold, fw-sb, fw-x-n, fw-xn       ---
+font-weight       font-weight-bold              bold, fw-bold, fw-b                                                        ---
+font-weight       font-weight-x-bold            x-bold, fw-x-bold, fw-x-b, fw-xb                                           ---
+font-weight       font-weight-xx-bold           Bold, xx-bold, fw-xx-bold, fw-black, fw-xxb, fw-B                          ---
+font-weight       font-weight-<x>               fw                                                                         100, 200, 300, 400, 500, 600, 700 
+----------------------------------------------------------------------------------------------------------------------------------------------
+table 17: font weight styles
+```
+
+
+(table-18)=
+```
+property       style string             style aliases                             value
+---------------------------------------------------------------------------------------------
+font-style     font-style-italic        italic, it, fs-italic, fs-it, fs-i        ---
+color          font-color-<x1>          color, fc                                 HEX, RGB
+---------------------------------------------------------------------------------------------
+table 18: other font styles
 ```
 
 # Styles: background
-
-(table-12)=
-```
-title 
------------------------------
-
------------------------------
-table 12
-```
-
 
 
 # Other Docs
