@@ -55,10 +55,12 @@ html_context={
         'work': {"path": '/work'},
         'setup': {"path": '/setup'},
         'libs': {"path": '/libs', "class": ""},
-        'notes': {"path": '/notes', "class": ""}
+        'notes': {"path": '/notes', "class": ""},
+        'glossary': {"path": '/glossary', "class": ""}
     },
     'libs_menu': _get_menu_items(CONTENT_DIR, 'libs'),
-    'notes_menu': _get_menu_items(CONTENT_DIR, 'notes')
+    'notes_menu': _get_menu_items(CONTENT_DIR, 'notes'),
+    'glossary_menu': _get_menu_items(CONTENT_DIR, 'glossary')
 }
 
 autolink = {
