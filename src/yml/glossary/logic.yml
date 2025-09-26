@@ -1,127 +1,127 @@
 ####### A ###########
 logic/afirmacao:
   terms: ["afirmação lógica", "afirmação"]
-  url: /notes/glossary/logic#afirmacao
+  url: /glossary/logic#afirmacao
 
 logic/alfabeto:
   terms: ["alfabeto", "alfabetos", "alfabeto de uma linguagem"]
-  url: /notes/glossary/logic#alfabeto
+  url: /glossary/logic#alfabeto
 
 logic/aridade:
   terms: ["aridade", "aridade de uma relação", "aridade de uma função", "arity"]
-  url: /notes/glossary/logic#aridade
+  url: /glossary/logic#aridade
 
 ###### C ##########
 logic/concatenacao:
   terms: ["concatenação", "concatenação de strings"]
-  url: /notes/glossary/logic#concatenacao  
+  url: /glossary/logic#concatenacao  
 
 logic/conceito-primitivo:
   terms: ["conceito primitivo", "conceitos primitivos"]
-  url: /notes/glossary/logic#conceito-primitivo
+  url: /glossary/logic#conceito-primitivo
 
 logic/conjunto:
   terms: ["conjunto", "conjuntos"]
-  url: /notes/glossary/logic#conjunto
+  url: /glossary/logic#conjunto
 
 logic/constante:
   terms: ["constante", "constantes"]
-  url: /notes/glossary/logic#constante
+  url: /glossary/logic#constante
 
 ####### D ##########
 logic/delimitador:
   terms: ["delimitador lógico", "delimitadores lógicos"]
-  url: /notes/glossary/logic#delimitador
+  url: /glossary/logic#delimitador
 
 ####### F #########
 logic/formula:
   terms: ["fórmula", "fórmula lógica", "f"]
-  url: /notes/glossary/logic#formula
+  url: /glossary/logic#formula
 
 ######## L ###########
 logic/linguagem-formal:
   terms: ["linguagem formal", "linguagens formais"]
-  url: /notes/glossary/logic#linguagem-formal
+  url: /glossary/logic#linguagem-formal
 
 ######## N ##########
 logic/notacao-funcional:
   terms: ["notação funcional",]
-  url: /notes/glossary/logic#notacao-funcional
+  url: /glossary/logic#notacao-funcional
 
 logic/notacao-infixa:
   terms: ["notação infixa",]
-  url: /notes/glossary/logic#notacao-infixa
+  url: /glossary/logic#notacao-infixa
 
 ######## O ##########
 logic/operacao:
   terms: ["operação", "operações", "operação lógica", "operações lógicas", "operation", "operations"]
-  url: /notes/glossary/logic#operacao
+  url: /glossary/logic#operacao
 
 logic/operacao-unaria:
   terms: ["operação unária", "operações unárias", "unary operation", "unary operations"]
-  url: /notes/glossary/logic#operacao-unaria
+  url: /glossary/logic#operacao-unaria
 
 logic/operacao-binaria:
   terms: ["operação binária", "operações binárias", "binary operation", "binary operations"]
-  url: /notes/glossary/logic#operacao-binaria
+  url: /glossary/logic#operacao-binaria
 
 logic/ordem-simbolos:
   terms: ["ordem", "ordenada", "ordenadas", "ordenado", "ordenados", "ordenamento"]
-  url: /notes/glossary/logic#ordem-simbolos
+  url: /glossary/logic#ordem-simbolos
 
 ######## P ##########
 logic/predicado:
   terms: ["predicado lógico", "predicado", "predicados"]
-  url: /notes/glossary/logic#predicado  
+  url: /glossary/logic#predicado  
 
 logic/proposicao:
   terms: ["proposição lógica", "proposição", "proposições"]
-  url: /notes/glossary/logic#proposicao
+  url: /glossary/logic#proposicao
 
 ######## R #########
 logic/relacao:
   terms: ["relação", "relação lógica", "relações", "relações lógicas"]
-  url: /notes/glossary/logic#relacao
+  url: /glossary/logic#relacao
 
 logic/relacao-unaria:
   terms: ["relação unária", "relação lógica unária"]
-  url: /notes/glossary/logic#relacao-unaria
+  url: /glossary/logic#relacao-unaria
 
 logic/relacao-binaria:
   terms: ["relação binária", "relação lógica ária"]
-  url: /notes/glossary/logic#relacao-binaria
+  url: /glossary/logic#relacao-binaria
 
 ######### S #########
 logic/sequencia:
   terms: ["sequência", "sequências", "sequência finita", "sequence", "sequences", "finite sequence"]
-  url: /notes/glossary/logic#sequencia
+  url: /glossary/logic#sequencia
 
 logic/simbolo:
   terms: ["símbolo", "símbolos", "symbol", "symbols"]
-  url: /notes/glossary/logic#simbolo
+  url: /glossary/logic#simbolo
 
 logic/simbolo-funcional:
   terms: ["símbolos funcionais", "símbolo funcional"]
-  url: /notes/glossary/logic#simbolo-funcional
+  url: /glossary/logic#simbolo-funcional
 
 logic/string:
   terms: ["string", "strings", "palavra", "palavras", "word", "words"]
-  url: /notes/glossary/logic#string
+  url: /glossary/logic#string
 
 ######### T ##########
 logic/teoria-ingenua:
   terms: ["teoria ingênua", "teorias ingênuas", "naive theory", "naive theories"]
-  url: /notes/glossary/logic#teoria-ingenua
+  url: /glossary/logic#teoria-ingenua
 
 logic/termo:
   terms: ["termo", "termos", "term", "terms"]
-  url: /notes/glossary/logic#termo
+  url: /glossary/logic#termo
 
 ######## V #########
 logic/valor-simbolo:
   terms: ["valor", "valores", "valor de um símbolo", "value"]
-  url: /notes/glossary/logic#valor-simbolo
+  url: /glossary/logic#valor-simbolo
 
 logic/variavel:
   terms: ["variável", "variáveis", "variable", "variables"]
-  url: /notes/glossary/logic#variavel
+  url: /glossary/logic#variavel

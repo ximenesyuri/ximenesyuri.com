@@ -1,10 +1,10 @@
-<u>Yuri Ximenes Martins</u> (`~yx`)
+<u>Yuri Ximenes Lecca</u> (`~yx`)
 
 Mathematics Ph.D <br>
 Software Developer <br>
 Researcher <br>
 
-contact: `yx.dev@gmx.ie`
+contact: `ximenesyuri@gmx.ie`
   
 [github](https://github.com/ximenesyuri)
 [linkedin](https://linkedin.com/in/ximenesyuri)

@@ -6,3 +6,5 @@ All my publications can be found, as preprint versions, in:
 I'm no longer submitting works to closed journals and I'm rejecting the acceptance of those that were previously submitted and are currently in reviewing process. My works will be submitted only to [Diamond Open Access](https://en.wikipedia.org/wiki/Diamond_open_access) journals, where there is no publication industry involved.
 
 Also, previously I served as referee to some closed journals on Mathematics and Physics. Now, I'm no longer accepting those invitations.
+
+> Notice that the publications before 09/2025 uses my name before married: Yuri Ximenes Martins.

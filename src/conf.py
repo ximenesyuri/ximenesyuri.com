@@ -84,6 +84,14 @@ autolink = {
         "class": "autolink-glossary-logic",
         "entries": yml.read(path.join(YML_DIR, "glossary/logic.yml"))
     },
+    "infra": {
+        "class": "autolink-glossary-infra",
+        "entries": yml.read(path.join(YML_DIR, "glossary/infra.yml"))
+    },
+    "dev": {
+        "class": "autolink-glossary-dev",
+        "entries": yml.read(path.join(YML_DIR, "glossary/dev.yml"))
+    },
     "py": {
         "class": "autolink-python",
         "entries": yml.read(path.join(YML_DIR, "python.yml"))

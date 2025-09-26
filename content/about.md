@@ -1,7 +1,7 @@
 
 Hi.
 
-My name is _Yuri Ximenes Martins_. I'm a Brazilian researcher and software developer.
+My name is _Yuri Ximenes Lecca_ (_Yuri Ximenes Martins_ before married). I'm a Brazilian researcher and software developer.
       
 As a researcher my main interest in abstracting and formalizing. I believe that every concept has a very simple and intuitive presentation, which can be discovered through a full abstraction process. My works meet different areas, as Mathematics, Physics, Philosophy and Computer Science. For details on my publications, see <a href=/publications>publications</a>.
           

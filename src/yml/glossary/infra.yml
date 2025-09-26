@@ -1,0 +1,51 @@
+##### B ######
+
+infra/background-process:
+  terms: ["background process", "background processes", "processo em background", "processos em background"]
+  url: /glossary/infra/background-process
+
+##### D ######
+
+infra/daemon:
+  terms: ["daemon", "daemons"]
+  url: /glossary/infra/daemon
+
+infra/docker:
+  terms: ["docker"]
+  url: /glossary/infra/docker
+
+##### H ######
+
+infra/hardware:
+  terms: ["hardware", "hardwares"]
+  url: /glossary/infra/hardware
+
+##### K #######
+
+infra/kernel:
+  terms: ["kernel", "kernels"]
+  url: /glossary/infra/kernel
+
+##### O ######
+
+infra/operating-system:
+  terms: ["sistema operacional", "OS", "operating system", "operating systems", "sistemas operacionais"]
+  url: /glossary/infra/operating-system
+
+##### P #####
+
+infra/process:
+  terms: ["process", "processes", "processo", "processos"]
+  url: /glossary/infra/process
+
+infra/pid:
+  terms: ["pid", "pids", "PID", "PIDs", "process id", "processes ids", "id de um processo"]
+  url: /glossary/infra/pid
+
+##### S ######
+
+infra/software:
+  terms: ["software", "softwares"]
+  url: /glossary/infra/software
+
+
