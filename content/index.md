@@ -10,6 +10,7 @@ contact: `ximenesyuri@gmx.ie`
 [linkedin](https://linkedin.com/in/ximenesyuri)
 [arxiv](https://arxiv.org/a/martins_y_1.html)
 [nlab](https://ncatlab.org/nlab/show/Yuri+Ximenes+Martins)
+[orcid](https://orcid.org/0000-0003-3717-6774)
 
 <pre>
 +----------------------------------------------------------+
