@@ -426,6 +426,8 @@ attribute           meaning
 table 6: model attributes
 ```
 
+> `setattr`, `hasattr` and `getattr` applies to models. All of that and `delattr` applies to instances of models.
+
 # Model Operations
 
 ... TBA ...
